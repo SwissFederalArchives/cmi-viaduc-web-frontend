@@ -1,0 +1,26 @@
+<cmi-viaduc-engagement-bubbles *ngIf="showEngagement">
+</cmi-viaduc-engagement-bubbles>
+
+<div class="container container-main">
+
+	<cmi-viaduc-header></cmi-viaduc-header>
+
+	<div id="mainNav" tabindex="-1">
+		<cmi-viaduc-nav></cmi-viaduc-nav>
+	</div>
+
+	<div toastContainer class="row root-content-wrapper">
+		<div class="col-xs-12">
+			<div id="content" class="container-fluid">
+				<div id="mainContent" tabindex="-1" class="row">
+					<router-outlet></router-outlet>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<cmi-viaduc-footer></cmi-viaduc-footer>
+
+	<cmi-loader *ngIf="preloading" class="cmi-visible"></cmi-loader>
+</div>
+

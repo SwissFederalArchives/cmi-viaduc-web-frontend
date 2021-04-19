@@ -1,0 +1,1232 @@
+{
+  "__generated": {
+    "info": "CMI.Viaduc.Client.generatetranslations",
+    "date": "2018-06-08 22:32:19"
+  },
+  "_": {
+    "_version": "20171017",
+    "abbrechen": "Interrompi",
+    "add": "Aggiungi",
+    "anmelden": "Accedi",
+    "cancel": "Interrompi",
+    "drucken": "Stampa",
+    "expandLink": "Espandi link",
+    "hinzufuegen": "Aggiungi",
+    "proceed": "Continua",
+    "save": "Salva",
+    "schliessen": "Chiudi",
+    "und": "e"
+  },
+	"engagementbubbles": {
+		"chat": "Chat",
+		"chatbot": "Chatbot"
+	},
+  "account": {
+    "backToPage": "Torna alla pagina iniziale",
+    "birthday": "Data di nascita",
+    "clickIfNotRedirected": "Se non vieni reindirizzato, clicca sul link riportato sopra.",
+    "contact": {
+      "cancel": "Interrompi",
+      "changeLoginData": "Il numero di cellulare e l’indirizzo e-mail servono unicamente come dati di contatto. Per modificare i dati di login cliccare sul seguente link:",
+      "changeLoginDataLink": "elabora dati di login.",
+      "changeSettingsDescription": "Registra i tuoi dati utente, in modo che possiamo contattarti in caso di necessità. Puoi aggiornare questi dati in ogni momento.",
+      "changeUserSettings": "Modifica i dati utente",
+      "editIAM": "Modifica i dati di accesso",
+      "requiredFieldsDescription": "I campi contrassegnati da * sono obbligatori.",
+      "save": "Salva",
+      "title": "Dati utente"
+    },
+    "country": "Paese",
+    "dateFieldFormat": "Il formato della data non è valido (gg.mm.aaaa).",
+    "digitalOnboarding": {
+      "fullfillsRequirementsMessage": "Soddisfi i requisiti per l'identificazione tramite videochiamata. Per il processo di identificazione devi uscire dall'infrastruttura della Confederazione. La videochiamata è condotta con una ditta esterna (Managed Service Digital Identification & Signing di Swisscom).",
+      "fullfillsRequirementsMessageError": "Non soddisfi i requisiti per l'identificazione tramite videochiamata. Mettiti in contatto con noi per l'identificazione:",
+      "hasIdFromCountry": "O di quale paese possiedi una carta d'identità valida?",
+      "hasMobilePhone": "Disponi di un numero di cellulare e puoi ricevere SMS?",
+      "hasPassportFromCountry": "Di quale paese possiedi un passaporto valido?",
+      "hasSmartphoneOrComputer": "Hai accesso a uno smartphone o a un computer muniti di videocamera e microfono?",
+      "nextStep": "Continua",
+      "no": "No",
+      "noIdOfListedCountry": "Non possiedo una carta d'identità di nessuno dei paesi elencati",
+      "noPassportOfListedCountry": "Non possiedo un passaporto di nessuno dei paesi elencati",
+      "passportAndIdNeeded": "Ti serve un documento di identificazione valido (passaporto o carta d'indentità).",
+      "previousStep": "Torna indietro",
+      "step1": "Passo 1",
+      "step2": "Passo 2",
+      "step3": "Passo 3",
+      "step4": "Passo 4",
+      "videochatLink": "Avvia la videochiamata (dal lunedì al sabato, dalle 8 alle 22 CET)",
+      "videoChatNotPossible": "Non è possibile effettuare la videochiamata",
+      "videoChatPossible": "È possibile effettuare la videochiamata",
+      "wizardInfo": "Per ottenere lo stato di «utente identificato», devi sostenere un colloquio mediante videochiamata. Prima però devi rispondere alle seguenti domande:",
+      "wizardTitle": "Richiedere lo stato di «utente identificato»",
+      "yes": "Sì"
+    },
+    "email": "E-mail",
+    "errorPhoneNumber": "I numeri di telefono possono iniziare con \"+\", contenere cifre, spazi vuoti e \\\"-\\\" e devono avere da 6 a 20 segni",
+    "familyName": "Cognome",
+    "firstName": "Nome",
+    "headerAnonymousUser": "Anonimo",
+    "headerHideFunctions": "Nascondi le funzioni per ogni statuto utente",
+    "headerIdentifiedUser": "Identificato",
+    "headerRegisteredUser": "Registrato",
+    "headerShowFunctions": "Mostra le funzioni per ogni statuto utente",
+    "headerWithAccount": "(con conto)",
+    "headerWithoutAccount": "(senza conto)",
+    "iconMeaningNotOk": "Non consentito",
+    "iconMeaningOk": "Consentito",
+    "identifiedUserMessage": "Sei un utente identificato",
+    "loginFailureOrAborted": "Accesso fallito",
+    "logInSuccessful": "Accesso riuscito",
+    "mandatoryFieldError": "Questo è un campo obbligatorio.",
+    "mobilePhoneNumberIam": "Telefono",
+    "mobileTel": "Cellulare",
+    "orderings": {
+      "title": "Riepilogo delle ordinazioni"
+    },
+    "organization": "Organizzazione",
+    "phoneNumber": "Telefono",
+    "preferredLanguage": "Lingua preferita",
+    "preferredLanguageHelpText": "Indica in quale lingua vuoi comunicare con l'Archivio federale.",
+    "registeredUserMessage": "Sei un utente registrato",
+    "rightDownloadPublicPrimaryData": "Scarica i documenti liberamente accessibili",
+    "rightManageFavorites": "Gestisci i preferiti",
+    "rightPlaceDigitizationOrders": "Crea un mandato di digitalizzazione",
+    "rightPlaceDisclosureRequest": "Presenta una richiesta di informazioni concernente documenti propri",
+    "rightPlaceEinsichtsgesuche": "Presenta una domanda di consultazione",
+    "rightPlaceReadingRoomOrders": "Ordina documenti da consultare nelle sale di lettura",
+    "rightSearchPulicMetadata": "Cerca nei metadati pubblici",
+    "rightsPerUserTypeTableCaption": "Elenco dei diritti per tipo di utente",
+    "rightViewApprovedDossiers": "Consultare documenti soggetti ad autorizzazione",
+    "settings": {
+      "defaultSortBy": "Ordina per",
+      "numberOfSearchHits": "Numero di risultati",
+      "saveFailed": "Errore durante il salvataggio.",
+      "saveSuccess": "Le impostazioni sono state salvate",
+      "showTipWhenSearchFailed": "Mostra messaggio se la ricerca non ha prodotto risultati",
+      "title": "Interfaccia utente"
+    },
+    "state": "Stato utente",
+    "street": "Via",
+    "streetAttachment": "Aggiunta",
+    "submitIdRequest": "Richiedi l'identificazione",
+    "town": "Località",
+    "userSection": {
+      "benutzerdaten": "Dati utente",
+      "benutzeroberflaeche": "Interfaccia utente",
+      "benutzerstatus": "Stato utente",
+      "bestelluebersicht": "Riepilogo delle ordinazioni",
+      "einstellungen": "Impostazioni"
+    },
+    "wrongFormat": "Il formato del numero di telefono non è valido",
+    "zipcode": "NPA",
+    "rightSearchAllMetadata": "Cerca in tutti i metadati",
+    "title": "Il mio conto utente"
+  },
+  "accountFavoritesDetailPageComponent": {
+    "pageTitle": "Elenco dei preferiti"
+  },
+  "accountFavoritesListPageComponent": {
+    "pageTitle": "Elenco dei preferiti"
+  },
+  "accountPageComponent": {
+    "pageTitle": "Conto"
+  },
+  "accountSettingsPageComponent": {
+    "pageTitle": "Interfaccia utente"
+  },
+  "advancedSearchField": {
+    "removeCriteria": "Rimuovi campo di ricerca"
+  },
+  "advancedSearchPageComponent": {
+    "pageTitle": "Ricerca avanzata"
+  },
+  "archivplan": {
+    "anischtEinschraenken": "Restringi la visualizzazione",
+    "archivplan": "Piano d'archivio",
+    "cancelReduceView": "Rimuovi la restrizione",
+    "detailAnzeigen": "Mostra la pagina dei dettagli",
+    "getNextEntry": "Carica la voce successiva",
+    "information": "Informazione",
+    "showDirectLink": "Mostra link diretto",
+    "treeNode": {
+      "collapse": "Riduci",
+      "expand": "Espandi",
+			"onlyVisibleForIdentifiedUsers": "I dossier sono visibili soltanto agli utenti autorizzati."
+		},
+    "zeigen": "Mostra nel piano d'archivio",
+    "zuFavoritenHinzufuegen": "Aggiungi ai preferiti",
+    "lokalisieren": "Localizza nel piano d'archivio"
+  },
+  "archivplanPageComponent": {
+    "pageTitle": "Piano d'archivio"
+  },
+  "authPage": {
+    "pageTitle": "Reindirizzamento"
+  },
+  "behoerdenZugriff": {
+    "detail": {
+      "accesstoken": "Per conto di"
+    }
+  },
+  "bestellkorb": {
+    "menuTooltip": "Aggiungi al carrello"
+  },
+  "breadcrumb": {
+    "account": "Il mio conto utente",
+    "accountStatus": "Statuto utente",
+    "archiveHome": "Tutti i fondi",
+    "archivplan": "Piano d'archivio",
+    "backToSearch": "Risultato",
+    "einfacheSuche": "Ricerca semplice",
+    "erweiterteSuche": "Ricerca avanzata",
+    "favorites": "Preferiti",
+    "orderings": "Riepilogo delle ordinazioni",
+    "register": "Immissione dati utente",
+    "registerInfo": "Apertura conto",
+    "resultat": "Risultato",
+    "shoppingcart": "Carrello",
+    "startseite": "Pagine iniziale",
+    "uiSettings": "Interfaccia utente",
+    "userDetails": "Dati utente"
+  },
+  "breadcrumbComponent": {
+    "breadcrumb": "Filo di Arianna"
+  },
+  "calendar": {
+    "days": {
+      "short": "Do;Lu;Ma;Me;Gi;Ve;Sa",
+      "week": "Domenica;Lunedì;Martedì;Mercoledì;Giovedì;Venerdì;Sabato;Domenica"
+    },
+    "month": {
+      "next": "Mese successivo",
+      "previous": "Mese precedente"
+    },
+    "months": "Gennaio;Febbraio;Marzo;Aprile;Maggio;Giugno;Luglio;Agosto;Settembre;Ottobre;Novembre;Dicembre",
+    "placeHolder": "Seleziona una data"
+  },
+  "chatbotDialog": {
+    "minimize": "Minimizza il chatbot (beta)",
+    "title": "Chatbot (beta)"
+  },
+  "checkoutOrderDetailsStep": {
+    "artDerArbeit": "Genere di lavoro",
+    "commentTitle": "Commento sull'ordinazione",
+    "datumLesesaal": "Data sala di lettura",
+    "datumLesesaalText": "Desidero consultare i documenti nelle sale di lettura il",
+    "invalidDate": "Il giorno indicato le sale di lettura sono chiuse. Seleziona una data valida.",
+    "mandatoryArtDerArbeit": "Indica il genere di lavoro per il quale ti servono i documenti.",
+    "mandatoryDate": "Seleziona una data per la tua visita nelle sale di lettura.",
+    "pleaseChoose": "Seleziona"
+  },
+  "checkoutPersonsStep": {
+    "reasonTitle": "Motivo della consultazione"
+  },
+  "checkoutReasonsStep": {
+    "art14Bga": "Art. 14 cpv. 2 LAr",
+    "art14BgaLink": "https://www.admin.ch/ch/i/sr/c152_1.html",
+    "missingFlagForReason": "Devi effettuare una selezione in questa checkbox se hai indicato un motivo.",
+    "missingReason": "Indica il motivo per il quale vuoi consultare i documenti contenenti dati personali.",
+    "title": "I servizi mittenti possono consultare i documenti da essi versati anche durante il termine di protezione. Per la consultazione ti serve l'autorizzazione della tua unità amministrativa. L'unità riceverà inoltre automaticamente una notifica tutte le volte che ordini documenti di questo genere.",
+    "title2": "Se i documenti contengono dati personali, il prestito è possibile soltanto per motivi ben precisi.",
+    "yesTheseItemsContainsPersonData": "Sì, questi documenti contengono dati personali"
+  },
+  "checkoutSubmittedStep": {
+    "cartText": "Ci sono ancora ordinazioni non finalizzate nel <a href=\"#/{0}\">carrello</a>.",
+    "checkStatusText": "Puoi seguire lo stato dell'ordinazione nel tuo <a href=\"#/{0}\">conto utente</a>.",
+    "disclaimerText": "La videochiamata viene registrata, ma sarà cancellata una volta conclusa l'identificazione. L'Archivio federale conserva soltanto la copia del documento d'identificazione, la fotografia e i dati utente in forma tabellare. Hai il diritto di chiedere in ogni momento informazioni sui  dati conservati che ti concernono (art. 8 LPD).",
+    "thxTextDigi": "Abbiamo ricevuto la Sua ordinazione. Riceverà una mail non appena i documenti saranno stati digitalizzati. La digitalizzazione del primo dossier richiede di norma due settimane.",
+    "thxTextEischtisgesuch": "Trasmetteremo la tua domanda al servizio competente. Dovresti ricevere una risposta tra 4-6 settimane.",
+    "thxTextEischtisgesuchAnmeldenUndIndentifizieren": "Se la domanda sarà approvata, dovrai identificarti per poter consultare i documenti (v. <a href=\"{0}\">Registrazione e identificazione</a>).",
+    "thxTextEischtisgesuchIntroduction": "Abbiamo ricevuto la tua domanda di consultazione per i seguenti documenti:",
+    "thxTextLesesaal": "Abbiamo ricevuto la tua ordinazione. Potrai consultare i documenti ordinati nelle <a href=\"#/{0}\">sale di lettura dell'Archivio federale</a> alla data desiderata. Le sale di lettura sono aperte dal martedì al giovedì, dalle 9.00 alle 19.00.",
+    "thxTextVerwaltungsausleihe": "Abbiamo ricevuto la tua ordinazione. Riceverai i documenti per posta entro 1-2 giorni lavorativi."
+  },
+  "clipboard": {
+    "success": "La copia negli appunti è riuscita!",
+    "title": "Appunti"
+  },
+  "columnpicker": {
+    "einAusblenden": "Mostra/nascondi colonne",
+    "hiddenColumns": "Colonne nascoste",
+    "visibleColumns": "Colonne visibili"
+  },
+  "contactDetailPageComponent": {
+    "pageTitle": "Dati utente"
+  },
+  "dateRangeField": {
+    "format": "Limita il periodo (p.es. 1848-1914 o 01.07.1995-24.12.2001)",
+    "invalidFormat": "Il formato immesso non è valido. Il periodo deve essere immesso nel formato \"AAAA-AAAA\" o \"GG.MM.AAAA-GG.MM.AAAA\"."
+  },
+  "detail": {
+    "notFound": "La pagina richiesta non può essere visualizzata",
+    "notFoundMessage": "Forse non disponi delle autorizzazioni necessarie. Verifica i tuoi diritti nel <a href=\"#{0}\">conto utente.</a></br></br>",
+    "notFoundMessage2": "Per informazioni sull'accessibilità ai documenti dell'Archivio federale rivolgiti al servizio di consulenza o invia una mail a <a href=\"mailto:bundesarchiv@bar.admin.ch\">bundesarchiv@bar.admin.ch</a>",
+    "notFoundMessageNotOe1": "Forse non disponi dell'autorizzazione necessaria per visualizzare la pagina. Verifica i tuoi diritti nel <a href=\"#{0}\">conto utente</a>.</br></br>",
+    "notFoundMessageOe1": "Forse non disponi delle autorizzazioni necessarie per visualizzare la pagina (v. <a href=\"#{0}\">Registrazione e identificazione</a>).</br></br>"
+  },
+	"detailPage": {
+    "information": "Informazione"
+  },
+  "detailHierarchy": {
+    "activePosition": "Unità di descrizione attualmente visualizzata"
+  },
+  "detailPageComponent": {
+    "pageTitle": "Visualizzazione dei dettagli"
+  },
+  "detailSection": {
+    "internalField": "Campo visibile soltanto agli utenti AFS"
+  },
+  "digitalisierungskategorie": {
+    "amt": "Amt",
+    "forschungsgruppe": "Forschungsgruppe",
+    "gesuch": "Gesuch",
+    "intern": "Intern",
+    "oeffentlichkeit": "Öffentlichkeit",
+    "spezial": "Spezial",
+    "termin": "Termin"
+  },
+  "download": {
+    "menuTooltip": "Vai al download",
+    "thresholdExceeded": "Hai già scaricato {1} file negli ultimi {0}. Hai quindi raggiunto il limite massimo consentito. Potrai nuovamente scaricare file tra {2}. Hai anche la possibilità di chiedere all'Archivio federale la soppressione del limite massimo."
+  },
+  "downloadSection": {
+    "downloadSuccess": "L'avvio del download è riuscito.",
+    "downloadSuccessTitle": "Il download riuscito",
+    "estimatedPrepTime": "La preparazione dura ca.",
+		"preparationInfo": "Tempo di preparazione previsto: {0}.",
+    "pleaseLogin": "Effettua l'accesso per poter ordinare i documenti",
+    "pleaseLoginDetailsAt": "Dettagli sotto",
+    "preparationPending": "Riceverai una mail quando la preparazione sarà conclusa. Puoi chiudere la pagina.",
+    "preparationPendingTitle": "Il documento digitalizzato è in preparazione...",
+    "preparationRequired": "Questi documenti sono disponibili in formato digitale, ma devono ancora essere preparati per il download.",
+    "prepareNow": "Prepara il documento digitalizzato",
+    "registerAndIdentify": "Registrazione e identificazione",
+    "unknown": "sconosciuto",
+    "xSecondsOverdue": "più del previsto",
+		"downloadNow": "Scarica i documenti. Nel file index.html trovi l’elenco dei documenti."
+  },
+  "einsichtCheckoutOrderDetailsStep": {
+    "artDerArbeit": "Genere di lavoro",
+    "begruendungAngegebenTitel": "Motivo della domanda di consultazione (max. 2000 battute)",
+    "eigenePersonendatenTitel": "Sono documenti che ti riguardano direttamente?",
+    "gesuchDauerInfo": "L'evasione di una domanda di consultazione può richiedere 4-6 settimane.",
+    "identifizierung": "Per presentare una richiesta di informazioni devi dapprima identificarti. Puoi richiedere l'identificazione nel conto utente tramite la <a href=\"#{0}\" target=\"_blank\">funzione d'identificazione</a>.",
+    "identifizierungTitel": "È richiesta l'identificazione",
+    "infoTextAbschnittDrei": ". L'autorizzazione alla consultazione vale soltanto per la persona che ne ha fatto domanda.",
+    "infoTextAbschnittEins": "Per consultare documenti soggetti a un termine di protezione ti serve l'autorizzazione. Per ottenerla devi presentare una domanda di consultazione all'Archivio federale. Ogni utente può avere in corso di elaborazione domande di consultazione per al massimo 50 dossier contemporaneamente.",
+    "infoTextAbschnittLink": "(v. Registrazione e identificazione)",
+    "infoTextAbschnittZwei": "Trasmetteremo la tua domanda al servizio competente. Dovresti ricevere una risposta tra 4-6 settimane. Se la domanda sarà approvata, dovrai identificarti per poter consultare i documenti",
+    "mandatoryArtDerArbeit": "Indica il genere di lavoro per il quale ti servono i documenti.",
+    "mandatoryOwnPersondata": "Indica se i documenti ti riguardano personalmente.",
+    "mandatoryPersondata": "Indica se le ricerche che stai effettuando sono inerenti a una persona.",
+    "mandatoryReason": "Immetti il motivo della domanda di consultazione.",
+    "no": "No",
+    "personendatenTitel": "Stai effettuando ricerche inerenti a una persona (p.es. biografia o articoli sulla sua vita e sul suo operato)?",
+    "pleaseChoose": "Seleziona",
+    "yes": "Sì"
+  },
+  "engagement": {
+    "chatbotInfo": "Passa al tedesco per utilizzare il chatbot (beta).",
+    "chatInfo": "Puoi chattare con l'Archivio federale dal martedì al giovedì, dalle 9 alle 12 e dalle 13 alle 15 - saremo lieti di poterti aiutare.",
+    "headerTitle": "Come possiamo aiutarti?"
+  },
+  "enums": {
+    "abbruchgrund": {
+      "digitalisierungNichtMoeglich": "Digitalizzazione non possibile",
+      "dossierangaben": "Indicazioni sul dossier insufficienti",
+      "dossierMomentanNichtVerfuegbar": "Dossier non disponibile al momento",
+      "einsichtsbewilligungNoetig": "Richiesta autorizzazione alla consultazione",
+      "formBestellungNichtErlaubt": "Ordinazione tramite modulo non ammessa",
+      "nichtGesetzt": "Non definito",
+      "storniert": "Annullato",
+      "teilbewilligung": "Autorizzazione parziale già accordata",
+      "unterlagenFrei": "Prestito amministrativo non ammesso - documenti liberamente disponibili / autorizzazione",
+      "unterlagenInSchutzfrist": "Prestito amministrativo non ammesso - documenti soggetti a un termine di protezione"
+    },
+    "approveStatus": {
+      "abgebrochen": "Approvata (soggetto a un termine di protezione)",
+      "abgeschlossen": "Respinta (richiesta autorizzazione alla consultazione)",
+      "ausgeliehen": "Approvata (non soggetto a un termine di protezione)",
+      "dossierangaben": "Respinta (indicazioni sul dossier insufficienti)",
+      "einsichtsbewilligungNoetig": "Respinta (richiesta autorizzazione alla consultazione)",
+      "formBestellungNichtErlaubt": "Respinta (ordinazione tramite modulo non ammessa)",
+      "inBearbeitung": "Approvata (dal sistema)",
+      "nichtGeprueft": "Non verificata",
+      "teilbewilligung": "Respinta (autorizzazione parziale già accordata)",
+      "unterlagenFrei": "Respinta (prestito amministrativo non ammesso - documenti liberamente disponibili / autorizzazione)",
+      "unterlagenInSchutzfrist": "Respinta (prestito amministrativo non ammesso - documenti soggetti a un termine di protezione)"
+    },
+    "eingangsart": {
+      "erfasstDurchBar": "Immissione AFS",
+      "erfasstDurchKunde": "Immissione utente"
+    },
+    "entscheidGesuchStatus": {
+      "auskunftsgesuchBewilligt": "Richiesta di informazioni approvata",
+      "auskunftsgesuchTeilbewilligt": "Richiesta di informazioni parzialmente approvata",
+      "einsichtsgesuchBewilligt": "Domanda di consultazione approvata",
+      "einsichtsgesuchTeilbewilligt": "Domanda di consultazione parzialmente approvata",
+      "einsichtVerweigert": "Consultazione negata",
+      "entscheidGemaessBgOe": "Decisione secondo la LTras",
+      "nichtGeprueft": "Non verificata"
+    },
+    "gebrauchskopieStatus": {
+      "erfolgreichErstellt": "Allestimento riuscito",
+      "fehlgeschlagen": "Allestimento fallito",
+      "nichtErstellt": " ",
+      "versendet": "Inviata"
+    },
+    "orderItemStatus": {
+      "abgebrochen": "Interrotta",
+      "abgeschlossen": "Conclusa",
+      "ausgeliehen": "In prestito",
+      "aushebungsauftragErstellt": "Compilato mandato di estrazione",
+      "digitalisierungAbgebrochen": "Digitalizzazione interrotta",
+      "digitalisierungExtern": "Digitalizzazione esterna",
+      "einsichtsgesuchWeitergeleitet": "Domanda di consultazione inoltrata",
+      "fuerAushebungBereit": "Pronto per l'estrazione",
+      "fuerDigitalisierungBereit": "Pronto per la digitalizzazione",
+      "imBestellkorb": "Nel carrello",
+      "inBearbeitung": "In elaborazione",
+      "neuEingegangen": "Appena pervenuto",
+      "pruefungEinsichtsgesuch": "Esame della domande di consultazione",
+      "pruefungFreigabe": "Esame dell'autorizzazione",
+      "zumReponierenBereit": "Pronto per essere riposto"
+    },
+    "zugaenglichkeitGemaessBga": {
+      "freiZugaenglich": "Liberamente accessibile",
+      "inSchutzfrist": "Soggetto a un termine di protezione",
+      "pruefungNoetig": "Verifica necessaria"
+    }
+  },
+  "error": {
+    "orderErrorMessage": "La tua ordinazione non ha purtroppo potuto essere eseguita. Riprova più tardi. Se il problema persiste, rivolgiti al servizio di consulenza o invia una mail a bundesarchiv@bar.admin.ch.",
+    "unknownErrorMessage": "Riprova più tardi. Se il problema persiste, rivolgiti al servizio di consulenza o invia una mail a bundesarchiv@bar.admin.ch.",
+    "unknownErrorTitle": "Si è verificato un errore."
+  },
+  "errors": {
+    "errorTitle": "Errori",
+    "pageNotFoundTitle": "La pagina non è stata trovata",
+    "smartcardErrorMessage": "Hai cercato di effettuare l'accesso tramite smartcard. Il tuo ruolo ti permette di accedere soltanto tramite Kerberos. Sarai sconnesso automaticamente tra 8 secondi.",
+    "smartcardErrorTitle": "Accesso possibile soltante tramite Kerberos",
+    "unknownErrorMessage": "Riprova più tardi. Se il problema persiste, rivolgiti al servizio di consulenza o invia una mail a bundesarchiv@bar.admin.ch.",
+    "unknownErrorTitle": "Si è verificato un errore"
+  },
+  "facette": {
+    "active": "Attivo",
+    "bestaendeUebersicht": "Sommario tematico",
+    "bestand": "Fondo",
+    "clearAll": "Cancella tutti i filtri ({0})",
+    "digitallyAvailable": "Documenti disponibili in forma digitale",
+    "entstehungszeitraum": "Periodo di costituzione",
+    "hideFilter": "Nascondi filtri",
+    "notActive": "Non attivo",
+    "stufen": "Livelli",
+    "treffer": "Risultati",
+    "weitereTreffer": "Altri",
+    "zugaenglichkeitGemBGA": "Accessibilità secondo la LAr"
+  },
+  "favorite": {
+    "noExistingListsLabel": "Non è ancora stato creato nessun elenco dei preferiti."
+  },
+  "favoriteList": {
+    "suchabfragen": "Ricerche effettuate ({0})",
+    "table": {
+      "gespeichert": "Salvato",
+      "keineFavListe": "Al momento non sono stati salvati preferiti in questo elenco.",
+      "level": "Livello",
+      "loeschen": "Colonna con l'azione \"cancella\"",
+      "order": "Colonna con l'azione \"ordina\" o \"Vai alla pagina per il download\"",
+      "saved": "Salvato",
+      "signatur": "Segnatura",
+      "suchabfrage": "Ricerca",
+      "title": "Titolo",
+      "zeitraum": "Periodo"
+    },
+    "unknownErrorText": "Si è verificato un errore imprevisto. Riprova più tardi. Se il problema persiste, rivolgiti al servizio di consulenza o invia una mail a bundesarchiv@bar.admin.ch.",
+    "verzeichnungseinheiten": "Unità di descrizione ({0})",
+    "verzeichniseinheiten": "Unità di descrizione ({0})"
+  },
+  "favorites": {
+    "addFavoriteToList": "Aggiungi all'elenco {0}",
+    "addToNewList": "Aggiungi al nuovo elenco dei preferiti",
+    "chooseExistingList": "Seleziona dall'elenco",
+    "createOnNewList": "Salva nel nuovo elenco dei favoriti ...",
+    "defaultNewName": "Elenco dei favoriti 1",
+    "emptyListWarn": "Scegli un elenco dei favoriti per aggiungervi l'unità di descrizione.",
+    "emptyListWarnTitle": "Nessun elenco selezionato",
+    "errorPleaseTryAgain": "Si è verificato un errore imprevisto. Riprova più tardi. Se il problema persiste, rivolgiti al servizio di consulenza o invia una mail a bundesarchiv@bar.admin.ch.",
+    "favoriteTitlePlaceholder": "La mia ricerca salvata",
+    "listsTitle": "Elenchi dei preferiti",
+    "mandatoryField": "Campo obbligatorio",
+    "mandatorySearchTitle": "Questo è un campo obbligatorio.",
+    "menuTitle": "Preferiti",
+    "menuTitleAsFavorite": "Segna tra i preferiti",
+    "menuTooltip": "Aggiungi ai preferiti",
+    "migrationFailure": "Migrazione delle cartelle di lavoro non riuscita! \\nSe il problema persiste, rivolgiti all'Archivio federale.",
+    "migrationSuccess": "Le cartelle di lavoro sono state migrate",
+    "missingTitle": "Immetti un nome per il nuovo elenco.",
+    "newListLabel": "Nome dell'elenco",
+    "newListNamePlaceholder": "Nuovo elenco",
+    "newListNameRequired": "Immetti un nome per il nuovo elenco.",
+    "newSearchFavoritePlaceholder": "Nome della ricerca ",
+    "pleaseLogin": "Accedi al tuo conto per gestire i preferiti.",
+    "removeFavoriteFromList": "Rimuovi dall'elenco {0}",
+    "removeFromList": "Rimuovi dall'elenco",
+    "saveSuccessfull": "Mutazione dei preferiti riuscita.",
+    "searchFavoriteTitle": "Salva la ricerca nei preferiti",
+    "sRLegendInfoSaveFavorite": "Informazioni sul salvataggio della ricerca",
+    "sRLegendNewListLegend": "Crea un nuovo elenco dei preferiti",
+    "createNewList": "Crea nuovo elenco dei preferiti"
+  },
+  "favoritesListPage": {
+    "addNewList": "Crea un nuovo elenco",
+    "cancel": "Interrompi",
+    "nameLabel": "Nome",
+    "nameOfNewList": "Nome del nuovo elenco",
+    "newList": "Nuovo elenco...",
+    "save": "Salva",
+    "titel": "Preferiti",
+    "unexpectedError": "Si è verificato un errore imprevisto. Riprova più tardi. Se il problema persiste, rivolgiti al servizio di consulenza o invia una mail a bundesarchiv@bar.admin.ch.",
+    "unexpectedErrorPrefix": "Messaggio di errore:"
+  },
+  "favoritesMigration": {
+    "close": "Chiudi",
+    "importFromLocal": "Importa le mie cartelle di lavoro da Local Swiss-Archives",
+    "importFromPublic": "Importa le mie cartelle di lavoro da Swiss-Archives"
+  },
+  "favoritesPage": {
+    "cancel": "Interrompi",
+    "confirmDelete": "Sei sicuro di voler cancellare l'elenco {0}?",
+    "delete": "Cancella",
+    "nameOfNewList": "Nome del nuovo elenco",
+    "rename": "Rinomina",
+    "save": "Salva"
+  },
+	"fileSize": {
+		"kB": "KB",
+		"MB": "MB",
+		"GB": "GB",
+		"TB": "TB",
+		"PB": "PB",
+		"ZB": "ZB",
+		"YB": "YB"
+	},
+  "file": {
+    "acceptTermsWarning": "Leggi e accetta le condizioni di utilizzazione.",
+    "alert": "Attenzione:",
+    "askForPreparation": "Questi documenti sono disponibili in forma digitale. Devono però ancora essere preparati per il download.",
+    "availabilityCheckTitle": "La verifica della disponibilità del documento digitalizzato è in corso...",
+    "cancel": "Interrompi",
+    "download": "Download",
+		"downloadNow": "Effettua ora il download",
+    "downloadError": "Si è verificato un errore durante l'avvio del download. L'errore è: ",
+    "downloadErrorDefaultMessage": "Si è verificato un errore imprevisto. Riprova più tardi.",
+    "downloadErrorTitle": "Errore durante il download",
+    "downloadInfo": "I servizi mittenti possono consultare i documenti da essi versati anche durante il termine di protezione. Per la consultazione ti serve l'autorizzazione della tua unità amministrativa. L'unità riceverà inoltre automaticamente una notifica tutte le volte che scarichi documenti di questo genere.",
+    "downloadInfo2": "Se i documenti contengono dati personali, il prestito è possibile soltanto per motivi ben precisi",
+    "downloadPending": "Il download è in corso...",
+    "downloadSuccess": "L'avvio del download è riuscito.",
+    "missingReason": "Indica il motivo per cui vuoi consultare i documenti contenenti dati personali.",
+    "missingTermsOfUse": "Leggi e accetta le condizioni di utilizzazione.",
+    "notAuthorized": "Non disponi dei diritti necessari per consultare o ordinare i documenti digitali di questa unità di descrizione.",
+    "order": "Ordina",
+		"chooseDownloadReason": "Seleziona una motivazione per effettuare il download.",
+    "personData": "Sì, questo documento digitalizzato contiene dati personali:",
+    "pleaseLogin": "Accedi al tuo conto per usufruire di funzioni supplementari quali la gestione dei preferiti e l'ordinazione.",
+    "preparationInfo": "È stato dato l'ordine per la preparazione di: {0}",
+    "preparationPending": "La preparazione può durare da alcuni minuti a diverse ore. Riverifica l'ordinazione più tardi. Riceverai una mail quando la preparazione è conclusa.",
+    "preparationPendingTitle": "Il documento è in preparazione...",
+    "preparationTitle": "Preparazione",
+    "prepareNow": "Prepara adesso",
+    "termsofUse": "Ho letto le <a href=\"#{0}\" target=\"_blank\">condizioni di utilizzazione</a> e dichiaro di approvarle."
+  },
+  "footer": {
+    "footerTitle": "Piè di pagina",
+    "title": "Archivio federale svizzero AFS"
+  },
+  "general": {
+    "day": "giorno",
+    "days": "giorni",
+    "hour": "ora",
+    "hours": "ore",
+    "minute": "minuto",
+    "minutes": "minuti",
+    "second": "secondo",
+    "seconds": "secondi"
+  },
+  "header": {
+    "abmelden": "Esci",
+    "altText": "Logo della Confederazione Svizzera – vai alla pagina iniziale",
+    "anmelden": "Accedi",
+    "barAbbr": "AFS",
+    "barFullname": "Archivio federale svizzero AFS",
+    "benutzerdaten": "Dati utente",
+    "benutzeroberflaeche": "Interfaccia utente",
+    "bestellkorb": "Carrello",
+    "bestellkorbItemsCount": "Carrello ({0})",
+    "bestelluebersicht": "Riepilogo delle ordinazioni",
+    "claim": "Accesso on-line all'Archivio federale",
+    "closeMobileNavigation": "Chiudi la navigazione",
+    "closeNav": "Chiudi la navigazione",
+    "closeUserAccount": "Chiudi il menu utente",
+    "departementEdiAbbr": "DFI",
+    "departementEdiDescription": "Dipartimento federale dell'interno",
+    "departmentBK": "CaF: Cancelleria federale",
+    "departmentEDA": "DFAE: Dipartimento federale degli affari esteri",
+    "departmentEDI": "DFI: Dipartimento federale dell'interno",
+    "departmentEFD": "DFF: Dipartimento federale delle finanze",
+    "departmentEJPD": "DFGP: Dipartimento federale di giustizia e polizia",
+    "departmentUVEK": "DATEC: Dipartimento federale dell'ambiente, dei trasporti, dell'energia e delle comunicazioni",
+    "departmentVBS": "DDPS: Dipartimento federale della difesa, della protezione della popolazione e dello sport",
+    "departmentWBF": "DEFR: Dipartimento federale dell’economia, della formazione e della ricerca",
+    "derBundesrat": "Il Consiglio federale",
+    "derBundesratInclDomain": "Il Consiglio federale admin.ch",
+    "favoriten": "Preferiti",
+    "languageChoice": "Seleziona la lingua",
+    "loggedInInfo": "Hai effettuato l'accesso come utente identificato",
+    "loggedInInfoAsRegisteredUser": "Hai effettuato l'accesso come utente registrato",
+    "meinkonto": "Il mio conto utente",
+    "notLoggedInInfo": "Non hai effettuato l'accesso al tuo conto",
+    "notLoggedInTip": "Accedi al tuo conto per usufruire di funzioni supplementari quali la gestione dei preferiti e l'ordinazione.",
+    "notLoggedInTipInfo": "Informazione: accedi al tuo conto per usufruire di funzioni supplementari quali la gestione dei preferiti e l'ordinazione.",
+    "onlineZugang": "Accesso on-line",
+    "openMobileNavigation": "Apri la navigazione",
+    "openUserAccount": "Apri il menu utente",
+    "register": "Registrazione",
+    "srBreadcrumbOrientation": "Orientamento nel sito",
+    "title": "Accesso on-line all'Archivio federale",
+    "zumBestellkorb": "Vai al carrello con {0} posizioni",
+    "einstellungen": "Impostazioni",
+		"favoritesCount": "Preferiti ({0})"
+  },
+  "headerContent": {
+    "component": {
+      "aktiv": "Attivo",
+			"toolTippLoggedIn": "Trovi ulteriori informazioni sul tuo stato utente alla pagina “Registrazione e identificazione” o al menu «Informazioni».",
+			"toolTippLoggedInAsRegisteredUser": "In qualità di utente registrato hai accesso ai dati liberamente accessibili dell’Archivio federale. Se desideri consultare dati protetti devi prima procedere all’identificazione (vedi \"Il mio conto utente\")."
+    }
+  },
+  "hitbar": {
+    "copyPermalink": "Copia il permalink di questa ricerca negli appunti",
+    "groupByArchivplan": "Raggruppa secondo il piano d'archivio",
+    "orderableUnits": "Unità ordinabili",
+    "permalink": "Permalink di questa ricerca",
+    "saveAsFavorite": "Salva la ricerca nei preferiti",
+    "totalHits": "{0} risultati"
+  },
+  "icon": {
+    "menu": {
+      "archivplan": "Mostra nel piano d'archivio",
+      "archivplankontext": "Mostra il contesto del piano d'archivio",
+      "bestellkorb": "Aggiungi al carrello",
+      "bestellkorbdownload": "Vai alla pagina per il download",
+      "download": "Vai al Download",
+      "favoriten": "Aggiungi ai preferiti"
+    }
+  },
+  "languages": {
+    "de": "Tedesco",
+    "en": "Inglese",
+    "fr": "Francese",
+    "it": "Italiano"
+  },
+  "main": {
+    "errorMandatoryField": "Questo è un campo obbligatorio.",
+    "errorMandatoryMailField": "Questo campo deve contenere un indirizzo e-mail valido",
+    "errorMobil": "I numeri di cellulare possono iniziare con \"+\", contenere cifre, spazi vuoti e \\\"-\\\" e devono avere da 6 a 20 segni",
+    "errorPhone": "I numeri di telefono possono iniziare con \"+\", contenere cifre, spazi vuoti e \\\"-\\\" e devono avere da 6 a 20 segni"
+  },
+  "metadata": {
+    "label": {
+      "creationPeriod": "Periodo di costituzione",
+      "customFields": {
+        "abdeckung": "Copertina",
+        "aipId": "Identificazione magazzino digitale",
+        "aktenzeichen": "Riferimento",
+        "anhang3": "Allegato 3 OLAr",
+        "bemerkungZurVe": "Informazioni supplementari",
+        "beteiligtePersonenKoerperschaften": "Persone / corporazioni coinvolte",
+        "bildAnsicht": "Riproduzione digitale",
+        "bildVorschau": "Anteprima dell'immagine",
+        "digitalesFindmittelBeschreibung": "Strumento di ricerca digitale (descrizione)",
+        "digitalesFindmittelLink": "Strumento di ricerca digitale (link)",
+        "digitaleVersion": "Versione digitale",
+        "entstehungszeitraumAnmerkung": "Nota sul periodo di costituzione",
+        "form": "Forma",
+        "format": "Formato",
+        "frueheresAktenzeichen": "Vecchio riferimento",
+        "geschichteDerUnterlagen": "Storia dei documenti",
+        "kategorieDia": "Cat. Automazione",
+        "land": "Paese",
+        "nachfolgerbehoerden": "Autorità successiva(e)",
+        "nichtOnlineRecherchierbareDossiers": "Dossier non reperibili on-line",
+        "publikationsrechte": "Diritti di pubblicazione",
+        "signaturArchivplan": "Segnatura nel piano d'archivio",
+        "thema": "Tema",
+        "urheber": "Autore",
+        "veAblieferungLink": "Versamento",
+        "veOrdnungskomponenteLink": "Componente dell'ordinamento",
+        "verleger": "Editore",
+        "verwandteVe": "UD affini",
+        "vorgaengerbehoerden": "Autorità precedente(i)",
+        "zugaenglichkeitGemaessBga": "Accessibilità secondo la LAr",
+        "zusatzkomponenteZac1": "Componente aggiuntiva",
+        "zustaendigeStelle": "Servizio competente"
+      },
+      "digitallyAvailable": "Documenti disponibili in forma digitale",
+      "extent": "Metri lineari",
+      "formerReferenceCode": "Vecchie segnature",
+      "level": "Livello",
+      "referenceCode": "Segnatura",
+      "title": "Titolo",
+      "withinInfo": "Contiene",
+      "archiveType": "Tipo di documento archiviato"
+    },
+    "searchFields": {
+      "_all": "Tutti",
+      "allData": "Tutti",
+      "allMetaData": "Metadati",
+      "allPrimaryData": "Testo integrale (dati primari)",
+      "creationPeriod": "Periodo di costituzione",
+      "customFields": {
+        "aktenzeichen": "Riferimento",
+        "benutzerkommentare": "Commento utente",
+        "digitalisate": "Documenti digitalizzati",
+        "form": "Forma",
+        "frueheresAktenzeichen": "Vecchio riferimento",
+        "land": "Paese",
+        "metadaten": "Metadati",
+        "zugaenglichkeitGemaessBga": "Accessibilità secondo la LAr",
+        "zusatzkomponenteZac1": "Componente aggiuntiva"
+      },
+      "formerReferenceCode": "Vecchie segnature",
+      "referenceCode": "Segnatura",
+      "title": "Titolo",
+      "withinInfo": "Contiene"
+		},
+    "sortFields": {
+      "creationPeriod": {
+        "startDate": {
+          "ascending": "Data crescente",
+          "descending": "Data decrescente"
+        }
+      },
+      "referenceCode": {
+        "ascending": "Segnatura crescente",
+        "descending": "Segnatura decrescente",
+        "sort": {
+          "ascending": "Segnatura crescente",
+          "descending": "Segnatura decrescente"
+        }
+      },
+      "relevanz": "Rilevanza",
+      "title": {
+        "keyword": {
+          "ascending": "Titolo crescente",
+          "descending": "Titolo decrescente"
+        },
+        "sort": {
+          "ascending": "Titolo crescente",
+          "descending": "Titolo decrescente"
+        }
+      },
+      "treePath": {
+        "ascending": "Contesto nel piano d'archivio crescente",
+        "descending": "Contesto nel piano d'archivio decrescente"
+      }
+    },
+    "title": {
+      "accessTokens": "Access Tokens",
+      "anmerkungen": "Osservazioni",
+      "archivplan": "Piano d'archivio",
+      "details": "Dettagli",
+      "erschliessungskontrolle": "Controllo di accesso",
+      "identifikation": "Identificazione",
+      "images": "Anteprima delle immagini",
+      "inhaltUndInnereOrdnung": "Contenuto e ordinamento interno",
+      "interneVermerke": "Diciture interne",
+      "kontext": "Contesto",
+      "sachverwandteUnterlagen": "Documenti affini",
+      "zugangsUndBenutzungsbedingungen": "Condizioni di accesso e di utilizzazione"
+    }
+  },
+  "modal": {
+    "close": "Chiudi"
+  },
+  "navigation": {
+    "about": {
+      "us": "Chi siamo"
+    },
+    "api": "API",
+    "archive": "Consulenza",
+    "back": "Indietro",
+    "beratung": {
+      "chat": "Chat",
+      "chatbot": "Chatbot",
+      "chatbotTeaserText": "Chiedi al chatbot (beta) a disposizione 24 ore su 24.",
+      "chatTeaserText": "Puoi chattare con l'Archivio federale dal martedì al giovedì, dalle 9 alle 12 e dalle 13 alle 15 - saremo lieti di poterti aiutare.",
+      "email": "E-mail",
+      "emailTeaserText": "Per richieste più complesse mandaci una mail.",
+      "forum": "Forum",
+      "forumTeaserText": "Discuti delle tue domande e delle tue esperienze con altri utenti.",
+      "quoteAndPublish": "Citazione e pubblicazione",
+      "quoteAndPublishTeaserText": "Prescrizioni per la corretta citazione e la pubblicazione di documenti dell'Archivio federale."
+    },
+    "closemenu": "Chiudi la navigazione",
+    "contact": "Contatto",
+    "deepLinkDetail": "URL permanente dell'unità di descrizione",
+    "deepLinkSearch": "URL permanente della ricerca",
+    "information": {
+      "api": "API",
+      "apiText": "Sviluppi applicazioni? Grazie all'application programming interface (API) dell'Archivio federale puoi integrarvi la ricerca archivistica.",
+      "orderAndConsult": "Ordinazione e consultazione",
+      "orderAndConsultTeaserText": "Ordinazione e consultazione di documenti digitali conservati nell'Archivio federale – informazioni importanti.",
+      "protectionAndPetitions": "Termini di protezione e domande di consultazione",
+      "protectionAndPetitionsTeaserText": "Informazioni sui documenti soggetti a un termine di protezione e sulle domande di consultazione.",
+      "registerAndAuthentificate": "Registrazione e identificazione",
+      "registerAndAuthentificateTeaserText": "Anonimo, registrato o identificato: sommario dei diritti delle diverse categorie di utenti",
+      "search": "Ricerca",
+      "searchTeaserText": "Guida e consigli pratici per la ricerca su recherche.bar.admin.ch.",
+      "stocks": "Fondi",
+      "stocksTeaserText": "Sommario dei fondi dell'Archivio federale e loro suddivisione in ambiti tematici.",
+      "themenuebersicht": "Sommario tematico"
+    },
+    "legal": "Basi legali",
+    "rechtlichesLink": "https://www.admin.ch/gov/it/pagina-iniziale/basi-legali.html",
+    "search": "Ricerca",
+    "services": "Informazioni",
+    "termsOfUse": "Condizioni di utilizzazione e protezione dei dati"
+  },
+  "news": {
+    "heading": "Attualità"
+  },
+  "oDataPagination": {
+    "backToStart": "Vai alla prima pagina",
+    "count": "Numero: ",
+    "last": "Vai all'ultima pagina",
+    "next": "Avanti",
+    "previous": "Indietro"
+  },
+  "order": {
+    "frombar": "(Questa ordinazione è stata generata dall'Archivio federale.)",
+    "unknowtext": "[Non visibile]"
+  },
+  "orderCheckoutPage": {
+    "bestellbestaetigung": "Conferma dell'ordinazione",
+    "chooseShippingType": "Seleziona la modalità di consegna",
+    "digitalErhalten": "in forma <strong>digitale</strong>. L’evasione del mandato di digitalizzazione richiede di norma due settimane. Dopo la ricezione dei documenti digitalizzati è possibile ordinare ulteriori dossier.",
+    "finishOrder": "Concludi l'ordinazione",
+    "inLesesaalLiefern": "per consultazione nelle <strong>sale di lettura</strong>. Se la richiesta è effettuata 24 ore prima, i documenti sono disponibili il giorno desiderato nelle sale di lettura (martedì, mercoledì e giovedì)",
+    "inMyName": "Per me",
+    "insAmtLiefern": "per consultazione nell'<strong>unità amministrativa</strong> (termine di consegna: 1-2 giorni lavorativi)",
+    "inTheNameOfAnother": "Per conto di un altro utente",
+    "iWantThisDossierOrdered": "Desidero ordinare questo dossier",
+    "iWantThisDossierPlural": "Desidero questi dossier",
+    "iWantThisDossierSingular": "Desidero questo dossier",
+    "mandatoryShippingType": "Seleziona la modalità di consegna.",
+    "mandatoryUser": "Seleziona l'utente per il quale vuoi effettuare l'ordinazione.",
+    "nextPage": "Avanti",
+    "orderDetails": "Dettagli dell'ordinazione",
+    "previousPage": "Indietro",
+    "reasons": "Motivo",
+    "title": "Ordinazione",
+    "userSelect": "Seleziona utente",
+		"warningInfo": "Diffida",
+		"warningTitle": "Tempi d’attesa più lunghi per la digitalizzazione!",
+		"warningMessagePart1": "La grande richiesta sta mettendo a dura prova la nostra infrastruttura di digitalizzazione. Non possiamo pertanto escludere tempi di attesa più lunghi per l’evasione del Suo mandato. Se avesse bisogno rapidamente dei documenti o il loro quantitativo fosse importante, Le consigliamo di ordinarli per la consultazione nelle sale di lettura.",
+		"warningMessagePart2": "I dipendenti dell’Amministrazione federale possono farsi inviare i documenti prodotti dalla propria unità amministrativa direttamente in ufficio.",
+		"digitalisierungNichtMoeglichTitle": "Contingente esaurito",
+		"digitalisierungNichtMoeglichIntro": "abbiamo ricevuto il Suo mandato di digitalizzazione per {0} dossier.",
+		"digitalisierungNichtMoeglichAsBvw": "La invitiamo a ordinare i documenti per consultazione nelle sale di lettura o nella Sua unità amministrativa, oppure ad attendere il completamento dei precedenti mandati di digitalizzazione.",
+		"digitalisierungNichtMoeglichOthers": "La invitiamo a ordinare i documenti per consultazione nelle sale di lettura o ad attendere il completamento dei precedenti mandati di digitalizzazione.",
+		"exceedDigitalisierungTitle": "Contingente quasi esaurito: possono essere digitalizzati ancora soltanto {0} dossier",
+		"exceedDigitalisierungIntro": "tra i dossier che figurano nel mandato di digitalizzazione, La invitiamo a selezionare quelli che hanno la priorità. Non appena saranno stati digitalizzati, potrà inviare un nuovo mandato.",
+		"exceedDigitalisierungAsBvw": "In alternativa può ordinare i documenti per consultazione nelle sale di lettura o nella Sua unità amministrativa.",
+		"exceedDigitalisierungOthers": "In alternativa può ordinare i documenti per consultazione nelle sale di lettura."
+  },
+  "orderCheckoutPageComponent": {
+    "pageTitle": "Ordinazione"
+  },
+  "orderEinsichtCheckoutPage": {
+    "bestellbestaetigung": "Conferma dell'ordinazione",
+    "finishOrder": "Presenta la domanda",
+    "nextPage": "Avanti",
+    "orderDetails": "Dettagli della domanda",
+    "previousPage": "Indietro",
+    "title": "Presentazione di una domanda di consultazione"
+  },
+  "orderEinsichtCheckoutPageComponent": {
+    "pageTitle": "Presentazione di una domanda di consultazione"
+  },
+  "orderOverviewPage": {
+    "closeModal": "Chiudi",
+		"itemsCount": "Numero: {0}",
+    "columnItems": {
+      "abbruchgrundDisplay": "Motivo dell'interruzione",
+      "artDerArbeitDisplay": "Genere di lavoro",
+      "comment": "Osservazioni sul dossier",
+      "datumDesEntscheids": "Data della decisione",
+      "enthaeltPersonendaten": "Dati personali (prestito amministrativo, art. 14 cpv. 2 LAr)",
+      "entscheidGesuchDisplay": "Decisione sulla domanda",
+      "id": "ID del mandato",
+      "orderingAbbruch": "Motivo dell'interruzione",
+      "orderingComment": "Osservazione sull'ordinazione",
+      "orderingDate": "Data di entrata",
+      "orderingEigeneUnterlagen": "Documenti propri",
+      "orderingEinsichtsgesuchZweck": "Motivo della domanda di consultazione",
+      "orderingId": "ID dell'ordinazione",
+      "orderingLieferdatumLesesaal": "Data prevista per la messa a disposizione nelle sale di lettura",
+      "orderingPeronenbezogeneNachforschung": "Ricerche inerenti a una persona",
+      "orderingTypeDisplay": "Genere",
+      "period": "Periodo di costituzione",
+      "reasonDisplay": "Motivo della consultazione",
+      "referenceCode": "Segnatura",
+      "statusDisplay": "Stato",
+      "title": "Titolo"
+    },
+    "einAusblenden": "Mostra/nascondi colonne",
+    "hiddenColumns": "Colonne nascoste",
+    "noOrdersYet": "Non ci sono ordinazioni nel carrello.",
+    "pageTitle": "Riepilogo delle ordinazioni",
+    "resetSort": "Cancella ordina per e filtri",
+    "resetView": "Ripristina visualizzazione",
+    "saveAsExcel": "Esporta",
+    "shippingTypeAmt": "Prestito amministrativo",
+    "shippingTypeBestellkorb": "Carrello",
+    "shippingTypeDigital": "Mandato di digitalizzazione",
+    "shippingTypeEinsichtsgesuch": "Domanda di consultazione",
+    "shippingTypeLesesaal": "Ordinazione per la consultazione nelle sale di lettura",
+    "visibleColumns": "Colonne visibili"
+  },
+  "orders": {
+    "loadingUsers": "Caricamento degli utenti in corso...",
+    "submittingOrder": "La trasmissione dell'ordinazione è in corso..."
+  },
+  "page": {
+    "description": "recherche.admin.ch",
+    "title": "Archivio federale svizzero AFS"
+  },
+  "pagination": {
+    "anzahlTreffer": "N. di risultati per pagina",
+    "titleSr": "Numerazione delle pagine dell'elenco dei risultati"
+  },
+  "registerInfo": {
+    "cancelRegister": "Interrompi",
+    "chLoginAltText": "Logo di CH-Login",
+    "chLoginException": "Eccezione: i dipendenti dell'Amministrazione federale devono registrarsi mediante «Kerberos» o «Smartcard».",
+    "chooseCHLogin": "Seleziona in seguito l'opzione «CH-LOGIN».",
+    "info1": "Puoi utilizzare l'accesso on-line come utente anonimo, registrato o identificato. A seconda dello statuto di utente sono disponibili altre funzioni.",
+    "infoBox": "Infobox",
+    "infoTitle": "Indicazione",
+    "questionText": "Per maggiori informazioni sulla registrazione rivolgiti al servizio di consulenza o invia una mail all'indirizzo <a href=\"mailto:benutzer-admin@bar.admin.ch\">benutzer-admin@bar.admin.ch</a>.",
+    "registerImEiam": "Registrazione eIAM",
+    "title": "Apertura di un conto per l’accesso on-line all’Archivio federale",
+    "eIam": "L’accesso al portale recherche.bar.admin.ch è gestito tramite E-Government Identity and Access Management (eIAM).",
+    "registerEiam": "L’apertura di un conto avviene al di fuori del portale recherche.bar.admin.ch. In caso di problemi nella procedura di registrazione rivolgersi al <a href=\"\">servizio di consulenza on-line</a> oppure inviare una mail a <a href=\"mailto:benutzer-admin@bar.admin.ch\">benutzer-admin@bar.admin.ch</a>."
+  },
+  "row": {
+    "captionTranslation": "row.captionDefault",
+    "errorTranslation": "row.errorDefault"
+  },
+  "search": {
+    "advanced": {
+      "addNewGroup": "Aggiungi nuovo gruppo di ricerca",
+      "field": {
+        "zugaenglichkeitGemaessBga": {
+          "freiZugaenglich": "Liberamente accessibile",
+          "inSchutzfrist": "Soggetto a un termine di protezione",
+          "pruefungNoetig": "Verifica necessaria"
+        }
+      },
+      "group": {
+        "addNewField": "Aggiungi campo di ricerca",
+        "and": "Tutti i termini (AND)",
+        "closeGroup": "Chiudi gruppo di ricerca",
+        "fieldChaining": "Combinazione dei campi di ricerca:",
+        "not": "Nessuno dei termini (NOT)",
+        "or": "Almeno un termine (OR)"
+      },
+      "groupChaining": "Combinazione dei gruppi di ricerca:",
+      "reset": "Ripristina",
+      "search": "Cerca",
+      "showDetailsSyntax": "Mostra dettagli della sintassi di ricerca",
+      "syntax": "Sintassi",
+      "title": "Ricerca avanzata"
+    },
+    "advancedSearch": "Ricerca avanzata",
+    "archivePlanSearch": "Piano d'archivio",
+    "archivePlanSearchTeaserText": "Cerca nel piano d'archivio e ordina i documenti nel loro contesto.",
+    "ausfuehrlicheBeschreibung": "Descrizione esaustiva",
+    "browseArchive": "Sommario tematico",
+    "browseArchiveTeaserText": "Ragruppa l'archivio per temi: cerca fondi che combaciano con il tuo tema.",
+    "browser": {
+      "backToSearch": "Torna al risultato della ricerca",
+      "first": "Primo risultato",
+      "last": "Ultimo risultato",
+      "loading": "Carica...",
+      "next": "Risultato seguente",
+      "nextPage": "Pagina seguente",
+      "nOfM": "Risultato {0} di {1}",
+      "pageToolTipBetween": "Altre pagine",
+      "pageToolTipBetweenShow": "Mostra altre pagine",
+      "pageTooltipHere": "Pagina attuale: {0}",
+      "pageTooltipNext": "Mostra pagina {0}",
+      "pageTooltipNextPageXofY": "Mostra pagina {0} di {1}",
+      "pageTooltipPageXofY": "Sei alla pagina {0} di {1}",
+      "previous": "Risultato precedente",
+      "previousPage": "Pagina precedente",
+      "title": "Risultati della ricerca"
+    },
+    "captchaInvalid": "I dati per la verifica CAPTCHA non sono validi.",
+    "captchaInvalidDetails": "Riprova.",
+    "captchaMissing": "Mancano i dati per la verifica CAPTCHA.",
+    "captchaMissingDetails": "Riprova.",
+    "changeSearchCriteria": "Modifica i criteri di ricerca",
+    "dateBetween": "Periodo da",
+    "extendedSearch": "Ricerca avanzata",
+    "extendedSearchTeaserText": "Adegua la ricerca alle tue esigenze.",
+    "facetteEntry": {
+      "bis": "fino a",
+      "ja": "Sì",
+      "nein": "No",
+      "resultateOhneZeitraum": "Risultati senza periodo"
+    },
+    "fieldoperator": {
+      "and": "Tutti i termini",
+      "not": "Nessuno dei termini",
+      "or": "Almeno un termine"
+    },
+    "filterTitle": "Filtri",
+    "genericTryAgain": "Prova a ripetere la ricerca più tardi.",
+    "groupoperator": {
+      "capitalAnd": "AND",
+      "capitalOr": "OR"
+    },
+    "highUsageInfo": "Conferma di non essere un robot",
+    "highUsageTitle": "Molte richieste in breve tempo",
+    "inRange": "Nel periodo",
+    "invalidQuery": "La tua ricerca non è valida. Controlla la sintassi.",
+    "lastExecutedQuery": "La tua ricerca: {0}",
+    "lastSearchResult": "Ultimo risultato",
+    "lastSearchResultTeaserText": "Richiama l'ultimo risultato.",
+    "placeHolder": "Cerca in oltre 3 500 000 di documenti archiviati",
+    "rangeFrom": "Periodo da",
+    "rangeTo": "Periodo fino a",
+    "resetSearch": "Ripristina ricerca",
+    "runSearch": "Avvia la ricerca",
+    "searchTerm": "Campo di ricerca",
+    "simple": {
+      "beratung": "Servizio di consulenza",
+      "informationen": "Informazioni",
+      "intro": "Sei alla ricerca di documenti sulla storia della Svizzera dal 1798? Naviga nel catalogo e scarica i dossier, le foto e i film o ordinali per poterli consultare nelle sale di lettura.",
+      "intro2": "Ottieni assistenza cliccando su \"consulenza\" o su \"informazioni\".",
+      "title": "Accesso on-line all'Archivio federale",
+      "unter": "e qui"
+    },
+    "standardSearch": "Ricerca semplice",
+    "standardSearchTeaserText": "Inizia la tua ricerca con una ricerca semplice.",
+    "synonymes": {
+      "add": "Immetti termini nel campo di ricerca",
+      "cancel": "Interrompi",
+      "listTitle": "Per il termine immesso sono stati trovati i seguenti termini alternativi",
+      "quellenListTitle": "Fonti",
+      "termdatcollection": "Raccolte TERMDAT",
+      "termdatlink": "I termini indicati provengono dalle seguenti",
+      "trefferTitle": "Termine trovato in"
+    },
+    "termToShort": "Immetti almeno un carattere.",
+    "termToShortForAll": "Immetti almeno due caratteri.",
+    "thematicInventoryOverview": "Sommario tematico",
+    "thematicInventoryOverviewTeaserText": "Raggruppa l'archivio per temi: cerca fondi che combaciano con il tuo tema.",
+    "trefferTitle": "Risultati",
+    "unexpectedSystemError": "Si è verificato un errore imprevisto.",
+    "wenigerAnzeigen": "Mostra meno"
+  },
+  "searchErrors": {
+    "multipleResultsFound": "La ricerca di questa segnatura ha prodotto più risultati. Immetti una segnatura univoca."
+  },
+  "searchResultPageComponent": {
+    "pageTitle": "Risultati della ricerca"
+  },
+  "shoppingCartItemList": {
+    "bestellpositionEntfernen": "Rimuovi l'ordinazione",
+    "bewilligungBereitsVorhanden": "Autorizzazione già accordata",
+    "bewilligungBereitsVorhandenText": "Immetti la data dell'autorizzazione alla consultazione. Clicca su \"Continua\" per aggiungere l'unità di descrizione a \"Ordinazione dei documenti\".",
+    "bewilligungVorhandenTitle": "Autorizzazione già accordata",
+    "bewilligungVorhandenTooltip": "Clicca qui per depositare l'autorizzazione",
+    "chooseValidDate": "Seleziona una data valida.",
+    "commentDossier": "Osservazioni sul dossier",
+    "dateOfBewilligung": "Data dell'autorizzazione alla consultazione",
+    "refCode": "Segnatura",
+    "removeOrderItemTooltip": "Clicca qui per sopprimere la posizione ordinata",
+    "sRBewilligungHinterlegenButton": "Pulsante per il deposito dell'autorizzazione",
+    "sRErrorTitle": "Di seguito un messaggio d'errore",
+    "sRLegendBewilligung": "Modulo per richiedere l'autorizzazione",
+    "tableCaption": "Unità di descrizione selezionata",
+    "timeSpan": "Periodo di costituzione",
+    "title": "Titolo",
+    "unExpectedError": "Si è verificato un errore imprevisto. Riprova più tardi."
+  },
+  "shoppingCartPage": {
+    "ablieferung": "Versamento",
+    "addManuallySectionTitle": "Inserisci manualmente i dossier nel carrello",
+    "addToCart": "Aggiungi",
+    "aktenzeichen": "Riferimento",
+    "archivNr": "Numero di archivio",
+    "behaeltnisNr": "Numero del contenitore",
+    "bestellenText": "Questi documenti sono liberamente accessibili o la loro accessibilità deve essere verificata dall'Archivio federale. Clicca su \"Continua\" per continuare l'ordinazione.",
+    "dossierTitel": "Titolo del dossier",
+    "einsichtsbewilligungenNotwendig": "Per la consultazione di questi dossier è necessaria un'autorizzazione.",
+    "einsichtsBewilligungVorhanden": "Ti è già stata accordata l'autorizzazione per la consultazione di questi documenti? Allora contattaci.",
+    "einsichtsGesuchEinreichen": "Presenta una domanda di consultazione",
+    "einsichtsGesuchStellen": "Continua",
+    "einsichtsGesuchStellenText": "Per la consultazione di questi documenti è necessaria un'autorizzazione. Se ti è già stata accordata l'autorizzazione clicca su  \"Autorizzazione già accordata\", altrimenti su \"Continua\".",
+    "emptyCart": "Il carrello è vuoto.",
+    "exampleAblieferung": "p.es. 1988/234",
+    "exampleTeilBestand": "p.es. E3340B",
+    "fieldIsRequired": "Questo è un campo obbligatorio",
+    "fieldsMarkedWithAreCompulsory": "*: Questi campi devono essere compilati obbligatoriamente.",
+    "fieldsMarkedWithDoubleStars": "**: Deve essere indicato un numero di contenitore o di archivio.",
+    "headingTitleText": "Ordina documenti da consultare nelle sale di lettura o per un prestito amministrativo, conferisci un mandato di digitalizzazione o presenta una domanda di consultazione.",
+    "helpDateRangeFieldWithExample": "Se disponibile, indicare obbligatoriamente. P.es. 1957-1962",
+    "inputArchivNrIsRequired": "Questo campo o quello del numero del contenitore deve essere compilato obbligatoriamente.",
+    "inputBehaeltnisNrIsRequired": "Questo campo o quello del numero d'archivio deve essere compilato obbligatoriamente.",
+    "order": "Continua",
+    "referenceCode": "Segnatura",
+    "searchFailedMessage": "Si è verificato un errore durante la ricerca. Dettagli: {0}",
+    "searchFailedTitle": "La ricerca è fallita",
+    "teilBestand": "(Sub-)fondo",
+    "title": "Carrello",
+    "unterlagenBestellen": "Ordina documenti (gratuitamente)",
+    "veNotFound": "Non è stata trovata nessuna unità di descrizione con questa segnatura",
+    "veNotFoundTitle": "Non trovata",
+    "withoutReferenceCode": "Senza segnatura",
+    "withReferenceCode": "Con segnatura",
+    "zeitraumDossier": "Periodo del dossier"
+  },
+  "shoppingCartPageComponent": {
+    "pageTitle": "Carrello"
+  },
+  "simpleHit": {
+    "addedToBasketText": "\"{0}\" è stato aggiunto al carrello.",
+    "addedToBasketTitle": "Aggiungi al carrello",
+    "alreadyAddedToBasketText": "\"{0}\" si trova già nel carrello.",
+    "alreadyAddedToBasketTitle": "Già inserito nel carrello",
+    "archivplankontext": "Contesto nel piano d'archivio",
+    "digitalAvailableText": "Questo dossier è già disponibile in forma digitale. Puoi consultarlo qui o scaricarlo.",
+    "digitalAvailableTitle": "Disponibile in forma digitale",
+    "explanationCaption": "La rilevanza è stata calcolata da ElasticSearch in base ai valori seguenti:",
+    "failedAddToBasketText": "Si è verificato un errore durante l'inserimento nel carrello.",
+    "failedAddToBasketTitle": "Errore",
+    "failedBecauseOfLevelMessage": "Questa unità di descrizione non può essere ordinata. Per maggiori informazioni rivolgiti al servizio di consulenza o invia una mail a bestellung@bar.admin.ch.",
+    "failedBecauseOfLevelTitle": "Ordinazione non riuscita",
+    "loginToUseBasketText": "Effettua l'accesso per poter utilizzare il carrello.",
+    "loginToUsebasketTitle": "Accedi adesso",
+    "noHitsInfo": {
+      "header": "Ci possono essere diversi motivi perché la tua ricerca non ha dato risultati:",
+      "hinweis": "Messaggio",
+      "reason1": "Forse non disponi della autorizzazione anecessaria. Verifica i tuoi diritti nel conto utente.",
+      "reason2": "I documenti cercati non sono ancora disponibili e registrati nel sistema.",
+      "reason3": "Errore di battitura e termini di ricerca ignoti: controlla l'ortografia o effettua una ricerca con altri termini.",
+      "reason4": "Nell'Archivio federale non ci sono documenti sul tema scelto. Trovi altri archivi nella banca dati degli indirizzi degli archivi svizzeri o nel Portale europeo degli archivi.",
+      "showHinweis": "Non mostrare più questo messaggio"
+    },
+    "noHitsTitle": "Nessun risultato per questo termine",
+    "noHitsTitleForQuery": "Non è stato trovato nessun documento archiviato che corrisponde alla tua ricerca - {0} -.",
+    "oe3RoleRequired": "Per poter ordinare documenti con un'autorizzazione alla consultazione è richiesto lo stato di «utente identificato». Per accedere al processo di identificazione clicca sul presente messaggio.",
+    "oe3RoleRequiredTitle": "Ordinazione non possibile",
+    "reason4": "Nell'Archivio federale non ci sono documenti sul tema scelto. Trovi altri archivi nella <a href=\"{0}\">banca dati degli indirizzi degli archivi svizzeri</a> o nel <a href=\"{1}\">Portale europeo degli archivi</a>.",
+    "relevance": "Rilevanza",
+    "signatur": "Segnatura",
+    "zugangTooltip": "Accessibilità secondo la LAr",
+    "reason1Oe1": "Forse non disponi dell'autorizzazione necessaria (v. <a href=\"#{0}\">Registrazione e identificazione</a>).",
+    "reason1Oe2": "Forse non disponi dell'autorizzazione necessaria. Verifica i tuoi diritti nel <a href=\"#{0}\">conto utente</a>."
+  },
+  "simpleHitList": {
+    "sortierung": "Ordina per"
+  },
+  "simpleSearchPageComponent": {
+    "pageTitle": "Ricerca semplice"
+  },
+  "social": {
+    "menuTitle": "Condividi",
+    "tooltip": "Condividi"
+  },
+  "spinner": {
+    "loading": "Il caricamento della pagina è in corso"
+  },
+  "staticContent": {
+    "errorMessage": "La pagina richiesta non può essere visualizzata",
+    "errorTitle": "Si è verificato un errore durante il caricamento della pagina. Messaggio di sistema: {0}"
+  },
+  "syntaxHelp": {
+    "fuzzy": "Con l'operatore Fuzzy puoi cercare parole simili.",
+    "fuzzyExample": "P.es. per cercare \"Bundesrat\", \"Bundesräte\", \"Bundesrats\" ecc.: \"Bundesrat~\"",
+    "gewichtung": "Aumenta la ponderazione di una parola con ^.",
+    "gewichtungExample": "P.es.: Bundesrat^2 Parlament",
+    "group": "Utilizza le parentesi per raggruppare gli operatori.",
+    "groupExample": "P.es.: (Bundesrat OR Bundespräsident) AND Parlament",
+    "hochkommas": "Per cercare una stringa precisa di parole, inseriscila tra virgolette alte.",
+    "hochkommasExample": "P.es.: \"Basler Übereinkommen\"",
+    "not": "Utilizza l'operatore NOT per escludere determinati termini.",
+    "notExample": "P.es.: Bundesrat NOT Parlament",
+    "or": "Utilizza l'operatore OR tra i termini cercati per ottenere risultati che contengano o uno o l'altro termine.",
+    "orExample": "P.es.: Bundesrat OR Bundespräsident",
+    "proximity": "Effettua una ricerca di prossimità (Proximity Search). Il numero indica il numero massimo di parole tra i termini cercati.",
+    "proximityExample": "P.es.: \"Professor Einstein\" ~5",
+    "wildcard": "Utilizza * o ? per sostituire uno (?) o più (*) lettere (non funziona all'inizio della parola).",
+    "wildcardExample": "P.es.: Bundes*, Me?er"
+  },
+  "usageSection": {
+    "infoSymbol": "Simbolo dell'informazione"
+  },
+  "user": {
+		"cancelRegistrationMessage": "Si prega di completare la registrazione e salvare i dati.",
+    "birthday": "Data di nascita",
+    "countryCode": "Paese",
+    "emailAddress": "E-mail",
+    "errorLegalAgreementConsent": "Leggi e accetta la dichiarazione sulla protezione dei dati.",
+    "familyName": "Cognome",
+    "firstName": "Nome(i)",
+    "infoText": "Registra i tuoi dati utente, in modo che possiamo contattarti in caso di necessità. Puoi aggiornare questi dati in ogni momento.",
+    "legalAgreementConsentTitle": "Dichiarazione sulla protezione dei dati",
+    "legelAgreementConsentText": "Autorizzo l'Archivio federale svizzero (AFS) a utilizzare i miei dati personali conformemente a quanto descritto nella <a href=\"#/{0}\">dichiarazione sulla protezione dei dati</a> per la fornitura di servizi nel quadro dell'accesso on-line.",
+    "mobileTel": "Cellulare",
+    "organization": "Organizzazione",
+    "pageTitle": "Immissione dati utente",
+    "phoneNumber": "Telefono (rete fissa)",
+    "placeholder": {
+      "birthday": "Data di nascita (gg.mm.aaaa)",
+      "emailAddress": "E-mail",
+      "familyName": "Cognome",
+      "firstName": "Nome(i)",
+      "mobileTel": "Cellulare",
+      "organization": "Organizzazione",
+      "phoneNumber": "Telefono (rete fissa)",
+      "street": "Via / n.",
+      "streetAttachment": "Aggiunta",
+      "town": "Località",
+      "zipCode": "NPA"
+    },
+    "preferredLangauge": "Lingua preferita",
+    "preferredLanguageHelpText": "Indica in quale lingua vuoi comunicare con l'Archivio federale.",
+    "register": "Immissione dati utente",
+    "requiredFieldsInfo": "I campi contrassegnati da * sono obbligatori.",
+    "savesuccess": "Salvataggio riuscito",
+    "street": "Via / n.",
+    "streetAttachment": "Aggiunta",
+    "town": "Località",
+    "userdata": "Dati utente",
+    "zipCode": "NPA"
+  },
+  "userAccount": {
+    "saveError": "Dati utente non salvati",
+    "saveErrorTitle": "Problema di salvataggio",
+    "saveSuccess": "Dati utente salvati",
+    "saveSuccessTitle": "Salvataggio riuscito"
+  },
+	"orderSection": {
+		"orderText": "Aggiungi i documenti al carrello. Da qui potrai ordinarli direttamente o presentare una domanda di consultazione."
+	}
+}

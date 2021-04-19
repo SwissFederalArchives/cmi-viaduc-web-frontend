@@ -1,0 +1,52 @@
+<article class="search-result simple-hit">
+	<div class="row no-pad-bottom">
+		<div class="clearfix" style="position:relative">
+			<div class="col-md-1 no-pad-right col-xs-2">
+				<span class="thumbnail" [ngClass]="entity.iconClasses" aria-hidden="true"></span>
+			</div>
+			<div class="col-md-9 single-bottom-margin col-xs-7">
+				<h4 class="no-margin-bottom">
+					<a href="#{{ '/de/archiv/einheit/' + entity.archiveRecordId | localizeLink }}" [innerHtml]="htmlForTitle"></a>
+				</h4>
+				<label class="signature">
+					<span>{{ 'Signatur' | translate: 'simpleHit.signatur'}}:&nbsp;</span><span>{{entity.referenceCode}}</span>
+				</label>
+				<div>
+					<img *ngIf="getPictureAsBase64() !== null" [src]="getPictureAsBase64()">
+					<p *ngIf="htmlForText && htmlForText !== 'null'; else emptyPTag" [innerHtml]="htmlForText"></p>
+				</div>
+				<ng-template #emptyPTag>&nbsp;</ng-template>
+
+				<span id="archivePlanTitle{{entity.archiveRecordId}}" tabindex="-1"></span>
+				<div class="detail-hierarchy" *ngIf="displayArchivplanContext && entity._context?.ancestors">
+					<h4>{{'Archivplankontext' | translate:'simpleHit.archivplankontext'}}</h4>
+					<cmi-viaduc-detail-hierarchy [items]="entity._context.ancestors"></cmi-viaduc-detail-hierarchy>
+				</div>
+				<div *ngIf="enableExplanations">
+					<label>{{'Relevanz' | translate: 'simpleHit.relevance'}}&nbsp;</label>
+					<a (click)="toggleDisplayExplanation()">{{score}}</a>
+
+					<div *ngIf="displayExplanation">
+						<cmi-viaduc-explanation-treeview [explanation]="entity.explanation.explanation">
+						</cmi-viaduc-explanation-treeview>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2 col-xs-3 no-pad-left">
+				<div class="info-container smaller-text">
+					<p *ngIf="entity?.creationPeriod">
+						{{entity?.creationPeriod?.text}}
+					</p>
+					<p *ngIf="entity?.level">{{entity.level}}</p>
+					<p *ngIf="entity?.customFields['zugänglichkeitGemässBga']"
+					   data-toggle="tooltip"
+					    tooltip="{{'Zugänglichkeit gemäss BGA' | translate:'simpleHit.zugangTooltip' }}">
+						{{entity.customFields["zugänglichkeitGemässBga"]}}
+					</p>
+
+					<cmi-viaduc-simple-hit-menu (menuClicked)="onMenuClicked($event)" [entity]="entity"></cmi-viaduc-simple-hit-menu>
+				</div>
+			</div>
+		</div>
+	</div>
+</article>

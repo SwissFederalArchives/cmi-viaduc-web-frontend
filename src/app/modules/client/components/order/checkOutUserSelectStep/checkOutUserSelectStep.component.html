@@ -1,0 +1,55 @@
+<cmi-spinner *ngIf="loading" hint="{{'Benutzer werden geladen...' | translate:'orders.loadingUsers'}}"></cmi-spinner>
+<form [formGroup]="form" *ngIf="!loading">
+	<div class="ocp-orderkind-container">
+	<span>
+		{{'Ich möchte dieses Dossier bestellen'| translate:'orderCheckoutPage.iWantThisDossierOrdered'}}
+	</span>
+
+		<fieldset>
+			<div class="radio radio--left">
+				<label for="chkFuerMichBestellen">
+					<input type="radio" formControlName="orderIsForMe" id="chkFuerMichBestellen"
+						   [value]="true">
+					<span>{{'In meinem eigenen Namen'|translate:'orderCheckoutPage.inMyName'}}</span>
+				</label>
+			</div>
+
+			<div class="radio radio--left">
+				<label for="chkFuerAnderenBestellen">
+					<input type="radio" formControlName="orderIsForMe" id="chkFuerAnderenBestellen"
+						   [value]="false">
+					<span>{{'Im Namen eines anderen Benutzers'|translate:'orderCheckoutPage.inTheNameOfAnother'}}</span>
+				</label>
+			</div>
+			<div class="form-group" [ngClass]="{'has-warning': form.hasError('required', ['userId']) && nextClicked}">
+				<wj-auto-complete
+					#autoComplete
+					[isDisabled]="form.get('orderIsForMe').value"
+					[itemsSource]="userList"
+					[displayMemberPath]="'displayName'"
+					[searchMemberPath]="'id'"
+					[selectedValuePath]="'id'"
+					(selectedIndexChanged)="onSelectedIndexChanged()"
+					placeholder="{{'Im Namen von' | translate: 'behoerdenZugriff.detail.accesstoken'}}">
+				</wj-auto-complete>
+
+				<div *ngIf="form.hasError('required', ['userId']) && nextClicked" class="help-block" role="alert">
+					{{'Bitte wählen Sie einen Benutzer aus, für welchen Sie die Bestellung durchführen möchten.' | translate: 'orderCheckoutPage.mandatoryUser'}}
+				</div>
+			</div>
+
+			<div *ngIf="willexceedKontingent" class="alert alert-danger" role="alert">
+				<span class="sr-only">{{'Fehlermeldung' | translate:'orderCheckoutPage.error'}}</span>
+				<h4 class="alert-heading">{{'Kontingent ausgeschöpft' | translate:'orderCheckoutPage.digitalisierungNichtMoeglichTitle'}}</h4>
+				<p>{{'Das Digitalisierungskontingent des Nutzers wird überschritten.' | translate:'orderCheckoutPage.userKontingentError'}}</p>
+			</div>
+		</fieldset>
+	</div>
+
+	<button (click)="goBack()" type="button" class="btn btn-secondary">
+		{{'Zurück' | translate:'orderCheckoutPage.previousPage'}}
+	</button>
+	<button (click)="validateFields()" type="button" class="btn btn-primary" [disabled]="isNextButtonDisabled">
+		{{'Weiter' | translate:'orderCheckoutPage.nextPage'}}
+	</button>
+</form>

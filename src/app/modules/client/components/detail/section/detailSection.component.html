@@ -1,0 +1,19 @@
+<div class="detail-section" *ngIf="rows">
+	<div class="row" *ngFor="let row of rows;">
+		<div class="col col-xs-3" [ngClass]="{ 'external': row.visibility === 0, 'internal text-danger': row.visibility === 1}">
+			<label><span [innerHTML]="row.label"></span>
+				<span *ngIf="row.visibility === 1">&nbsp;
+					<span class="glyphicon glyphicon-lock"  tooltip="{{'Feld nur für BAR Benutzer sichtbar' | translate:'detailSection.internalField'}}" aria-hidden="true"></span>
+					<span class="sr-only">{{ 'Feld nur für BAR Benutzer sichtbar' | translate:'detailSection.internalField'}}</span>
+				</span>
+			</label>
+		</div>
+		<div class="col col-xs-9">
+			<div *ngIf="row.markup">
+				<cmi-viaduc-detail-images *ngIf="row.markup.indexOf('cmi-viaduc-detail-images') > 0" [images]="row.data.images"></cmi-viaduc-detail-images>
+			</div>
+			<span *ngIf="row.html" [innerHTML]="row.html"></span>
+			<span *ngIf="row.text">{{row.text}}</span>
+		</div>
+	</div>
+</div>

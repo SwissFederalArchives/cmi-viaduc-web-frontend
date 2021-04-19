@@ -1,0 +1,42 @@
+<div *ngIf="(entityResult && entityResult.length > 0)">
+	<div *ngFor="let entity of entityResult" class="simplehitlist-items">
+		<cmi-viaduc-simple-hit [entity]="entity" [enableExplanations]="enableExplanations"></cmi-viaduc-simple-hit>
+	</div>
+</div>
+
+<div *ngIf="(!entityResult || entityResult.length == 0) && !loading">
+
+	<h3 *ngIf="_context?.search?.request?.query?.term">{{'Es wurden keine mit Ihrer Suchanfrage - {0} - übereinstimmenden Archivalien gefunden.' | translate:'simpleHit.noHitsTitleForQuery':_context?.search?.request?.query?.term}}</h3>
+	<h3 *ngIf="!_context?.search?.request?.query?.term">{{'Keine Treffer zu Ihrem Suchbegriff' | translate:'simpleHit.noHitsTitle'}}</h3>
+
+	<div class="alert alert-info" role="alert" *ngIf="showInfoWhenEmptySearchResult">
+		<span class="sr-only">info:</span>
+		<h4>{{'Hinweis' | translate: 'simpleHit.noHitsInfo.hinweis'}}</h4>
+		<p>
+			{{'Es kann verschiedene Gründe haben, warum Ihre Suche keine Treffer ergeben hat:' | translate:'simpleHit.noHitsInfo.header'}}
+		</p>
+
+		<ul>
+			<li>{{'Tippfehler oder unbekannte Suchbegriffe: Bitte prüfen Sie die Schreibweise oder suchen Sie nach anderen Begriffen.' | translate: 'simpleHit.noHitsInfo.reason3'}}</li>
+			<li>
+				{{'Die gesuchten Unterlagen sind noch nicht erschlossen und im System erfasst.' |
+				translate:'simpleHit.noHitsInfo.reason2'}}
+			</li>
+			<li>
+				{{'Metadaten, die Personennamen und besonders schützenswerte Personendaten oder Persönlichkeitsprofile enthalten, darf das Bundesarchiv erst nach Ablauf der Schutzfrist publizieren. Diese Metadaten sind nur im Lesesaal einsehbar.' | translate: 'simpleHit.noHitsInfo.reason1' }}
+			</li>
+			<li [innerHtml]="GetReason4()"></li>
+		</ul>
+		<br/>
+		<fieldset>
+			<legend class="sr-only">(Optional) Question</legend>
+
+			<div class="checkbox checkbox--left">
+				<label *ngIf="isLoggedIn && showInfoWhenEmptySearchResult" for="checkbox2">
+					<input type="checkbox" id="checkbox2" value="showHinweis" (change)="onHideInfoChanged($event)">
+					{{'Diesen Hinweis zukünftig nicht mehr anzeigen' | translate: 'simpleHit.noHitsInfo.showHinweis'}}
+				</label>
+			</div>
+		</fieldset>
+	</div>
+</div>

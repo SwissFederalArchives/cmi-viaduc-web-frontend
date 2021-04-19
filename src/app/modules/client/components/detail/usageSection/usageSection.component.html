@@ -1,0 +1,12 @@
+<div class="row">
+	<div class="col-md-9 col-sm-6 col-xs-12 no-bottom-margin" role="alert">
+		<span class="sr-only">{{'Info-Symbol' | translate:'usageSection.infoSymbol'}}</span>
+		<span class="glyphicon glyphicon-info-sign detail-icon" aria-hidden="true"></span>
+		<p class="detail-paragraph" [innerHtml]="text">
+		</p>
+	</div>
+	<div class="col-md-3 col-sm-6 col-xs-12 no-bottom-margin button-container">
+		<ng-content>
+		</ng-content>
+	</div>
+</div>

@@ -1,0 +1,60 @@
+<div class="contexticon-container">
+	<div [ngClass]="{ 'menu-open': showFavoritesMenu }">
+		<a (click)="goToDetailDownload()"
+		   (keydown.enter)="goToDetailDownload()"
+		   *ngIf="hasAccess === true; else noAccess"
+		   tabindex="0"
+		   tooltip="{{ 'Zum Download' | translate:'icon.menu.download'}}"
+		   tooltipPlacement="left">
+			<span aria-hidden="true"
+				  class="contexticon glyphicon glyphicon-download-alt">
+			</span>
+			<span class="sr-only">{{ 'Zum Download' | translate:'download.menuTooltip' }}</span>
+		</a>
+		<ng-template #noAccess>
+			<a (click)="callMenuAction('addtocart')"
+			   (keydown.enter)="callMenuAction('addtocart')"
+			   *ngIf="entity?.canBeOrdered === true"
+			   tooltip="{{ 'In den Bestellkorb legen' | translate:'icon.menu.bestellkorb'}}"
+			   tooltipPlacement="left"
+			   tabindex="0">
+				<span  class="contexticon icon icon--cart" aria-hidden="true"></span>
+				<span class="sr-only">{{ 'In den Bestellkorb legen' | translate:'bestellkorb.menuTooltip' }}</span>
+			</a>
+		</ng-template>
+
+		<a (click)="toggleFavoritesMenu()"
+		   (keydown.enter)="toggleFavoritesMenu()"
+		   tooltip="{{ 'Zu den Favoriten hinzufügen' | translate:'icon.menu.favoriten'}}"
+		   tooltipPlacement="left"
+		   tabindex="0" >
+			<span class="contexticon icon icon--star" aria-hidden="true"></span>
+			<span class="sr-only">{{ 'Zu den Favoriten hinzufügen' | translate:'favorites.menuTooltip' }}</span>
+		</a>
+		<cmi-viaduc-favorite-menu *ngIf="showFavoritesMenu"
+								  #favoriteMenu
+								  class="dropout-menu menu-favorites"
+								  [entityId]="entity.archiveRecordId"
+								  (closeEvent)="handleFavoriteMenuClose()">
+		</cmi-viaduc-favorite-menu>
+	</div>
+
+	<div>
+		<a (click)="callMenuAction('gotoarchivplan')"
+		   (keydown.enter)="callMenuAction('gotoarchivplan')"
+		   tooltip="{{ 'Treffer im Archivplan zeigen' | translate:'icon.menu.archivplan'}}"
+		   tooltipPlacement="left"
+		   tabindex="0">
+			<span class="contexticon glyphicon glyphicon-tree-structure" aria-hidden="true"></span>
+			<span class="sr-only">{{ 'Treffer im Archivplan zeigen' | translate:'icon.menu.archivplan'}}</span>
+		</a>
+		<a (click)="callMenuAction('archivplancontext')"
+		   (keydown.enter)="callMenuAction('archivplancontext')"
+		   tooltip="{{ 'Archivplankontext des Treffers anzeigen' | translate:'icon.menu.archivplankontext'}}"
+		   tooltipPlacement="left"
+		   tabindex="0">
+			<span class="contexticon glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+			<span class="sr-only">{{ 'Archivplankontext des Treffers anzeigen' | translate:'icon.menu.archivplankontext'}}</span>
+		</a>
+	</div>
+</div>

@@ -1,0 +1,332 @@
+{
+	"version": "0.11.0",
+	"access": {
+		"captcha": {
+			"server": {
+				"_internal": true,
+				"verifyUrl": "https://www.google.com/recaptcha/api/siteverify",
+				"secret": "google-captcha-secret-here",
+				"usage": {
+					"displayThreshold1min": 10000,
+					"displayThreshold10min": 20000,
+					"displayThreshold1h": 50000,
+					"displayThreshold8h": 100000,
+					"displayThreshold7d": 200000,
+					"displayThreshold30d": 300000,
+					"displayThreshold365d": 1000000
+				}
+			},
+			"key": "google-captcha-key-here",
+			"theme": "light"
+		},
+		"block":
+		{
+			"_internal": true,
+			"download":
+			{
+				"threshold5sec": 3,
+				"threshold1min": 10,
+				"threshold10min": 30,
+				"threshold1h": 60,
+				"threshold8h": 100,
+				"threshold7d": 500,
+				"threshold30d":	1000,
+				"threshold365d": 5000
+			}
+		}
+	},
+	"account": {
+		"eIAMLink": "/_pep/myaccount?returnURI=/recherche/#/konto/benutzerangaben",
+		"settingSections": [
+			{
+				"menu": "einstellungen",
+				"displayName": "benutzerstatus",
+				"url": "/de/konto/",
+				"iconClass": "icon icon--settings"
+			},
+			{
+				"menu": "einstellungen",
+				"displayName": "benutzerdaten",
+				"url": "/de/konto/benutzerangaben",
+				"iconClass": "icon icon--settings"
+			},
+			{
+				"menu": "bestellübersicht",
+				"displayName": "bestellübersicht",
+				"url": "/de/konto/bestellungen",
+				"iconClass": "glyphicon glyphicon-notes"
+			},
+			{
+
+				"menu": "einstellungen",
+				"displayName": "benutzeroberfläche",
+				"url": "/de/konto/benutzeroberflaeche",
+				"iconClass": "icon icon--settings"
+			}
+		],
+		"orderOverviewColumns": [
+			{
+				"defaultLabel": "Eingangsdatum",
+				"key": "orderingDate",
+				"format": "dd.MM.yyyy HH:mm:ss",
+				"visible": true
+			},
+			{
+				"defaultLabel": "Signatur",
+				"key": "referenceCode",
+				"visible": true
+			},
+			{
+				"defaultLabel": "Titel",
+				"key": "title",
+				"width": "*",
+				"minWidth": 100,
+				"visible": true
+			},
+			{
+				"defaultLabel": "Entstehungszeitraum",
+				"key": "period",
+				"visible": true
+			},
+			{
+				"defaultLabel": "Status",
+				"key": "statusDisplay",
+				"visible": true
+			},
+			{
+				"defaultLabel": "Typ",
+				"key": "orderingTypeDisplay",
+				"visible": true
+			},
+			{
+				"defaultLabel": "Bestell-ID",
+				"key": "orderingId",
+				"visible": false
+			},
+			{
+				"defaultLabel": "Bemerkung zur Bestellung",
+				"key": "orderingComment",
+				"visible": false
+			},
+			{
+				"defaultLabel": "Bemerkung zum Dossier",
+				"key": "comment",
+				"visible": false
+			},
+			{
+				"defaultLabel": "Art der Arbeit",
+				"key": "artDerArbeitDisplay",
+				"visible": false
+			},
+			{
+				"defaultLabel": "Personendaten (Verwaltungsausleihe, Art. 14.2 BGA)",
+				"key": "enthaeltPersonendaten",
+				"visible": false
+			},
+			{
+				"defaultLabel": "Begründung Einsichtnahme",
+				"key": "reasonDisplay",
+				"visible": false
+			},
+			{
+				"defaultLabel": "Geplante Ausgabe im Lesesaal",
+				"key": "orderingLieferdatumLesesaal",
+				"format": "dd.MM.yyyy",
+				"visible": false
+			},
+			{
+				"defaultLabel": "Begründung Einsichtsgesuch",
+				"key": "orderingEinsichtsgesuchZweck",
+				"visible": false
+			},
+			{
+				"defaultLabel": "Personenbezogene Nachforschung",
+				"key": "orderingPeronenbezogeneNachforschung",
+				"visible": false
+			},
+			{
+				"defaultLabel": "Eigene Unterlagen",
+				"key": "orderingEigeneUnterlagen",
+				"visible": false
+			},
+			{
+				"defaultLabel": "Auftrags-ID",
+				"key": "id",
+				"visible": false
+			},
+			{
+				"defaultLabel": "Entscheid Gesuch",
+				"key": "entscheidGesuchDisplay",
+				"visible": false
+			},
+			{
+				"defaultLabel": "Datum des Entscheids",
+				"key": "datumDesEntscheids",
+				"format": "dd.MM.yyyy",
+				"visible": false
+			},
+			{
+				"defaultLabel": "Abbruchgrund",
+				"key": "abbruchgrundDisplay",
+				"visible": false
+			}
+		],
+		"partialEditUrl": "_pep/myaccount"
+	},
+	"authentication": {
+	},
+	"archivplan": {
+		"pagingSize": 100,
+		"entryNodes": [
+			{
+				"archiveRecordId": 1,
+				"title": "CH-BAR#Unterlagen*  Gesamtbestand des schweizerischen Bundesarchivs (1798-)",
+				"level": "archiv"
+			}
+		]
+	},
+	"search": {
+		"defaultSearchFieldLines": 3,
+		"advancedSearchFields": [
+			{
+				"type": "Fulltext",
+				"key": "allData",
+				"displayName": "Alles",
+				"translatorType": "AllDataTranslator"
+			},
+			{
+				"type": "Text",
+				"key": "title",
+				"displayName": "Titel",
+				"translatorType": "StandardTranslator"
+			},
+			{
+				"type": "DateSpan",
+				"key": "creationPeriod",
+				"displayName": "Entstehungszeitraum",
+				"translatorType": "CreationPeriodTranslator"
+			},
+			{
+				"type": "Text",
+				"key": "allMetaData",
+				"displayName": "Metadaten",
+				"translatorType": "AllMetaDataTranslator"
+			},
+			{
+				"type": "Text",
+				"key": "allPrimaryData",
+				"displayName": "Volltext (Primärdaten)",
+				"translatorType": "AllPrimaryDataTranslator"
+			},
+			{
+				"type": "Text",
+				"key": "withinInfo",
+				"displayName": "Darin",
+				"translatorType": "StandardTranslator"
+			},
+			{
+				"type": "Text",
+				"key": "referenceCode",
+				"displayName": "Signatur",
+				"translatorType": "StandardTranslator"
+			},
+			{
+				"type": "Text",
+				"key": "formerReferenceCode",
+				"displayName": "Frühere Signaturen",
+				"translatorType": "StandardTranslator"
+			},
+			{
+				"type": "Dropdown",
+				"key": "customFields.land",
+				"displayName": "Land",
+				"translatorType": "StandardTranslator"
+			},
+			{
+				"type": "Text",
+				"key": "customFields.zusatzkomponenteZac1",
+				"displayName": "Zusatzkomponente",
+				"translatorType": "StandardTranslator"
+			},
+			{
+				"type": "Text",
+				"key": "customFields.aktenzeichen",
+				"displayName": "Aktenzeichen",
+				"translatorType": "StandardTranslator"
+			},
+			{
+				"type": "Text",
+				"key": "customFields.früheresAktenzeichen",
+				"displayName": "Früheres Aktenzeichen",
+				"translatorType": "StandardTranslator"
+			},
+			{
+				"type": "Dropdown",
+				"key": "customFields.zugänglichkeitGemässBga",
+				"displayName": "Zugänglichkeit gemäss BGA",
+				"translatorType": "StandardTranslator"
+			}
+		],
+		"simpleSearchSortingFields": [
+			{
+				"displayName": "Relevanz",
+				"orderBy": "relevanz",
+				"sortOrder": ""
+			},
+			{
+				"displayName": "Datum aufsteigend",
+				"orderBy": "creationPeriod.startDate",
+				"sortOrder": "ascending"
+			},
+			{
+				"displayName": "Datum absteigend",
+				"orderBy": "creationPeriod.startDate",
+				"sortOrder": "descending"
+			},
+			{
+				"displayName": "Titel aufsteigend",
+				"orderBy": "title.sort",
+				"sortOrder": "ascending"
+			},
+			{
+				"displayName": "Titel absteigend",
+				"orderBy": "title.sort",
+				"sortOrder": "descending"
+			},
+			{
+				"displayName": "Signatur aufsteigend",
+				"orderBy": "referenceCode.sort",
+				"sortOrder": "ascending"
+			},
+			{
+				"displayName": "Signatur absteigend",
+				"orderBy": "referenceCode.sort",
+				"sortOrder": "descending"
+			}
+		],
+		"possiblePagingSizes": [
+			10,
+			25,
+			50,
+			100
+		],
+		"defaultPagingSize": 50
+	},
+	"ui": {
+		"pagination": {
+			"position": "bottom"
+		}
+	},
+	"user": {
+		"settings": {
+			"pagingSize": 10,
+			"selectedSortingField": {
+				"displayName": "Relevanz",
+				"orderBy": "",
+				"sortOrder": ""
+			},
+			"showInfoWhenEmptySearchResult": true,
+			"considerUserGeneratedContent": false
+		}
+	}
+}

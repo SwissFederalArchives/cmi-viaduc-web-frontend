@@ -1,0 +1,84 @@
+<div class="page col-sm-12">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="page-breadcrumb">
+				<cmi-viaduc-breadcrumb [items]="crumbs"></cmi-viaduc-breadcrumb>
+			</div>
+		</div>
+	</div>
+	<cmi-viaduc-layout-left-content>
+		<div left>
+			<cmi-viaduc-usersetting-list></cmi-viaduc-usersetting-list>
+			<cmi-viaduc-favorite-lists></cmi-viaduc-favorite-lists>
+		</div>
+		<div content>
+			<div class="page-content-bordered">
+				<h1 class="page-content-title">
+					<span>{{'Benutzeroberfläche' | translate:'account.settings.title'}}</span>
+				</h1>
+				<form action="" *ngIf="userSettings" class="form-horizontal">
+					<div class="form-group">
+						<label for="pagingSize" class="col-sm-3 control-label" style="text-align: left">{{ 'Anzahl Suchtreffer' |
+							translate:'account.settings.numberOfSearchHits' }}</label>
+						<div class="col-sm-9 no-bottom-margin">
+							<select class="form-control inline nopad" id="pagingSize" name="pagingSize" [(ngModel)]="userSettings.pagingSize">
+								<option *ngFor="let skip of possiblePagingSizes" [ngValue]="skip">
+									{{skip}}
+								</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="sortFieldsDropdown" class="col-sm-3 control-label" style="text-align: left">{{ 'Sortiert nach' |
+							translate:'account.settings.defaultSortBy' }}</label>
+						<div class="col-sm-9 no-bottom-margin">
+							<select id="sortFieldsDropdown" name="sortFieldsDropdown" class="form-control" [ngModel]="chosenSortField"
+							 (ngModelChange)="onSortFieldChosen($event)">
+								<option *ngFor="let s of sortingFields" [value]="s.displayName">
+									{{ s.displayName | translate: getTranslationKey(s)}}
+								</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label" style="text-align: left"></label>
+						<div class="checkbox checkbox--left col-xs-9">
+							<label for="chkHinweisBeiErfolgloserSuche">
+								<input type="checkbox" id="chkHinweisBeiErfolgloserSuche" name="chkHinweisBeiErfolgloserSuche" [(ngModel)]="userSettings.showInfoWhenEmptySearchResult">&nbsp;<span>{{
+									'Hinweis bei erfolgloser Suche anzeigen' | translate:'account.settings.showTipWhenSearchFailed' }}</span>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 no-bottom-margin">
+							<div *ngIf="saved || errorText">
+								<div *ngIf="errorText">
+									<div class="alert alert-danger" role="alert">
+										<span> {{'Fehler beim Speichern.' | translate:'account.settings.saveFailed'}}</span>
+										<br>
+										<span>{{errorText}}</span>
+									</div>
+								</div>
+								<div *ngIf="saved && !errorText">
+									<div class="alert alert-success" role="alert">
+										<span>
+											{{'Einstellungen erfolgreich gespeichert' | translate:'account.settings.saveSuccess'}}
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 no-bottom-margin">
+							<button class="btn btn-primary" (click)="saveUserSetting()">{{ 'Speichern' |
+								translate:'save' }}
+							</button>
+						</div>
+					</div>
+				</form>
+				<cmi-loader *ngIf="loading" class="cmi-visible"></cmi-loader>
+			</div>
+		</div>
+	</cmi-viaduc-layout-left-content>
+</div>

@@ -1,0 +1,56 @@
+<div class="page page-advanced-search- col-sm-12" (keydown.enter)="handleEnterKey($event)">
+	<div class="page-breadcrumb">
+		<cmi-viaduc-breadcrumb [items]="getBreadCrumb()"></cmi-viaduc-breadcrumb>
+	</div>
+
+	<h1>{{'Erweiterte Suche' | translate: 'search.advanced.title'}}</h1>
+	<div class="col-md-8">
+		<div *ngFor="let group of viewModel.searchGroups">
+			<cmi-viaduc-advanced-search-group [viewModel]="group"
+											  (deleteSearchGroup)="viewModel.deleteGroup($event)"></cmi-viaduc-advanced-search-group>
+			<br *ngIf="viewModel.searchGroups.indexOf(group) != viewModel.searchGroups.length -1"/>
+		</div>
+		<fieldset>
+			<div class="row group-info-row">
+				<div class="col-md-7 col-reduced-margin">
+					<div *ngIf="viewModel.searchGroups && viewModel.searchGroups.length > 1">
+						<label for="groupLinkingTypeDropdown">{{'Verknüpfung der Suchgruppen:' | translate:
+							'search.advanced.groupChaining'}}&nbsp;&nbsp;</label>
+						<select [ngSwitch] class="form-control linkingtypes" id="groupLinkingTypeDropdown"
+								data-placeholder="" [(ngModel)]="viewModel.groupOperator">
+							<option *ngFor="let g of groupOperators" [ngValue]="g">{{groupOperator[g]}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-5 col-reduced-margin">
+					<button type="button" class="btn btn-link pull-right" (click)="addSearchGroup()">{{'Weitere Suchgruppe hinzufügen' | translate: 'search.advanced.addNewGroup'}}&nbsp;&nbsp;<span
+							class="glyphicon glyphicon-plus"></span></button>
+				</div>
+			</div>
+		</fieldset>
+		<br/>
+		<form role="form">
+			<div class="col-md-12 col-md-offset-8">
+				<button attr.aria-label="{{ 'Suche zurücksetzen' | translate:'search.resetSearch' }}" type="button"
+						(click)="reset()" class="btn">{{'Zurücksetzen' | translate: 'search.advanced.reset'}}
+				</button>
+				<button attr.aria-label="{{ 'Suche auslösen' | translate:'search.runSearch' }}"
+						type="button"
+						[disabled]="containsValidationErrors()"
+						(click)="search($event)" class="btn btn-primary">
+					{{'Suchen' | translate:'search.advanced.search'}}
+				</button>
+			</div>
+		</form>
+	</div>
+	<div class="col-md-4">
+		<div class="collapse-box" role="tablist" id="collapsebox" aria-multiselectable="true">
+			<a role="tab" data-toggle="collapse" class="icon--root" href="#infolinks" data-parent="#collapsebox" aria-expanded="true" aria-selected="true" tabindex="0">
+				{{'Zeige Details zur Suchsyntax' | translate:'search.advanced.showDetailsSyntax'}}
+			</a>
+			<div id="infolinks" class="collapse in" role="tabpanel" aria-expanded="true" aria-selected="false">
+				<cmi-viaduc-syntax-help></cmi-viaduc-syntax-help>
+			</div>
+		</div>
+	</div>
+</div>

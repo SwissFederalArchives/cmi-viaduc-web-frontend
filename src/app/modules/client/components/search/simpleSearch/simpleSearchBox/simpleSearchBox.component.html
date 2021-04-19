@@ -1,0 +1,40 @@
+<div class="row">
+	<div class="col-xs-12 no-bottom-margin" *ngIf="search" [ngClass]="{ 'col-md-8': hasErweiterteSucheLink }">
+		<form>
+			<div class="row">
+				<div class="col-xs-11 no-bottom-margin" [ngClass]="{'no-pad-left': hasErweiterteSucheLink}">
+					<div class="input-group">
+						<input id="searchFieldInput"
+							   [(ngModel)]="search.term"
+							   name="term"
+							   class="form-control"
+							   autoFocus="true"
+							   tabindex="0"
+							   attr.aria-label="{{'Suchfeld' | translate:'search.searchTerm'}}"
+							   (keydown)="onKeydownSearch($event)"
+							   type="text"/>
+						<span class="input-group-btn">
+                            <button class="btn btn-search"
+									tabindex="0"
+									[disabled]="!dateRangeValid"
+									attr.aria-label="{{ 'Suche auslösen' | translate:'search.runSearch' }}"
+									type="button" (click)="onClick($event)">
+                                <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+                            </button>
+                        </span>
+					</div>
+				</div>
+				<div class="col-xs-1 no-pad-left center-block no-bottom-margin">
+					<cmi-viaduc-search-synonym-icon #searchSynonymeIconComponent [searchTerm]="search.term"
+													(addSynonymToSearchClicked)='onAddSynonymToSearchClicked($event)'>
+					</cmi-viaduc-search-synonym-icon>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div *ngIf="hasErweiterteSucheLink" class="col-md-4 col-xs-12 no-bottom-margin no-pad-left">
+		<a [routerLink]="'/de/suche/erweitert' | localizeLink" [queryParams]="{q: getEditQueryParameters()}">
+			{{ 'Erweiterte Suche' | translate:'search.advancedSearch' }}
+		</a>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+<nav class="pagination-container">
+	<div class="row">
+		<div class="col-md-8 col-sm-6 col-xs-12 col-reduced-margin">
+			<label class="sr-only" id="pagination-sr-label">{{'Seitennummerierung der Trefferliste' | translate: 'pagination.titleSr'}}</label>
+			<ul class="pagination">
+				<li *ngFor="let item of items" [ngClass]="item.classes">
+					<a *ngIf="item.enabled"
+					   href="javascript:void(0)"
+					   aria-describedby="pagination-sr-label"
+					   (click)="setPageIndex(item.index)"
+					    [tooltip]="item.tooltip">
+						<span aria-hidden="true">{{item.label}}</span>
+						<span class="sr-only">{{item.tooltip}}</span>
+					</a>
+					<a *ngIf="!item.enabled" disabled="disabled" aria-disabled="true" href="javascript:void(0)"
+					   aria-describedby="pagination-sr-label"
+					   [tooltip]="item.tooltip">
+						<span aria-hidden="true">{{item.label}}</span>
+						<span class="sr-only">{{item.tooltip}}</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-4 col-sm-6 col-xs-12 col-reduced-margin">
+				<span class="form-group inline pull-right">
+					<label class="inline" for="pagingSize">{{ 'Anz. Treffer pro Seite' | translate:'pagination.anzahlTreffer' }}</label>
+					&nbsp;
+					<select class="form-control inline nopad"
+							id="pagingSize"
+							[(ngModel)]="pagingSize"
+							(change)="onChangePageSize()">
+							<option *ngFor="let skip of possiblePagingSizes"
+									[attr.value]="skip"
+									[attr.selected]=" skip.toString() === pagingSize.toString() ? 'selected' : ''">{{skip}}</option>
+					</select>
+				</span>
+		</div>
+	</div>
+</nav>

@@ -1,0 +1,66 @@
+<div class="page col-sm-12">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="page-breadcrumb">
+				<cmi-viaduc-breadcrumb [items]="crumbs"></cmi-viaduc-breadcrumb>
+			</div>
+		</div>
+	</div>
+
+	<cmi-viaduc-layout-left-content>
+		<div left>
+			<cmi-viaduc-usersetting-list></cmi-viaduc-usersetting-list>
+		</div>
+		<div content>
+			<h1 class="page-content-title">
+				<span>{{'Favoriten' | translate:'favoritesListPage.titel'}}</span>
+			</h1>
+
+			<cmi-viaduc-favorite-lists #favoriteList></cmi-viaduc-favorite-lists>
+			<div class="row new-list-button-bar">
+				<div class="col-xs-12">
+					<button type="button" class="btn btn-primary" (click)="toggleModal()">
+						{{'Neue Liste...' | translate:'favoritesListPage.newList'}}
+					</button>
+				</div>
+			</div>
+			<cmi-viaduc-favorites-migration (migrationFinished)="refreshList()"></cmi-viaduc-favorites-migration>
+		</div>
+	</cmi-viaduc-layout-left-content>
+
+	<cmi-viaduc-modal [(opened)]="showAddNewModal"  modalTitle="{{'Neue Liste erfassen' | translate:'favoritesListPage.addNewList'}}">
+		<cmi-viaduc-modal-body>
+			<form>
+				<fieldset>
+					<legend class="sr-only">{{'Name der neuen Liste' | translate:'favoritesListPage.nameOfNewList'}}</legend>
+					<div class="form-group">
+						<label for="nameInput" class="col-sm-2 control-label">{{ 'Name' | translate:'favoritesListPage.nameLabel' }}</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" [autoFocus] required name="nameInput" id="nameInput" placeholder="{{ 'Name' | translate:'favoritesListPage.nameLabel' }}" [(ngModel)]="newListName">
+						</div>
+					</div>
+				</fieldset>
+			</form>
+			<div class="row" *ngIf="error">
+				<div class="col-xs-12">
+					<div class="alert alert-danger" role="alert">
+						<span class="sr-only">{{'Fehlermeldung:' | translate:'favoritesListPage.unexpectedErrorPrefix'}}</span>
+						{{'Es ist ein unerwartender Fehler aufgetreten. Bitte versuchen Sie es später erneut.' | translate: 'favoritesListPage.unexpectedError'}}
+					</div>
+				</div>
+			</div>
+		</cmi-viaduc-modal-body>
+		<cmi-viaduc-modal-footer>
+			<div class="row">
+				<div class="col-xs-12">
+					<button type="button" class="btn btn-secondary" (click)="toggleModal()">
+						{{'Abbrechen' | translate:'favoritesListPage.cancel'}}
+					</button>
+					<button type="button" class="btn btn-primary" (click)="createNewList()" [attr.disabled]="listNameIsNullOrEmpty() ? 'disabled' : undefined">
+						{{'Speichern' | translate:'favoritesListPage.save'}}
+					</button>
+				</div>
+			</div>
+		</cmi-viaduc-modal-footer>
+	</cmi-viaduc-modal>
+</div>

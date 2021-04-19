@@ -1,0 +1,35 @@
+<div class="page col-sm-12">
+	<div class="page-breadcrumb">
+		<cmi-viaduc-breadcrumb [items]="getBreadCrumb()"></cmi-viaduc-breadcrumb>
+	</div>
+
+	<div class="row ocp-row page-content">
+		<div class="page-header">
+			<h1 class="page-title">
+				<span>{{'Einsichtsgesuch einreichen' | translate:'orderEinsichtCheckoutPage.title'}}</span>
+			</h1>
+		</div>
+
+		<nav class="nav-process">
+			<ul>
+				<li [ngClass]="{'active': stepNr === 1, 'disabled': stepNr === 2}">
+					<a (click)="wizzardSetPage(1)">{{'Angaben zum Gesuch'| translate:'orderEinsichtCheckoutPage.orderDetails'}}</a>
+				</li>
+				<li [ngClass]="{'active': stepNr === 2, 'disabled': stepNr !== 2}">
+					<a (click)="wizzardSetPage(2)">{{'Empfangsbestätigung' | translate:'orderEinsichtCheckoutPage.bestellbestaetigung'}}</a>
+				</li>
+			</ul>
+		</nav>
+
+		<div [ngSwitch]="stepNr">
+			<ng-template [ngSwitchCase]="1" ngSwitchDefault>
+				<div>
+					<cmi-viaduc-einsicht-order-details-step (onNextClicked)="wizzardNextPage()"></cmi-viaduc-einsicht-order-details-step>
+				</div>
+			</ng-template>
+			<ng-template [ngSwitchCase]="2">
+				<cmi-viaduc-order-submitted-step></cmi-viaduc-order-submitted-step>
+			</ng-template>
+		</div>
+	</div>
+</div>

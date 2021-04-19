@@ -1,0 +1,63 @@
+<div class="page col-sm-12">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="page-breadcrumb">
+				<cmi-viaduc-breadcrumb [items]="crumbs"></cmi-viaduc-breadcrumb>
+			</div>
+		</div>
+	</div>
+
+
+	<cmi-viaduc-modal  modalTitle="{{'Löschen' | translate:'favoritesPage.delete'}}" [(opened)]="showDeleteModal">
+		<cmi-viaduc-modal-body>
+			<p>{{'Sind Sie sicher, dass Sie die Liste {0} löschen möchten?' | translate:'favoritesPage.confirmDelete':list?.name}}</p>
+		</cmi-viaduc-modal-body>
+		<cmi-viaduc-modal-footer>
+			<div class="row">
+				<div class="col-xs-12">
+					<button class="btn btn-secondary" (click)="toggleDeleteModal()">
+						{{'Abbrechen' | translate: 'favoritesPage.cancel'}}
+					</button>
+					<button class="btn btn-primary" (click)="removeList()">
+						{{'Löschen' | translate: 'favoritesPage.delete'}}
+					</button>
+				</div>
+			</div>
+		</cmi-viaduc-modal-footer>
+	</cmi-viaduc-modal>
+
+	<cmi-viaduc-layout-left-content>
+		<div left>
+			<cmi-viaduc-usersetting-list></cmi-viaduc-usersetting-list>
+			<cmi-viaduc-favorite-lists #leftNavFavorites></cmi-viaduc-favorite-lists>
+		</div>
+		<div content>
+			<h1 class="page-content-title">
+				<span *ngIf="!showRenameField">{{list?.name}}</span>
+				<span *ngIf="showRenameField" class="fav-renamefield">
+					<label for="newListName" class="sr-hidden hidden">{{'Neuer Name für die Liste' | translate:'favoritesPage.nameOfNewList'}}</label>
+					<input id="newListName" type="text" class="form-control" [(ngModel)]="newListName">
+					<button role="button" class="btn btn-primary" (click)="doRename()">
+						{{'Speichern' | translate: 'favoritesPage.save'}}
+					</button>
+					<button role="button" class="btn btn-default" (click)="toggleRenameField()">
+						{{'Abbrechen' | translate: 'favoritesPage.cancel'}}
+					</button>
+				</span>
+				<span class="pull-right">
+					<a class="btn btn-link" *ngIf="!showRenameField" tabindex="0" (keydown.enter)="toggleRenameField()" (click)="toggleRenameField()">
+						<span class="glyphicon glyphicon-pencil"></span>&nbsp;<span>{{ 'Umbenennen' | translate:'favoritesPage.rename' }}</span>
+					</a>
+					<a class="btn btn-link" *ngIf="!showRenameField" tabindex="0" (keydown.enter)="toggleRenameField()" (click)="toggleDeleteModal()">
+						<span class="glyphicon glyphicon-remove"></span>&nbsp;<span>{{ 'Löschen' | translate:'favoritesPage.delete' }}</span>
+					</a>
+				</span>
+			</h1>
+			<div *ngIf="list">
+				<cmi-viaduc-favorite-list (onFavoriteRemoved)="onFavoriteRemoved()" [list]="list"></cmi-viaduc-favorite-list>
+			</div>
+
+			<cmi-loader *ngIf="loading" class="cmi-visible"></cmi-loader>
+		</div>
+	</cmi-viaduc-layout-left-content>
+</div>

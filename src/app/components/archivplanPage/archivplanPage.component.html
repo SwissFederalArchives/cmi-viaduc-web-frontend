@@ -1,0 +1,25 @@
+<div class="page col-sm-12">
+	<div class="page-breadcrumb" *ngIf="crumbsLoaded">
+		<cmi-viaduc-breadcrumb [items]="crumbs"></cmi-viaduc-breadcrumb>
+	</div>
+	<div>
+		<h1 *ngIf="!error">{{'Archivplan'|translate:'archivplan.archivplan'}}</h1>
+		<div *ngIf="!init" >
+			<div class="archivplan-container" >
+				<ul>
+					<cmi-viaduc-tree-node (loadingChange)="handleLoadChange($event)" [nodesToLoad]="nodesToOpen"></cmi-viaduc-tree-node>
+				</ul>
+			</div>
+		</div>
+		<div *ngIf="loading">
+			<cmi-blocker class="cmi-visible cmi-fixed cmi-center cmi-shadow">
+				<cmi-spinner></cmi-spinner>
+			</cmi-blocker>
+		</div>
+		<div *ngIf="error" class="search-warning alert alert-danger">
+			<h2 class="sr-only">{{'Information' | translate: 'archivplan.information'}}</h2>
+			<h3>{{getErrorTitel()}}</h3><br/>
+			<span [innerHtml]="getErrorMessage()"></span>
+		</div>
+	</div>
+</div>

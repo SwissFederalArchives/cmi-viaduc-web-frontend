@@ -1,0 +1,88 @@
+<div class="page page-detail col-sm-12">
+	<div class="page-breadcrumb">
+		<cmi-viaduc-breadcrumb [items]="crumbs"></cmi-viaduc-breadcrumb>
+	</div>
+	<div class="row">
+		<div id="mainDetailContent" class="col-sm-9 page-content">
+			<cmi-loader *ngIf="loading" class="cmi-visible"></cmi-loader>
+			<div *ngIf="entity">
+				<div class="page-header">
+					<h1 class="page-title">
+						<span *ngIf="entity.iconClasses"><i [class]="entity.iconClasses"></i>&nbsp;</span>
+						<span>{{entity.title}} ({{entity.level}})</span>
+					</h1>
+				</div>
+
+				<div class="section">
+					<div class="section-content">
+						<cmi-viaduc-download-section *ngIf="showDownloadSection" [entity]="entity"></cmi-viaduc-download-section>
+						<cmi-viaduc-order-section *ngIf="showOrderSection" [entity]="entity"></cmi-viaduc-order-section>
+						<cmi-viaduc-usage-section *ngIf="!showDownloadSection && !showOrderSection"
+												  [text]="'Diese Verzeichnungseinheit ist nicht bestellbar. Bitte wenden Sie sich an die Beratung oder an bestellen@bar.admin.ch.' | translate:'simpleHit.failedBecauseOfLevelMessage'">
+						</cmi-viaduc-usage-section>
+					</div>
+				</div>
+
+				<div *ngFor="let section of sections" class="section">
+					<div class="section-header">
+						<h4>{{section.title}}</h4>
+					</div>
+					<div class="section-content">
+						<cmi-viaduc-detail-section *ngIf="!section.markup && section.data"
+												   [entity]="entity"
+												   [data]="section.data">
+						</cmi-viaduc-detail-section>
+					</div>
+				</div>
+
+				<div class="section">
+					<div class="section-header">
+						<h4>{{'Archivplan' | translate:'metadata.title.archivplan'}}</h4>
+					</div>
+					<div class="section-content">
+						<cmi-viaduc-detail-hierarchy  [items]="items">
+						</cmi-viaduc-detail-hierarchy>
+					</div>
+				</div>
+
+				<div class="section" *ngIf="isBarUser">
+					<div class="section-header">
+						<h4>
+							{{'Access Tokens' | translate:'metadata.title.accessTokens'}}
+						</h4>
+					</div>
+					<div class="section-content">
+						<cmi-viaduc-access-token [entity]="entity" [hasAccess]="isBarUser">
+						</cmi-viaduc-access-token>
+					</div>
+				</div>
+
+				<div class="section" *ngIf="deepLinkUrl">
+					<div class="section-header">
+						<h4>
+							{{ 'Permanente URL der Verzeichnungseinheit' | translate:'navigation.deepLinkDetail' }}
+						</h4>
+					</div>
+					<div class="section-content">
+						<span>{{deepLinkUrl}}</span>
+					</div>
+				</div>
+			</div>
+
+			<div *ngIf="hasError" class="search-warning alert alert-danger">
+				<h2 class="sr-only">{{'Information' | translate: 'detailPage.information'}}</h2>
+				<h3>{{errorMessage}}</h3><br/>
+				<span [innerHtml]="errorDetails"></span>
+			</div>
+		</div>
+
+		<div class="col-sm-3 sidebar no-print" *ngIf="!hasError">
+			<cmi-viaduc-detail-utilities [entity]="entity"></cmi-viaduc-detail-utilities>
+			<div *ngIf="showSearchBrowser">
+				<hr/>
+				<cmi-viaduc-search-browser></cmi-viaduc-search-browser>
+			</div>
+			<hr/>
+		</div>
+	</div>
+</div>

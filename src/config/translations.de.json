@@ -1,0 +1,1219 @@
+{
+  "__generated": {
+    "info": "CMI.Viaduc.Client.generatetranslations",
+    "date": "2018-08-28 08:25:02"
+  },
+  "_": {
+    "_version": "20171017",
+    "abbrechen": "Abbrechen",
+    "add": "Hinzufügen",
+    "anmelden": "Anmelden",
+    "cancel": "Abbrechen",
+    "drucken": "Drucken",
+    "expandLink": "Link aufklappen",
+    "hinzufuegen": "Hinzufügen",
+    "proceed": "Weiter",
+    "save": "Speichern",
+    "schliessen": "Schliessen",
+    "und": "und"
+  },
+	"engagementbubbles": {
+		"chat": "Chat",
+		"chatbot": "Chatbot"
+	},
+  "account": {
+    "backToPage": "Zurück zur Ausgangsseite",
+    "birthday": "Geburtsdatum",
+    "clickIfNotRedirected": "Wenn Sie nicht weitergeleitet werden, klicken Sie bitte den obenstehenden Link.",
+    "contact": {
+      "cancel": "Abbrechen",
+      "changeLoginData": "Mobiltelefon-Nummer und E-Mail-Adresse dienen zur Kontaktaufnahme. Falls Sie Ihre Daten für das Login ändern möchten, klicken Sie bitte hier:",
+      "changeLoginDataLink": "Logindaten editieren.",
+      "changeSettingsDescription": "Bitte erfassen Sie Ihre Benutzerdaten, damit wir Sie bei Bedarf erreichen können. Sie können diese Daten jederzeit aktualisieren.",
+      "changeUserSettings": "Benutzerdaten ändern",
+      "editIAM": "Anmeldedaten ändern",
+      "requiredFieldsDescription": "Mit einem * gekennzeichnete Felder müssen ausgefüllt werden.",
+      "save": "Speichern",
+      "title": "Benutzerdaten"
+    },
+    "country": "Land",
+    "dateFieldFormat": "Das Format entspricht keinem gültigen Datum (tt.mm.jjjj).",
+    "digitalOnboarding": {
+      "fullfillsRequirementsMessage": "Sie erfüllen die Voraussetzung für die Identifizierung mit Videoanruf. Für den Identifizierungsprozess verlassen Sie die Infrastruktur des Bundes. Der Videoanruf wird mit einer externen Firma geführt (Managed Service Digital Identification & Signing von Swisscom).",
+      "fullfillsRequirementsMessageError": "Sie erfüllen die Voraussetzungen für die Identifizierung per Videoanruf leider nicht. Bitte setzen Sie sich für die Identifizierung mit uns in Verbindung:",
+      "hasIdFromCountry": "Oder von welchem Land besitzen Sie eine gültige Identitätskarte?",
+      "hasMobilePhone": "Verfügen Sie über eine Mobiltelefonnummer und können Sie SMS empfangen?",
+      "hasPassportFromCountry": "Von welchem Land besitzen Sie einen gültigen Pass?",
+      "hasSmartphoneOrComputer": "Haben Sie Zugang zu einem Smartphone oder einem Computer mit Kamera und Mikrofon?",
+      "nextStep": "Weiter",
+      "no": "Nein",
+      "noIdOfListedCountry": "Ich besitze keine Identitätskarte von einem der aufgeführten Länder",
+      "noPassportOfListedCountry": "Ich besitze keinen Pass von einem der aufgeführten Länder",
+      "passportAndIdNeeded": "Sie benötigen ein gültiges Identifizierungsmittel (Pass oder Identitätskarte).",
+      "previousStep": "Zurück",
+      "step1": "Schritt 1",
+      "step2": "Schritt 2",
+      "step3": "Schritt 3",
+      "step4": "Schritt 4",
+      "videochatLink": "Videoanruf starten (Montag bis Samstag, 8 bis 22 Uhr MEZ)",
+      "videoChatNotPossible": "Kein Videoanruf möglich",
+      "videoChatPossible": "Videoanruf möglich",
+      "wizardInfo": "Um den Status «Identifizierte/r Benutzer/in» zu erhalten, müssen Sie ein Gespräch per Videoanruf führen. Beantworten Sie dazu bitte vorgängig folgende Fragen:",
+      "wizardTitle": "Status «Identifizierte/r Benutzer/in» beantragen",
+      "yes": "Ja"
+    },
+    "email": "E-Mail",
+    "errorPhoneNumber": "Telefonnummern können mit einem \"+\" beginnen, Zahlen, Leerzeichen und \\\"-\\\" enthalten und müssen zwischen 6 und 20 Zeichen lang sein",
+    "familyName": "Name",
+    "firstName": "Vorname",
+    "headerAnonymousUser": "Anonym",
+    "headerHideFunctions": "Funktionen für jeden Benutzerstatus verbergen",
+    "headerIdentifiedUser": "Identifiziert",
+    "headerRegisteredUser": "Registriert",
+    "headerShowFunctions": "Funktionen für jeden Benutzerstatus anzeigen",
+    "headerWithAccount": "(mit Konto)",
+    "headerWithoutAccount": "(ohne Konto)",
+    "iconMeaningNotOk": "Nicht erlaubt",
+    "iconMeaningOk": "Erlaubt",
+    "identifiedUserMessage": "Sie sind ein/e identifizierte/r Benutzer/in",
+    "loginFailureOrAborted": "Anmeldung nicht erfolgt",
+    "logInSuccessful": "Anmeldung erfolgreich",
+    "mandatoryFieldError": "Dieses Feld muss ausgefüllt werden.",
+    "mobilePhoneNumberIam": "Telefon",
+    "mobileTel": "Mobiltelefon",
+    "orderings": {
+      "title": "Bestellübersicht"
+    },
+    "organization": "Organisation",
+    "phoneNumber": "Telefon",
+    "preferredLanguage": "Bevorzugte Sprache",
+    "preferredLanguageHelpText": "Bitte geben Sie an, in welcher Sprache Sie mit dem Bundesarchiv kommunizieren möchten.",
+    "registeredUserMessage": "Sie sind ein/e registrierte/r Benutzer/in",
+    "rightDownloadPublicPrimaryData": "Frei zugängliche Unterlagen herunterladen",
+    "rightManageFavorites": "Favoriten verwalten",
+    "rightPlaceDigitizationOrders": "Digitalisierungsaufträge erstellen",
+    "rightPlaceDisclosureRequest": "Auskunftsgesuch in eigene Unterlagen einreichen",
+    "rightPlaceEinsichtsgesuche": "Einsichtsgesuche einreichen",
+    "rightPlaceReadingRoomOrders": "Lesesaalausleihen absetzen",
+    "rightSearchPulicMetadata": "Suche in öffentlichen Metadaten",
+    "rightsPerUserTypeTableCaption": "Liste der Rechte je Benutzertyp",
+    "rightViewApprovedDossiers": "Bewilligungspflichtige Unterlagen konsultieren",
+    "settings": {
+      "defaultSortBy": "Sortiert nach",
+      "numberOfSearchHits": "Anzahl Suchtreffer",
+      "saveFailed": "Fehler beim Speichern.",
+      "saveSuccess": "Einstellungen erfolgreich gespeichert",
+      "showTipWhenSearchFailed": "Hinweis bei erfolgloser Suche anzeigen",
+      "title": "Benutzeroberfläche"
+    },
+    "state": "Benutzerstatus",
+    "street": "Strasse",
+    "streetAttachment": "Zusatz",
+    "submitIdRequest": "Identifizierung beantragen",
+    "town": "Ort",
+    "userSection": {
+      "benutzerdaten": "Benutzerdaten",
+      "benutzeroberflaeche": "Benutzeroberfläche",
+      "benutzerstatus": "Benutzerstatus",
+      "bestelluebersicht": "Bestellübersicht",
+      "einstellungen": "Einstellungen"
+    },
+    "wrongFormat": "Das Format entspricht keiner Telefonnummer",
+    "zipcode": "PLZ"
+  },
+  "accountFavoritesDetailPageComponent": {
+    "pageTitle": "Favoritenliste"
+  },
+  "accountFavoritesListPageComponent": {
+    "pageTitle": "Favoritenliste"
+  },
+  "accountPageComponent": {
+    "pageTitle": "Konto"
+  },
+  "accountSettingsPageComponent": {
+    "pageTitle": "Benutzeroberfläche"
+  },
+  "advancedSearchField": {
+    "removeCriteria": "Suchfeld entfernen"
+  },
+  "advancedSearchPageComponent": {
+    "pageTitle": "Erweiterte Suche"
+  },
+  "archivplan": {
+    "anischtEinschraenken": "Ansicht einschränken",
+    "archivplan": "Archivplan",
+    "cancelReduceView": "Einschränkung aufheben",
+    "detailAnzeigen": "Detailseite anzeigen",
+    "getNextEntry": "lade den nächsten Eintrag",
+    "information": "Information",
+    "showDirectLink": "Direktlink anzeigen",
+    "treeNode": {
+      "collapse": "einklappen",
+      "expand": "aufklappen",
+			"onlyVisibleForIdentifiedUsers": "Dossiers können nur berechtigten NutzerInnen angezeigt werden."
+		},
+    "zeigen": "Im Archivplan zeigen",
+    "zuFavoritenHinzufuegen": "Zu den Favoriten hinzufügen"
+  },
+  "archivplanPageComponent": {
+    "pageTitle": "Archivplan"
+  },
+  "authPage": {
+    "pageTitle": "Weiterleitung"
+  },
+  "behoerdenZugriff": {
+    "detail": {
+      "accesstoken": "Im Namen von"
+    }
+  },
+  "bestellkorb": {
+    "menuTooltip": "In den Bestellkorb legen"
+  },
+  "breadcrumb": {
+    "account": "Mein Benutzerkonto",
+    "accountStatus": "Benutzerstatus",
+    "archiveHome": "Gesamtbestand",
+    "archivplan": "Archivplan",
+    "backToSearch": "Resultat",
+    "einfacheSuche": "Einfache Suche",
+    "erweiterteSuche": "Erweiterte Suche",
+    "favorites": "Favoriten",
+    "orderings": "Bestellübersicht",
+    "register": "Eingabe Benutzerdaten",
+    "registerInfo": "Kontoeröffnung",
+    "resultat": "Resultat",
+    "shoppingcart": "Bestellkorb",
+    "startseite": "Startseite",
+    "uiSettings": "Benutzeroberfläche",
+    "userDetails": "Benutzerdaten"
+  },
+  "breadcrumbComponent": {
+    "breadcrumb": "Breadcrumb"
+  },
+  "calendar": {
+    "days": {
+      "short": "So;Mo;Di;Mi;Do;Fr;Sa",
+      "week": "Sonntag;Montag;Dienstag;Mittwoch;Donnerstag;Freitag;Samstag;Sonntag"
+    },
+    "month": {
+      "next": "Nächster Monat",
+      "previous": "Vorheriger Monat"
+    },
+    "months": "Januar;Februar;März;April;Mai;Juni;Juli;August;September;Oktober;November;Dezember",
+    "placeHolder": "Bitte wählen Sie ein Datum aus"
+  },
+  "chatbotDialog": {
+    "minimize": "Chatbot (Beta) minimieren",
+    "title": "Chatbot (Beta)"
+  },
+  "checkoutOrderDetailsStep": {
+    "artDerArbeit": "Art der Arbeit",
+    "commentTitle": "Bemerkung zur Bestellung",
+    "datumLesesaal": "Datum Lesesaal",
+    "datumLesesaalText": "Ich möchte die Unterlagen im Lesesaal konsultieren am",
+    "invalidDate": "An diesem Tag hat der Lesesaal nicht geöffnet. Bitte wählen Sie ein gültiges Datum aus.",
+    "mandatoryArtDerArbeit": "Bitte geben Sie die Art der Arbeit an, für die Sie die Unterlagen benötigen.",
+    "mandatoryDate": "Bitte wählen Sie ein Datum für Ihren Besuch im Lesesaal.",
+    "pleaseChoose": "Bitte wählen"
+  },
+  "checkoutPersonsStep": {
+    "reasonTitle": "Begründung Einsichtnahme"
+  },
+  "checkoutReasonsStep": {
+    "art14Bga": "Art. 14.2 BGA",
+    "art14BgaLink": "https://www.admin.ch/ch/d/sr/c152_1.html",
+    "missingFlagForReason": "Bei einem angegebenen Grund müssen Sie diese Checkbox anwählen .",
+    "missingReason": "Bitte geben Sie einen Grund an, weshalb Sie die Unterlagen mit Personendaten ansehen möchten.",
+    "title": "Die abliefernden Stellen können auch während der Schutzfrist in die von ihnen abgelieferten Unterlagen Einsicht nehmen. Für deren Konsultation müssen Sie von Ihrer Verwaltungseinheit berechtigt sein. Diese erhält zudem eine automatische Benachrichtigung, jedes Mal wenn Sie solche Unterlagen bestellen.",
+    "title2": "Enthalten diese Unterlagen Personendaten, ist eine Ausleihe nur aus bestimmten Gründen zulässig ",
+    "yesTheseItemsContainsPersonData": "Ja, diese Unterlagen enthalten Personendaten"
+  },
+  "checkoutSubmittedStep": {
+    "cartText": "Sie haben noch offene Bestellungen im <a href=\"#/{0}\">Bestellkorb</a>.",
+    "checkStatusText": "Den Status Ihrer Bestellung können Sie in Ihrem <a href=\"#/{0}\">Benutzerkonto</a> verfolgen.",
+    "disclaimerText": "Der Videoanruf wird aufgezeichnet, nach Abschluss der Identifizierung aber wieder gelöscht. Das Bundesarchiv speichert ausschliesslich die Kopie des Ausweises, die Fotografie und tabellarische Benutzerdaten. Sie haben jederzeit das Recht, Auskunft über Ihre gespeicherten Daten zu verlangen (Art. 8 DSG).",
+    "thxTextDigi": "Vielen Dank für Ihren Auftrag. Sie erhalten eine E-Mail, sobald die Unterlagen digitalisiert worden sind. Die Bearbeitung Ihres Auftrags dauert in der Regel zwei Wochen.",
+    "thxTextEischtisgesuch": "Wir werden Ihr Gesuch an die zuständige Stelle weiterleiten. Mit einem Entscheid können Sie in der Regel innerhalb von vier bis sechs Wochen rechnen.",
+    "thxTextEischtisgesuchAnmeldenUndIndentifizieren": "Falls Ihr Gesuch bewilligt wird, müssen Sie sich identifizieren, um die Unterlagen zu konsultieren (siehe <a href=\"{0}\">Anmelden und Identifizieren</a>).",
+    "thxTextEischtisgesuchIntroduction": "Vielen Dank für Ihr Einsichtsgesuch in folgende Unterlagen:",
+    "thxTextLesesaal": "Vielen Dank für Ihren Auftrag. Sie können die gewünschten Unterlagen am gewählten Datum im <a href=\"#/{0}\">Lesesaal des Bundesarchivs</a> einsehen. Der Lesesaal ist von Dienstag bis Donnerstag von 9 bis 19 Uhr geöffnet.",
+    "thxTextVerwaltungsausleihe": "Vielen Dank für Ihre Bestellung. Sie erhalten die Unterlagen innerhalb von ein bis zwei Arbeitstagen per Post."
+  },
+  "clipboard": {
+    "success": "Erfolgreich in die Zwischenablage kopiert!",
+    "title": "Zwischenablage"
+  },
+  "columnpicker": {
+    "einAusblenden": "Spalten ein/ausblenden",
+    "hiddenColumns": "Versteckte Spalten",
+    "visibleColumns": "Sichtbare Spalten"
+  },
+  "contactDetailPageComponent": {
+    "pageTitle": "Benutzerdaten"
+  },
+  "dateRangeField": {
+    "format": "Zeitraum eingrenzen (z. B. 1848-1914 oder 01.07.1995-24.12.2001)",
+    "invalidFormat": "Das angegebene Format ist ungültig. Geben Sie einen Zeitraum bitte entweder im Format \"JJJJ-JJJJ\" oder \"TT.MM.JJJJ-TT.MM.JJJJ\" an."
+  },
+  "detail": {
+    "notFound": "Die gewünschte Seite kann nicht angezeigt werden",
+    "notFoundMessage": "Womöglich verfügen Sie nicht über die nötige Berechtigung, um die Seite aufzurufen (siehe <a href=\"#{0}\">Anmelden und Identifizieren</a>).</br></br>",
+    "notFoundMessage2": "Bei Fragen zur Zugänglichkeit der Unterlagen im Bundesarchiv wenden Sie sich bitte an die Beratung oder per E-Mail an <a href=\"mailto:bundesarchiv@bar.admin.ch\">bundesarchiv@bar.admin.ch</a>."
+  },
+  "detailHierarchy": {
+    "activePosition": "Aktuell angezeigte Verzeichnungseinheit"
+  },
+  "detailPage": {
+    "information": "Information"
+  },
+  "detailPageComponent": {
+    "pageTitle": "Detailansicht"
+  },
+  "detailSection": {
+    "internalField": "Feld nur für BAR Benutzer sichtbar"
+  },
+  "digitalisierungskategorie": {
+    "amt": "Amt",
+    "forschungsgruppe": "Forschungsgruppe",
+    "gesuch": "Gesuch",
+    "intern": "Intern",
+    "oeffentlichkeit": "Öffentlichkeit",
+    "spezial": "Spezial",
+    "termin": "Termin"
+  },
+  "download": {
+    "menuTooltip": "Zum Download",
+    "thresholdExceeded": "Sie haben in den letzten {0} bereits {1} Dateien heruntergeladen. Die Maximal erlaubte Anzahl von Dateien ist damit erschöpft. Ein weiterer Download wird in {2} wieder möglich sein. Alternativ können Sie beim Bundesarchiv ein Gesuch auf Anhebung Ihrer Download-Quota stellen."
+  },
+  "downloadSection": {
+    "downloadSuccess": "Der Download wurde erfolgreich ausgelöst.",
+    "downloadSuccessTitle": "Download erfolgreich",
+    "estimatedPrepTime": "Die Aufbereitung dauert ca.",
+		"preparationInfo": "Die Aufbereitung dauert voraussichtlich noch: {0}.",
+    "pleaseLogin": "Bitte melden Sie sich an, um die Unterlagen zu bestellen",
+    "pleaseLoginDetailsAt": "Details unter",
+    "preparationPending": "Wenn die Aufbereitung abgeschlossen ist, erhalten Sie eine E-Mail. Sie können die Seite jetzt schliessen.",
+    "preparationPendingTitle": "Das Digitalisat wird aufbereitet...",
+    "preparationRequired": "Diese Unterlagen sind bereits digital vorhanden, müssen für den Download aber zuerst aufbereitet werden.",
+    "prepareNow": "Digitalisat aufbereiten",
+    "registerAndIdentify": "Registrieren und Identifizieren",
+    "unknown": "unbekannt",
+    "xSecondsOverdue": "überfällig",
+		"downloadNow": "Laden Sie die Unterlagen jetzt herunter. In der Datei index.html erhalten Sie einen Überblick über sämtliche Dokumente."
+  },
+  "einsichtCheckoutOrderDetailsStep": {
+    "artDerArbeit": "Art der Arbeit",
+    "begruendungAngegebenTitel": "Begründung Einsichtsgesuch (max. 2‘000 Zeichen)",
+    "eigenePersonendatenTitel": "Handelt es sich um Unterlagen, die Sie selber betreffen?",
+    "gesuchDauerInfo": "Bitte beachten Sie, dass die Bearbeitung eines Einsichtsgesuchs vier bis sechs Wochen dauern kann.",
+    "identifizierung": "Um ein Auskunftsgesuch einzureichen, müssen Sie sich zuerst identifizieren. Die Identifizierung können Sie im Benutzungskonto <a href=\"#{0}\" target=\"_blank\">Identifizierungsfunktion</a> beantragen.",
+    "identifizierungTitel": "Identifizierung erforderlich",
+    "infoTextAbschnittDrei": ". Die Einsichtsbewilligung gilt nur für die gesuchstellende Person.",
+    "infoTextAbschnittEins": "Für die Einsicht in Unterlagen, die noch einer Schutzfrist unterliegen, benötigen Sie eine Bewilligung. Dazu müssen Sie beim Bundesarchiv ein Einsichtsgesuch einreichen. Sie können für maximal 50 Dossiers gleichzeitig ein Einsichtsgesuch in Bearbeitung haben.",
+    "infoTextAbschnittLink": "(siehe Anmelden und Identifizieren)",
+    "infoTextAbschnittZwei": "Wir werden das Gesuch dann an die zuständige Stelle weiterleiten. Mit einem Entscheid können Sie in der Regel innerhalb von vier bis sechs Wochen rechnen. Wird die Einsicht bewilligt, müssen Sie sich für die Konsultation der Unterlagen identifizieren ",
+    "mandatoryArtDerArbeit": "Bitte geben Sie die Art der Arbeit an, für die Sie die Unterlagen benötigen.",
+    "mandatoryOwnPersondata": "Bitte geben Sie an, ob es sich um Unterlagen handelt, die Sie selber betreffen.",
+    "mandatoryPersondata": "Bitte geben Sie an, ob es sich um eine personenbezogene Nachforschung handelt.",
+    "mandatoryReason": "Bitte geben Sie eine Begründung für Ihr Einsichtsgesuch ein.",
+    "no": "Nein",
+    "personendatenTitel": "Handelt es sich um eine personenbezogene Nachforschung (z. B. Biographie oder Artikel zum Leben und Wirken einer Person)?",
+    "pleaseChoose": "Bitte wählen",
+    "yes": "Ja"
+  },
+  "engagement": {
+    "chatbotInfo": "Nutzen Sie den Chatbot (Beta) – er steht rund um die Uhr zur Verfügung.",
+    "chatInfo": "Chatten Sie von Dienstag bis Donnerstag von 9-12 und 13-15 Uhr mit dem Bundesarchiv - wir helfen Ihnen gerne weiter.",
+    "headerTitle": "Wie können wir Ihnen helfen?"
+  },
+  "enums": {
+    "abbruchgrund": {
+      "digitalisierungNichtMoeglich": "Digitalisierung nicht möglich",
+      "dossierangaben": "Dossierangaben unzureichend",
+      "dossierMomentanNichtVerfuegbar": "Dossier momentan nicht verfügbar",
+      "einsichtsbewilligungNoetig": "Einsichtsbewilligung nötig",
+      "formBestellungNichtErlaubt": "Formularbestellung nicht erlaubt",
+      "nichtGesetzt": "Nicht gesetzt",
+      "storniert": "Storniert",
+      "teilbewilligung": "Teilbewilligung vorhanden",
+      "unterlagenFrei": "Nicht für Verwaltungsausleihe berechtigt - Unterlagen frei / Bewilligung",
+      "unterlagenInSchutzfrist": "Nicht für Verwaltungsausleihe berechtigt - Unterlagen in Schutzfrist"
+    },
+    "approveStatus": {
+      "abgebrochen": "Freigegeben (in Schutzfrist)",
+      "abgeschlossen": "Zurückgewiesen (Einsichtsbewilligung nötig)",
+      "ausgeliehen": "Freigegeben (ausserhalb Schutzfrist)",
+      "dossierangaben": "Zurückgewiesen (Dossierangaben unzureichend)",
+      "einsichtsbewilligungNoetig": "Zurückgewiesen (Einsichtsbewilligung nötig)",
+      "formBestellungNichtErlaubt": "Zurückgewiesen (Formularbestellung nicht erlaubt)",
+      "inBearbeitung": "Freigegeben (durch System)",
+      "nichtGeprueft": "Nicht geprüft",
+      "teilbewilligung": "Zurückgewiesen (Teilbewilligung vorhanden)",
+      "unterlagenFrei": "Zurückgewiesen (nicht für Verwaltungsausleihe berechtigt - Unterlagen frei / Bewilligung)",
+      "unterlagenInSchutzfrist": "Zurückgewiesen (nicht für Verwaltungsausleihe berechtigt - Unterlagen in Schutzfrist)"
+    },
+    "eingangsart": {
+      "erfasstDurchBar": "Erfasst durch BAR",
+      "erfasstDurchKunde": "Erfasst durch Kunde"
+    },
+    "entscheidGesuchStatus": {
+      "auskunftsgesuchBewilligt": "Auskunftsgesuch bewilligt",
+      "auskunftsgesuchTeilbewilligt": "Auskunftsgesuch teilbewilligt",
+      "einsichtsgesuchBewilligt": "Einsichtsgesuch bewilligt",
+      "einsichtsgesuchTeilbewilligt": "Einsichtsgesuch teilbewilligt",
+      "einsichtVerweigert": "Einsicht verweigert",
+      "entscheidGemaessBgOe": "Entscheid gemäss BGÖ",
+      "nichtGeprueft": "Nicht geprüft"
+    },
+    "gebrauchskopieStatus": {
+      "erfolgreichErstellt": "Erfolgreich erstellt",
+      "fehlgeschlagen": "Fehlgeschlagen",
+      "nichtErstellt": " ",
+      "versendet": "Versendet"
+    },
+    "orderItemStatus": {
+      "abgebrochen": "Abgebrochen",
+      "abgeschlossen": "Abgeschlossen",
+      "ausgeliehen": "Ausgeliehen",
+      "aushebungsauftragErstellt": "Aushebungsauftrag erstellt",
+      "digitalisierungAbgebrochen": "Digitalisierung abgebrochen",
+      "digitalisierungExtern": "Digitalisierung Extern",
+      "einsichtsgesuchWeitergeleitet": "Einsichtsgesuch weitergeleitet",
+      "fuerAushebungBereit": "Für Aushebung bereit",
+      "fuerDigitalisierungBereit": "Für Digitalisierung bereit",
+      "imBestellkorb": "Im Bestellkorb",
+      "inBearbeitung": "In Bearbeitung",
+      "neuEingegangen": "Neu Eingegangen",
+      "pruefungEinsichtsgesuch": "Einsichtsgesuch prüfen",
+      "pruefungFreigabe": "Freigabe prüfen",
+      "zumReponierenBereit": "Zum Reponieren bereit"
+    },
+    "zugaenglichkeitGemaessBga": {
+      "freiZugaenglich": "Frei zugänglich",
+      "inSchutzfrist": "In Schutzfrist",
+      "pruefungNoetig": "Prüfung nötig"
+    }
+  },
+  "error": {
+    "orderErrorMessage": "Ihre Bestellung konnte leider nicht durchgeführt werden. Bitte versuchen Sie es später erneut. Falls das Problem bestehen bleibt, wenden Sie sich bitte an die Beratung oder an bestellung@bar.admin.ch.",
+    "unknownErrorMessage": "Bitte versuchen Sie es später erneut. Falls das Problem bestehen bleibt, wenden Sie sich bitte an die Beratung oder an benutzer-admin@bar.admin.ch.",
+    "unknownErrorTitle": "Es ist ein Fehler aufgetreten."
+  },
+  "errors": {
+    "errorTitle": "Fehler",
+    "pageNotFoundTitle": "Die Seite wurde nicht gefunden",
+    "smartcardErrorMessage": "Sie haben versucht, sich mit Smartcard anzumelden. In Ihrer Rolle dürfen Sie sich nur mit Kerberos anmelden. Sie werden innert 8 Sekunden automatisch abgemeldet.",
+    "smartcardErrorTitle": "Nur Kerberos-Anmeldung möglich",
+    "unknownErrorMessage": "Bitte versuchen Sie es später erneut. Falls das Problem bestehen bleibt, wenden Sie sich bitte an die Beratung oder an benutzer-admin@bar.admin.ch.",
+    "unknownErrorTitle": "Es ist ein Fehler aufgetreten"
+  },
+  "facette": {
+    "active": "Aktiv",
+    "bestaendeUebersicht": "Thematische Übersicht",
+    "bestand": "Bestand",
+    "clearAll": "Alle Filter zurücksetzen ({0})",
+    "digitallyAvailable": "Unterlagen digital vorhanden",
+    "entstehungszeitraum": "Entstehungszeitraum",
+    "hideFilter": "Filter ausblenden",
+    "notActive": "Nicht aktiv",
+    "stufen": "Stufen",
+    "treffer": "Treffer",
+    "weitereTreffer": "Andere",
+    "zugaenglichkeitGemBGA": "Zugänglichkeit gem. BGA"
+  },
+  "favorite": {
+    "noExistingListsLabel": "Es sind noch keine Favoritenlisten vorhanden."
+  },
+  "favoriteList": {
+    "suchabfragen": "Suchabfragen ({0})",
+    "table": {
+      "gespeichert": "Gespeichert",
+      "keineFavListe": "Es sind aktuell keine Favoriten auf dieser Liste gespeichert.",
+      "level": "Stufe",
+      "loeschen": "Spalte mit der Aktion \"Löschen\"",
+      "order": "Spalte mit der Aktion \"Bestellen\" oder \"Zur Downloadseite wechseln\"",
+      "saved": "Gespeichert",
+      "signatur": "Signatur",
+      "suchabfrage": "Suchabfrage",
+      "title": "Titel",
+      "zeitraum": "Zeitraum"
+    },
+    "unknownErrorText": "Es ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es später erneut. Falls das Problem bestehen bleibt, wenden Sie sich bitte an die Beratung oder an bundesarchiv@bar.admin.ch.",
+    "verzeichnungseinheiten": "Verzeichnungseinheiten ({0})"
+  },
+  "favorites": {
+    "addFavoriteToList": "Zu Liste {0} hinzufügen",
+    "addToNewList": "Zu neuer Favoritenliste",
+    "chooseExistingList": "Aus Liste auswählen",
+    "createOnNewList": "Speichern auf neuer Favoritenliste ...",
+    "defaultNewName": "Favoritenliste 1",
+    "emptyListWarn": "Bitte wählen Sie eine Favoritenliste, um die Verzeichnungseinheit den Favoriten hinzuzufügen.",
+    "emptyListWarnTitle": "Keine Liste ausgewählt",
+    "errorPleaseTryAgain": "Es ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es später erneut. Falls das Problem bestehen bleibt, wenden Sie sich bitte an die Beratung oder an bundesarchiv@bar.admin.ch.",
+    "favoriteTitlePlaceholder": "Meine gespeicherte Suche",
+    "listsTitle": "Favoritenlisten",
+    "mandatoryField": "Obligatorisches Feld",
+    "mandatorySearchTitle": "Dies ist ein Pflichtfeld.",
+    "menuTitle": "Favoriten",
+    "menuTitleAsFavorite": "Als Favorit merken",
+    "menuTooltip": "Zu den Favoriten hinzufügen",
+    "migrationFailure": "Migration der Arbeitsmappen gescheitert! \\nSollte das Problem weiterhin auftreten, wenden Sie sich bitte an bundesarchiv@bar.admin.ch.",
+    "migrationSuccess": "Arbeitsmappen erfolgreich migriert",
+    "missingTitle": "Bitte geben Sie einen Titel für die neue Liste ein.",
+    "newListLabel": "Name der Liste",
+    "newListNamePlaceholder": "Neue Liste",
+    "newListNameRequired": "Bitte geben Sie einen Namen für die neue Liste ein.",
+    "newSearchFavoritePlaceholder": "Name der Suche ",
+    "pleaseLogin": "Bitte melden Sie sich an, um die Favoriten verwenden zu können",
+    "removeFavoriteFromList": "Aus der Liste {0} entfernen",
+    "removeFromList": "Aus der Liste entfernen",
+    "saveSuccessfull": "Favoriten erfolgreich mutiert.",
+    "searchFavoriteTitle": "Suche als Favorit speichern",
+    "sRLegendInfoSaveFavorite": "Informationen zur Speicherung der Suche",
+    "sRLegendNewListLegend": "Neue Favoritenliste erfassen"
+  },
+  "favoritesListPage": {
+    "addNewList": "Neue Liste erfassen",
+    "cancel": "Abbrechen",
+    "nameLabel": "Name",
+    "nameOfNewList": "Name der neuen Liste",
+    "newList": "Neue Liste...",
+    "save": "Speichern",
+    "titel": "Favoriten",
+    "unexpectedError": "Es ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es später erneut. Falls das Problem bestehen bleibt, wenden Sie sich bitte an die Beratung oder an bundesarchiv@bar.admin.ch.",
+    "unexpectedErrorPrefix": "Fehlermeldung:"
+  },
+  "favoritesMigration": {
+    "close": "Schliessen",
+    "importFromLocal": "Meine Arbeitsmappen aus Local Swiss-Archives importieren",
+    "importFromPublic": "Meine Arbeitsmappen aus Swiss-Archives importieren"
+  },
+  "favoritesPage": {
+    "cancel": "Abbrechen",
+    "confirmDelete": "Sind Sie sicher, dass Sie die Liste {0} löschen möchten?",
+    "delete": "Löschen",
+    "nameOfNewList": "Neuer Name für die Liste",
+    "rename": "Umbenennen",
+    "save": "Speichern"
+  },
+	"fileSize": {
+		"kB": "KB",
+		"MB": "MB",
+		"GB": "GB",
+		"TB": "TB",
+		"PB": "PB",
+		"ZB": "ZB",
+		"YB": "YB"
+	},
+  "file": {
+    "acceptTermsWarning": "Bitte lesen und akzeptieren Sie die Nutzungsbestimmungen.",
+    "alert": "Achtung:",
+    "askForPreparation": "Diese Unterlagen sind digital vorhanden. Sie müssen zuerst aufbereitet werden, bevor sie für den Download bereitstehen.",
+    "availabilityCheckTitle": "Verfügbarkeit des Digitalisats wird geprüft...",
+    "cancel": "Abbrechen",
+    "download": "Download",
+		"downloadNow": "Jetzt herunterladen",
+    "downloadError": "Beim Starten des Downloads ist folgender Fehler aufgetreten: ",
+    "downloadErrorDefaultMessage": "Es ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es später erneut",
+    "downloadErrorTitle": "Fehler beim Download",
+    "downloadInfo": "Die abliefernden Stellen können auch während der Schutzfrist in die von ihnen abgelieferten Unterlagen Einsicht nehmen. Für deren Konsultation müssen Sie von Ihrer Verwaltungseinheit berechtigt sein. Diese erhält zudem eine automatische Benachrichtigung, jedes Mal wenn Sie solche Digitalisate herunterladen.",
+    "downloadInfo2": "Enthalten diese Unterlagen Personendaten, ist eine Ausleihe nur aus bestimmten Gründen zulässig ",
+    "downloadPending": "Der Download wird ausgeführt...",
+    "downloadSuccess": "Der Download wurde erfolgreich ausgelöst.",
+    "missingReason": "Bitte geben Sie einen Grund an, weshalb Sie die Unterlagen mit Personendaten ansehen möchten.",
+    "missingTermsOfUse": "Bitte lesen und akzeptieren Sie die Nutzungsbestimmungen.",
+    "notAuthorized": "Sie haben nicht genügend Rechte, um die digitalen Unterlagen dieser Verzeichnungseinheit einzusehen oder zu bestellen.",
+    "order": "Bestellen",
+		"chooseDownloadReason": "Bitte wählen Sie einen Grund für den Download aus.",
+    "personData": "Ja, dieses Digitalisat beinhaltet Personendaten:",
+    "pleaseLogin": "Melden Sie sich an, um zusätzliche Funktionen wie Favoritenverwaltung und Bestellungen nutzen zu können.",
+    "preparationInfo": "Zur Aufbereitung aufgegeben: {0}",
+    "preparationPending": "Die Aufbereitung kann mehrere Minuten bis zu einigen Stunden dauern. Prüfen Sie die Bestellung später nochmals. Wenn die Aufbereitung abgeschlossen ist, erhalten Sie eine E-Mail.",
+    "preparationPendingTitle": "Das Digitalisat wird erstellt...",
+    "preparationTitle": "Aufbereitung",
+    "prepareNow": "Jetzt aufbereiten",
+    "termsofUse": "Ich habe die <a href=\"#{0}\" target=\"_blank\">Nutzungsbestimmungen</a> gelesen und erkläre mich damit einverstanden."
+  },
+  "footer": {
+    "footerTitle": "Fusszeile",
+    "title": "Schweizerisches Bundesarchiv BAR"
+  },
+  "general": {
+    "day": "Tag",
+    "days": "Tagen",
+    "hour": "Stunde",
+    "hours": "Stunden",
+    "minute": "Minute",
+    "minutes": "Minuten",
+    "second": "Sekunde",
+    "seconds": "Sekunden"
+  },
+  "header": {
+    "abmelden": "Abmelden",
+    "altText": "Logo der Schweizerischen Eidgenossenschaft – zur Startseite",
+    "anmelden": "Anmelden",
+    "barAbbr": "BAR",
+    "barFullname": "Schweizerisches Bundesarchiv BAR",
+    "benutzerdaten": "Benutzerdaten",
+    "benutzeroberflaeche": "Benutzeroberfläche",
+    "bestellkorb": "Bestellkorb",
+    "bestellkorbItemsCount": "Bestellkorb ({0})",
+    "bestelluebersicht": "Bestellübersicht",
+    "claim": "Online-Zugang zum Bundesarchiv",
+    "closeMobileNavigation": "Navigation schliessen",
+    "closeNav": "Navigation schliessen",
+    "closeUserAccount": "Benutzermenu schliessen",
+    "departementEdiAbbr": "EDI",
+    "departementEdiDescription": "Eidgenössisches Departement des Innern",
+    "departmentBK": "BK: Schweizerische Bundeskanzlei",
+    "departmentEDA": "EDA: Eidgenössisches Departement für auswärtige Angelegenheiten",
+    "departmentEDI": "EDI: Eidgenössisches Department des Innern",
+    "departmentEFD": "EFD: Eidgenössisches Finanzdepartement",
+    "departmentEJPD": "EJPD: Eidgenössisches Justiz- und Polizeidepartment",
+    "departmentUVEK": "UVEK: Eidgenössisches Department für Umwelt, Verkehr, Energie und Kommunikation",
+    "departmentVBS": "VBS: Eidgenössisches Department für Verteidigung, Bevölkerungsschutz und Sport",
+    "departmentWBF": "WBF: Eidgenössisches Departement für Wirtschaft, Bildung und Forschung",
+    "derBundesrat": "Der Bundesrat",
+    "derBundesratInclDomain": "Der Bundesrat admin.ch",
+    "favoriten": "Favoriten",
+    "languageChoice": "Sprachwahl",
+    "loggedInInfo": "Sie sind als identifizierte/r Benutzer/in angemeldet",
+    "loggedInInfoAsRegisteredUser": "Sie sind als registrierte/r Benutzer/in angemeldet",
+    "meinkonto": "Mein Benutzerkonto",
+    "notLoggedInInfo": "Sie sind nicht angemeldet",
+    "notLoggedInTip": "Melden Sie sich an, um zusätzliche Funktionen wie Favoritenverwaltung oder Bestellungen nutzen zu können.",
+    "notLoggedInTipInfo": "Info: Melden Sie sich an, um zusätzliche Funktionen wie Favoritenverwaltung oder Bestellungen nutzen zu können.",
+    "onlineZugang": "Online-Zugang",
+    "openMobileNavigation": "Navigation öffnen",
+    "openUserAccount": "Benutzermenu öffnen",
+    "register": "Registrieren",
+    "srBreadcrumbOrientation": "Orientierung auf der Webseite",
+    "title": "Online-Zugang zum Bundesarchiv",
+    "zumBestellkorb": "Zum Bestellkorb mit {0} Positionen navigieren",
+		"favoritesCount": "Favoriten ({0})"
+  },
+  "headerContent": {
+    "component": {
+      "aktiv": "Aktiv",
+			"toolTippLoggedIn": "Weitere Informationen zu Ihrem Benutzerstatus finden Sie auf der Seite «Registrieren & Identifizieren» und unter dem Menü «Informationen»",
+			"toolTippLoggedInAsRegisteredUser": "Als registrierte/r Benutzer/in haben Sie Zugriff auf die öffentlich zugänglichen Daten im Bundesarchiv. Wenn Sie Daten innerhalb einer Schutzfrist einsehen wollen, müssen Sie sich vorgängig identifizieren (siehe \"Mein Benutzerkonto\")."
+    }
+  },
+  "hitbar": {
+    "copyPermalink": "Permalink dieser Suche in die Zwischenablage kopieren",
+    "groupByArchivplan": "Nach Archivplan gruppieren",
+    "orderableUnits": "Bestellbare Einheiten",
+    "permalink": "Permalink zu dieser Suche",
+    "saveAsFavorite": "Suche in Favoriten speichern",
+    "totalHits": "{0} Treffer"
+  },
+  "icon": {
+    "menu": {
+      "archivplan": "Im Archivplan zeigen",
+      "archivplankontext": "Archivplankontext anzeigen",
+      "bestellkorb": "In den Bestellkorb legen",
+      "bestellkorbdownload": "Zur Downloadseite wechseln ",
+      "download": "Zum Download",
+      "favoriten": "Zu den Favoriten hinzufügen"
+    }
+  },
+  "languages": {
+    "de": "Deutsch",
+    "en": "Englisch",
+    "fr": "Französisch",
+    "it": "Italienisch"
+  },
+  "main": {
+    "errorMandatoryField": "Dieses Feld muss ausgefüllt werden.",
+    "errorMandatoryMailField": "Dieses Feld muss eine gültige E-Mail-Adresse enthalten",
+    "errorMobil": "Mobilnummern können mit einem \"+\" beginnen, Zahlen, Leerzeichen und \"-\" enthalten und müssen zwischen 6 und 20 Zeichen lang sein",
+    "errorPhone": "Telefonnummern können mit einem \"+\" beginnen, Zahlen, Leerzeichen und \"-\" enthalten und müssen zwischen 6 und 20 Zeichen lang sein"
+  },
+  "metadata": {
+    "label": {
+      "creationPeriod": "Entstehungszeitraum",
+      "customFields": {
+        "abdeckung": "Abdeckung",
+        "aipId": "Identifikation digitales Magazin",
+        "aktenzeichen": "Aktenzeichen",
+        "anhang3": "Anhang 3 VBGA",
+        "bemerkungZurVe": "Zusätzliche Informationen",
+        "beteiligtePersonenKoerperschaften": "Beteiligte Personen /  Körperschaften",
+        "bildAnsicht": "Ansichtsbild",
+        "bildVorschau": "Vorschaubild",
+        "digitalesFindmittelBeschreibung": "Digitales Findmittel (Beschreibung)",
+        "digitalesFindmittelLink": "Digitales Findmittel (Link)",
+        "digitaleVersion": "Digitale Version",
+        "entstehungszeitraumAnmerkung": "Entstehungszeitraum Anm.",
+        "form": "Form",
+        "format": "Format",
+        "frueheresAktenzeichen": "Früheres Aktenzeichen",
+        "geschichteDerUnterlagen": "Geschichte der Unterlagen",
+        "kategorieDia": "Kat. Automatisierung",
+        "land": "Land",
+        "nachfolgerbehoerden": "Nachfolgerbehörde(n)",
+        "nichtOnlineRecherchierbareDossiers": "Nicht online recherchierbare Dossiers",
+        "publikationsrechte": "Publikationsrechte",
+        "signaturArchivplan": "Signatur Archivplan",
+        "thema": "Thema",
+        "urheber": "Urheber",
+        "veAblieferungLink": "Ablieferung",
+        "veOrdnungskomponenteLink": "Ordnungskomponente",
+        "verleger": "Verleger",
+        "verwandteVe": "Verwandte VE",
+        "vorgaengerbehoerden": "Vorgängerbehörde(n)",
+        "zugaenglichkeitGemaessBga": "Zugänglichkeit gemäss BGA",
+        "zusatzkomponenteZac1": "Zusatzkomponente",
+        "zustaendigeStelle": "Zuständige Stelle"
+      },
+      "digitallyAvailable": "Digital vorhandene Unterlagen",
+      "extent": "Laufmeter",
+      "formerReferenceCode": "Frühere Signaturen",
+      "level": "Stufe",
+      "referenceCode": "Signatur",
+      "title": "Titel",
+      "withinInfo": "Darin"
+    },
+    "searchFields": {
+      "_all": "Alles",
+      "allData": "Alles",
+      "allMetaData": "Metadaten",
+      "allPrimaryData": "Volltext (Primärdaten)",
+      "creationPeriod": "Entstehungszeitraum",
+      "customFields": {
+        "aktenzeichen": "Aktenzeichen",
+        "benutzerkommentare": "Benutzerkommentare",
+        "digitalisate": "Digitalisate",
+        "form": "Form",
+        "frueheresAktenzeichen": "Früheres Aktenzeichen",
+        "land": "Land",
+        "metadaten": "Metadaten",
+        "zugaenglichkeitGemaessBga": "Zugänglichkeit gemäss BGA",
+        "zusatzkomponenteZac1": "Zusatzkomponente"
+      },
+      "formerReferenceCode": "Frühere Signaturen",
+      "referenceCode": "Signatur",
+      "title": "Titel",
+      "withinInfo": "Darin"
+    },
+    "sortFields": {
+      "creationPeriod": {
+        "startDate": {
+          "ascending": "Datum aufsteigend",
+          "descending": "Datum absteigend"
+        }
+      },
+      "referenceCode": {
+        "ascending": "Signatur aufsteigend",
+        "descending": "Signatur absteigend",
+        "sort": {
+          "ascending": "Signatur aufsteigend",
+          "descending": "Signatur absteigend"
+        }
+      },
+      "relevanz": "Relevanz",
+      "title": {
+        "keyword": {
+          "ascending": "Titel aufsteigend",
+          "descending": "Titel absteigend"
+        },
+        "sort": {
+          "ascending": "Titel aufsteigend",
+          "descending": "Titel absteigend"
+        }
+      },
+      "treePath": {
+        "ascending": "Archivplankontext aufsteigend",
+        "descending": "Archivplankontext absteigend"
+      }
+    },
+    "title": {
+      "accessTokens": "Access Tokens",
+      "anmerkungen": "Anmerkungen",
+      "archivplan": "Archivplan",
+      "details": "Details",
+      "erschliessungskontrolle": "Erschliessungskontrolle",
+      "identifikation": "Identifikation",
+      "images": "Vorschaubilder",
+      "inhaltUndInnereOrdnung": "Inhalt und innere Ordnung",
+      "interneVermerke": "Interne Vermerke",
+      "kontext": "Kontext",
+      "sachverwandteUnterlagen": "Sachverwandte Unterlagen",
+      "zugangsUndBenutzungsbedingungen": "Zugangs- und Benutzungsbedingungen"
+    }
+  },
+  "modal": {
+    "close": "Schliessen"
+  },
+  "navigation": {
+    "about": {
+      "us": "Über"
+    },
+    "api": "API",
+    "archive": "Beratung",
+    "back": "Zurück",
+    "beratung": {
+      "chat": "Chat",
+      "chatbot": "Chatbot",
+      "chatbotTeaserText": "Fragen Sie den Chatbot (Beta) – er steht rund um die Uhr zur Verfügung.",
+      "chatTeaserText": "Chatten Sie von Dienstag bis Donnerstag von 9–12 und 13–15 Uhr mit dem Bundesarchiv – wir helfen Ihnen gerne weiter.",
+      "email": "E-Mail",
+      "emailTeaserText": "Senden Sie uns eine E-Mail für komplexere Anfragen.",
+      "forum": "Forum",
+      "forumTeaserText": "Diskutieren Sie Ihre Fragen und Erfahrungen mit anderen Archivnutzerinnen und -Nutzer.",
+      "quoteAndPublish": "Zitieren & Publizieren",
+      "quoteAndPublishTeaserText": "Vorgaben für das richtige Zitieren und Publizieren von Unterlagen aus dem Bundesarchiv."
+    },
+    "closemenu": "Navigation schliessen",
+    "contact": "Kontakt",
+    "deepLinkDetail": "Permanente URL der Verzeichnungseinheit",
+    "deepLinkSearch": "Permanente URL der Suche",
+    "information": {
+      "api": "API",
+      "apiText": "Entwickeln Sie? Das Application Programming Interface (API) des Bundesarchivs ermöglicht Ihnen, die Archivrecherche in Ihre Anwendung zu integrieren.",
+      "orderAndConsult": "Bestellen & Konsultieren",
+      "orderAndConsultTeaserText": "Analoge und digitale Unterlagen aus dem Bundesarchiv online bestellen und einsehen – wichtige Hinweise.",
+      "protectionAndPetitions": "Schutzfristen & Einsichtsgesuche",
+      "protectionAndPetitionsTeaserText": "Informationen zu Unterlagen des Bundesarchivs, die unter Schutzfrist stehen, sowie den nötigen Einsichtsgesuchen.",
+      "registerAndAuthentificate": "Registrieren & Identifizieren",
+      "registerAndAuthentificateTeaserText": "Anonym, angemeldet oder identifiziert: Die Rechte der einzelnen Benutzer-Kategorien im Überblick.",
+      "search": "Suchen",
+      "searchTeaserText": "Anleitung und Tipps zur Suche auf recherche.bar.admin.ch.",
+      "stocks": "Bestände",
+      "stocksTeaserText": "Übersicht über die Bestände des Bundesarchivs und deren Gliederung in Themenbereiche.",
+      "themenuebersicht": "Thematische Übersicht"
+    },
+    "legal": "Rechtliches",
+    "rechtlichesLink": "https://www.admin.ch/gov/de/start/rechtliches.html",
+    "search": "Suche",
+    "services": "Informationen",
+    "termsOfUse": "Nutzungsbestimmungen und Datenschutz"
+  },
+  "news": {
+    "heading": "Aktuell"
+  },
+  "oDataPagination": {
+    "backToStart": "Zur ersten Seite",
+    "count": "Anzahl: ",
+    "last": "Zur letzten Seite",
+    "next": "Nächste",
+    "previous": "Vorherige"
+  },
+  "order": {
+    "frombar": "(Diese Bestellung wurde durch das Bundesarchiv ausgelöst.)",
+    "unknowtext": "[Nicht sichtbar]"
+  },
+  "orderCheckoutPage": {
+    "bestellbestaetigung": "Bestellbestätigung",
+    "chooseShippingType": "Lieferart auswählen",
+    "digitalErhalten": "<strong>digital</strong> erhalten. Die Bearbeitung Ihres Digitalisierungsauftrags dauert in der Regel zwei Wochen. Nach Erhalt der Digitalisate können Sie weitere Dossiers bestellen.",
+    "finishOrder": "Bestellung abschliessen",
+    "inLesesaalLiefern": "zur Konsultation in den <strong>Lesesaal</strong> bestellen. Bestellen Sie 24 Stunden im Voraus, damit Ihnen die Unterlagen am gewünschten Tag zur Verfügung stehen (Dienstag, Mittwoch und Donnerstag).",
+    "inMyName": "In meinem eigenen Namen",
+    "insAmtLiefern": "ins <strong>Amt</strong> bestellen (Lieferfrist: ein bis zwei Arbeitstage)",
+    "inTheNameOfAnother": "Im Namen eines anderen Benutzers",
+    "iWantThisDossierOrdered": "Ich möchte dieses Dossier bestellen",
+    "iWantThisDossierPlural": "Ich möchte diese Dossiers",
+    "iWantThisDossierSingular": "Ich möchte dieses Dossier",
+    "mandatoryShippingType": "Bitte wählen Sie eine Lieferart aus.",
+    "mandatoryUser": "Bitte wählen Sie einen Benutzer aus, für den Sie die Bestellung durchführen möchten.",
+    "nextPage": "Weiter",
+    "orderDetails": "Angaben zur Bestellung",
+    "previousPage": "Zurück",
+    "reasons": "Begründung",
+    "title": "Bestellen",
+		"userSelect": "Benutzerauswahl",
+		"warningInfo": "Warnung",
+		"warningTitle": "Längere Wartezeiten für Digitalisate!",
+		"warningMessagePart1": "Aufgrund der grossen Nachfrage ist die Digitalisierungsinfrastruktur derzeit stark ausgelastet. Daher müssen Sie mit längeren Bearbeitungszeiten für Ihren Auftrag rechnen. Falls Sie die Unterlagen kurzfristig einsehen oder eine umfangreiche Bestellung aufgeben möchten, bestellen Sie die Dossiers bitte in den Lesesaal.",
+		"warningMessagePart2": "Mitarbeitende der Bundesverwaltung können von Ihrer eigenen Verwaltungseinheit abgelieferte Unterlagen direkt ins Amt bestellen.",
+		"digitalisierungNichtMoeglichTitle": "Kontingent ausgeschöpft",
+		"digitalisierungNichtMoeglichIntro": "Sie haben uns bereits mit der Digitalisierung von {0} Dossiers beauftragt.",
+		"digitalisierungNichtMoeglichAsBvw": "Bitte bestellen Sie die Unterlagen in den Lesesaal, ins Amt oder warten Sie, bis Ihre Digitalisierungsaufträge abgeschlossen sind.",
+		"digitalisierungNichtMoeglichOthers": "Bitte bestellen Sie die Unterlagen in den Lesesaal oder warten Sie, bis Ihre Digitalisierungsaufträge abgeschlossen sind.",
+		"exceedDigitalisierungTitle": "Sie können nur noch {0} Dossiers digitalisieren lassen",
+		"exceedDigitalisierungIntro": "Bitte wählen Sie unten jene Dossiers aus, die Sie jetzt digitalisieren lassen möchten. Sobald diese digitalisiert sind, können Sie weitere Dossier in Auftrag geben.",
+		"exceedDigitalisierungAsBvw": "Alternativ dazu ist eine Bestellung in den Lesesaal oder ins Amt jederzeit möglich.",
+		"exceedDigitalisierungOthers": "Alternativ dazu ist eine Bestellung in den Lesesaal jederzeit möglich."
+  },
+  "orderCheckoutPageComponent": {
+    "pageTitle": "Bestellung"
+  },
+  "orderEinsichtCheckoutPage": {
+    "bestellbestaetigung": "Empfangsbestätigung",
+    "finishOrder": "Gesuch einreichen",
+    "nextPage": "Weiter",
+    "orderDetails": "Angaben zum Gesuch",
+    "previousPage": "Zurück",
+    "title": "Einsichtsgesuch einreichen"
+  },
+  "orderEinsichtCheckoutPageComponent": {
+    "pageTitle": "Einsichtsgesuch einreichen"
+  },
+  "orderOverviewPage": {
+    "closeModal": "Schliessen",
+		"itemsCount": "Anzahl: {0}",
+    "columnItems": {
+      "abbruchgrundDisplay": "Abbruchgrund",
+      "artDerArbeitDisplay": "Art der Arbeit",
+      "comment": "Bemerkung zum Dossier",
+      "datumDesEntscheids": "Datum des Entscheids",
+      "enthaeltPersonendaten": "Personendaten (Verwaltungsausleihe, Art. 14.2 BGA)",
+      "entscheidGesuchDisplay": "Entscheid Gesuch",
+      "id": "Auftrags-ID",
+      "orderingAbbruch": "Abbruchgrund",
+      "orderingComment": "Bemerkung zur Bestellung",
+      "orderingDate": "Eingangsdatum",
+      "orderingEigeneUnterlagen": "Eigene Unterlagen",
+      "orderingEinsichtsgesuchZweck": "Begründung Einsichtsgesuch",
+      "orderingId": "Bestell-ID",
+      "orderingLieferdatumLesesaal": "Geplante Ausgabe im Lesesaal",
+      "orderingPeronenbezogeneNachforschung": "Personenbezogene Nachforschung",
+      "orderingTypeDisplay": "Typ",
+      "period": "Entstehungszeitraum",
+      "reasonDisplay": "Begründung Einsichtnahme",
+      "referenceCode": "Signatur",
+      "statusDisplay": "Status",
+      "title": "Titel"
+    },
+    "einAusblenden": "Spalten ein-/ausblenden",
+    "hiddenColumns": "Versteckte Spalten",
+    "noOrdersYet": "Es sind noch keine Bestellungen in Ihrem Konto vorhanden.",
+    "pageTitle": "Bestellübersicht",
+    "resetSort": "Sortierung und Filter zurücksetzen",
+    "resetView": "Ansicht zurücksetzen",
+    "saveAsExcel": "Exportieren",
+    "shippingTypeAmt": "Verwaltungsausleihe",
+    "shippingTypeBestellkorb": "Bestellkorb",
+    "shippingTypeDigital": "Digitalisierungsauftrag",
+    "shippingTypeEinsichtsgesuch": "Einsichtsgesuch",
+    "shippingTypeLesesaal": "Lesesaalausleihe",
+    "visibleColumns": "Sichtbare Spalten"
+  },
+  "orders": {
+    "loadingUsers": "Benutzer werden geladen...",
+    "submittingOrder": "Ihre Bestellung wird übermittelt..."
+  },
+  "page": {
+    "description": "recherche.admin.ch",
+    "title": "Schweizerisches Bundesarchiv BAR"
+  },
+  "pagination": {
+    "anzahlTreffer": "Anz. Treffer pro Seite",
+    "titleSr": "Seitennummerierung der Trefferliste"
+  },
+  "registerInfo": {
+    "cancelRegister": "Abbrechen",
+    "chLoginAltText": "Logo des CH-Logins",
+    "chLoginException": "Ausnahme: Mitarbeitende der Bundesverwaltung müssen sich via «Kerberos» oder «Smartcard» registrieren.",
+    "chooseCHLogin": "Wählen Sie bitte im nächsten Schritt die Option «CH-LOGIN».",
+    "info1": "Sie können den Online-Zugang anonym, als registrierte oder als identifizierte Person nutzen. Je nach Benutzerstatus stehen Ihnen unterschiedliche Funktionen zur Verfügung.",
+    "infoBox": "Info-Box",
+    "infoTitle": "Hinweis",
+    "questionText": "Bei Fragen zur Registrierung wenden Sie sich bitte an die Beratung oder an <a href=\"mailto:benutzer-admin@bar.admin.ch\">benutzer-admin@bar.admin.ch</a>.",
+    "registerImEiam": "Registrieren",
+    "title": "Kontoeröffnung für den Online-Zugang zum Bundesarchiv"
+  },
+  "row": {
+    "captionTranslation": "row.captionDefault",
+    "errorTranslation": "row.errorDefault"
+  },
+  "search": {
+    "advanced": {
+      "addNewGroup": "Weitere Suchgruppe hinzufügen",
+      "field": {
+        "zugaenglichkeitGemaessBga": {
+          "freiZugaenglich": "Frei zugänglich",
+          "inSchutzfrist": "In Schutzfrist",
+          "pruefungNoetig": "Prüfung nötig"
+        }
+      },
+      "group": {
+        "addNewField": "Suchfeld hinzufügen",
+        "and": "Alle Begriffe (AND)",
+        "closeGroup": "Suchgruppe schliessen",
+        "fieldChaining": "Verknüpfung der Suchfelder:",
+        "not": "Keiner der Begriffe (NOT)",
+        "or": "Mindestens ein Begriff (OR)"
+      },
+      "groupChaining": "Verknüpfung der Suchgruppen:",
+      "reset": "Zurücksetzen",
+      "search": "Suchen",
+      "showDetailsSyntax": "Zeige Details zur Suchsyntax",
+      "syntax": "Syntax",
+      "title": "Erweiterte Suche"
+    },
+    "advancedSearch": "Erweiterte Suche",
+    "archivePlanSearch": "Archivplan",
+    "archivePlanSearchTeaserText": "Recherchieren Sie im Archivplan und ordnen Sie damit die Unterlagen in ihren Kontext ein.",
+    "ausfuehrlicheBeschreibung": "Ausführliche Beschreibung",
+    "browseArchive": "Thematische Übersicht",
+    "browseArchiveTeaserText": "Das Archiv nach Themen gruppiert: Finden Sie Bestände, die zu Ihrem Thema passen.",
+    "browser": {
+      "backToSearch": "Zurück zum Suchresultat",
+      "first": "Erster Treffer",
+      "last": "Letzter Treffer",
+      "loading": "Lade...",
+      "next": "Nächster Treffer",
+      "nextPage": "Nächste Seite",
+      "nOfM": "Treffer {0} von {1}",
+      "pageToolTipBetween": "Weitere Seiten",
+      "pageToolTipBetweenShow": "Weitere Seiten anzeigen",
+      "pageTooltipHere": "Sie sind auf der Seite {0}",
+      "pageTooltipNext": "Seite {0} anzeigen",
+      "pageTooltipNextPageXofY": "Seite {0} von {1} anzeigen",
+      "pageTooltipPageXofY": "Sie sind auf der Seite {0} von {1}",
+      "previous": "Vorheriger Treffer",
+      "previousPage": "Vorherige Seite",
+      "title": "Suchresultat"
+    },
+    "captchaInvalid": "Die Daten zur Captcha-Überprüfung sind ungültig.",
+    "captchaInvalidDetails": "Bitte versuchen Sie es erneut.",
+    "captchaMissing": "Es fehlen die Daten zur Captcha-Überprüfung.",
+    "captchaMissingDetails": "Bitte versuchen Sie es erneut.",
+    "changeSearchCriteria": "Suchkriterien bearbeiten",
+    "dateBetween": "Zeitraum zwischen",
+    "extendedSearch": "Erweiterte Suche",
+    "extendedSearchTeaserText": "Passen Sie die Suche Ihren Bedürfnissen an.",
+    "facetteEntry": {
+      "bis": "bis",
+      "ja": "Ja",
+      "nein": "Nein",
+      "resultateOhneZeitraum": "Resultate ohne Zeitraum"
+    },
+    "fieldoperator": {
+      "and": "Alle Begriffe",
+      "not": "Keiner der Begriffe",
+      "or": "Mindestens ein Begriff"
+    },
+    "filterTitle": "Filter",
+    "genericTryAgain": "Versuchen Sie, die Suche später erneut auszuführen.",
+    "groupoperator": {
+      "capitalAnd": "UND",
+      "capitalOr": "ODER"
+    },
+    "highUsageInfo": "Bitte bestätigen Sie, dass Sie kein Roboter sind",
+    "highUsageTitle": "Sehr viele zeitnahe Anfragen",
+    "inRange": "Im Zeitraum",
+    "invalidQuery": "Ihre Suchanfrage ist ungültig. Bitte kontrollieren Sie die Syntax.",
+    "lastExecutedQuery": "Ihre Suchanfrage: {0}",
+    "lastSearchResult": "Letztes Suchresultat",
+    "lastSearchResultTeaserText": "Rufen Sie Ihr letztes Suchresultat auf.",
+    "placeHolder": "Suchen Sie in über 3´500´000 Archivalien",
+    "rangeFrom": "Zeitraum von",
+    "rangeTo": "Zeitraum bis",
+    "resetSearch": "Suche zurücksetzen",
+    "runSearch": "Suche auslösen",
+    "searchTerm": "Suchfeld",
+    "simple": {
+      "beratung": "Beratung",
+      "informationen": "Informationen",
+      "intro": "Finden Sie Unterlagen zur Geschichte der Schweiz seit 1798. Durchsuchen Sie den Katalog und laden Sie Dossiers, Fotos und Filme herunter oder bestellen Sie sie in den Lesesaal.",
+      "intro2": "Unterstützung erhalten Sie unter \"Beratung\" und \"Informationen\".",
+      "title": "Online-Zugang zum Bundesarchiv",
+      "unter": "und unter"
+    },
+    "standardSearch": "Einfache Suche",
+    "standardSearchTeaserText": "Steigen Sie mit einer einfachen Suche in die Recherche ein.",
+    "synonymes": {
+      "add": "Begriffe in Suche einfügen",
+      "cancel": "Abbrechen",
+      "listTitle": "Zu Ihrer Eingabe wurden folgende alternative Begriffe gefunden",
+      "quellenListTitle": "Quellen",
+      "termdatcollection": "TERMDAT-Sammlungen",
+      "termdatlink": "Die aufgeführten Terme stammen aus folgenden",
+      "trefferTitle": "Begriff gefunden in"
+    },
+    "termToShort": "Bitte geben Sie mindestens ein Zeichen ein.",
+    "termToShortForAll": "Bitte geben Sie mindestens zwei Zeichen ein.",
+    "thematicInventoryOverview": "Thematische Übersicht",
+    "thematicInventoryOverviewTeaserText": "Das Archiv nach Themen gruppiert: Finden Sie Bestände, die zu Ihrem Thema passen.",
+    "trefferTitle": "Treffer",
+    "unexpectedSystemError": "Es ist ein unerwarteter Fehler aufgetreten.",
+    "wenigerAnzeigen": "Weniger anzeigen"
+  },
+  "searchErrors": {
+    "multipleResultsFound": "Die Suche nach dieser Signatur hat mehrere Resultate erbracht. Bitte geben Sie eine eindeutige Signatur ein."
+  },
+  "searchResultPageComponent": {
+    "pageTitle": "Suchergebnisse"
+  },
+  "shoppingCartItemList": {
+    "bestellpositionEntfernen": "Bestellposition entfernen",
+    "bewilligungBereitsVorhanden": "Bewilligung bereits vorhanden",
+    "bewilligungBereitsVorhandenText": "Bitte geben Sie das Datum Ihrer Einsichtsbewilligung an. Mittels Klick auf \"Weiter\" wird die Verzeichnungseinheit anschliessend dem Bereich \"Unterlagen bestellen\" hinzugefügt.",
+    "bewilligungVorhandenTitle": "Bewilligung bereits vorhanden",
+    "bewilligungVorhandenTooltip": "Klicken, um die vorhandene Bewilligung zu hinterlegen",
+    "chooseValidDate": "Bitte wählen Sie ein gültiges Datum aus.",
+    "commentDossier": "Bemerkung zum Dossier",
+    "dateOfBewilligung": "Datum Einsichtsbewilligung",
+    "refCode": "Signatur",
+    "removeOrderItemTooltip": "Klicken, um die Bestellposition zu entfernen",
+    "sRBewilligungHinterlegenButton": "Bewilligung hinterlegen Button",
+    "sRErrorTitle": "Nachfolgend eine Fehlermeldung",
+    "sRLegendBewilligung": "Formular zur Eingabe der Bewilligung",
+    "tableCaption": "Ausgewählte Verzeichnungseinheit",
+    "timeSpan": "Entstehungszeitraum",
+    "title": "Titel",
+    "unExpectedError": "Es ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es später erneut."
+  },
+  "shoppingCartPage": {
+    "ablieferung": "Ablieferung",
+    "addManuallySectionTitle": "Dossiers manuell zum Bestellkorb hinzufügen",
+    "addToCart": "Hinzufügen",
+    "aktenzeichen": "Aktenzeichen",
+    "archivNr": "Archivnummer",
+    "behaeltnisNr": "Behältnisnummer",
+    "bestellenText": "Diese Unterlagen sind für Sie frei zugänglich oder müssen vom BAR hinsichtlich Zugänglichkeit geprüft werden. Bitte klicken Sie auf \"Weiter\", um den Bestellvorgang fortzusetzen.",
+    "dossierTitel": "Dossiertitel",
+    "einsichtsbewilligungenNotwendig": "Für diese Dossiers sind Einsichtsbewilligungen notwendig:",
+    "einsichtsBewilligungVorhanden": "Sie verfügen für diese Unterlagen bereits über eine Einsichtsbewilligung? Bitte kontaktieren Sie uns.",
+    "einsichtsGesuchEinreichen": "Einsichtsgesuch einreichen",
+    "einsichtsGesuchStellen": "Weiter",
+    "einsichtsGesuchStellenText": "Für diese Unterlagen sind Einsichtsbewilligungen notwendig. Wenn Sie bereits eine Bewilligung besitzen, klicken Sie bitte auf \"Bewilligung bereits vorhanden\". Ansonsten klicken Sie auf \"Weiter\".",
+    "emptyCart": "Der Bestellkorb ist leer.",
+    "exampleAblieferung": "z. B. 1988/234",
+    "exampleTeilBestand": "z. B. E3340B",
+    "fieldIsRequired": "Dies ist ein Pflichtfeld",
+    "fieldsMarkedWithAreCompulsory": "*: Diese Felder müssen ausgefüllt werden.",
+    "fieldsMarkedWithDoubleStars": "**: Es muss eine Behältnis- oder eine Archivnummer angegeben werden.",
+    "headingTitleText": "Bestellen Sie Unterlagen in den Lesesaal, als Verwaltungsausleihe, erteilen Sie Digitalisierungsaufträge oder reichen Sie Einsichtsgesuche ein.",
+    "helpDateRangeFieldWithExample": "Falls vorhanden, zwingend angeben. Z.B. 1957-1962",
+    "inputArchivNrIsRequired": "Dieses oder das Behältnisnummer-Feld muss ausgefüllt sein.",
+    "inputBehaeltnisNrIsRequired": "Dieses oder das Archivnummer-Feld muss ausgefüllt sein.",
+    "order": "Weiter",
+    "referenceCode": "Signatur",
+    "searchFailedMessage": "Es ist ein Fehler bei der Suche aufgetreten. Details: {0}",
+    "searchFailedTitle": "Suche fehlgeschlagen",
+    "teilBestand": "(Teil-)Bestand",
+    "title": "Bestellkorb",
+    "unterlagenBestellen": "Unterlagen bestellen (kostenlos)",
+    "veNotFound": "Keine Verzeichnungseinheit mit dieser Signatur gefunden",
+    "veNotFoundTitle": "Nicht gefunden",
+    "withoutReferenceCode": "Ohne Signatur",
+    "withReferenceCode": "Mit Signatur",
+    "zeitraumDossier": "Zeitraum des Dossiers"
+  },
+  "shoppingCartPageComponent": {
+    "pageTitle": "Bestellkorb"
+  },
+  "simpleHit": {
+    "addedToBasketText": "\"{0}\" wurde erfolgreich dem Bestellkorb hinzugefügt.",
+    "addedToBasketTitle": "Im Bestellkorb",
+    "alreadyAddedToBasketText": "\"{0}\" ist bereits im Bestellkorb vorhanden.",
+    "alreadyAddedToBasketTitle": "Bereits hinzugefügt",
+    "archivplankontext": "Archivplankontext",
+    "digitalAvailableText": "Dieses Dossier liegt bereits digital vor. Sie können es hier anschauen oder herunterladen.",
+    "digitalAvailableTitle": "Digital verfügbar",
+    "explanationCaption": "Die Relevanz wurde von ElasticSearch anhand der folgenden Werte berechnet:",
+    "failedAddToBasketText": "Beim Hinzufügen in den Bestellkorb gab es einen Fehler.",
+    "failedAddToBasketTitle": "Fehler",
+    "failedBecauseOfLevelMessage": "Diese Verzeichnungseinheit ist nicht bestellbar. Bei Fragen wenden Sie sich bitte an die Beratung oder an bestellung@bar.admin.ch.",
+    "failedBecauseOfLevelTitle": "Bestellen fehlgeschlagen",
+    "loginToUseBasketText": "Bitte melden Sie sich an, um den Bestellkorb nutzen zu können.",
+    "loginToUsebasketTitle": "Jetzt anmelden",
+    "noHitsInfo": {
+      "header": "Es kann verschiedene Gründe haben, warum Ihre Suche keine Treffer ergeben hat:",
+      "hinweis": "Hinweis",
+      "reason1": "Metadaten, die Personennamen und besonders schützenswerte Personendaten oder Persönlichkeitsprofile enthalten, darf das Bundesarchiv erst nach Ablauf der Schutzfrist publizieren. Diese Metadaten sind nur im Lesesaal einsehbar.",
+      "reason2": "Die gesuchten Unterlagen sind noch nicht erschlossen und im System erfasst.",
+      "reason3": "Tippfehler oder unbekannte Suchbegriffe: Bitte prüfen Sie die Schreibweise oder suchen Sie nach anderen Begriffen.",
+      "reason4": "Es gibt im Bundesarchiv tatsächlich keine Unterlagen zu Ihrem Thema. Weitere Archive finden Sie in der <a href=\"{0}\">Datenbank Archivadressen der Schweiz</a> oder auf dem <a href=\"{1}\">Archivportal Europa</a>.",
+      "showHinweis": "Diesen Hinweis zukünftig nicht mehr anzeigen"
+    },
+    "noHitsTitle": "Keine Treffer zu Ihrem Suchbegriff",
+    "noHitsTitleForQuery": "Es wurden keine mit Ihrer Suchanfrage - {0} - übereinstimmenden Archivalien gefunden.",
+    "oe3RoleRequired": "Um Unterlagen mit einer Einsichtsbewilligung bestellen zu können, ist der Benutzerstatus «identifizierter Benutzer» notwendig. Um zum Identifizierungsprozess zu gelangen, klicken Sie bitte auf diese Meldung.",
+    "oe3RoleRequiredTitle": "Bestellung nicht möglich",
+    "reason4": "Es gibt im Bundesarchiv tatsächlich keine Unterlagen zu Ihrem Thema. Weitere Archive finden Sie in der <a href=\"{0}\">Datenbank Archivadressen der Schweiz</a> oder auf dem <a href=\"{1}\">Archivportal Europa</a>.",
+    "relevance": "Relevanz",
+    "signatur": "Signatur",
+    "zugangTooltip": "Zugänglichkeit gemäss BGA"
+  },
+  "simpleHitList": {
+    "sortierung": "Sortierung"
+  },
+  "simpleSearchPageComponent": {
+    "pageTitle": "Einfache Suche"
+  },
+  "social": {
+    "menuTitle": "Teilen",
+    "tooltip": "Teilen"
+  },
+  "spinner": {
+    "loading": "Seite wird geladen"
+  },
+  "staticContent": {
+    "errorMessage": "Die gewünschte Seite kann nicht angezeigt werden",
+    "errorTitle": "Es trat ein Fehler beim Laden der Seite auf. System-Meldung: {0}"
+  },
+  "syntaxHelp": {
+    "fuzzy": "Suchen Sie nach ähnlichen, aber nicht exakten Worten mit dem Fuzzy-Operator.",
+    "fuzzyExample": "Bsp., um \"Bundesrat\", \"Bundesräte\", \"Bundesrats\" etc. zu finden: \"Bundesrat~\"",
+    "gewichtung": "Erhöhen Sie mit ^ die Gewichtung eines Wortes.",
+    "gewichtungExample": "Bsp.: Bundesrat^2 Parlament",
+    "group": "Benutzen Sie Klammern, um Operatoren zu gruppieren.",
+    "groupExample": "Bsp.: (Bundesrat OR Bundespräsident) AND Parlament",
+    "hochkommas": "Schliessen Sie eine Phrase in Hochkommas ein, um eine genaue Suche nach dieser Wortphrase abzusetzen.",
+    "hochkommasExample": "Bsp.: \"Basler Übereinkommen\"",
+    "not": "Benutzen Sie NOT, um einzelne Begriffe auszuschliessen.",
+    "notExample": "Bsp.: Bundesrat NOT Parlament",
+    "or": "Benutzen Sie OR zwischen Suchbegriffen, um alle Resultate mit dem einen oder dem anderen Suchbegriff zu finden.",
+    "orExample": "Bsp.: Bundesrat OR Bundespräsident",
+    "proximity": "Suchen Sie in der Nähe von (Proximity Searches). Die Zahl gibt die maximale Anzahl Wörter zwischen den Begriffen an.",
+    "proximityExample": "Bsp.: \"Professor Einstein\" ~5",
+    "wildcard": "Benutzen Sie * oder ?, um mehrere (*) oder einzelne (?) Buchstaben zu ersetzen (wird am Wortanfang nicht unterstützt).",
+    "wildcardExample": "Bsp.: Bundes*, Me?er"
+  },
+  "usageSection": {
+    "infoSymbol": "Info-Symbol"
+  },
+  "user": {
+		"cancelRegistrationMessage": "Bitte schliessen Sie die Registrierung ab und speichern Sie die Daten.",
+    "birthday": "Geburtsdatum",
+    "countryCode": "Land",
+    "emailAddress": "E-Mail",
+    "errorLegalAgreementConsent": "Bitte lesen und akzeptieren Sie die Datenschutzerklärung.",
+    "familyName": "Name",
+    "firstName": "Vorname(n)",
+    "infoText": "Bitte erfassen Sie Ihre Benutzerdaten, damit wir Sie bei Bedarf erreichen können. Sie können diese Daten jederzeit aktualisieren.",
+    "legalAgreementConsentTitle": "Datenschutzerklärung",
+    "legelAgreementConsentText": "Ich bin einverstanden, dass das Schweizerische Bundesarchiv (BAR) meine Personendaten wie in der <a href=\"#/{0}\">Datenschutzerklärung</a> beschrieben zur Erbringung von Benutzungsdienstleistungen im Rahmen des Online-Zugangs verwenden darf.",
+    "mobileTel": "Mobiltelefon",
+    "organization": "Organisation",
+    "pageTitle": "Eingabe Benutzerdaten",
+    "phoneNumber": "Telefon (Festnetz)",
+    "placeholder": {
+      "birthday": "Geburtsdatum (tt.mm.jjjj)",
+      "emailAddress": "E-Mail",
+      "familyName": "Name",
+      "firstName": "Vorname(n)",
+      "mobileTel": "Mobiltelefon",
+      "organization": "Organisation",
+      "phoneNumber": "Telefon (Festnetz)",
+      "street": "Strasse / Nr.",
+      "streetAttachment": "Strasse Zusatz",
+      "town": "Ort",
+      "zipCode": "PLZ"
+    },
+    "preferredLangauge": "Bevorzugte Sprache",
+    "preferredLanguageHelpText": "Bitte geben Sie an, in welcher Sprache Sie mit dem Bundesarchiv kommunizieren möchten.",
+    "register": "Eingabe Benutzerdaten",
+    "requiredFieldsInfo": "Mit einem * gekennzeichnete Felder müssen ausgefüllt werden.",
+    "savesuccess": "Erfolgreich gespeichert.",
+    "street": "Strasse / Nr.",
+    "streetAttachment": "Strasse Zusatz",
+    "town": "Ort",
+    "userdata": "Benutzerdaten",
+    "zipCode": "PLZ"
+  },
+  "userAccount": {
+    "saveError": "Ihre Benutzerdaten wurden nicht gespeichert",
+    "saveErrorTitle": "Problem beim Speichern",
+    "saveSuccess": "Ihre Benutzerdaten wurden erfolgreich gespeichert",
+    "saveSuccessTitle": "Erfolgreich gespeichert"
+  },
+	"orderSection": {
+		"orderText": "Legen Sie die Unterlagen in den Bestellkorb, um sie dort direkt zu bestellen oder ein Einsichtsgesuch einzureichen."
+	}
+}

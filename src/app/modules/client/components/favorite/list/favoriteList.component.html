@@ -1,0 +1,94 @@
+<div class="list-favorites">
+	<div class="alert alert-danger" role="alert" *ngIf="error">
+		<span>
+			{{'Es ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es später erneut.' | translate:'favoriteList.unknownErrorText'}}
+		</span>
+	</div>
+	<div *ngIf="veItems && veItems.length > 0">
+		<h2>{{'Verzeichnungseinheiten ({0})' | translate:'favoriteList.verzeichnungseinheiten':veItems.length}}</h2>
+		<div class="table-responsive">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th *ngIf="hasActions" class="fl-command-column"><span class="sr-only">{{'Spalte mit der Aktion "Bestellen" oder "Zur Downloadseite wechseln"' | translate:'favoriteList.table.order'}}</span></th>
+						<th>{{'Signatur'|translate:'favoriteList.table.signatur'}}</th>
+						<th>{{'Titel'|translate:'favoriteList.table.title'}}</th>
+						<th>{{'Zeitraum'|translate:'favoriteList.table.zeitraum'}}</th>
+						<th>{{'Stufe' | translate:'favoriteList.table.level' }}</th>
+						<th class="text-left fl-saved-at-column">{{'Gespeichert' | translate:'favoriteList.table.saved' }}</th>
+						<th class="fl-remove-column"><span class="sr-only">{{'Spalte mit der Aktion "Löschen"' | translate:'favoriteList.table.loeschen'}}</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let item of veItems">
+						<td *ngIf="hasActions" class="text-center">
+							<a class="btn btn-link" *ngIf="item.canBeOrdered && !item.canBeDownloaded" (click)="addToCart(item)" data-toggle="tooltip"  tooltip="{{ 'In den Bestellkorb legen' | translate:'icon.menu.bestellkorb'}}">
+								<span class="icon icon--cart" aria-hidden="true"></span>
+								<span class="sr-only">
+									{{ 'In den Bestellkorb legen' | translate:'icon.menu.bestellkorb'}}
+								</span>
+							</a>
+							<a class="btn btn-link" *ngIf="item.canBeDownloaded" [routerLink]="goToVe(item)" data-toggle="tooltip"  tooltip="{{ 'Zur Downloadseite wechseln ' | translate:'icon.menu.bestellkorbdownload'}}">
+								<span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>
+								<span class="sr-only">
+									{{ 'Zur Downloadseite wechseln ' | translate:'icon.menu.bestellkorbdownload'}}
+								</span>
+							</a>
+						</td>
+						<td class="fl-reference-code-column">
+							<a [routerLink]="goToVe(item)">
+								{{item.referenceCode}}
+							</a>
+						</td>
+						<td class="shc-title-column">{{item.title}}</td>
+						<td>{{item.creationPeriod}}</td>
+						<td>{{item.level}}</td>
+						<td class="fl-saved-at-column">{{getFormattedDate(item.createdAt)}}</td>
+						<td class="fl-remove-column">
+							<a class="btn btn-link" (click)="removeItem(item)">
+								<span class="icon icon--close"></span>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div *ngIf="searchItems && searchItems.length > 0">
+		<h2>{{'Suchabfragen ({0})' | translate:'favoriteList.suchabfragen':searchItems.length}}</h2>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>{{'Suchabfrage'| translate:'favoriteList.table.suchabfrage'}}</th>
+					<th>{{'Gespeichert' | translate:'favoriteList.table.gespeichert' }}</th>
+					<th><span class="sr-only">{{'Spalte mit der Aktion "Löschen"' | translate:'favoriteList.table.loeschen'}}</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of searchItems">
+					<td>
+						<a [href]="item.url">
+							{{item.title}}
+						</a>
+					</td>
+					<td class="fl-saved-at-column">{{getFormattedDate(item.createdAt)}}</td>
+					<td class="text-center fl-remove-column">
+						<a class="btn btn-link" (click)="removeItem(item)">
+							<span class="icon icon--close"></span>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div *ngIf="allListsAreEmpty()" class="row">
+		<div class="col-xs-12">
+			<div class="alert alert-info" role="alert">
+				<span class="sr-only">info:</span>
+				<p>{{'Es sind aktuell keine Favoriten auf dieser Liste gespeichert.' | translate:'favoriteList.table.keineFavListe'}}</p>
+			</div>
+		</div>
+	</div>
+</div>

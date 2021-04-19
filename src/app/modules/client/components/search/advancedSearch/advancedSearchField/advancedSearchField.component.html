@@ -1,0 +1,53 @@
+<div class="search-field-row" *ngIf="selectedField">
+	<div class="col-sm-4 col-xs-12 search-col">
+		<select class="form-control" [(ngModel)]="selectedDefinition" [id]="selectedField.id + '_dropdown'"
+				(change)="onSelectedChanged()">
+			<option *ngFor="let f of getAvailableDefinitions()"
+					[selected]="f.key === selectedField.key ? 'selected' : ''" [ngValue]="f">
+				{{translateSearchFieldValue(f)}}
+			</option>
+		</select>
+	</div>
+	<div class="col-sm-8 col-xs-12 search-col">
+		<div [ngSwitch]="selectedField.type" class="search-field-text">
+			<ng-container *ngSwitchCase="FieldType.Dropdown">
+				<div style="margin:0 !important; padding:0 !important;">
+					<select class="form-control" [name]="getUniqueTextboxName()" [(ngModel)]="selectedField.value">
+						<option *ngFor="let v of selectedField.values" [value]="v.value || v.label">{{v.label || v.value}}</option>
+					</select>
+				</div>
+			</ng-container>
+			<ng-container *ngSwitchCase="FieldType.Datespan">
+				<cmi-viaduc-date-range-field [name]="'dr_' + getUniqueTextboxName()" [(ngModel)]="selectedField"
+											 [uniqueName]="getUniqueTextboxName()"></cmi-viaduc-date-range-field>
+			</ng-container>
+			<ng-container *ngSwitchDefault="">
+				<div style="margin:0 !important; padding:0 !important;">
+					<label class="sr-only" for="textBox{{selectedField.id}}">
+						{{translateSearchFieldValue(selectedField)}}
+					</label>
+					<input id="textBox{{selectedField.id}}" *ngIf="selectedField.autoFocus === true" type="text" class="form-control"
+						   [name]="getUniqueTextboxName()" [(ngModel)]="selectedField.value" autoFocus="true" (keydown)="onKeydownSearch($event)">
+					<input id="textBox{{selectedField.id}}" *ngIf="selectedField.autoFocus !== true" type="text" class="form-control"
+						   [name]="getUniqueTextboxName()" [(ngModel)]="selectedField.value" (keydown)="onKeydownSearch($event)">
+				</div>
+			</ng-container>
+		</div>
+		<div class="advanced-search-synonym-icon">
+			<cmi-viaduc-search-synonym-icon [controlId]="getUniqueTextboxName()" [searchTerm]="selectedField.value"
+											(addSynonymToSearchClicked)='onAddSynonymToSearchClicked($event)'></cmi-viaduc-search-synonym-icon>
+		</div>
+		<span class="pull-right" *ngIf="selectedField.id != '1_1'" style="margin:0 !important; padding:0 !important;">
+            <button type="button" (click)="deleteField()" class="btn btn-link">
+				<!--Braucht beides um von allen Screenreadern erkannt zu werden-->
+				<span class="screen-reader-only">
+					{{'Suchfeld entfernen' | translate:'advancedSearchField.removeCriteria'}}
+				</span>
+				<span class="glyphicon glyphicon-minus"  tooltip="{{'Suchfeld entfernen' | translate:'advancedSearchField.removeCriteria'}}"></span>
+            </button>
+	    </span>
+	</div>
+	<div class="col-xs-12 hidden-sm hidden-lg hidden-md hidden-xl">
+		<hr>
+	</div>
+</div>

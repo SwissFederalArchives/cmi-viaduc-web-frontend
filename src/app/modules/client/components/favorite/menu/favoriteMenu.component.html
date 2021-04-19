@@ -1,0 +1,73 @@
+<div class="menu-favorites">
+	<div *ngIf="!authenticated">
+		<h4>
+			<span>{{ 'Favoriten' | translate:'favorites.menuTitle' }}</span>:
+		</h4>
+		<p>{{ 'Bitte melden Sie sich an, um die Favoriten verwenden zu können' |
+			translate:'favorites.pleaseLogin'}}</p>
+
+		<a class="btn btn-small pull-right"
+		   (click)="login($event)"
+		   (keydown.enter)="login($event)"
+			tabindex="0">
+			<span>{{ 'Anmelden' | translate:'anmelden' }}</span>
+		</a>
+	</div>
+
+	<div *ngIf="authenticated && error">
+		<h4><span>{{ 'Favoriten' | translate:'favorites.menuTitle' }}</span>:</h4>
+		<p>{{ 'Es trat ein Fehler auf. Bitte versuchen Sie es erneut oder melden sich neu an.' |
+			translate:'favorites.errorPleaseTryAgain'}}</p>
+	</div>
+
+	<div *ngIf="isEnabled()">
+		<h4><span>{{ 'Als Favorit merken' | translate:'favorites.menuTitleAsFavorite' }}</span>:</h4>
+		<ul class="links">
+			<li *ngFor="let list of lists">
+				<a [attr.title]="getToggleTooltip(list)">
+					<input (change)="toggleOn($event, list)" type="checkbox" [id]="list.id" [name]="list.id" [checked]="list.included">
+					<span (click)="toggleOn($event, list)">{{ list.name }}</span>
+				</a>
+			</li>
+		</ul>
+
+		<a (keydown.enter)="showHideAddNew(true, $event)" (click)="showHideAddNew(true, $event)" tabindex="0" class="add-new-btn" *ngIf="!addingNew">
+			<span>{{ 'Zu neuer Favoritenliste' | translate:'favorites.addToNewList' }}</span>	...
+		</a>
+	</div>
+
+	<div *ngIf="isEnabled() && addingNew" class="add-new-wrapper">
+		<h5>
+			<span>{{ 'Zu neuer Favoritenliste' | translate:'favorites.addToNewList' }}</span>:
+		</h5>
+
+		<div class="form-group" [ngClass]="{'has-warning': !gotNewListName() && addNewClicked}">
+			<input type="text" placeholder="{{ 'Neue Liste..' | translate:'favorites.newListNamePlaceholder' }}" [(ngModel)]="formData.newListName">
+
+			<div class="help-block" role="alert" *ngIf="!gotNewListName() && addNewClicked">
+				{{ 'Bitte geben Sie einen Titel für die neue Liste ein.' | translate:'favorites.missingTitle' }}
+			</div>
+		</div>
+
+
+		<div class="fav-cancel-save-btns">
+			<button class="btn btn-small"
+			   (click)="addNew($event)"
+			   tabindex="0">
+				{{ 'Hinzufügen' | translate:'hinzufuegen' }}
+			</button>
+			<button class="btn btn-small"
+			   (click)="showHideAddNew(false, $event)"
+			   tabindex="0">
+				{{ 'Abbrechen' | translate:'abbrechen' }}
+			</button>
+		</div>
+	</div>
+
+	<div *ngIf="isEnabled() && !addingNew">
+        <button (click)="saveDialog()" class="btn btn-small">{{'Speichern' | translate:'save'}}</button>
+        <button (click)="cancelDialog()" class="btn btn-small">{{'Abbrechen' | translate:'abbrechen'}}</button>
+    </div>
+
+	<cmi-loader *ngIf="loading" class="cmi-visible"></cmi-loader>
+</div>

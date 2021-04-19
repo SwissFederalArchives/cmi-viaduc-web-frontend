@@ -1,0 +1,16 @@
+<div class="section" [ngClass]="{ 'collapsed': !showQuelle, 'expanded': showQuelle }">
+	<div tabindex="-1" class="section-header" (click)="toggleQuelle()">
+		<h4><a><i class="glyphicon"
+				  [ngClass]="{ 'glyphicon-chevron-right': !showQuelle, 'glyphicon-chevron-down': showQuelle }"></i></a>
+		</h4>
+		<h4><span>{{'Quellen' | translate:'search.synonymes.quellenListTitle' }}</span></h4>
+	</div>
+	<div class="section-content">
+		<ul>
+			<li class="list-search-synonyme-termdatlink">{{'Die aufgeführten Terme stammen aus folgenden' | translate:'search.synonymes.termdatlink' }}
+				<a href="https://www.bk.admin.ch/bk/{{this._context.language}}/home/dokumentation/sprachen/termdat.html">{{
+					'TERMDAT-Sammlungen' | translate:'search.synonymes.termdatcollection' }}</a>:</li>
+			<li *ngFor="let quelle of synonymeQuelleList">{{quelle}}</li>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,90 @@
+<form [formGroup]="form">
+	<div class="ocp-orderkind-container">
+		<fieldset *ngIf="!isAsUser">
+			<legend class="hidden-legend">{{'Art der Arbeit' | translate:'checkoutOrderDetailsStep.artDerArbeit'}} *</legend>
+			<div class="form-group" [ngClass]="{'has-warning': form.hasError('required', ['artDerArbeitDropdown']) && nextClicked}">
+				<label class="col-sm-3 control-label" for="artDerArbeitDropdown">
+					{{'Art der Arbeit' | translate:'checkoutOrderDetailsStep.artDerArbeit'}} *
+				</label>
+				<div class="col-sm-9">
+					<select formControlName="artDerArbeitDropdown" id="artDerArbeitDropdown" required class="form-control">
+						<option [ngValue]="undefined" selected>{{'Bitte wählen' | translate:'checkoutOrderDetailsStep.pleaseChoose'}}
+						</option>
+						<option *ngFor="let a of artDerArbeiten" [ngValue]="a.id">{{a.name}}</option>
+					</select>
+
+					<div *ngIf="form.hasError('required', ['artDerArbeitDropdown']) && nextClicked" class="help-block" role="alert">
+						{{'Bitte geben Sie die Art der Arbeit an, für die Sie die Unterlagen benötigen.' | translate: 'checkoutOrderDetailsStep.mandatoryArtDerArbeit'}}
+					</div>
+				</div>
+			</div>
+		</fieldset>
+
+		<fieldset *ngIf="isLesesaalOrdering()">
+			<legend class="hidden-legend">{{'Datum Lesesaal' | translate:'checkoutOrderDetailsStep.datumLesesaal'}} *</legend>
+			<div class="form-group" [ngClass]="{'has-warning': (form.hasError('required', ['konsultierungsDatum']) || invalidDateError) && nextClicked}">
+				<label for="konsultierungsDatum" class="col-sm-3 control-label" id="date">
+					{{'Ich möchte die Unterlagen im Lesesaal konsultieren am' |
+					translate:'checkoutOrderDetailsStep.datumLesesaalText'}} *
+				</label>
+				<div class="col-sm-9">
+					<input type="date"
+						   required
+						   datePicker
+						   [openingDays]="openingDays"
+						   (blur)="validateDate($event)"
+						   class="form-control"
+						   id="konsultierungsDatum"
+						   formControlName="konsultierungsDatum"
+						   aria-labelledby="Date DD.MM.YYYY">
+
+					<div *ngIf="invalidDateError && nextClicked" class="help-block" role="alert">
+						{{'An diesem Tag hat der Lesesaal nicht geöffnet. Bitte wählen Sie ein gültiges Datum aus.' | translate: 'checkoutOrderDetailsStep.invalidDate'}}
+					</div>
+					<div *ngIf="form.hasError('required', ['konsultierungsDatum']) && nextClicked" class="help-block" role="alert">
+						{{'Bitte wählen Sie ein Datum für Ihren Besuch im Lesesaal.' | translate: 'checkoutOrderDetailsStep.mandatoryDate'}}
+					</div>
+				</div>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<legend class="hidden-legend">{{'Bemerkung zur Bestellung' | translate:'checkoutOrderDetailsStep.commentTitle'}}
+			</legend>
+			<div class="form-group">
+				<label for="bemerkungBestellung" class="col-sm-3 control-label" id="lblBemerkungBestellung">
+					{{'Bemerkung zur Bestellung' |translate:'checkoutOrderDetailsStep.commentTitle'}}
+				</label>
+				<div class="col-sm-9">
+                <textarea class="form-control"
+						  id="bemerkungBestellung"
+						  formControlName="bemerkungBestellung"
+						  aria-labelledby="lblBemerkungBestellung">
+                </textarea>
+				</div>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<div [ngClass]="{'has-warning': form.hasError('required', ['termsofUse']) && nextClicked}" class="download-terms-container">
+				<div class="checkbox checkbox--left">
+					<label for="termsofUse">
+						<input type="checkbox" formControlName="termsofUse" id="termsofUse">
+						<span [innerHtml]="getNutzungsbestimmungenUrl()"></span> *
+					</label>
+					<span *ngIf="form.hasError('required', ['termsofUse']) && nextClicked" class="help-block" role="alert">
+                    {{'Bitte lesen und akzeptieren Sie die Nutzungsbestimmungen.' | translate: 'file.missingTermsOfUse'}}
+                	</span>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+
+	<button (click)="goBack()" type="button" class="btn btn-secondary">
+		{{'Zurück' | translate:'orderCheckoutPage.previousPage'}}
+	</button>
+	<button (click)="validateFields()" type="button" class="btn btn-primary">
+		{{'Bestellung abschliessen' | translate:'orderCheckoutPage.finishOrder'}}
+	</button>
+</form>
+

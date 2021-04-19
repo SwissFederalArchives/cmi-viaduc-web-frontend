@@ -1,0 +1,50 @@
+<form action="" role="form" class="advanced-panel">
+	<fieldset *ngIf="viewModel.id != 1">
+		<div class="col-md-12 col-reduced-margin">
+			<button type="button" (click)="deleteGroup()" class="btn btn-link pull-right ">{{'Suchgruppe schliessen' |
+				translate: 'search.advanced.group.closeGroup'}}&nbsp;<span class="icon icon--close"></span></button>
+		</div>
+	</fieldset>
+	<fieldset>
+		<div class="form-group fieldrow" *ngFor="let searchfield of viewModel.searchFields">
+			<cmi-viaduc-advanced-search-field
+				[selectedField]="searchfield"
+				(changeSearchField)="viewModel.changeField($event)"
+				(deleteSearchField)="viewModel.deleteField($event)"
+			>
+			</cmi-viaduc-advanced-search-field>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend class="col-md-4 col-ms-4 col-xs-6" tabindex="0">
+			{{'Verknüpfung der Suchfelder:' | translate: 'search.advanced.group.fieldChaining'}}&nbsp;&nbsp;
+		</legend>
+		<div class="col-md-4 col-ms-4 col-xs-6">
+			<div class="radio radio--left">
+				<label [for]="getUniqueNameForAndOption()">
+					<input type="radio" [id]="getUniqueNameForAndOption()" [name]="getUniqueNameForAndOption()"
+						   (click)="viewModel.toggleLinkingType('AND')" value="And"
+						   [checked]="viewModel.getToggleStatusForAnd()">{{'Alle Begriffe (AND)' | translate:
+					'search.advanced.group.and'}}
+				</label>
+				<label [for]="getUniqueNameForOrOption()">
+					<input type="radio" [id]="getUniqueNameForOrOption()" [name]="getUniqueNameForOrOption()"
+						   (click)="viewModel.toggleLinkingType('OR')" value="Or"
+						   [checked]="viewModel.getToggleStatusForOr()">{{'Mindestens ein Begriff (OR)' | translate:
+					'search.advanced.group.or'}}
+				</label>
+				<label [for]="getUniqueNameForNotOption()">
+					<input type="radio" [id]="getUniqueNameForNotOption()" [name]="getUniqueNameForNotOption()"
+						   (click)="viewModel.toggleLinkingType('NOT')" value="Not"
+						   [checked]="viewModel.getToggleStatusForNot()">{{'Keiner der Begriffe (NOT)' | translate:
+					'search.advanced.group.not'}}
+				</label>
+			</div>
+		</div>
+		<div class="col-md-4 col-ms-4 col-xs-12">
+			<button type="button" (click)="addField()" class="btn btn-link pull-right">{{'Suchfeld hinzufügen' |
+				translate: 'search.advanced.group.addNewField'}}&nbsp;&nbsp;<span
+					class="glyphicon glyphicon-plus"></span></button>
+		</div>
+	</fieldset>
+</form>

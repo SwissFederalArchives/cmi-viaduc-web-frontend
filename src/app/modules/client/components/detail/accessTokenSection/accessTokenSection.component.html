@@ -1,0 +1,28 @@
+<div class="row">
+	<div *ngIf="hasAccess === true">
+		<div class="col-md-4">
+			<dl>
+				<dt>metadataAccessTokens</dt>
+				<dd *ngFor="let metadata of this.permission?.metadataAccessToken">
+					{{metadata}}
+				</dd>
+			</dl>
+		</div>
+		<div class="col-md-4">
+			<dl>
+				<dt>primaryDataFulltextAccessTokens</dt>
+				<dd *ngFor="let metadata of this.permission?.primaryDataFulltextAccessTokens">
+					{{metadata}}
+				</dd>
+			</dl>
+		</div>
+		<div class="col-md-4">
+			<dl>
+				<dt>primaryDataDownloadAccessTokens</dt>
+				<dd *ngFor="let metadata of this.permission?.primaryDataDownloadAccessTokens">
+					{{metadata}}
+				</dd>
+			</dl>
+		</div>
+	</div>
+</div>

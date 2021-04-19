@@ -1,0 +1,65 @@
+@import "../../../../styles/variables";
+
+.scrollableTable {
+	display: block;
+	overflow: auto;
+}
+
+.block-span {
+	display: block;
+}
+
+.user-col-icon {
+	font-size: 48px;
+}
+
+
+.user-info-table {
+	thead>tr>th {
+		vertical-align: top;
+
+		&.description-col {
+			width: 50%;
+			vertical-align: bottom;
+		}
+		&.text-center {
+			width: 15%;
+		}
+
+		a:visited.text-toggle {
+			color: @color-link;
+		}
+
+		.text-toggle[aria-expanded=false] .text-expanded {
+			display: none;
+		}
+
+		.text-toggle[aria-expanded=true] .text-collapsed {
+			display: none;
+		}
+	}
+
+	.active-col-header {
+		border-top: 2px solid @color-link;
+		border-left: 2px solid @color-link;
+		border-right: 2px solid @color-link;
+	}
+
+	.active-col-row {
+		border-left: 2px solid @color-link;
+		border-right: 2px solid @color-link;
+	}
+
+	.active-col-footer {
+		border-left: 2px solid @color-link;
+		border-right: 2px solid @color-link;
+		border-bottom: 2px solid @color-link;
+	}
+
+	/* Prevent Edge Bug: Large vertical spaces after end of transition */
+	.collapsing {
+		display: none;
+		transition-duration: 0s;
+	}
+}
+

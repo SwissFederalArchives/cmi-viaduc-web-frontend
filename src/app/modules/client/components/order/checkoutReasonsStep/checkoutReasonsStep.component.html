@@ -1,0 +1,56 @@
+<form [formGroup]="form">
+	<div class="ocp-orderkind-container">
+		<p>
+		<span>{{'Die abliefernden Stellen können auch während der Schutzfrist in die von ihnen abgelieferten Unterlagen Einsicht nehmen. Für deren Konsultation müssen Sie von Ihrer Verwaltungseinheit berechtigt sein. Diese erhält zudem eine automatische Benachrichtigung, jedes Mal wenn Sie solche Unterlagen bestellen.'| translate:'checkoutReasonsStep.title'}}<br />
+			{{'Enthalten diese Unterlagen Personendaten, ist eine Ausleihe nur aus bestimmten Gründen zulässig '| translate:'checkoutReasonsStep.title2'}}</span>
+			<span>(<a href="{{'https://www.admin.ch/opc/de/classified-compilation/19994756/index.html#a14' |translate:'checkoutReasonsStep.art14BgaLink'}}" target="_blank" rel="noopener">{{'Art. 14 BGA' |translate:'checkoutReasonsStep.art14Bga'}}</a>).</span>
+		</p>
+		<table class="table table-bordered table-responsive" *ngIf="inputItems && inputItems.length > 0">
+			<thead>
+			<tr>
+				<th>{{'Signatur'|translate:'shoppingCartItemList.refCode'}}</th>
+				<th>{{'Titel'|translate:'shoppingCartItemList.title'}}</th>
+				<th>{{'Entstehungszeitraum'|translate:'shoppingCartItemList.timeSpan'}}</th>
+				<th>
+					<div class="checkbox checkbox--left checkboxColumn">
+						<input type="checkbox" name="everyItemContainsPersonData" [ngModel]="everyItemContainsPersonData" [ngModelOptions]="{standalone: true}"
+							   (ngModelChange)="setFlagForAllItems($event)">
+					</div>
+					<div class="textColumn">
+						{{'Ja, diese Unterlagen enthalten Personendaten'|translate:'checkoutReasonsStep.yesTheseItemsContainsPersonData'}}
+					</div>
+				</th>
+				<th>{{'Begründung Einsichtnahme'| translate:'checkoutPersonsStep.reasonTitle'}}</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr *ngFor="let item of form.get('items').controls; let i = index" [formGroup]="item">
+				<td>{{item.get('referenceCode').value}}</td>
+				<td class="shc-title-column">{{item.get('title').value}}</td>
+				<td>{{item.get('period').value}}</td>
+				<td class="text-center" [ngClass]="{'has-warning': item.hasError('missingFlag') && nextClicked}">
+					<input type="checkbox" formControlName="hasPersonendaten">
+					<span *ngIf="item.hasError('missingFlag') && nextClicked" class="help-block" role="alert">
+                    	{{'Bei einem angegebenen Grund müssen Sie diese Checkbox anwählen .' | translate: 'checkoutReasonsStep.missingFlagForReason'}}
+                	</span>
+				</td>
+				<td [ngClass]="{'has-warning': item.hasError('missingReason') && nextClicked}">
+					<select class="form-control dropdownReason" formControlName="reason">
+						<option [ngValue]="null"></option>
+						<option *ngFor="let r of reasons" [ngValue]="r.id"  tooltip="{{r.name}}">{{r.name}}</option>
+					</select>
+					<span *ngIf="item.hasError('missingReason') && nextClicked" class="help-block" role="alert">
+                    	{{'Bitte geben Sie einen Grund an, weshalb Sie die Unterlagen mit Personendaten ansehen möchten.' | translate: 'checkoutReasonsStep.missingReason'}}
+                	</span>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<button (click)="goBack()" type="button" class="btn btn-secondary">
+		{{'Zurück' | translate:'orderCheckoutPage.previousPage'}}
+	</button>
+	<button (click)="validateFields()" type="button" class="btn btn-primary">
+		{{'Weiter' | translate:'orderCheckoutPage.nextPage'}}
+	</button>
+</form>

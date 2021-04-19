@@ -1,0 +1,38 @@
+<cmi-viaduc-modal [modalTitle]="'Zu Ihrer Eingabe wurden folgende alternative Begriffe gefunden' | translate:'search.synonymes.listTitle'" [(opened)]="open">
+	<cmi-viaduc-modal-body>
+		<div *ngIf='synonymList && synonymList.length'>
+			<div *ngFor="let synItem of synonymList">
+				<div class="row">
+					<div class="col-xs-12 col-md-12 no-bottom-margin">
+						<span class="synonym-hit list-search-synonyme-treffer">{{synItem.treffer}}</span>
+						<span class="list-search-synonyme-treffer-description">
+							<span>{{'Begriff gefunden in' | translate:'search.synonymes.trefferTitle' }}</span>:
+						</span>
+						<cmi-viaduc-synonyme-quelle [synonymeQuelleList]="synItem.quellen"></cmi-viaduc-synonyme-quelle>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						<ul>
+							<li *ngFor="let synonym of synItem.synonyme" class="checkbox checkbox--left">
+								<label>
+									<input type="checkbox" type="checkbox" [id]="synonym" [name]="synonym"
+										   (click)="addSynonymToList(synItem, synonym)">
+									{{synonym}}
+								</label>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</cmi-viaduc-modal-body>
+	<cmi-viaduc-modal-footer>
+		<button class="btn btn-secondary" (click)="close()">
+			{{'Abbrechen' | translate:'search.synonymes.cancel'}}
+		</button>
+		<button class="btn btn-primary" (click)="onAddSynonymToSearchClicked()">
+			{{'Begriffe in Suche einfügen' | translate:'search.synonymes.add'}}
+		</button>
+	</cmi-viaduc-modal-footer>
+</cmi-viaduc-modal>

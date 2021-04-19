@@ -1,0 +1,26 @@
+<li [ngClass]="liCss" (keyup.enter)="toggleActive()" (click)="toggleActive()" tabindex="0">
+	<a *ngIf="!active">
+		<span [innerHtml]="displayText"></span>
+		<span class="badge">
+			<span class="sr-only">
+				{{'Treffer' | translate:'facette.treffer'}}
+			</span>
+			{{agg.docCount}}
+		</span>
+		<span class="sr-only">
+			{{ 'Nicht aktiv' | translate:'facette.notActive' }}
+		</span>
+	</a>
+	<span *ngIf="active">
+		<span [innerHtml]="displayText"></span>
+		<span class="badge">
+			<span class="sr-only">
+				{{'Treffer' | translate:'facette.treffer'}}
+			</span>
+			{{agg.docCount}}
+		</span>
+		<span class="sr-only">
+			{{ 'Aktiv' | translate:'facette.active' }}
+		</span>
+	</span>
+</li>

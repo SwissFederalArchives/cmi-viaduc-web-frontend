@@ -1,0 +1,76 @@
+<nav id="facette-main-nav" class="nav-page-list nav-page-list--facette">
+	<a (click)="toggleStatus()" class="icon icon--before icon--less facette-header" (keydown.enter)="toggleStatus()" tabindex="0">
+		{{'Filter ausblenden' | translate:'facette.hideFilter' }}
+	</a>
+	<a tabindex="0" *ngIf="activeFacets?.length > 0" (keyup.enter)="resetFilters()" (click)="resetFilters()"
+	   class="icon icon--after icon--close reset-filters">{{'Alle Filter zurücksetzen ({0})'|
+		translate:'facette.clearAll':getActiveFacetCount()}}</a>
+	<ul>
+		<li>
+			<cmi-viaduc-facette
+				*ngIf="hasItems(facetts['aggregationFields.creationPeriodYears'])"
+				[key]="'aggregationFields.creationPeriodYears'"
+				[facette]="facetts['aggregationFields.creationPeriodYears']"
+				[collapsed]="false"
+				[activeFilterStrings]="getActiveFilterStringsForFacette('aggregationFields.creationPeriodYears')"
+				(onFilter)="onFilterApplied($event)"
+				facetteTitle="{{'Entstehungszeitraum' | translate:'facette.entstehungszeitraum' }}">
+			</cmi-viaduc-facette>
+		</li>
+		<li>
+			<cmi-viaduc-facette
+				*ngIf="hasItems(facetts['aggregationFields.ordnungskomponenten'])"
+				[key]="'aggregationFields.ordnungskomponenten'"
+				[facette]="facetts['aggregationFields.ordnungskomponenten']"
+				[activeFilterStrings]="getActiveFilterStringsForFacette('aggregationFields.ordnungskomponenten')"
+				[collapsed]="true"
+				(onFilter)="onFilterApplied($event)"
+				facetteTitle="{{'Thematische Übersicht' | translate:'facette.bestaendeUebersicht' }}">
+			</cmi-viaduc-facette>
+		</li>
+		<li>
+			<cmi-viaduc-facette
+				*ngIf="hasItems(facetts['level'])"
+				[key]="'level'"
+				[facette]="facetts['level']"
+				[activeFilterStrings]="getActiveFilterStringsForFacette('level')"
+				[collapsed]="true"
+				(onFilter)="onFilterApplied($event)"
+				facetteTitle="{{'Stufen' | translate:'facette.stufen' }}">
+			</cmi-viaduc-facette>
+		</li>
+		<li>
+			<cmi-viaduc-facette
+				*ngIf="hasItems(facetts['customFields.zugänglichkeitGemässBga'])"
+				[key]="'customFields.zugänglichkeitGemässBga'"
+				[facette]="facetts['customFields.zugänglichkeitGemässBga']"
+				[activeFilterStrings]="getActiveFilterStringsForFacette('customFields.zugänglichkeitGemässBga')"
+				[collapsed]="true"
+				(onFilter)="onFilterApplied($event)"
+				facetteTitle="{{'Zugänglichkeit gem. BGA' | translate:'facette.zugaenglichkeitGemBGA' }}">
+			</cmi-viaduc-facette>
+		</li>
+		<li>
+			<cmi-viaduc-facette
+				*ngIf="hasItems(facetts['aggregationFields.bestand'])"
+				[key]="'aggregationFields.bestand'"
+				[facette]="facetts['aggregationFields.bestand']"
+				[activeFilterStrings]="getActiveFilterStringsForFacette('aggregationFields.bestand')"
+				[collapsed]="true"
+				(onFilter)="onFilterApplied($event)"
+				facetteTitle="{{'Bestand' | translate:'facette.bestand' }}">
+			</cmi-viaduc-facette>
+		</li>
+		<li>
+			<cmi-viaduc-facette
+				*ngIf="hasItems(facetts['aggregationFields.hasPrimaryData'])"
+				[key]="'aggregationFields.hasPrimaryData'"
+				[facette]="facetts['aggregationFields.hasPrimaryData']"
+				[activeFilterStrings]="getActiveFilterStringsForFacette('aggregationFields.hasPrimaryData')"
+				[collapsed]="true"
+				(onFilter)="onFilterApplied($event)"
+				facetteTitle="{{'Unterlagen digital vorhanden' | translate:'facette.digitallyAvailable' }}">
+			</cmi-viaduc-facette>
+		</li>
+	</ul>
+</nav>

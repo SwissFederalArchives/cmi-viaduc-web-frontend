@@ -1,0 +1,254 @@
+<div *ngIf="show" class="page col-sm-12">
+	<div class="page-breadcrumb">
+		<cmi-viaduc-breadcrumb [items]="crumbs"></cmi-viaduc-breadcrumb>
+	</div>
+	<div class="page-header">
+		<h2 class="page-content-title">
+			<span>{{'Eingabe Benutzerdaten' | translate:'user.register'}}</span>
+		</h2>
+		<p>
+			{{ 'Bitte erfassen Sie Ihre Benutzerdaten, damit wir Sie bei Bedarf erreichen können. Sie können diese Daten jederzeit aktualisieren.' | translate:'user.infoText' }}
+			<br />
+			 {{ 'Mit einem * gekennzeichnete Felder müssen ausgefüllt werden. Sie können diese Daten jederzeit aktualisieren.' | translate:'user.requiredFieldsInfo' }}
+			</p>
+
+	</div>
+	<form #formUserDetail="ngForm" *ngIf="user">
+		<h3 class="title">
+			<span>{{'Benutzerdaten' | translate:'user.userdata'}}</span>
+		</h3>
+		<div class="col-md-6 col-xs-12 m-b-0 p-b-0">
+			<div class="form-group">
+				<div [ngClass]="{'has-warning': familyName.errors && familyName.errors.required && saveClicked}" class="row">
+					<label class="col-md-3 col-xs-3 control-label">
+						{{'Name' |translate:'user.familyName'}}*
+					</label>
+					<div class="col-md-9 col-xs-9">
+						<input class="form-control"
+							   [(ngModel)]="user.familyName"
+							   placeholder="{{'name' | translate: 'user.placeholder.familyName'}}"
+							   required
+							   disabled
+							   name="familyName"
+							   #familyName="ngModel">
+						<span *ngIf="familyName.errors && familyName.errors.required && saveClicked"
+							  class="help-block" role="alert">
+							{{'Dieses Feld muss ausgefüllt werden.' | translate:'main.errorMandatoryField'}}
+						</span>
+					</div>
+				</div>
+				<div [ngClass]="{'has-warning': firstName.errors && firstName.errors.required && saveClicked}" class="row">
+					<label class="col-md-3 col-xs-3 control-label">
+						{{'Vorname(n)' | translate:'user.firstName'}}*
+					</label>
+					<div class="col-md-9 col-xs-9">
+						<input class="form-control"
+							   [(ngModel)]="user.firstName"
+							   placeholder="{{'Vorname(n)' | translate: 'user.placeholder.firstName'}}"
+							   required
+							   disabled
+							   name="firstName"
+							   #firstName="ngModel">
+						<span *ngIf="firstName.errors && firstName.errors.required && saveClicked" class="help-block"
+							  role="alert">
+							{{'Dieses Feld muss ausgefüllt werden.' | translate:'main.errorMandatoryField'}}
+						</span>
+					</div>
+				</div>
+				<div class="row">
+					<label class="col-md-3 col-xs-3 control-label">
+						{{'Geburtsdatum' | translate:'user.birthday'}}
+					</label>
+					<div class="col-md-9 col-xs-9">
+						<input class="form-control"
+							   type="text"
+							   datePicker
+							   [minDateToday]="false"
+							   [minDate]="minimumDate"
+							   [(ngModel)]="user.birthday"
+							   aria-labelledby="Date DD.MM.YYYY"
+							   placeholder="{{'Geburtsdatum (tt.mm.jjjj)' | translate: 'user.placeholder.birthday'}}"
+							   name="birthday">
+					</div>
+				</div>
+				<div [ngClass]="{'has-warning': organization.errors && organization.errors.required && isInternalUser && saveClicked}" class="row">
+					<label class="col-md-3 col-xs-3 control-label">
+						{{'Organisation' | translate:'user.organization'}}
+						<span *ngIf="isInternalUser">*</span>
+					</label>
+					<div class="col-md-9 col-xs-9">
+						<input class="form-control"
+							   [(ngModel)]="user.organization"
+							   placeholder="{{'Organisation' | translate: 'user.placeholder.organization'}}"
+							   [required]="isInternalUser"
+							   name="organization" #organization="ngModel">
+						<span *ngIf="organization.errors && organization.errors.required && isInternalUser && saveClicked" class="help-block" role="alert">
+							{{'Dieses Feld muss ausgefüllt werden.' | translate:'main.errorMandatoryField'}}
+						</span>
+					</div>
+				</div>
+				<div [ngClass]="{'has-warning': street.errors && street.errors.required && saveClicked}" class="row">
+					<label class="col-md-3 col-xs-3 control-label">
+						{{'Strasse / Nr.' | translate:'user.street'}}*
+					</label>
+					<div class="col-md-9 col-xs-9">
+						<input class="form-control"
+							   [(ngModel)]="user.street"
+							   placeholder="{{'Strasse / Nr.' | translate: 'user.placeholder.street'}}"
+							   required
+							   name="street" #street="ngModel">
+						<span *ngIf="street.errors && street.errors.required && saveClicked" class="help-block" role="alert">
+									{{'Dieses Feld muss ausgefüllt werden.' | translate:'main.errorMandatoryField'}}
+								</span>
+					</div>
+				</div>
+				<div class="row">
+					<label class="col-md-3 col-xs-3 control-label">
+						{{'Strasse Zusatz' | translate:'user.streetAttachment'}}
+					</label>
+					<div class="col-md-9 col-xs-9">
+						<input class="form-control"
+							   [(ngModel)]="user.streetAttachment"
+							   placeholder="{{'Strasse Zusatz' | translate: 'user.placeholder.streetAttachment'}}"
+							   name="streetAttachment">
+					</div>
+				</div>
+				<div [ngClass]="{'has-warning': zipCode.errors && zipCode.errors.required && saveClicked}" class="row">
+					<label class="col-md-3 col-xs-3 control-label">{{'PLZ' | translate:'user.zipCode'}}*</label>
+					<div class="col-md-9 col-xs-9">
+						<input class="form-control" type="text"
+							   [(ngModel)]="user.zipCode"
+							   placeholder="{{'PLZ' | translate: 'user.placeholder.zipCode'}}"
+							   required
+							   name="zipCode" #zipCode="ngModel">
+						<span *ngIf="zipCode.errors && zipCode.errors.required && saveClicked" class="help-block" role="alert">
+							{{'Dieses Feld muss ausgefüllt werden.' | translate:'main.errorMandatoryField'}}
+						</span>
+					</div>
+				</div>
+				<div [ngClass]="{'has-warning': town.errors && town.errors.required && saveClicked}" class="row">
+					<label class="col-md-3 col-xs-3 control-label">{{'Ort' | translate:'user.town'}}*</label>
+					<div class="col-md-9 col-xs-9">
+						<input class="form-control"
+							   [(ngModel)]="user.town"
+							   placeholder="{{'Ort' | translate: 'user.placeholder.town'}}"
+							   required
+							   name="town" #town="ngModel">
+						<span *ngIf="town.errors && town.errors.required && saveClicked" class="help-block" role="alert">
+							{{'Dieses Feld muss ausgefüllt werden.' | translate:'main.errorMandatoryField'}}
+						</span>
+					</div>
+				</div>
+				<div [ngClass]="{'has-warning': countryCode.errors && countryCode.errors.required && saveClicked}" class="row">
+					<label class="col-md-3 col-xs-3 control-label">
+						{{'Land' | translate:'user.countryCode'}}*
+					</label>
+					<div class="col-md-9 col-xs-9">
+						<select class="form-control" [(ngModel)]="user.countryCode"
+								required
+								name="countryCode" #countryCode="ngModel">
+							<option *ngFor="let c of countries" value="{{c.code}}"
+								 tooltip="{{c.name}}">{{c.name}}
+							</option>
+						</select>
+						<span *ngIf="countryCode.errors && countryCode.errors.required && saveClicked" class="help-block" role="alert">
+							{{'Dieses Feld muss ausgefüllt werden.' | translate:'main.errorMandatoryField'}}
+						</span>
+					</div>
+				</div>
+				<div [ngClass]="{'has-warning': phoneNumber.errors && saveClicked}" class="row">
+					<label class="col-md-3 col-xs-3 control-label">
+						{{'Telefon (Festnetz)' | translate:'user.phoneNumber'}}
+					</label>
+					<div class="col-md-9 col-xs-9">
+						<input class="form-control" type="text"
+							   [(ngModel)]="user.phoneNumber"
+							   placeholder="{{'Telefon (Festnetz)' | translate: 'user.placeholder.phoneNumber'}}"
+							   [pattern]="phonenumberRegexPattern"
+							   name="phoneNumber" #phoneNumber="ngModel">
+					</div>
+					<span *ngIf="phoneNumber.errors && saveClicked" class="help-block" role="alert">
+						{{'Telefonnummern können mit einem "+" beginnen sowie Zahlen, Leerzeichen und "-" enthalten und müssen zwischen 6 und 20 Zeichen lang sein' | translate:'main.errorPhone'}}
+					</span>
+				</div>
+				<div [ngClass]="{'has-warning': mobileNumber.errors && saveClicked}" class="row">
+					<label class="col-md-3 col-xs-3 control-label">
+						{{'Mobiltelefon' | translate:'user.mobileTel'}}
+					</label>
+					<div class="col-md-9 col-xs-9">
+						<input class="form-control" type="text"
+							   [(ngModel)]="user.mobileNumber"
+							   placeholder="{{'Mobiltelefon' | translate: 'user.placeholder.mobileTel'}}"
+							   [pattern]="phonenumberRegexPattern"
+							   name="mobileNumber" #mobileNumber="ngModel">
+					</div>
+					<span *ngIf="mobileNumber.errors && saveClicked" class="help-block" role="alert">
+						{{'Mobilnummern können mit einem "+" beginnen sowie Zahlen, Leerzeichen und "-" enthalten und müssen zwischen 6 und 20 Zeichen lang sein' | translate:'main.errorMobil'}}
+					</span>
+				</div>
+				<div [ngClass]="{'has-warning': emailAddress.errors && saveClicked}" class="row">
+					<label class="col-md-3 col-xs-3 control-label ">
+						{{'E-Mail' | translate:'user.emailAddress'}}*
+					</label>
+					<div class="col-md-9 col-xs-9">
+						<input class="form-control" type="email"
+							   [(ngModel)]="user.emailAddress"
+							   placeholder="{{'E-Mail' | translate: 'user.placeholder.emailAddress'}}"
+							   required
+							   [disabled]="isInternalUser"
+							   [pattern]="emailRegexPattern"
+							   name="emailAddress" #emailAddress="ngModel">
+						<span *ngIf="emailAddress.errors && saveClicked" class="help-block" role="alert">
+							{{'Dieses Feld muss ausgefüllt werden und muss eine gültige E-Mail sein' | translate:'main.errorMandatoryMailField'}}
+						</span>
+					</div>
+				</div>
+				<div [ngClass]="{'has-warning': language.errors && language.errors.required && saveClicked}" class="row">
+					<label class="col-md-3 col-xs-3 control-label">
+						{{'Bevorzugte Sprache' | translate:'user.preferredLangauge'}}*
+					</label>
+					<div class="col-md-9 col-xs-9">
+						<select class="form-control" [(ngModel)]="user.language"
+								required
+								name="language" #language="ngModel">
+							<option *ngFor="let l of languages" value="{{l.code}}"
+								 tooltip="{{l.name}}">{{l.name}}
+							</option>
+						</select>
+						<span class="help-block">{{'Bitte geben Sie an, in welcher Sprache Sie mit dem Bundesarchiv kommunizieren möchten.' | translate:'user.preferredLanguageHelpText'}}</span>
+						<span *ngIf="language.errors && language.errors.required && saveClicked" class="help-block" role="alert">
+							{{'Dieses Feld muss ausgefüllt werden.' | translate:'main.errorMandatoryField'}}
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 col-xs-12">
+				<div [ngClass]="{'has-warning': legalAgreementConsent.errors && legalAgreementConsent.errors.required && saveClicked}" class="row">
+						<label class="col-md-2 col-xs-3 control-label">
+							{{'Datenschutzerklärung' | translate:'user.legalAgreementConsentTitle'}}*
+						</label>
+						<div class="col-md-8 col-xs-9">
+							<label for="legalAgreementConsent">
+								<input required
+									type="checkbox"
+									id = "legalAgreementConsent"
+									[(ngModel)]="user.legalAgreementConsent"
+									#legalAgreementConsent="ngModel"
+									name="legalAgreementConsent" />
+									&nbsp;<span [innerHtml]="legalAgreementConsentText"></span>
+							</label>
+							<span *ngIf="legalAgreementConsent.errors && saveClicked" class="help-block" role="alert">
+								{{'Bitte lesen und akzeptieren Sie die Datenschutzerklärung.' | translate:'user.errorLegalAgreementConsent'}}
+							</span>
+						</div>
+					</div>
+
+		</div>
+		<div class="col-md-12 col-xs-12">
+			<button id="buttonSaveUser" type="button" class="btn btn-primary" (click)="saveUser(formUserDetail.valid)" name="buttonSaveUser">
+				{{'Speichern' |translate:'save' }}
+			</button>
+		</div>
+	</form>
+</div>

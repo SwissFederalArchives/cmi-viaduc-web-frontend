@@ -1,0 +1,3 @@
+<nav [ngClass]="getNavCss()" id="main-navigation">
+	<cmi-viaduc-nav-content (onMobileNavOpen)="onMobileNavToggle($event)" *ngIf="!reload"></cmi-viaduc-nav-content>
+</nav>

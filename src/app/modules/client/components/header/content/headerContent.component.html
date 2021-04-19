@@ -1,0 +1,177 @@
+
+<div class="clearfix">
+	<nav class="navbar treecrumb pull-left">
+		<h2 class="sr-only">{{'Orientierung auf der Webseite' | translate:'header.srBreadcrumbOrientation'}}</h2>
+		<ul class="nav navbar-nav">
+			<li class="dropdown">
+				<a id="admin-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<span class="icon icon--right"></span>{{'Der Bundesrat' | translate:'header.derBundesrat'}}
+				</a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="admin-dropdown">
+					<li class="dropdown-header">
+						<a [href]="getAdminUrlTranslated()" target="_blank" rel="noopener">
+							{{'Der Bundesrat admin.ch' | translate:'header.derBundesratInclDomain'}}
+						</a>
+						<ul>
+							<li>
+								<a [href]="'http://www.bk.admin.ch/bk/' + language + '/home.html'" target="_blank">
+									{{'BK: Schweizerische Bundeskanzlei' | translate:'header.departmentBK'}}
+								</a>
+							</li>
+							<li>
+								<a [href]="'http://www.eda.admin.ch/eda/' + language + '/home.html'" target="_blank">
+									{{'EDA: Eidgenössisches Departement für auswärtige Angelegenheiten' | translate:'header.departmentEDA'}}
+								</a>
+							</li>
+							<li>
+								<a [href]="'https://www.edi.admin.ch/edi/' + language + '/home.html'" target="_blank">
+									<strong>{{'EDI: Eidgenössisches Department des Innern' | translate:'header.departmentEDI'}}</strong>
+								</a>
+							</li>
+							<li>
+								<a [href]="'http://www.ejpd.admin.ch/ejpd/' + language + '/home.html'" target="_blank">
+									{{'EJPD: Eidgenössisches Justiz- und Polizeidepartment' | translate:'header.departmentEJPD'}}
+								</a>
+							</li>
+							<li>
+								<a [href]="'http://www.vbs.admin.ch/' + language + '/home.html'" target="_blank">
+									{{'VBS: Eidgenössisches Department für Verteidigung, Bevölkerungsschutz und Sport' | translate:'header.departmentVBS'}}
+								</a>
+							</li>
+							<li>
+								<a [href]="'https://www.efd.admin.ch/efd/' + language + '/home.html'" target="_blank">
+									{{'EFD: Eidgenössisches Finanzdepartement' | translate:'header.departmentEFD'}}
+								</a>
+							</li>
+							<li>
+								<a [href]="'https://www.wbf.admin.ch/wbf/' + language + '/home.html'" target="_blank">
+									{{'WBF: Eidgenössisches Departement für Wirtschaft, Bildung und Forschung' | translate:'header.departmentWBF'}}
+								</a>
+							</li>
+							<li>
+								<a [href]="'https://www.uvek.admin.ch/uvek/' + language + '/home.html'" target="_blank">
+									{{'UVEK: Eidgenössisches Department für Umwelt, Verkehr, Energie und Kommunikation' | translate:'header.departmentUVEK'}}
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+
+			<li class="dropdown">
+				<a href="#" id="service-dropdown" class="dropdown-toggle" data-toggle="dropdown">
+					<span class="icon icon--right"></span>{{'EDI' | translate:'header.departementEdiAbbr'}}
+				</a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="service-dropdown">
+					<li class="dropdown-header">
+						<a [href]="'https://www.edi.admin.ch/edi/' + language + '/home.html'" target="_blank">
+							{{'Eidgenössisches Departement des Innern' | translate:'header.departementEdiDescription'}}
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="dropdown">
+				<a href="#" id="bar-dropdown" class="dropdown-toggle" data-toggle="dropdown">
+					<span class="icon icon--right"></span>{{'BAR' | translate:'header.barAbbr'}}
+				</a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="bar-dropdown">
+					<li class="dropdown-header">
+						<a [href]="'https://www.bar.admin.ch/bar/' + language + '/home.html'" target="_blank">
+							{{'Schweizerisches Bundesarchiv BAR' | translate:'header.barFullname'}}
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="dropdown">
+				<a href="#/{{language}}" class="dropdown-toggle">
+					{{'Online-Zugang' | translate:'header.onlineZugang'}}
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<section class="nav-services clearfix">
+		<div *ngIf="versionInfo" class="versioninfo no-print">{{versionInfo}}</div>
+
+		<h2 class="sr-only">{{ 'Sprachwahl' | translate:'header.languageChoice' }}</h2>
+		<nav class="nav-lang">
+			<ul>
+				<li *ngFor="let lang of languages">
+					<a (click)="setLanguage(lang)" href="javascript:void(0)" [lang]="lang.key"  [tooltip]="getLangTitle(lang)"
+					   [attr.aria-label]="getLangTitle(lang)" [ngClass]="{ 'active': lang.active }">
+						{{lang.short}}
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<nav class="nav-service">
+			<ul class="download-link">
+				<li *ngIf="authenticated">
+					<a href="#{{'/de/konto/favoriten' | localizeLink }}" class="icon icon--before icon--star">
+						<span>{{'Favoriten ({0})' | translate: 'header.favoritesCount':favoritesItemCount}}</span>
+					</a>
+				</li>
+				<li>
+					<a href="#{{ '/de/konto/bestellkorb' | localizeLink }}" class="icon icon--before icon--cart"><span>{{ 'Bestellkorb ({0})' | translate:'header.bestellkorbItemsCount':shoppingCartItemsCount }}</span></a>&nbsp;&nbsp;
+				</li>
+				<li *ngIf="!authenticated" >
+					<a (click)="login()" href="javascript:void(0)"><span>{{ 'Anmelden' | translate:'header.anmelden' }}</span></a>
+				</li>
+				<li *ngIf="!authenticated">
+					<a [href]="getRegisterInfoUrl()"><span>{{ 'Registrieren' | translate:'header.register' }}</span></a>
+				</li>
+				<li *ngIf="authenticated">
+					<ul class="authenticatedUserButton">
+						<li tabindex="0" data-toggle="dropdown">
+							<a href="javascript:void(0)" tabindex="-1">
+								<span class="glyphicon glyphicon-user"></span>
+								<span>{{ username }}</span>
+								<span class="glyphicon glyphicon-chevron-down"></span>
+							</a>
+						</li>&nbsp;&nbsp;
+						<li class="dropdown-menu">
+							<ul>
+								<a tabindex="0" [href]="accountUrl()"><span>{{ 'Mein Benutzerkonto' | translate:'header.meinkonto' }}</span></a>
+							</ul>
+							<ul class="navSeparator"></ul>
+							<ul>
+								<a tabindex="0" [href]="bestelluebersichtAendernUrl()"><span>{{ 'Bestellübersicht' | translate:'header.bestelluebersicht' }}</span></a>
+							</ul>
+							<ul class="navSeparator"></ul>
+							<ul>
+								<a tabindex="0" (click)="logout()" href="javascript:void(0)"><span>{{ 'Abmelden' | translate:'header.abmelden' }}</span></a>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</section>
+</div>
+
+<div class="clearfix">
+	<a href="#/{{language}}" class="brand hidden-xs">
+		<img src="./assets/img/logo-CH.svg" onerror="this.onerror = null; this.src = './assets/img/logo-CH.png'"
+			 alt="Logo der Schweizerischen Eidgenossenschaft – zur Startseite"/>
+		<h1>{{ 'Online-Zugang zum Bundesarchiv' | translate:'header.claim' }}</h1>
+	</a>
+</div>
+
+<div class="logininfo">
+	<span *ngIf="!authenticated">
+		<span>{{ 'Sie sind nicht angemeldet' | translate:'header.notLoggedInInfo'}}&nbsp;</span>
+		<a class="glyphicon glyphicon-info-sign infoicon" data-toggle="tooltip" data-placement="bottom"
+		    tooltip="{{ 'Melden Sie sich an, um zusätzliche Funktionen wie Favoritenverwaltung oder Bestellungen nutzen zu können.' | translate:'header.notLoggedInTip'}}"></a>
+	</span>
+	<span *ngIf="authenticated && hasRoles('BAR', 'AS', 'BVW', 'Ö3') === true">
+		<span>{{ 'Sie sind als identifizierte/r Benutzer/in angemeldet' | translate:'header.loggedInInfo'}}&nbsp;</span>
+		<a class="glyphicon glyphicon-info-sign infoicon" data-toggle="tooltip" data-placement="bottom"
+		    tooltip="{{getTooltippLoggedIn()}}"></a>
+	</span>
+	<span *ngIf="authenticated && hasRoles('Ö2') === true">
+		<span>{{ 'Sie sind als registrierte/r Benutzer/in angemeldet' | translate:'header.loggedInInfoAsRegisteredUser'}}&nbsp;</span>
+		<a class="glyphicon glyphicon-info-sign infoicon" data-toggle="tooltip" data-placement="bottom"
+		    tooltip="{{getTooltippRegisteredUser()}}"></a>
+	</span>
+</div>

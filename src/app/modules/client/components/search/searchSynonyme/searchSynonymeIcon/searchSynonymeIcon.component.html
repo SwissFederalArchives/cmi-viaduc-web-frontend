@@ -1,0 +1,13 @@
+<a href="#" data-toggle="modal" *ngIf="showSynonymListIcon"
+   [attr.data-target]="'#' + (controlId || 'synonymSelector')" (click)="clickShowSynonym()"
+   class="synonym-search-icon">
+	<i class="glyphicon glyphicon-lightbulb"></i>
+</a>
+
+
+<cmi-viaduc-synonyme *ngIf="showSynonymList"
+					 [(open)]="showSynonymList"
+					 [searchValue]="searchTerm"
+					 [synonymList]="synonymList"
+					 (addSynonymToSearchClicked)='onAddSynonymToSearchClicked($event)'>
+</cmi-viaduc-synonyme>

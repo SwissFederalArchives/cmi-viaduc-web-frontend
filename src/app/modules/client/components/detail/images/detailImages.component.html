@@ -1,0 +1,37 @@
+<div class="detail-images">
+	<div class="row">
+		<div class="col-sm-3" *ngFor="let item of items">
+			<div class="thumbnail-wrapper" [ngClass]="{ 'has-captions': showCaption }">
+				<a (click)="onModalFadeIn(item)" class="thumbnail" data-toggle="modal"
+				   data-target="#lightbox-thumbnail">
+					<figure>
+						<img [src]="item.smallImageAsBase64" [alt]="item.caption">
+						<figcaption *ngIf="showCaption">{{item.caption}}</figcaption>
+					</figure>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div *ngIf="paging && paging.take < paging.total">
+		<hr>
+		<cmi-viaduc-pagination [paging]="paging" (onPaged)="onPaged($event)"></cmi-viaduc-pagination>
+	</div>
+</div>
+
+<div class="modal fade" *ngIf="modalImage" id="lightbox-thumbnail" tabindex="-1" role="dialog"
+	 aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button (click)="onModalFadeOut" type="button" class="close icon icon--before icon--close"
+						data-dismiss="modal" aria-hidden="true">{{ 'Schliessen' | translate:'schliessen' }}
+				</button>
+				<h3 class="modal-title" id="myModalLabel">{{ modalTitle }}</h3>
+			</div>
+			<div class="modal-body">
+				<img [src]="modalImage" [alt]="modalAltText">
+				<p></p>
+			</div>
+		</div>
+	</div>
+</div>

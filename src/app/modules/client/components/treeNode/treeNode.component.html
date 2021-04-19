@@ -1,0 +1,3 @@
+<div (click)="innerHtmlClicked($event)" (keyup.space)="innerHtmlClicked($event)" (keyup.enter)="goToDetailPage($event)" class="root" [innerHtml]="rootNode | safeHtml" [attr.aria-expanded]="isExpanded">
+
+</div>

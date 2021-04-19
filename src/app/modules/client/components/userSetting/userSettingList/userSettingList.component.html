@@ -1,0 +1,12 @@
+<div class="usersetting-section-list" *ngFor="let m of menues">
+	<div class="header">
+		<span>{{m.menu | translate:getTranslationKeyMenu(m) }}</span><span
+		[class]="getSections(m)[0].iconClass + ' pull-right'"></span>
+	</div>
+	<ul>
+		<li *ngFor="let section of getSections(m)" (click)="goTo(section)" [ngClass]="{'active': section.active}">
+			<a *ngIf="!section.active" href="javascript:void(0)">{{ section.displayName | translate:getTranslationKeySection(section) }}</a>
+			<span *ngIf="section.active">{{ section.displayName | translate:getTranslationKeySection(section) }}<span class="sr-only"> active</span></span>
+		</li>
+	</ul>
+</div>

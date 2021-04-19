@@ -1,0 +1,200 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "cmi-viaduc-web-frontend": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "aot": true,
+            "outputPath": "dist",
+						"deployUrl": "client/",
+						"index": "src/index.html",
+            "main": "src/main.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "preserveSymlinks": true,
+						"showCircularDependencies": true,
+            "polyfills": "src/polyfills.ts",
+            "assets": [
+              "src/assets",
+              "src/favicon.ico",
+              "src/config",
+              "src/web.config"
+            ],
+            "styles": [
+              "node_modules/ngx-toastr/toastr.css",
+              "src/assets/css/vendors.css",
+              "src/assets/css/admin.css",
+              "src/assets/css/print.css",
+              "node_modules/@cmi/viaduc-web-core/lib/core/core.styles.less",
+              "node_modules/@cmi/viaduc-web-core/lib/wijmo/styles/wijmo.theme.office.scss",
+              "src/styles.less"
+            ],
+            "scripts": [
+              "src/assets/js/vendors.min.js",
+              "src/assets/js/polyfills.min.js",
+              "src/assets/js/main.js",
+              "node_modules/jszip/dist/jszip.min.js",
+              {"inject":false,
+                "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.de-CH.js",
+                "bundleName": "wijmo.culture.de-CH"
+              },
+              {"inject":false,
+                "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.fr.js",
+                "bundleName": "wijmo.culture.fr"
+              },
+              {"inject":false,
+                "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.it.js",
+                "bundleName": "wijmo.culture.it"
+              },
+              {"inject":false,
+                "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.en.js",
+                "bundleName": "wijmo.culture.en"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "cmi-viaduc-web-frontend:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "cmi-viaduc-web-frontend:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "cmi-viaduc-web-frontend:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "scripts": [
+              "src/assets/js/vendors.min.js",
+              "src/assets/js/polyfills.min.js",
+              "src/assets/js/main.js",
+              "node_modules/jszip/dist/jszip.min.js",
+              {"inject":false,
+                "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.de-CH.js",
+                "bundleName": "wijmo.culture.de-CH"
+              },
+              {"inject":false,
+                "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.fr.js",
+                "bundleName": "wijmo.culture.fr"
+              },
+              {"inject":false,
+                "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.it.js",
+                "bundleName": "wijmo.culture.it"
+              },
+              {"inject":false,
+                "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.en.js",
+                "bundleName": "wijmo.culture.en"
+              }
+            ],
+            "styles": [
+              "node_modules/ngx-toastr/toastr.css",
+              "src/assets/css/vendors.css",
+              "src/assets/css/admin.css",
+              "src/assets/css/print.css",
+              "node_modules/@cmi/viaduc-web-core/lib/core/core.styles.less",
+              "node_modules/@cmi/viaduc-web-core/lib/wijmo/styles/wijmo.theme.office.scss",
+              "src/styles.less"
+            ],
+            "assets": [
+              "src/assets",
+              "src/favicon.ico",
+              "src/config",
+              "src/web.config"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "cmi-viaduc-web-frontend-e2e": {
+      "root": "e2e",
+      "sourceRoot": "e2e",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "./protractor.conf.js",
+            "devServerTarget": "cmi-viaduc-web-frontend:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "cmi-viaduc-web-frontend",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "cmi",
+      "style": "less"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "cmi"
+    }
+  }
+}

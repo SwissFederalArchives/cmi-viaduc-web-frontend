@@ -1,0 +1,138 @@
+<form [formGroup]="form">
+	<div class="einsicht-order-detail-step-container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 pull-right">
+				<p>{{'Für die Einsicht in Unterlagen, die noch einer Schutzfrist unterliegen, benötigen Sie eine Bewilligung. Dazu müssen Sie beim Bundesarchiv ein Einsichtsgesuch einreichen. ' +
+				'Sie können für maximal 50 Dossiers gleichzeitig ein Einsichtsgesuch in Bearbeitung haben.' | translate:'einsichtCheckoutOrderDetailsStep.infoTextAbschnittEins'}}</p>
+				<p>{{'Wir werden das Gesuch dann an die zuständige Stelle weiterleiten. Mit einem Entscheid können Sie in der Regel innerhalb von vier bis sechs Wochen rechnen. Wird die Einsicht bewilligt, müssen Sie sich für die online Konsultation der Unterlagen ' +
+				'identifizieren ' | translate:'einsichtCheckoutOrderDetailsStep.infoTextAbschnittZwei'}}
+					<a href="#{{ '/de/informationen/registrieren-und-identifizieren' | localizeLink }}" target="_blank" rel="noopener">{{'(siehe Anmelden und Identifizieren)'  | translate:'einsichtCheckoutOrderDetailsStep.infoTextAbschnittLink'}}</a>
+					{{'. Die Einsichtsbewilligung gilt nur für die gesuchstellende Person.' | translate:'einsichtCheckoutOrderDetailsStep.infoTextAbschnittDrei'}}</p>
+			</div>
+			<div class="row col-xs-12 col-sm-6  pull-left">
+				<fieldset >
+					<legend class="hidden-legend">
+						{{'Begründung Einsichtsgesuch (max. 2‘000 Zeichen)'
+						| translate:'einsichtCheckoutOrderDetailsStep.begruendungAngegebenTitel'}} *
+					</legend>
+					<div class="form-group" [ngClass]="{'has-warning': (form.hasError('required', ['begruendungEinsichtsgesuch'])) && nextClicked}">
+						<label for="begruendungAngegebenBestellung" class="control-label"
+							   id="lblBegruendungAngegebenBestellung">
+							{{'Begründung Einsichtsgesuch (max. 2‘000 Zeichen)'
+							|translate:'einsichtCheckoutOrderDetailsStep.begruendungAngegebenTitel'}} *
+						</label>
+						<div>
+							<textarea class="form-control"
+									  formControlName="begruendungEinsichtsgesuch"
+									  id="begruendungAngegebenBestellung"
+									  aria-labelledby="lblBegruendungAngegebenBestellung"
+									  maxlength="2000">
+							</textarea>
+							<div *ngIf="form.hasError('required', ['begruendungEinsichtsgesuch']) && nextClicked" class="help-block" role="alert">
+								{{'Bitte geben Sie eine Begründung für Ihr Einsichtsgesuch ein.' | translate: 'einsichtCheckoutOrderDetailsStep.mandatoryReason'}}
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend class="hidden-legend">
+						{{'Handelt es sich um eine Personenbezogene Nachforschung (z. B. Biographie oder Artikel zum Leben und Wirken einer Person)?'
+						| translate:'einsichtCheckoutOrderDetailsStep.personendatenTitel'}} *
+					</legend>
+					<div class="form-group" [ngClass]="{'has-warning': (form.hasError('required', ['personenbezogeneNachforschung'])) && nextClicked}">
+						<label class="control-label" id="lblPersonendatenBestellung">
+							{{'Handelt es sich um eine Personenbezogene Nachforschung (z. B. Biographie oder Artikel zum Leben und Wirken einer Person)?'
+							| translate:'einsichtCheckoutOrderDetailsStep.personendatenTitel'}} *
+						</label>
+						<fieldset>
+							<div class="radio radio--left">
+								<label for="chkPersonendatenYes">
+									<input type="radio" id="chkPersonendatenYes"
+										   formControlName="personenbezogeneNachforschung" [value]="true">
+									<span>{{'Ja' |translate:'einsichtCheckoutOrderDetailsStep.yes'}}</span>
+								</label>
+							</div>
+							<div class="radio radio--left">
+								<label for="chkPersonendatenNo">
+									<input type="radio" id="chkPersonendatenNo"
+										   formControlName="personenbezogeneNachforschung" [value]="false">
+									<span>{{'Nein' |translate:'einsichtCheckoutOrderDetailsStep.no'}}</span>
+								</label>
+							</div>
+						</fieldset>
+						<div *ngIf="form.hasError('required', ['personenbezogeneNachforschung']) && nextClicked" class="help-block" role="alert">
+							{{'Bitte geben Sie an, ob es sich um eine personenbezogene Nachforschung handelt.' | translate: 'einsichtCheckoutOrderDetailsStep.mandatoryPersondata'}}
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend class="hidden-legend">
+						{{'Handelt es sich um Unterlagen, die Sie selber betreffen?'
+						| translate:'einsichtCheckoutOrderDetailsStep.eigenePersonendatenTitel'}} *
+					</legend>
+					<div class="form-group" [ngClass]="{'has-warning': (form.hasError('required', ['hasEigenePersonendaten'])) && nextClicked}">
+						<label class="control-label" id="lblEigenePersonendatenBestellung">
+							{{'Handelt es sich um Unterlagen, die Sie selber betreffen?'
+							| translate:'einsichtCheckoutOrderDetailsStep.eigenePersonendatenTitel'}} *
+						</label>
+						<fieldset>
+							<div class="radio radio--left">
+								<label for="chkEigenePersonendatenYes">
+									<input type="radio" id="chkEigenePersonendatenYes"
+										   formControlName="hasEigenePersonendaten" [value]="true">
+									<span>{{'Ja' |translate:'einsichtCheckoutOrderDetailsStep.yes'}}</span>
+								</label>
+							</div>
+							<div class="radio radio--left">
+								<label for="chkEigenePersonendatenNo">
+									<input type="radio" id="chkEigenePersonendatenNo"
+										   formControlName="hasEigenePersonendaten" [value]="false">
+									<span>{{'Nein' |translate:'einsichtCheckoutOrderDetailsStep.no'}}</span>
+								</label>
+							</div>
+						</fieldset>
+						<div *ngIf="form.hasError('required', ['hasEigenePersonendaten']) && nextClicked" class="help-block" role="alert">
+							{{'Bitte geben Sie an, ob es sich um Unterlagen handelt, die Sie selber betreffen.' | translate: 'einsichtCheckoutOrderDetailsStep.mandatoryOwnPersondata'}}
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<div *ngIf="HasEigenePersonendatenAndLowerThenOe3Rights()" [ngClass]="{'has-warning': HasEigenePersonendatenAndLowerThenOe3Rights()}" class="warnig-container">
+						<label >
+							<h3>{{'Identifizierung erforderlich' | translate: 'einsichtCheckoutOrderDetailsStep.identifizierungTitel'}}</h3>
+						</label>
+						<label >
+							<span [innerHtml]="identifizierungsText"></span>
+						</label>
+					</div>
+				</fieldset>
+				<fieldset *ngIf="!isAsUser">
+					<legend class="hidden-legend">{{'Art der Arbeit' | translate:'einsichtCheckoutOrderDetailsStep.artDerArbeit'}} *
+					</legend>
+					<div class="form-group" [ngClass]="{'has-warning': (form.hasError('required', ['artDerArbeit'])) && nextClicked}">
+						<label class="control-label" for="artDerArbeitDropdown">
+							{{'Art der Arbeit' | translate:'einsichtCheckoutOrderDetailsStep.artDerArbeit'}} *
+						</label>
+						<div>
+							<select id="artDerArbeitDropdown" class="form-control" formControlName="artDerArbeit">
+								<option [ngValue]="undefined" selected>{{'Bitte wählen' | translate:'einsichtCheckoutOrderDetailsStep.pleaseChoose'}}
+								</option>
+								<option *ngFor="let a of artDerArbeiten" [ngValue]="a.id">{{a.name}}</option>
+							</select>
+						</div>
+						<div *ngIf="form.hasError('required', ['artDerArbeit']) && nextClicked" class="help-block" role="alert">
+							{{'Bitte geben Sie die Art der Arbeit an, für die Sie die Unterlagen benötigen.' | translate: 'einsichtCheckoutOrderDetailsStep.mandatoryArtDerArbeit'}}
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+		<p>{{'Bitte beachten Sie, dass die Bearbeitung eines Einsichtsgesuch vier bis sechs Wochen dauern kann.' | translate:'einsichtCheckoutOrderDetailsStep.gesuchDauerInfo'}}</p>
+	</div>
+	<a href="#{{ '/de/konto/bestellkorb' | localizeLink }}" class="btn btn-secondary">
+		{{'Zurück' | translate:'orderEinsichtCheckoutPage.previousPage'}}
+	</a>
+	<button (click)="validateFields()" type="button" class="btn btn-primary" [disabled]="HasEigenePersonendatenAndLowerThenOe3Rights()">
+		{{'Gesuch einreichen' | translate:'orderEinsichtCheckoutPage.finishOrder'}}
+	</button>
+</form>

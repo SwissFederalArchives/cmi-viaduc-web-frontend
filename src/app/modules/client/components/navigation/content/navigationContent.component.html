@@ -1,0 +1,492 @@
+<h2 class="sr-only">Navigation</h2>
+<!-- The mobile navigation -->
+<section [ngClass]="getMainMobileNavCss()">
+	<div class="table-row">
+		<div class="nav-mobile-header">
+			<div [ngClass]="getMainTableNavCss()">
+                    <span class="nav-mobile-logo">
+                        <img src="./assets/img/swiss.svg"
+							 onerror="this.onerror = null; this.src = './assets/img/swiss.png'"
+							 alt="{{'Logo der Schweizerischen Eidgenossenschaft – zur Startseite' | translate: 'header.altText'}}"/>
+                    </span>
+				<h1><a href="#/">{{ 'Online-Zugang zum Bundesarchiv' | translate:'header.title' }}</a></h1>
+			</div>
+		</div>
+		<div [ngClass]="getMainTableCellNavCss()">
+			<a tabindex="0" class="nav-mobile-menu dropdown-toggle" (click)="toggleMainMobileNav()" (keyup.enter)="toggleMainMobileNav()">
+				<span class="icon icon--menu" aria-hidden="true"></span>
+				<span class="sr-only" *ngIf="mobileMainNavOpen">{{ 'Navigation schliessen' | translate: 'header.closeMobileNavigation'}}</span>
+				<span class="sr-only" *ngIf="!mobileMainNavOpen">{{ 'Navigation öffnen' | translate: 'header.openMobileNavigation'}}</span>
+			</a>
+			<div class="drilldown dropdown-menu" role="menu" [attr.aria-expanded]="mobileMainNavOpen" (click)="nullifyClick($event)">
+				<div class="drilldown-container" [style.height]="drillDownCointainerHeight">
+					<nav class="nav-page-list">
+						<ul role="menu">
+							<li class="list-sub" role="presentation">
+								<a href="javascript:void(0)" [attr.aria-label]="'Suche' | translate:'navigation.search'">
+									{{ 'Suche' | translate:'navigation.search' }}
+								</a>
+								<nav class="drilldown-sub">
+									<a href="javascript:void(0)" [attr.aria-label]="'Zurück' | translate:'navigation.back'"
+									   class="icon icon--before icon--less drilldown-back">
+										{{'Zurück' | translate:'navigation.back'}}
+									</a>
+									<ul role="menu">
+										<li role="presentation">
+											<a href="#{{ '/de/suche/einfach' | localizeLink }}">
+												{{ 'Einfache Suche' | translate:'search.standardSearch' }}
+											</a>
+										</li>
+										<li role="presentation">
+											<a href="#{{ '/de/suche/erweitert' | localizeLink }}">
+												{{ 'Erweiterte Suche' | translate:'search.extendedSearch'}}
+											</a>
+										</li>
+										<li role="presentation">
+											<a href="#{{ '/de/suche/archivplan' | localizeLink }}">
+												{{ 'Archivplan' | translate:'search.archivePlanSearch'}}
+											</a>
+										</li>
+										<li role="presentation">
+											<a href="#{{ '/de/suche/bestaendeuebersicht' | localizeLink }}">
+												{{ 'Thematische Übersicht' | translate:'search.browseArchive'}}
+											</a>
+										</li>
+										<li role="presentation">
+											<a *ngIf="lastSearchResult" href="#{{lastSearchResult}}">
+												{{ 'Letztes Suchresultat' | translate:'search.lastSearchResult' }}
+											</a>
+											<a *ngIf="!lastSearchResult" aria-disabled="true" class="disabled" href="javascript:void(0)">
+												{{ 'Letztes Suchresultat' | translate:'search.lastSearchResult' }}
+											</a>
+										</li>
+									</ul>
+									<button class="yamm-close-bottom" (click)="toggleMainMobileNav()" menuid="closeNav">
+										<span class="icon icon--top" aria-hidden="true"></span>
+									</button>
+								</nav>
+							</li>
+							<li class="list-sub">
+								<a href="javascript:void(0)">{{ 'Beratung' | translate:'navigation.archive' }}</a>
+								<nav class="drilldown-sub">
+									<a href="javascript:void(0)" class="icon icon--before icon--less drilldown-back">
+										{{'Zurück' | translate:'navigation.back'}}
+									</a>
+									<ul role="menu">
+										<li role="presentation">
+											<a href="javascript:void(0)" tabindex="0" menuid="openchat">
+												{{ 'Chat' | translate:'navigation.beratung.chat' }}
+											</a>
+										</li>
+										<li role="presentation" class="cmi-nav-button">
+											<a (click)="openBot()" tabindex="0" menuid="openchatbot" [attr.aria-disabled]="!chatBotEnabled" [ngClass]="{'disabled': !chatBotEnabled}">
+												{{ 'ChatBot' | translate:'navigation.beratung.chatbot' }}
+											</a>
+										</li>
+										<li role="presentation">
+											<a href="mailto:bundesarchiv@bar.admin.ch" tabindex="0">
+												{{ 'E-Mail' | translate:'navigation.beratung.email' }}
+											</a>
+										</li>
+									</ul>
+									<button class="yamm-close-bottom" menuid="closeNav">
+										<span class="icon icon--top" aria-hidden="true"></span>
+									</button>
+								</nav>
+							</li>
+							<li class="list-sub">
+								<a href="javascript:void(0)">{{ 'Informationen' | translate:'navigation.services' }}</a>
+								<nav class="drilldown-sub">
+									<a href="javascript:void(0)" [attr.aria-label]="'Zurück' | translate:'navigation.back'" class="icon icon--before icon--less drilldown-back">
+										{{'Zurück' | translate:'navigation.back'}}
+									</a>
+									<ul role="menu">
+										<li role="presentation">
+											<a href="#{{ '/de/informationen/suchen' | localizeLink }}">
+												{{ 'Suchen' | translate:'navigation.information.search'}}
+											</a>
+										</li>
+										<li role="presentation">
+											<a href="#{{ '/de/informationen/registrieren-und-identifizieren' | localizeLink }}">
+												{{ 'Registrieren & Identifizieren' | translate:'navigation.information.registerAndAuthentificate'}}
+											</a>
+										</li>
+										<li role="presentation">
+											<a href="#{{ '/de/informationen/bestellen-und-konsultieren' | localizeLink }}">
+												{{ 'Bestellen & Konsultieren' | translate:'navigation.information.orderAndConsult' }}
+											</a>
+										</li>
+										<li role="presentation">
+											<a href="#{{ '/de/informationen/schutzfristen-und-einsichtsgesuche' | localizeLink }}">
+												{{ 'Schutzfristen & Einsichtsgesuche' | translate:'navigation.information.protectionAndPetitions' }}
+											</a>
+										</li>
+										<li role="presentation">
+											<a href="#{{ '/de/informationen/zitieren-und-publizieren' | localizeLink }}">
+												{{ 'Zitieren & Publizieren' |translate:'navigation.beratung.quoteAndPublish' }}
+											</a>
+										</li>
+										<li role="presentation">
+											<a href="#{{ '/de/informationen/api' | localizeLink }}">
+												{{ 'API' |translate:'navigation.api' }}
+											</a>
+										</li>
+									</ul>
+									<button class="yamm-close-bottom" (click)="toggleMainMobileNav()" menuid="closeNav">
+										<span class="icon icon--top" aria-hidden="true"></span>
+									</button>
+								</nav>
+							</li>
+							<li class="list-sub">
+								<a href="#{{ '/de/ueber/ueber' | localizeLink }}">
+									{{ 'Über' | translate:'navigation.about.us' }}
+								</a>
+							</li>
+						</ul>
+						<a class="yamm-close-bottom" (click)="toggleMainMobileNav()">
+							<span class="icon icon--top" aria-hidden="true"></span>
+							<span class="sr-only">{{'Navigation schliessen' | translate:'header.closeNav'}}</span>
+						</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<div class="table-cell dropdown">
+			<a href="#{{ '/de/konto/bestellkorb' | localizeLink }}" class="nav-mobile-menu">
+                <span class="icon icon--cart" aria-hidden="true">
+                    <span class="number-circle" *ngIf="cartItemsCount">{{cartItemsCount}}</span>
+                </span>
+				<span class="sr-only">
+					{{'Zum Bestellkorb mit {0} Positionen navigieren' | translate:'header.zumBestellkorb':cartItemsCount}}
+				</span>
+			</a>
+		</div>
+		<div [ngClass]="getUserTableCellNavCss()">
+			<a tabindex="0" class="nav-mobile-menu dropdown-toggle" (click)="toggleUserMobileNav()" (keyup.enter)="toggleUserMobileNav()" [attr.aria-expanded]="mobileUserNavOpen">
+				<span class="glyphicon glyphicon-user more-pad" aria-hidden="true"></span>
+				<span class="sr-only" *ngIf="mobileUserNavOpen" >{{'Benutzermenu schliessen' | translate:'header.closeUserAccount'}}</span>
+				<span class="sr-only" *ngIf="!mobileUserNavOpen">{{'Benutzermenu öffnen' | translate:'header.openUserAccount'}}</span>
+			</a>
+			<div class="drilldown dropdown-menu" role="menu" [attr.aria-expanded]="mobileUserNavOpen">
+				<div class="drilldown-container" [style.height]="drillDownCointainerHeight">
+					<nav class="nav-page-list">
+						<ul role="menu">
+							<li class="infoicon-container" role="presentation" *ngIf="!authenticated">
+								<span>{{ 'Sie sind nicht angemeldet' | translate:'header.notLoggedInInfo'}}</span>
+								<span class="glyphicon glyphicon-info-sign infoicon" data-toggle="tooltip"
+									  data-placement="bottom"
+									  aria-hidden="true"
+									   tooltip="{{ 'Melden Sie sich an, um zusätzliche Funktionen wie Favoritenverwaltung oder Bestellungen nutzen zu können.' | translate:'header.notLoggedInTip'}}">
+								</span>
+								<span class="sr-only">
+									{{ 'Info: Melden Sie sich an, um zusätzliche Funktionen wie Favoritenverwaltung oder Bestellungen nutzen zu können.' | translate:'header.notLoggedInTipInfo'}}
+								</span>
+							</li>
+							<li role="presentation">
+								<a *ngIf="!authenticated" tabindex="0" (click)="login()" (keyup.enter)="login()">
+									<span>{{'Anmelden' | translate: 'header.anmelden'}}</span>
+								</a>
+								<a *ngIf="!authenticated" tabindex="0" (click)="register()" (keyup.enter)="register()">
+									<span>{{'Registrieren' | translate: 'header.register'}}</span>
+								</a>
+								<a *ngIf="authenticated" tabindex="0" (click)="goToAccount()"><span>{{ 'Benutzerstatus' | translate:'header.meinkonto' }}</span></a>
+								<a *ngIf="authenticated" tabindex="0" (click)="goToAccountUserData()"><span>{{ 'Benutzerdaten' | translate:'header.benutzerdaten' }}</span></a>
+								<a *ngIf="authenticated" tabindex="0" (click)="goToEinstellungen()"><span>{{ 'Benutzeroberfläche' | translate:'header.benutzeroberflaeche' }}</span></a>
+								<a *ngIf="authenticated" tabindex="0" (click)="goToBestelluebersichtAendern()"><span>{{ 'Bestellübersicht' | translate:'header.bestelluebersicht' }}</span></a>
+								<a *ngIf="authenticated" tabindex="0" (click)="goToFavourites()"><span>{{ 'Favoriten' | translate:'header.favoriten' }}</span></a>
+								<a *ngIf="authenticated" tabindex="0" (click)="logout()" href="javascript:void(0)"><span>{{ 'Abmelden' | translate:'header.abmelden' }}</span></a>
+							</li>
+						</ul>
+						<a class="yamm-close-bottom" (click)="toggleUserMobileNav()">
+							<span class="icon icon--top" aria-hidden="true"></span>
+							<span class="sr-only">{{'Navigation schliessen' | translate:'header.closeNav'}}</span>
+						</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- The tab navigation -->
+<ul class="nav navbar-nav">
+	<li class="dropdown yamm-fw">
+		<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+			{{ 'Suche' | translate:'navigation.search' }}
+		</a>
+		<ul class="dropdown-menu" role="menu">
+			<div class="yamm-content container-fluid">
+				<div class="row">
+					<div class="col-sm-12">
+						<a class="yamm-close pull-right" tabindex="-1">
+							<span aria-hidden="true">{{ 'Schliessen' | translate:'schliessen' }}</span>
+							<span class="icon icon--close" aria-hidden="true"></span>
+							<span class="sr-only">{{'Navigation schliessen' | translate:'navigation.closemenu'}}</span>
+						</a>
+					</div>
+				</div>
+				<div class="row" (click)="nullifyClick($event)">
+					<li class="col-sm-3" role="menuitem">
+						<div class="yamm-content container-fluid">
+							<i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+							<h4>
+								<a href="#{{ '/de/suche/einfach' | localizeLink }}">
+									{{ 'Einfache Suche' | translate:'search.standardSearch' }}
+								</a>
+							</h4>
+							<p>
+								{{'Steigen Sie mit einer einfachen Suche in die Recherche ein.' | translate:'search.standardSearchTeaserText'}}
+							</p>
+						</div>
+					</li>
+					<li class="col-sm-3" role="menuitem">
+						<div class="yamm-content container-fluid">
+							<i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+							<i class="glyphicon-plus search-icon-plus" aria-hidden="true"></i>
+							<h4>
+								<a href="#{{ '/de/suche/erweitert' | localizeLink }}">
+									{{ 'Erweiterte Suche' | translate:'search.extendedSearch' }}
+								</a>
+							</h4>
+							<p>
+								{{'Passen Sie die Suche Ihren Bedürfnissen an.' | translate:'search.extendedSearchTeaserText'}}
+							</p>
+						</div>
+					</li>
+					<li class="col-sm-3" role="menuitem">
+						<div class="yamm-content container-fluid">
+							<i class="glyphicon glyphicon-tree-structure" aria-hidden="true"></i>
+							<h4>
+								<a href="#{{ '/de/suche/archivplan' | localizeLink }}">
+									{{ 'Archivplan' | translate:'search.archivePlanSearch' }}
+								</a>
+							</h4>
+							<p>
+								{{'Recherchieren Sie im Archivplan und ordnen Sie damit die Unterlagen in ihren Kontext ein.' | translate:'search.archivePlanSearchTeaserText'}}
+							</p>
+						</div>
+					</li>
+					<li class="col-sm-3" role="menuitem">
+						<div class="yamm-content container-fluid">
+							<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+							<h4>
+								<a href="#{{ '/de/suche/bestaendeuebersicht' | localizeLink }}">
+									{{ 'Thematische Übersicht' | translate:'search.browseArchive'}}
+								</a>
+							</h4>
+							<p>
+								{{'Das Archiv nach Themen gruppiert: Finden Sie Bestände, die zu Ihrem Thema passen.' | translate:'search.browseArchiveTeaserText'}}
+							</p>
+						</div>
+					</li>
+				</div>
+				<div class="row" (click)="nullifyClick($event)">
+					<li class="col-sm-3" role="menuitem">
+						<div class="yamm-content container-fluid">
+							<i class="glyphicon glyphicon-step-backward" aria-hidden="true"></i>
+							<h4>
+								<a *ngIf="lastSearchResult" href="#{{lastSearchResult}}">
+									{{ 'Letztes Suchresultat' | translate:'search.lastSearchResult' }}
+								</a>
+								<a *ngIf="!lastSearchResult" aria-disabled="true" class="disabled" href="javascript:void(0)">
+									{{ 'Letztes Suchresultat' | translate:'search.lastSearchResult' }}
+								</a>
+							</h4>
+							<p>{{'Rufen Sie Ihr letztes Suchresultat auf.' | translate:'search.lastSearchResultTeaserText'}}</p>
+						</div>
+					</li>
+				</div>
+				<a class="yamm-close-bottom" tabindex="-1">
+					<span class="icon icon--top" aria-hidden="true"></span>
+					<span class="sr-only">{{'Navigation schliessen' | translate:'navigation.closemenu'}}</span>
+				</a>
+			</div>
+		</ul>
+	</li>
+
+	<li class="dropdown yamm-fw">
+		<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+			{{ 'Beratung' | translate:'navigation.archive' }}
+		</a>
+		<ul class="dropdown-menu" role="menu">
+			<div class="yamm-content container-fluid">
+				<div class="row">
+					<div class="col-sm-12">
+						<a class="yamm-close pull-right" tabindex="-1">
+							<span aria-hidden="true">{{ 'Schliessen' | translate:'schliessen' }}</span>
+							<span class="icon icon--close" aria-hidden="true"></span>
+							<span class="sr-only">{{'Navigation schliessen' | translate:'navigation.closemenu'}}</span>
+						</a>
+					</div>
+				</div>
+				<div class="row" (click)="nullifyClick($event)">
+					<li class="col-sm-3" role="menuitem">
+						<div class="yamm-content container-fluid">
+							<i class="glyphicon glyphicon-comments" aria-hidden="true"></i>
+							<h4>
+								<a href="javascript:void(0)" (click)="openChat()">
+									{{'Chat' | translate:'navigation.beratung.chat' }}
+								</a>
+							</h4>
+							<p>
+								{{'Chatten Sie von Dienstag bis Donnerstag von 9–12 und 13–15 Uhr mit dem Bundesarchiv – wir helfen Ihnen gerne weiter.' | translate:'navigation.beratung.chatTeaserText'}}
+							</p>
+						</div>
+					</li>
+					<li class="col-sm-3" role="menuitem">
+						<div class="yamm-content container-fluid" [ngClass]="{'disabled': !chatBotEnabled}">
+							<i class="glyphicon glyphicon-robot" aria-hidden="true"></i>
+							<h4>
+								<a (click)="openBot()" [attr.aria-disabled]="!chatBotEnabled" [ngClass]="{'disabled': !chatBotEnabled}">
+									{{'ChatBot' | translate:'navigation.beratung.chatbot' }}
+								</a>
+							</h4>
+							<p [attr.aria-disabled]="!chatBotEnabled" [ngClass]="{'disabled': !chatBotEnabled}">
+								{{'Fragen Sie den Beratungsautomaten – er steht rund um die Uhr zur Verfügung.' | translate:'navigation.beratung.chatbotTeaserText'}}
+							</p>
+						</div>
+					</li>
+					<li class="col-sm-3" role="menuitem">
+						<div class="yamm-content container-fluid">
+							<i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
+							<h4>
+								<a tabindex="0" href="mailto:bundesarchiv@bar.admin.ch">
+									{{ 'E-Mail' | translate:'navigation.beratung.email' }}
+								</a>
+							</h4>
+							<p>
+								{{'Senden Sie uns eine E-Mail für komplexere Anfragen.' | translate:'navigation.beratung.emailTeaserText' }}
+							</p>
+						</div>
+					</li>
+				</div>
+				<a class="yamm-close-bottom" tabindex="-1">
+					<span class="icon icon--top" aria-hidden="true"></span>
+					<span class="sr-only">{{'Navigation schliessen' | translate:'navigation.closemenu'}}</span>
+				</a>
+			</div>
+		</ul>
+	</li>
+
+	<li class="dropdown yamm-fw">
+		<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+			{{ 'Informationen' | translate:'navigation.services' }}
+		</a>
+		<ul class="dropdown-menu" role="menu">
+			<div class="yamm-content container-fluid">
+				<div class="row">
+					<div class="col-sm-12">
+						<a class="yamm-close pull-right" tabindex="-1">
+							<span aria-hidden="true">{{ 'Schliessen' | translate:'schliessen' }}</span>
+							<span class="icon icon--close" aria-hidden="true"></span>
+							<span class="sr-only">{{'Navigation schliessen' | translate:'navigation.closemenu'}}</span>
+						</a>
+					</div>
+				</div>
+				<div class="row" (click)="nullifyClick($event)">
+					<li class="col-sm-3" role="menuitem">
+						<div class="yamm-content container-fluid">
+							<i class="glyphicon glyphicon-list" aria-hidden="true"></i>
+							<h4>
+								<a href="#{{ '/de/informationen/bestaende' | localizeLink }}">
+								  {{ 'Bestände' |	translate:'navigation.information.stocks' }}
+								</a>
+						    </h4>
+							<p>
+								{{'Übersicht über die Bestände des Bundesarchivs und deren Gliederung in Themenbereiche.'| translate:'navigation.information.stocksTeaserText'}}
+							</p>
+						</div>
+					</li>
+					<li class="col-sm-3" role="menuitem">
+						<div class="yamm-content container-fluid">
+							<i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+							<h4>
+								<a href="#{{ '/de/informationen/suchen' | localizeLink }}">
+									{{ 'Suchen' | translate:'navigation.information.search' }}
+								</a>
+							</h4>
+							<p>
+								{{'Anleitung und Tipps zur Suche auf recherche.bar.admin.ch.' | translate:'navigation.information.searchTeaserText'}}
+							</p>
+						</div>
+					</li>
+					<li class="col-sm-3" role="menuitem">
+						<div class="yamm-content container-fluid">
+							<i class="glyphicon glyphicon-fingerprint-ok" aria-hidden="true"></i>
+							<h4>
+								<a href="#{{ '/de/informationen/registrieren-und-identifizieren' | localizeLink }}">
+									{{'Registrieren & Identifizieren' | translate:'navigation.information.registerAndAuthentificate' }}
+								</a>
+							</h4>
+							<p>
+								{{'Anonym, angemeldet oder identifiziert: Die Rechte der einzelnen Benutzer-Kategorien im Überblick.' | translate:'navigation.information.registerAndAuthentificateTeaserText'}}
+							</p>
+						</div>
+					</li>
+					<li class="col-sm-3" role="menuitem">
+						<div class="yamm-content container-fluid">
+							<i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
+							<h4>
+								<a href="#{{ '/de/informationen/bestellen-und-konsultieren' | localizeLink }}">
+									{{'Bestellen & Konsultieren' | translate:'navigation.information.orderAndConsult' }}
+								</a>
+							</h4>
+							<p>
+								{{'Analoge und digitale Unterlagen aus dem Bundesarchiv online bestellen und einsehen – wichtige Hinweise.' | translate:'navigation.information.orderAndConsultTeaserText'}}
+							</p>
+						</div>
+					</li>
+					<li class="col-sm-3" role="menuitem">
+						<div class="yamm-content container-fluid">
+							<i class="glyphicon glyphicon-scale-classic" aria-hidden="true"></i>
+							<h4>
+								<a href="#{{ '/de/informationen/schutzfristen-und-einsichtsgesuche' | localizeLink }}">
+									{{'Schutzfristen & Einsichtsgesuche' | translate:'navigation.information.protectionAndPetitions' }}
+								</a>
+							</h4>
+							<p>
+								{{'Informationen zu Unterlagen des Bundesarchivs, die unter Schutzfrist stehen, sowie den nötigen Einsichtsgesuchen.' | translate:'navigation.information.protectionAndPetitionsTeaserText'}}
+							</p>
+						</div>
+					</li>
+					<li class="col-sm-3" role="menuitem">
+						<div class="yamm-content container-fluid">
+							<i class="glyphicon glyphicon-book-open" aria-hidden="true"></i>
+							<h4>
+								<a href="#{{ '/de/informationen/zitieren-und-publizieren' | localizeLink }}">
+									{{'Zitieren & Publizieren' | translate:'navigation.beratung.quoteAndPublish' }}
+								</a>
+							</h4>
+							<p>
+								{{'Vorgaben für das richtige Zitieren und Publizieren von Unterlagen aus dem Bundesarchiv.' | translate:'navigation.beratung.quoteAndPublishTeaserText'}}
+							</p>
+						</div>
+					</li>
+					<li class="col-sm-3" role="menuitem">
+						<div class="yamm-content container-fluid">
+							<i class="glyphicon glyphicon-cogwheels" aria-hidden="true"></i>
+							<h4>
+								<a href="#{{ '/de/informationen/api' | localizeLink }}">
+									{{'API' | translate:'navigation.information.api' }}
+								</a>
+							</h4>
+							<p>
+								{{'Are you developer? The Application Programming Interface (API) of the Swiss Federal Archives allows you to integrate archival search in your application.' | translate:'navigation.information.apiText'}}
+							</p>
+						</div>
+					</li>
+				</div>
+				<a class="yamm-close-bottom" tabindex="-1">
+					<span class="icon icon--top" aria-hidden="true"></span>
+					<span class="sr-only">{{'Navigation schliessen' | translate:'navigation.closemenu'}}</span>
+				</a>
+			</div>
+		</ul>
+	</li>
+
+	<li class="dropdown yamm-fw">
+		<a class="no-icon" href="#{{ '/de/ueber/ueber' | localizeLink }}">
+			{{ 'Über' | translate:'navigation.about.us' }}
+		</a>
+	</li>
+</ul>

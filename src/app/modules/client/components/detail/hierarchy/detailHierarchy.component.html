@@ -1,0 +1,13 @@
+<div class="detail-hierarchy" *ngIf="items">
+    <span *ngFor="let item of items; let i = index;" [ngClass]="item.itemClasses"
+		  [ngStyle]="{ 'padding-left.em': (inset*(item.depth)) }">
+		<a tabindex="0" (keyup.enter)="open(item)" (click)="open(item)" *ngIf="item.itemClasses !== 'selected'">
+            <span *ngIf="item.referenceCode">{{item.referenceCode}}&nbsp;</span>
+            <span>{{item.title}}</span>
+        </a>
+		<span *ngIf="item.itemClasses === 'selected'" tabindex="0" [attr.aria-describedby]="'Aktuell angezeigte Verzeichnungseinheit' | translate:'detailHierarchy.activePosition'">
+			<span *ngIf="item.referenceCode">{{item.referenceCode}}&nbsp;</span>
+            <span>{{item.title}}</span>
+		</span>
+    </span>
+</div>

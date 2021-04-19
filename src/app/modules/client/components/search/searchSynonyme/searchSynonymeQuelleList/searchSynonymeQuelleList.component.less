@@ -1,0 +1,38 @@
+ul {
+	vertical-align: top;
+	text-align: left;
+	list-style-type: none;
+	margin: 0px;
+	font-style: italic;
+
+	li {
+		margin: 0px;
+	}
+}
+
+@media (min-width: 768px) {
+	.list-search-synonyme-termdatlink {
+		white-space: nowrap;
+	}
+}
+
+.section {
+	margin-top: 0px;
+	padding: 0px;
+	.section-header {
+		vertical-align: top;
+		padding: .2em;
+		cursor: pointer;
+		h4 {
+			display: inline-block;
+			margin: 0;
+			i {
+				margin-right: 0.33em;
+			}
+		}
+	}
+}
+
+.section.collapsed .section-content {
+	display: none;
+}

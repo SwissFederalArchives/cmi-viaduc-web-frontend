@@ -1,0 +1,27 @@
+<div class="ocp-orderkind-container">
+
+	<div *ngIf="!loading">
+		<div *ngIf="!showError; else errorText">
+			<h1 *ngIf="titleHtmlText" [innerHtml]="titleHtmlText"></h1>
+
+			<h2 *ngIf="introductionHtmlText" [innerHtml]="introductionHtmlText"></h2>
+
+			<p [innerHtml]="thxHtmlText"></p>
+
+			<p [innerHtml]="stateHtmlText"></p>
+
+			<p [innerHtml]="backToCartHtmlText" *ngIf="hasItemsInCartLeft"></p>
+		</div>
+		<ng-template #errorText>
+			<div class="alert alert-danger">
+				<strong>
+					{{'Es ist ein Fehler aufgetreten.' | translate:'error.unknownErrorTitle' }}
+				</strong>
+				<p>
+					{{'Ihre Bestellung konnte leider nicht durchgeführt werden. Bitte versuchen Sie es später erneut. Falls das Problem bestehen bleibt, wenden Sie sich bitte an den Systemadministrator.' | translate:'error.orderErrorMessage' }}
+				</p>
+			</div>
+		</ng-template>
+	</div>
+	<cmi-spinner *ngIf="loading" hint="{{'Ihre Bestellung wird übermittelt...' | translate:'orders.submittingOrder'}}"></cmi-spinner>
+</div>

@@ -1,0 +1,11 @@
+<div *ngIf="hasNews">
+	<div class="list-group-header"><h2>{{'Aktuell' | translate: 'news.heading'}}</h2></div>
+	<div class="list-group-item" *ngFor="let n of news">
+		<div>
+			<span class="news-publication-date">{{n.fromDate}}</span>
+			<br>
+			<span class="news-heading">{{n.heading}}</span>
+		</div>
+		<div>{{n.text}}</div>
+	</div>
+</div>

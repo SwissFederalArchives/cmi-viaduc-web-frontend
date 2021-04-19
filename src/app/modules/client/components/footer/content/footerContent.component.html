@@ -1,0 +1,18 @@
+<h2 class="sr-only">{{'Fusszeile' | translate:'footer.footerTitle'}}</h2>
+<div class="container-fluid">
+	<hr class="footer-line visible-xs">
+	<img class="visible-xs" src="./assets/img/logo-CH.svg"
+		 onerror="this.onerror = null; this.src = './assets/img/logo-CH.png'" alt="back to home">
+</div>
+
+<address>
+	<span class="hidden-xs">{{ 'Schweizerisches Bundesarchiv BAR' | translate:'footer.title' }}</span>
+	<nav class="pull-right">
+		<ul>
+			<li><a href="#{{ '/de/kontakt' | localizeLink }}">{{ 'Kontakt' | translate:'navigation.contact' }}</a></li>
+			<li><a href="#{{ '/de/informationen/api' | localizeLink }}">{{ 'API' | translate:'navigation.information.api' }}</a></li>
+			<li><a target="_blank" href="{{ 'https://www.admin.ch/gov/de/start/rechtliches.html' | translate:'navigation.rechtlichesLink' }}" rel="noopener">{{ 'Rechtliches' | translate:'navigation.legal' }}</a></li>
+			<li><a href="#{{ '/de/nutzungsbestimmungen-und-datenschutz' | localizeLink }}">{{ 'Nutzungsbestimmungen und Datenschutz' | translate:'navigation.termsOfUse' }}</a></li>
+		</ul>
+	</nav>
+</address>

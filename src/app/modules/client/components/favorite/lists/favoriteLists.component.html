@@ -1,0 +1,14 @@
+<div class="list-favorite-lists">
+	<div class="header">
+		<a [routerLink]="getFavoritesLink()">{{'Favoritenlisten' | translate:'favorites.listsTitle' }}<span
+			class="icon icon--star pull-right"></span></a>
+	</div>
+	<ul>
+		<li *ngFor="let list of lists" (click)="goTo(list)" [ngClass]="{'active': list.active}">
+			<!-- order important for right float -->
+			<div class="badge">{{ list.numberOfItems }}</div>
+			<a  *ngIf="!list.active" href="javascript:void(0)">{{ list.name }}</a>
+			<span *ngIf="list.active">{{ list.name }}<span class="sr-only"> active</span></span>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,149 @@
+<div class="page page-advanced-search- col-sm-12">
+	<div class="page-breadcrumb">
+		<cmi-viaduc-breadcrumb [items]="crumbs"></cmi-viaduc-breadcrumb>
+	</div>
+	<div class="search-result-page-content">
+		<cmi-blocker *ngIf="showLoading" class="cmi-visible cmi-fixed cmi-center cmi-shadow">
+			<cmi-spinner></cmi-spinner>
+		</cmi-blocker>
+
+		<div *ngIf="!facetteCollapsed" class="row result-content-expanded">
+			<cmi-viaduc-facette-list #facetteList
+									  (onFilter)="onFilterRequest($event)"
+									  *ngIf="searchResponse?.facets && !hasAnyErrors"
+									  [facetts]="searchResponse.facets"
+									  [(collapsed)]="facetteCollapsed"
+									  [attr.aria-hidden]="facetteCollapsed"
+									  [ngClass]="{'fac-collapsed': facetteCollapsed, 'fac-expanded': !facetteCollapsed}"
+									  (onToggle)="onFacetteToggle($event)">
+			</cmi-viaduc-facette-list>
+		</div>
+
+		<div [ngClass]="getClassForHitlist" *ngIf="!showLoading && (searchResponse?.entities?.items || hasAnyErrors)">
+			<div class="row search-box-expanded" [ngClass]="{'searchbox-collapsed': !facetteCollapsed}">
+				<div class="col-xs-12 col-reduced-margin">
+					<cmi-viaduc-simple-search
+						*ngIf="!isAdvancedSearchResult"
+						[lastUsedQuery]="lastExecutedSimpleSearchModel"
+						(onSearch)="onSearch($event)"
+						[hasErweiterteSucheLink]="true">
+					</cmi-viaduc-simple-search>
+					<div *ngIf="isAdvancedSearchResult">
+						<span>
+							{{'Ihre Suchanfrage: {0}' | translate:'search.lastExecutedQuery':lastExecutedQueryTerm}}
+						</span>
+						<br/>
+						<a (click)="editAdvancedSearch()" tabindex="0" (keydown.enter)="editAdvancedSearch()">
+							<span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
+							{{'Suchkriterien bearbeiten' | translate:'search.changeSearchCriteria'}}
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<h2 class="sr-only">{{'Treffer' | translate:'search.trefferTitle'}}</h2>
+			<div class="row hitbox-container">
+				<div *ngIf="facetteCollapsed && !hasAnyErrors" class="col-md-1 col-sm-1 col-xs-2 no-bottom-margin">
+					<button type="button" class="btn btn-link fac-collapsed-btn" (click)="onFacetteToggle(false)">
+						<span class="icon icon--greater collapse-icon" aria-label="Facettenliste einklappen"></span>
+						<br />
+						<span>
+							{{'Filter' | translate:'search.filterTitle'}}
+						</span>
+					</button>
+				</div>
+				<div class="no-bottom-margin" [ngClass]="{'col-md-11 col col-sm-11 col-xs-10': facetteCollapsed && !hasAnyErrors, 'col-xs-12 fixed-hitbar': !facetteCollapsed || hasAnyErrors}">
+					<div class="row hitbar-row">
+						<div class="col-md-3 col-xs-4 no-bottom-margin">
+							<span class="hit-count">{{'{0} Treffer' | translate:'hitbar.totalHits':totalhits}}</span>
+						</div>
+						<div class="col-md-7 col-xs-5 no-bottom-margin">
+							<form role="form" class="sort-form">
+								<fieldset>
+									<div class="form-group">
+										<label class="hidden-xs">{{'Sortierung' | translate:'simpleHitList.sortierung'}}</label>
+										<select name="sortFieldsDropdown" class="form-control"
+												[(ngModel)]="selectedSortingField"
+												(ngModelChange)="onSorted($event)"
+												[compareWith]="compareSortFields">
+											<option *ngFor="let s of sortingFields" [ngValue]="s">
+												{{ s.displayName | translate: getSortTranslationKey(s)}}
+											</option>
+										</select>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+						<div class="col-md-2 col-xs-3 no-bottom-margin hitbar-icon-col">
+							<a [tooltip]="'Permalink dieser Suche in die Zwischenablage kopieren' | translate:'hitbar.copyPermalink'"
+							   [tooltipPlacement]="'left'"
+							   tabindex="0"
+							   [copy-clipboard]="deepLinkUrl">
+								<span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+								<span class="sr-only">{{ 'Permalink dieser Suche in die Zwischenablage kopieren' | translate:'hitbar.copyPermalink' }}</span>
+							</a>
+							<a (keydown.enter)="toggleSearchFavoriteMenu()"
+							   (click)="toggleSearchFavoriteMenu()"
+							   [tooltip]="'Suche in Favoriten speichern' | translate:'hitbar.saveAsFavorite'"
+							   tabindex="0"
+							   [tooltipPlacement]="'left'">
+								<span class="icon icon--star" aria-hidden="true"></span>
+								<span class="sr-only">{{ 'Suche in Favoriten speichern' | translate:'hitbar.saveAsFavorite' }}</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<cmi-viaduc-search-favorite-menu *ngIf="showAddSearchFavorite"
+											 [deepLinkUrl]="deepLinkUrl"
+											 (onClose)="toggleSearchFavoriteMenu()">
+			</cmi-viaduc-search-favorite-menu>
+			<div class="row">
+				<div class="col-xs-12">
+					<div *ngIf="upperPaginationEnabled && totalhits > 0">
+						<br/>
+						<cmi-viaduc-pagination [paging]="searchResponse.entities.paging" (onPaged)="onPaged($event)">
+						</cmi-viaduc-pagination>
+					</div>
+					<cmi-viaduc-simple-hitlist *ngIf="!hasAnyErrors" [loading]="showLoading"
+											   [entityResult]="searchResponse?.entities?.items"
+											   [enableExplanations]="searchResponse?.enableExplanations">
+					</cmi-viaduc-simple-hitlist>
+					<div *ngIf="hasSyntaxError" class="search-warning alert alert-danger">
+						<strong>
+							{{'Ihre Suchanfrage ist ungültig. Bitte kontrollieren Sie die Syntax.' |translate:'search.invalidQuery' }}
+						</strong>
+						<div *ngIf="showMoreInformationEnabled">
+							<cmi-viaduc-syntax-help></cmi-viaduc-syntax-help>
+							<a class="pointer-cursor" (click)="showMoreInformationEnabled = false">
+								{{'Weniger anzeigen'	| translate:'search.wenigerAnzeigen'}}
+							</a>
+						</div>
+						<div *ngIf="!showMoreInformationEnabled">
+							<a class="pointer-cursor" (click)="showMoreInformationEnabled = true">
+								{{'Ausführliche Beschreibung' | translate:'search.ausfuehrlicheBeschreibung'}}
+							</a>
+						</div>
+					</div>
+					<div *ngIf="hasOtherErrors" class="search-warning alert alert-danger">
+						<strong>{{errorMessage}}</strong>
+						<span>{{errorDetails}}</span>
+					</div>
+					<div *ngIf="lowerPaginationEnabled && totalhits > 0">
+						<cmi-viaduc-pagination [paging]="searchResponse.entities.paging" (onPaged)="onPaged($event)">
+						</cmi-viaduc-pagination>
+					</div>
+				</div>
+			</div>
+		</div>
+		<cmi-blocker *ngIf="showCaptcha" class="cmi-visible cmi-fixed cmi-center cmi-shadow">
+			<div class="captcha-container alert alert-warning">
+				<strong>{{ 'Sehr viele zeitnahe Anfragen' | translate:'search.highUsageTitle' }}</strong>
+				<p>{{ 'Bitte bestätigen Sie, dass Sie kein Roboter sind' | translate:'search.highUsageInfo' }}</p>
+				<form>
+					<re-captcha (captchaResponse)="onCaptchaResponse($event)"></re-captcha>
+				</form>
+			</div>
+		</cmi-blocker>
+	</div>
+</div>

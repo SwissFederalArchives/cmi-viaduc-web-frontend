@@ -1,0 +1,119 @@
+<form [formGroup]="form">
+	<div class="ocp-orderkind-container">
+		<span>{{ cartCount === 1
+		? ('Ich möchte dieses Dossier'| translate:'orderCheckoutPage.iWantThisDossierSingular')
+		: ('Ich möchte diese Dossiers'| translate:'orderCheckoutPage.iWantThisDossierPlural') }}
+		</span>
+		<fieldset>
+			<div class="form-group" [ngClass]="{'has-warning': form.hasError('required', ['shippingType']) && nextClicked}">
+			<div class="radio radio--left">
+					<label for="chkInLeseSaalBestellen">
+						<input type="radio"
+								name="shippingType"
+								formControlName="shippingType"
+								id="chkInLeseSaalBestellen"
+								tabindex="0"
+								required
+								[value]="ShippingType.Lesesaalausleihen">
+						<span [innerHtml]="liefertypLesesaalText"></span>
+					</label>
+				</div>
+				<div class="radio radio--left" *ngIf="isAsOrBvwUser">
+					<label for="chkInsAmtBestellen">
+						<input type="radio"
+							   name="shippingType"
+							   required
+							   formControlName="shippingType"
+							   id="chkInsAmtBestellen" tabindex="0"
+							   [value]="ShippingType.Verwaltungsausleihe">
+						<span [innerHtml]="liefertypAmtText"></span>
+					</label>
+				</div>
+				<div class="radio radio--left">
+					<label for="chkAlsDigitalisatBestellen">
+						<input type="radio"
+							   name="shippingType"
+							   id="chkAlsDigitalisatBestellen"
+							   formControlName="shippingType"
+							   required
+							   tabindex="0"
+							   [value]="ShippingType.Digitalisierungsauftrag">
+						<span [innerHtml]="liefertypDigitalText"></span>
+					</label>
+				</div>
+				<span *ngIf="form.hasError('required', ['shippingType']) && nextClicked" class="help-block" role="alert">
+                    {{'Bitte wählen Sie eine Lieferart aus.' | translate: 'orderCheckoutPage.mandatoryShippingType'}}
+				</span>
+
+				<cmi-spinner *ngIf="showLoading"></cmi-spinner>
+
+				<div *ngIf="shippingType === ShippingType.Digitalisierungsauftrag">
+					<div id="alsDigitalisatBestellenWarning" *ngIf="showDigitizationWarning" class="alert alert-warning" role="alert">
+						<span class="sr-only">{{'Warnmeldung' | translate:'orderCheckoutPage.warningInfo'}}</span>
+						<h4 class="alert-heading">{{'Längere Wartezeiten für Digitalisate!' | translate:'orderCheckoutPage.warningTitle'}}</h4>
+						<p>{{'Aufgrund der grossen Nachfrage ist die Digitalisierungsinfrastruktur derzeit stark ausgelastet. Daher müssen Sie mit längeren
+                            Bearbeitungszeiten für Ihren Auftrag rechnen. Falls Sie die Unterlagen kurzfristig einsehen oder eine umfangreiche Bestellung
+                            aufgeben möchten, bestellen Sie die Dossiers bitte in den Lesesaal.' | translate:'orderCheckoutPage.warningMessagePart1'}}</p>
+						<p>{{'Mitarbeitende der Bundesverwaltung können von Ihrer eigenen Verwaltungseinheit abgelieferte Unterlagen direkt
+                            ins Amt bestellen.' | translate:'orderCheckoutPage.warningMessagePart2'}}</p>
+					</div>
+
+					<div class="alert alert-danger" role="alert" *ngIf="!digitalisatBestellungMoeglich && kontingentResult">
+						<span class="sr-only">{{'Fehlermeldung' | translate:'orderCheckoutPage.error'}}</span>
+						<h4 class="alert-heading">{{'Kontingent ausgeschöpft' | translate:'orderCheckoutPage.digitalisierungNichtMoeglichTitle'}}</h4>
+						<p>{{'Sie haben uns bereits mit der Digitalisierung von {0} Dossiers beauftragt.' | translate:'orderCheckoutPage.digitalisierungNichtMoeglichIntro': kontingentResult.aktiveDigitalisierungsauftraege}}</p>
+						<p *ngIf="isAsOrBvwUser">{{'Bitte bestellen Sie die Unterlagen in den Lesesaal, ins Amt oder warten Sie, bis Ihre Digitalisierungsaufträge abgeschlossen sind.' | translate:'orderCheckoutPage.digitalisierungNichtMoeglichAsBvw'}}</p>
+						<p *ngIf="!isAsOrBvwUser">
+							{{'Bitte bestellen Sie die Unterlagen in den Lesesaal oder warten Sie, bis Ihre Digitalisierungsaufträge abgeschlossen sind.' | translate:'orderCheckoutPage.digitalisierungNichtMoeglichOthers'}}
+						</p>
+					</div>
+
+					<div *ngIf="willExceedKontingent">
+						<div class="alert alert-warning" role="alert" >
+							<span class="sr-only">{{'Warnmeldung' | translate:'orderCheckoutPage.warningInfo'}}</span>
+							<h4 class="alert-heading">{{'Sie können nur noch {0} Dossiers digitalisieren lassen' | translate:'orderCheckoutPage.exceedDigitalisierungTitle': kontingentResult.bestellkontingent}}</h4>
+							<p>{{'Bitte wählen Sie unten jene Dossiers aus, die Sie jetzt digitalisieren lassen möchten. Sobald diese digitalisiert sind, können Sie weitere Dossier in Auftrag geben.' | translate: 'orderCheckoutPage.exceedDigitalisierungIntro'}}</p>
+							<p *ngIf="isAsOrBvwUser">
+								{{'Alternativ dazu ist eine Bestellung in den Lesesaal oder ins Amt jederzeit möglich.' | translate: 'orderCheckoutPage.exceedDigitalisierungAsBvw'}}
+							</p>
+							<p *ngIf="!isAsOrBvwUser">
+								{{'Alternativ dazu ist eine Bestellung in den Lesesaal jederzeit möglich.' | translate: 'orderCheckoutPage.exceedDigitalisierungOthers'}}
+							</p>
+						</div>
+
+						<table class="table table-bordered text-right">
+							<thead>
+								<tr>
+									<th><span class="sr-only">{{'Bestellposition auswählen' | translate:'shoppingCartItemList.chooseItem'}}</span></th>
+									<th class="text-left">{{'Signatur'|translate:'shoppingCartItemList.refCode'}}</th>
+									<th class="text-left">{{'Titel'|translate:'shoppingCartItemList.title'}}</th>
+									<th class="text-left">{{'Entstehungszeitraum'|translate:'shoppingCartItemList.timeSpan'}}</th>
+								</tr>
+							</thead>
+							<tbody>
+							<tr *ngFor="let item of items">
+								<td>
+									<input type="checkbox" (click)="updateDigitalisationSelection($event, item)" [checked]="isSelected(item)">
+								</td>
+								<th class="text-left">
+									<a *ngIf="item.veId" href="#{{ '/de/archiv/einheit/' + item.veId}}">{{item.referenceCode}}</a>
+									<ng-container *ngIf="!item.veId">{{item.referenceCode}}</ng-container>
+								</th>
+								<td class="text-left shc-title-column">{{item.title}}</td>
+								<td class="text-left">{{item.period}}</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+
+	<a href="#{{ '/de/konto/bestellkorb' | localizeLink }}" class="btn btn-secondary" tabindex="0">
+		{{'Zurück' | translate:'orderCheckoutPage.previousPage'}}
+	</a>
+	<button (click)="validateFields()" type="button" class="btn btn-primary" tabindex="0" [disabled]="isNextButtonDisabled">
+		{{'Weiter' | translate:'orderCheckoutPage.nextPage'}}
+	</button>
+</form>

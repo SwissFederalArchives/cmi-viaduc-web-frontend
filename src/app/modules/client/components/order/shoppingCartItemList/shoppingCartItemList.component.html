@@ -1,0 +1,107 @@
+<table class="table table-bordered text-right">
+	<thead>
+	<tr>
+		<th class="text-left">{{'Signatur'|translate:'shoppingCartItemList.refCode'}}</th>
+		<th class="text-left">{{'Titel'|translate:'shoppingCartItemList.title'}}</th>
+		<th class="text-left">{{'Entstehungszeitraum'|translate:'shoppingCartItemList.timeSpan'}}</th>
+		<th><span class="sr-only">{{'Bemerkung zum Dossier' | translate:'shoppingCartItemList.commentDossier'}}</span></th>
+		<th><span class="sr-only">{{'Bestellposition entfernen' | translate:'shoppingCartItemList.bestellpositionEntfernen'}}</span></th>
+		<th *ngIf="einsichtsGesuche" class="shc-bewilligung-vorhande-column"></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr *ngFor="let item of items">
+		<th class="text-left">
+			<a *ngIf="item.veId" href="#{{ '/de/archiv/einheit/' + item.veId}}">{{item.referenceCode}}</a>
+			<ng-container *ngIf="!item.veId">{{item.referenceCode}}</ng-container>
+		</th>
+		<td class="text-left shc-title-column">{{item.title}}</td>
+		<td class="text-left">{{item.period}}</td>
+		<td>
+			<label class="sr-only" for="commentInput">{{'Bemerkung zum Dossier' | translate:'shoppingCartItemList.commentDossier'}}</label>
+			<input id="commentInput" type="text" [(ngModel)]="item.comment" (change)="updateComment(item)" class="shc-comment-field"
+				   placeholder="{{'Bemerkung zum Dossier' | translate:'shoppingCartItemList.commentDossier'}}">
+		</td>
+		<td class="text-center">
+			<a tabindex="0" class="btn btn-link" (click)="removeFromCart(item)" (keyup.enter)="removeFromCart(item)" data-toggle="tooltip"  tooltip="{{'Klicken, um die Bestellposition zu entfernen' | translate:'shoppingCartItemList.removeOrderItemTooltip'}}">
+				<span class="icon icon--close"></span>
+			</a>
+		</td>
+		<td *ngIf="einsichtsGesuche" class="shc-bewilligung-vorhande-column">
+			<a class="btn btn-link" (click)="showModal(item)" data-toggle="tooltip"  tooltip="{{'Klicken, um die vorhandene Bewilligung zu hinterlegen' | translate:'shoppingCartItemList.bewilligungVorhandenTooltip'}}">
+				<span class="glyphicon glyphicon-unlock"></span>&nbsp;<span>{{'Bewilligung bereits vorhanden' | translate:'shoppingCartItemList.bewilligungVorhandenTitle'}}</span>
+				<span class="sr-only">{{'Bewilligung hinterlegen Button' | translate:'shoppingCartItemList.sRBewilligungHinterlegenButton'}}</span>
+			</a>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+
+<cmi-viaduc-modal  tooltip="{{ 'Bewilligung bereits vorhanden' | translate:'shoppingCartItemList.bewilligungBereitsVorhanden' }}" [opened]="bewilligungModalOpen" (openedChange)="onModalOpenedChange($event)">
+	<cmi-viaduc-modal-body>
+		<p>{{'Bitte geben Sie das Datum Ihrer Einsichtsbewilligung an. Mittels Klick auf "Weiter" wird die Verzeichnungseinheit anschliessend dem Bereich "Unterlagen bestellen" hinzugefügt.' | translate:'shoppingCartItemList.bewilligungBereitsVorhandenText'}}</p>
+		<table class="table table-bordered text-right">
+			<caption>{{'Ausgewählte Verzeichnungseinheit' | translate:'shoppingCartItemList.tableCaption' }}</caption>
+			<thead>
+			<tr>
+				<th class="text-left">{{'Signatur'|translate:'shoppingCartItemList.refCode'}}</th>
+				<th class="text-left">{{'Titel'|translate:'shoppingCartItemList.title'}}</th>
+				<th class="text-left">{{'Entstehungszeitraum'|translate:'shoppingCartItemList.timeSpan'}}</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr *ngIf="chosenBewilligungsItem">
+				<th class="text-left">{{chosenBewilligungsItem.referenceCode}}</th>
+				<td class="text-left shc-title-column">{{chosenBewilligungsItem.title}}</td>
+				<td class="text-left">{{chosenBewilligungsItem.period}}</td>
+			</tr>
+			</tbody>
+		</table>
+		<form>
+			<fieldset class="row">
+				<legend class="sr-only">{{'Formular zur Eingabe der Bewilligung' | translate: 'shoppingCartItemList.sRLegendBewilligung'}}</legend>
+				<div class="form-group">
+					<label for="bewilligungsDatum" class="col-sm-6 col-xs-12 control-label no-bottom-margin">
+						<span>{{ 'Datum Einsichtsbewilligung' | translate: 'shoppingCartItemList.dateOfBewilligung'}} *</span>
+					</label>
+					<div class="col-sm-6 col-xs-12 no-bottom-margin">
+						<input type="date"
+							   *ngIf="chosenBewilligungsItem"
+							   [(ngModel)]="chosenBewilligungsItem.bewilligungsDatum"
+							   required
+							   datePicker
+							   [minDateToday]="false"
+							   name="bewilligungsDatum"
+							   class="form-control"
+							   id="bewilligungsDatum"
+							   (isValidChanged)="checkDate($event)"
+							   aria-labelledby="Date DD.MM.YYYY">
+						<div [ngClass]="{'has-warning': invalidDateError}">
+							<span *ngIf="invalidDateError" class="help-block" role="alert">
+								{{'Bitte wählen Sie ein gültiges Datum aus.' | translate: 'shoppingCartItemList.chooseValidDate'}}
+							</span>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<div class="alert alert-danger" role="alert" *ngIf="updateError">
+				<span class="sr-only">{{'Nachfolgend eine Fehlermeldung' | translate: 'shoppingCartItemList.sRErrorTitle'}}</span>
+				{{'Es ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es später erneut.' | translate:'shoppingCartItemList.unExpectedError'}}
+			</div>
+		</form>
+	</cmi-viaduc-modal-body>
+	<cmi-viaduc-modal-footer>
+		<fieldset class="row">
+			<div class="col-xs-12">
+				<button type="button" (click)="onModalOpenedChange(false)" class="btn btn-default">
+					{{'Abbrechen' | translate: 'cancel'}}
+				</button>
+				<button type="button" (click)="updateBewilligung()" [disabled]="invalidDateError || !chosenBewilligungsItem?.bewilligungsDatum" class="btn btn-primary">
+					{{'Weiter' | translate: 'proceed'}}
+				</button>
+			</div>
+		</fieldset>
+	</cmi-viaduc-modal-footer>
+</cmi-viaduc-modal>
+

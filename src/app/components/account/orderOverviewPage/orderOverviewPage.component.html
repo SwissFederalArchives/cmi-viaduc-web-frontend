@@ -1,0 +1,93 @@
+<div class="page page-order-overview col-sm-12">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="page-breadcrumb">
+				<cmi-viaduc-breadcrumb [items]="crumbs"></cmi-viaduc-breadcrumb>
+			</div>
+		</div>
+	</div>
+	<cmi-viaduc-layout-left-content>
+		<div left>
+			<cmi-viaduc-usersetting-list></cmi-viaduc-usersetting-list>
+			<cmi-viaduc-favorite-lists></cmi-viaduc-favorite-lists>
+		</div>
+		<div content>
+			<div class="page-content-bordered">
+				<h1 class="page-content-title">
+					<span>{{'Bestellübersicht' | translate:'account.orderings.title'}}</span>
+				</h1>
+				<div class="row orderoverview-list">
+					<div *ngIf="!loading">
+						<div *ngIf="!isEmptyResult; else emptyTable">
+							<div class="row order-table-tools-row">
+								<div class="col-xs-2 no-bottom-margin">
+									<span *ngIf="originalRowCount === rowCount; else filteredText">{{ 'Anzahl: {0}' | translate: 'orderOverviewPage.itemsCount' : rowCount}}</span>
+									<ng-template #filteredText>
+										<span>{{ 'Anzahl: {0} von {1}' | translate: 'orderOverviewPage.itemsCountFiltered' : rowCount : originalRowCount}}</span>
+									</ng-template>
+								</div>
+								<div class="col-xs-10 no-bottom-margin commandbar">
+									<span class="pull-right">
+										<a (click)="resetView()" tabindex="0" (keydown.enter)="resetView()">
+											<span><span class="icon icon--list-alt"></span>{{ 'Ansicht zurücksetzen' | translate:'orderOverviewPage.resetView' }}</span>
+										</a>
+										<a (click)="resetSortsAndFilters()" tabindex="0" (keydown.enter)="resetSortsAndFilters()">
+											<span><span class="glyphicon glyphicon-sort-by-order-alt"></span>{{'Sortierung und Filter zurücksetzen' | translate:'orderOverviewPage.resetSort'}}</span>
+										</a>
+										<a (click)="exportExcel()" tabindex="0" (keydown.enter)="exportExcel()">
+											<span><span class="icon icon--excel"></span>{{ 'Exportieren' | translate:'orderOverviewPage.saveAsExcel' }}</span>
+										</a>
+										<a (click)="showColumnPickerModal()" tabindex="0" (keydown.enter)="showColumnPickerModal()">
+											<span><span class="icon icon--tools"></span>{{ 'Spalten ein-/ausblenden' | translate:'orderOverviewPage.einAusblenden' }}</span>
+										</a>
+                                    </span>
+								</div>
+							</div>
+
+							<div class="col-xs-12">
+								<cmi-viaduc-grid #flexGrid [itemsSource]="orderDisplayItems"
+												 [name]="'bestelluebersicht'"
+												 (onFilterApplied)="onGridFilterChanged()"
+												 [dataMaps]="valueFilters"
+												 [defaultFilterType]="3">
+
+									<wj-flex-grid-column *ngFor="let col of columns" [visible]="col.visible"
+														 [binding]="col.key" [width]="col.width"
+														 [minWidth]="col.minWidth ? col.minWidth : 25"
+														 [format]="col.format"
+														 [dataType]="col.format ? 4 : null"
+														 [header]="col.defaultLabel">
+
+										<ng-template *ngIf="col.key === 'referenceCode'" wjFlexGridCellTemplate
+													 [cellType]="'Cell'" let-cell="cell">
+											<a *ngIf="cell.item.veId" [routerLink]="goToVe(cell.item)">{{cell.item.referenceCode}}</a>
+											<span *ngIf="!cell.item.veId">{{cell.item.referenceCode}}</span>
+										</ng-template>
+
+									</wj-flex-grid-column>
+
+								</cmi-viaduc-grid>
+
+								<cmi-viaduc-column-picker
+									[(showColumnPickerModal)]="showColumnPicker"
+									[visibleColumns]="visibleColumns"
+									[hiddenColumns]="hiddenColumns"
+									(showColumnClicked)="showColumn($event)"
+									(hideColumnClicked)="hideColumn($event)"
+								>
+								</cmi-viaduc-column-picker>
+							</div>
+						</div>
+						<ng-template #emptyTable>
+							<div class="col-xs-12">
+								<p>{{'Es sind noch keine Bestellungen in Ihrem Konto vorhanden.' | translate:
+									'orderOverViewPage.noOrdersYet'}}</p>
+							</div>
+						</ng-template>
+					</div>
+					<cmi-loader *ngIf="loading" class="cmi-visible"></cmi-loader>
+				</div>
+			</div>
+		</div>
+	</cmi-viaduc-layout-left-content>
+</div>

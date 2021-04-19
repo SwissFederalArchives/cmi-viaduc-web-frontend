@@ -1,0 +1,77 @@
+<div class="page col-sm-12">
+	<div class="page-breadcrumb">
+		<cmi-viaduc-breadcrumb [items]="crumbs"></cmi-viaduc-breadcrumb>
+	</div>
+
+	<div class="row ocp-row page-content">
+		<div class="page-header">
+			<h1 class="page-title">
+				<span>{{'Bestellen' | translate:'orderCheckoutPage.title'}}</span>
+			</h1>
+		</div>
+
+		<nav tabindex="0" aria-label="Bestellungs Breadcrumb" class="nav-process">
+			<ul>
+				<li [ngClass]="{'active': stepNr === 1, 'disabled': stepNr < 1 || stepNr === 5, '': stepNr >= 1 && stepNr !== 5}">
+					<a (click)="wizzardSetPage(1, true)" tabindex="0" [attr.aria-disabled]="stepNr < 1 || stepNr === 5" [attr.aria-current]="stepNr === 1">
+						{{'Lieferart auswählen'|translate:'orderCheckoutPage.chooseShippingType'}}
+					</a>
+				</li>
+				<li [ngClass]="{'active': stepNr === 2, 'disabled': stepNr < 2 || stepNr === 5, '': stepNr >= 2 && stepNr !== 5}" *ngIf="!skipUserPage">
+					<a (click)="wizzardSetPage(2, true)" tabindex="0" [attr.aria-disabled]="stepNr < 2 || stepNr == 5" [attr.aria-current]="stepNr === 2">
+						{{'Benutzerauswahl' | translate:'orderCheckoutPage.userSelect' }}
+					</a>
+				</li>
+				<li [ngClass]="{'active': stepNr === 3, 'disabled': stepNr < 3 || stepNr === 5, '': stepNr >= 3 && stepNr !== 5}" *ngIf="!skipReasonPage">
+					<a (click)="wizzardSetPage(3, true)" tabindex="0" [attr.aria-disabled]="stepNr < 3 || stepNr === 5" [attr.aria-current]="stepNr === 3">
+						{{'Begründung' | translate:'orderCheckoutPage.reasons' }}
+					</a>
+				</li>
+				<li [ngClass]="{'active': stepNr === 4, 'disabled': stepNr < 4 || stepNr === 5, '': stepNr >= 4 && stepNr !== 5}">
+					<a (click)="wizzardSetPage(4, true)" tabindex="0" [attr.aria-disabled]="stepNr < 4 || stepNr === 5" [attr.aria-current]="stepNr === 4">
+						{{'Angaben zur Bestellung'|translate:'orderCheckoutPage.orderDetails'}}
+					</a>
+				</li>
+				<li [ngClass]="{'active': stepNr === 5, 'disabled': true}">
+					<a tabindex="0" [attr.aria-disabled]="true" [attr.aria-current]="stepNr === 5">
+						{{'Bestellbestätigung' | translate:'orderCheckoutPage.bestellbestaetigung'}}
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+		<div [ngSwitch]="stepNr">
+			<ng-template [ngSwitchCase]="1" ngSwitchDefault>
+				<div>
+					<cmi-viaduc-shipping-type-step (onNextClicked)="wizzardNextPage()">
+					</cmi-viaduc-shipping-type-step>
+				</div>
+			</ng-template>
+			<ng-template [ngSwitchCase]="2">
+				<div>
+					<cmi-viaduc-user-select-step (onNextClicked)="wizzardNextPage()"
+												 (onGoBackClicked)="wizzardPreviousPage()">
+					</cmi-viaduc-user-select-step>
+				</div>
+			</ng-template>
+			<ng-template [ngSwitchCase]="3">
+				<div>
+					<cmi-viaduc-reasons-step [inputItems]="itemsThatCouldNeedReason"
+											 (onNextClicked)="wizzardNextPage()"
+											 (onGoBackClicked)="wizzardPreviousPage()">
+					</cmi-viaduc-reasons-step>
+				</div>
+			</ng-template>
+			<ng-template [ngSwitchCase]="4">
+				<div>
+					<cmi-viaduc-order-details-step (onNextClicked)="wizzardNextPage()"
+												   (onGoBackClicked)="wizzardPreviousPage()">
+					</cmi-viaduc-order-details-step>
+				</div>
+			</ng-template>
+			<ng-template [ngSwitchCase]="5">
+				<cmi-viaduc-order-submitted-step></cmi-viaduc-order-submitted-step>
+			</ng-template>
+		</div>
+	</div>
+</div>

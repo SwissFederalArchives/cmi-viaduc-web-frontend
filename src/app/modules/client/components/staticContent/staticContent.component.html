@@ -1,0 +1,15 @@
+<div class="content-frame-wrapper">
+	<div *ngIf="editMode" class="content-edit-anchor">
+		<a (click)="openEditor()"><i class="glyphicon glyphicon-new-window"></i></a>
+	</div>
+
+	<div id='loadedHtml' *ngIf="!hasError" [innerHtml]="loadedHtml | safeHtml">
+	</div>
+
+	<div *ngIf="hasError" class="search-warning alert alert-danger">
+		<strong>{{errorMessage}}</strong><br/>
+		<span [innerHtml]="errorDetails"></span>
+	</div>
+
+	<cmi-loader *ngIf="loading" class="cmi-visible"></cmi-loader>
+</div>

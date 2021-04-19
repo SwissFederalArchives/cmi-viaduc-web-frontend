@@ -1,0 +1,24 @@
+<div class="page col-sm-12">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="page-breadcrumb">
+				<cmi-viaduc-breadcrumb [items]="crumbs"></cmi-viaduc-breadcrumb>
+			</div>
+		</div>
+	</div>
+	<cmi-viaduc-layout-left-content>
+		<div left>
+			<cmi-viaduc-usersetting-list></cmi-viaduc-usersetting-list>
+			<cmi-viaduc-favorite-lists></cmi-viaduc-favorite-lists>
+		</div>
+		<div content>
+			<div class="page-content-bordered">
+				<h1 class="page-content-title">
+					<span>{{'Benutzerdaten' | translate: 'account.contact.title'}}</span>
+				</h1>
+				<cmi-viaduc-user-account></cmi-viaduc-user-account>
+				<cmi-loader *ngIf="loading" class="cmi-visible"></cmi-loader>
+			</div>
+		</div>
+	</cmi-viaduc-layout-left-content>
+</div>

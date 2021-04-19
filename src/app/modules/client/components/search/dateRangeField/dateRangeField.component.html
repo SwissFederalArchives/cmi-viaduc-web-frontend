@@ -1,0 +1,16 @@
+<div [ngClass]="!isValid ? 'form-group has-warning' : ''" *ngIf="selectedField && selectedField.key" provide-parent-form>
+	<label *ngIf="label" [ngClass]="{'boldLabel': labelBold}" for="searchInput">{{label}}</label>
+	<input id="searchInput" type="text" class="form-control"
+		   [tabindex]="tabindex"
+		   aria-describedby="description"
+		   placeholder="{{'JJJJ-JJJJ oder TT.MM.JJJJ-TT.MM.JJJJ' | translate:'dateRangeField.format'}}"
+		   [(ngModel)]="selectedField.value"
+		   [name]="uniqueName || 'dateRangeField'"
+		   (change)="validateInput()"
+		   (keypress)="onEnter($event)"
+		   [attr.aria-describedby]="description">
+	<span *ngIf="description" id="description" class="sr-only">{{description}}</span>
+	<span *ngIf="!isValid" class="help-block" role="alert">
+		{{'Das angegebene Format ist ungültig. Geben Sie einen Zeitraum bitte entweder im Format "JJJJ-JJJJ" oder "TT.MM.JJJJ-TT.MM.JJJJ" an.' | translate:'dateRangeField.invalidFormat'}}
+	</span>
+</div>

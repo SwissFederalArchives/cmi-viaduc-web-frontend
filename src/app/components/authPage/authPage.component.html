@@ -1,0 +1,6 @@
+<div class="page page-auth-success col-sm-12">
+	<h1 *ngIf="success === true">{{ 'Anmeldung erfolgreich' | translate:'account.logInSuccessful' }}</h1>
+	<h1 *ngIf="success === false">{{ 'Anmeldung nicht erfolgt' | translate:'account.loginFailureOrAborted' }}</h1>
+	<a (click)="redirectToOriginBeforeLogin();"><span>{{ 'Zurück zur Ausgangsseite' | translate:'account.backToPage' }}</span></a><br/>
+	<span *ngIf="success === true">{{ 'Wenn Sie nicht weitergeleitet werden, klicken Sie bitte den obenstehenden Link.' | translate:'account.clickIfNotRedirected' }}</span>
+</div>

@@ -1,0 +1,131 @@
+<div *ngIf="isLoading">
+	<div class="row">
+		<div class="col-xs-2">
+			<cmi-spinner></cmi-spinner>
+		</div>
+		<div class="col-xs-10">
+			<div class="check-available-box"></div>
+			<strong>{{'Verfügbarkeit der Gebrauchskopie wird geprüft...' |	translate:'file.availabilityCheckTitle'}}</strong>
+		</div>
+	</div>
+</div>
+<div *ngIf="!isLoading" class="download-section">
+	<div *ngIf="downloadPossible && assetInfo">
+		<div *ngIf="!showExclamation && downloadReady">
+			<cmi-viaduc-usage-section [text]="'Laden Sie die Unterlagen jetzt herunter. In der Datei index.html erhalten Sie einen Überblick über sämtliche Dokumente.' | translate:'downloadSection.downloadNow'" tabindex="0">
+			</cmi-viaduc-usage-section>
+			<div class="row">
+				<div class="col-md-9 col-sm-6 col-xs-12 no-bottom-margin">
+					<fieldset>
+						<div [ngClass]="{'has-warning': !termsAccepted && downloadRequested}">
+							<div class="checkbox checkbox--left">
+								<label for="termsofUse">
+									<input type="checkbox" id="termsofUse" [(ngModel)]="termsAccepted">
+									<span [innerHtml]="getNutzungsbestimmungenUrl()"></span>
+								</label>
+								<span *ngIf="!termsAccepted && downloadRequested" class="help-block" role="alert">
+									{{'Bitte lesen und akzeptieren Sie die Nutzungsbestimmungen.' | translate: 'file.acceptTermsWarning'}}
+								</span>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-12 no-bottom-margin button-container download-box">
+					<a class="btn" (click)="downloadVeToken()" tabindex="0" (keydown.enter)="downloadVeToken()">
+						<i class="glyphicon glyphicon-download-alt"></i>&nbsp;
+						<span>{{ 'Download' | translate:'file.download' }}</span>
+						<span class="text-dimmed">{{' (ZIP, ' + (assetInfo.fileSizeInBytes | measure:'FileSize') + ')'}}</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div *ngIf="!showExclamation && preparationPending" class="row">
+			<div class="col-xs-2">
+				<cmi-spinner></cmi-spinner>
+			</div>
+			<div class="col-xs-10">
+				<strong>
+					{{'Das Digitalisat wird aufbereitet...' | translate:'downloadSection.preparationPendingTitle'}}
+				</strong>
+				<br/>
+				<span>
+					{{'Wenn die Aufbereitung abgeschlossen ist, erhalten Sie eine E-Mail. Sie können die Seite jetzt schliessen.' | translate:'downloadSection.preparationPending'}}
+				</span>
+				<br/>
+				<span>
+					{{' Die Aufbereitung dauert noch ca. {0}.' | translate:'downloadSection.preparationInfo':humanReadablePreperationEndTime}}
+				</span>
+			</div>
+		</div>
+		<div *ngIf="!showExclamation && !preparationPending && !downloadReady && !downloadDone && !downloadPending">
+			<cmi-viaduc-usage-section [text]="preparationRequiredText + ' ' + humanReadablePreperationDurationTime + '.'">
+				<a class="btn" (click)="prepareFileForUsageNow()" tabindex="0">
+					<i class="glyphicon glyphicon-flash" aria-hidden="true"></i>&nbsp;
+					<span>{{'Digitalisat aufbereiten' |translate:'downloadSection.prepareNow'}}</span>
+				</a>
+			</cmi-viaduc-usage-section>
+		</div>
+		<div *ngIf="protectedDownloadRequested">
+			<div class="alert alert-warning">
+				<strong>{{'Achtung:' | translate:'file.alert'}}</strong>
+				<span>{{'Die abliefernden Stellen können auch während der Schutzfrist in die von ihnen abgelieferten Unterlagen Einsicht nehmen. Für deren Konsultation müssen Sie von Ihrer Verwaltungseinheit berechtigt sein. Diese erhält zudem eine automatische Benachrichtigung, jedes Mal wenn Sie solche Digitalisate herunterladen.'| translate:'file.downloadInfo'}}<br />
+					{{'Enthalten diese Unterlagen Personendaten, ist eine Ausleihe nur aus bestimmten Gründen zulässig '| translate:'file.downloadInfo2'}}</span>
+					<span>(<a href="{{'https://www.admin.ch/opc/de/classified-compilation/19994756/index.html#a14' |translate:'checkoutReasonsStep.art14BgaLink'}}" target="_blank" rel="noopener">{{'Art. 14 BGA' |translate:'checkoutReasonsStep.art14Bga'}}</a>).</span>
+
+				<div class="checkbox checkbox--right">
+					<label for="checkPersonData">
+						<input type="checkbox" id="checkPersonData" [(ngModel)]="needReason">
+						<strong>{{'Ja, diese Gebrauchskopie beinhaltet Personendaten:' | translate:'file.personData'}}</strong>
+					</label>
+				</div>
+
+				<div *ngIf="needReason" [ngClass]="{'has-warning': !selectedReason && proceedDownloadRequested}">
+					<label for="dropdownReason">
+						{{ wasDownloadClicked()
+						? ('Bitte wählen Sie einen Grund für den Download aus' | translate:'file.chooseDownloadReason')
+						: (('Bitte wählen Sie einen Grund für das Einsehen aus' | translate:'file.chooseOpenReason')) }}
+
+					</label>
+					<select id="dropdownReason" class="form-control" [(ngModel)]="selectedReason">
+						<option *ngFor="let r of reasons" [ngValue]="r">{{r.name}}</option>
+					</select>
+					<div *ngIf="!selectedReason && proceedDownloadRequested" class="help-block" role="alert">
+						{{'Bitte geben Sie einen Grund an, weshalb Sie die Unterlagen mit Personendaten ansehen möchten.' | translate:'file.missingReason'}}
+					</div>
+				</div>
+
+				<div class="download-cancel-box">
+					<a class="btn" (click)="cancelAction()">
+						<i class="glyphicon glyphicon-remove"></i>&nbsp;
+						<span>{{ 'Abbrechen' | translate:'file.cancel' }}</span>
+					</a>
+					<a class="btn" (click)="proceedDownloadToken($event)">
+						<i [ngClass]="wasDownloadClicked() ? 'glyphicon glyphicon-download-alt' : 'glyphicon glyphicon-sort' "></i>&nbsp;
+						<span> {{ wasDownloadClicked() ? ('Jetzt herunterladen' | translate:'file.downloadNow') : (('Jetzt einsehen' | translate:'file.openNow')) }}</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div *ngIf="!downloadPossible && !authenticated">
+		<cmi-viaduc-usage-section [text]="pleaseLoginText">
+			<a class="btn" (click)="login($event)" tabindex="0">
+				<i class="glyphicon glyphicon-log-in"></i>&nbsp;
+				<span>{{ 'Anmelden' | translate:'anmelden' }}</span>
+			</a>
+		</cmi-viaduc-usage-section>
+	</div>
+	<div *ngIf="!downloadPossible && authenticated">
+		<div class="alert alert-warning" role="alert">
+			<span class="sr-only">warning:</span> {{'Sie haben nicht genügend Rechte, um die digitalen Unterlagen dieser Verzeichnungseinheit einzusehen oder zu bestellen.'| translate:'file.notAuthorized'}}
+		</div>
+	</div>
+	<div *ngIf="downloadError && downloadError.length > 0">
+		<div class="alert alert-warning" role="alert">
+			<span class="sr-only">warning:</span>
+			<p>
+				{{ downloadError }}
+			</p>
+		</div>
+	</div>
+</div>

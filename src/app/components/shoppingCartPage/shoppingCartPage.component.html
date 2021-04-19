@@ -1,0 +1,226 @@
+<div class="page col-sm-12">
+	<div class="page-breadcrumb">
+		<cmi-viaduc-breadcrumb [items]="getBreadCrumb()"></cmi-viaduc-breadcrumb>
+	</div>
+
+	<div class="row shopping-cart-row page-content">
+		<div class="page-header">
+			<h1 class="page-title">
+				<span>{{'Bestellkorb' | translate:'shoppingCartPage.title'}}</span>
+			</h1>
+			<p>{{'Bestellen Sie Unterlagen in den Lesesaal, als Verwaltungsausleihe, erteilen Sie Digitalisierungsaufträge oder reichen Sie Einsichtsgesuche ein.' | translate:'shoppingCartPage.headingTitleText'}}</p>
+		</div>
+
+		<div *ngIf="hasItemsInCart(); else emptyCart">
+			<div class="row">
+				<div class="col-xs-12 no-bottom-margin">
+					<div *ngIf="orderableItems.length > 0">
+						<h2>{{'Unterlagen bestellen' |
+							translate:'shoppingCartPage.unterlagenBestellen'}}</h2>
+						<p>{{'Diese Unterlagen sind für Sie frei zugänglich oder müssen vom BAR hinsichtlich Zugänglichkeit geprüft werden. Bitte klicken Sie auf "Bestellen", um den Bestellvorgang fortzusetzen.' | translate:'shoppingCartPage.bestellenText'}}</p>
+						<cmi-viaduc-shoppingcart-list [items]="orderableItems"></cmi-viaduc-shoppingcart-list>
+						<div class="col-xs-9 shc-info-col">
+
+						</div>
+						<div class="col-xs-3 shc-info-col">
+							<button (click)="goToCheckout()" role="button"
+									class="btn btn-primary pull-right shc-btn-col">{{'Bestellen' |
+								translate:'shoppingCartPage.order'}}
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" *ngIf="itemsWhereEinsichtsGesuchNoetig.length > 0">
+				<div class="col-xs-12 no-bottom-margin">
+					<h2>{{'Einsichtsgesuch einreichen' |
+						translate:'shoppingCartPage.einsichtsGesuchEinreichen'}}</h2>
+
+					<p>{{'Für diese Unterlagen sind Einsichtsbewilligungen notwendig. Wenn Sie bereits eine Bewilligung besitzen, klicken Sie bitte auf "Bewilligung vorhanden". Ansonsten klicken Sie auf "Gesuch einreichen".' | translate:'shoppingCartPage.einsichtsGesuchStellenText'}}</p>
+					<cmi-viaduc-shoppingcart-list [items]="itemsWhereEinsichtsGesuchNoetig" [einsichtsGesuche]="true" (refreshRequested)="updateLists()"></cmi-viaduc-shoppingcart-list>
+
+					<div class="col-xs-12 shc-info-col">
+						<button type="button" class="btn btn-primary pull-right shc-btn-col" (click)="goToCheckoutEinsicht()">{{'Gesuch einreichen'
+							| translate:'shoppingCartPage.einsichtsGesuchStellen'}}
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<ng-template #emptyCart>
+			<span>{{'Der Bestellkorb ist leer.' | translate:'shoppingCartPage.emptyCart'}}</span>
+		</ng-template>
+
+		<div class="collapse-box shc-manual-add-container">
+			<a (click)="toggleManualAddSectionVisibility()" [ngClass]="collapseLinkCss" tabindex="0">
+				{{'Dossiers manuell zum Bestellkorb hinzufügen' | translate:
+				'shoppingCartPage.addManuallySectionTitle'}}
+			</a>
+			<div *ngIf="manualAddSectionVisible" [ngClass]="collapseDivCss">
+				<div class="shc-add-with-signature">
+					<legend tabindex="0">
+						{{'Mit Signatur'|translate:'shoppingCartPage.withReferenceCode'}}
+					</legend>
+					<div class="form-horizontal" role="form">
+						<fieldset>
+							<div class="form-group">
+								<div class="col-sm-10 col-xs-12 no-pad-left">
+									<textarea class="form-control"
+											  [(ngModel)]="signatureToSearch"
+											  id="bemerkungBestellung"
+											  placeholder="{{'Signatur'|translate:'shoppingCartPage.referenceCode'}}"
+											  >
+									</textarea>
+								</div>
+								<div class="col-sm-2 col-xs-12">
+									<button type="button" (click)="addBySignature()" class="btn btn-primary">
+										{{'Hinzufügen'|translate:'shoppingCartPage.addToCart'}}
+									</button>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div class="shc-add-with-signature">
+					<legend tabindex="0">
+						{{'Ohne Signatur'| translate:'shoppingCartPage.withoutReferenceCode'}}
+					</legend>
+					<form class="form-horizontal" role="form" ngNativeValidate (submit)="addWithoutSignature()">
+						<p>
+							{{'*: Diese Felder müssen ausgefüllt werden.'|
+							translate:'shoppingCartPage.fieldsMarkedWithAreCompulsory'}}
+						</p>
+						<p>
+							{{'**: Es muss eine Behältnis- oder eine Archivnummer angegeben werden.'|
+							translate:'shoppingCartPage.fieldsMarkedWithDoubleStars'}}
+						</p>
+
+						<fieldset>
+							<legend class="hidden-legend">{{'(Teil-)Bestand'|translate:'shoppingCartPage.teilBestand'}}&nbsp;*</legend>
+							<div class="form-group">
+								<label for="inputTeilBestand" class="col-sm-3 col-xs-12 control-label"
+									   id="lblTeilBestand">{{'(Teil-)Bestand'|translate:'shoppingCartPage.teilBestand'}}&nbsp;*
+									<span class="sr-only">{{'Dies ist ein Pflichtfeld' | translate:'shoppingCartPage.fieldIsRequired'}}</span>
+								</label>
+								<div class="col-sm-9 col-xs-12">
+									<input type="text" [(ngModel)]="teilBestand" [ngModelOptions]="{standalone: true}"
+										   class="form-control" id="inputTeilBestand"
+										   placeholder="{{'z.B. E3340B' | translate:'shoppingCartPage.exampleTeilBestand'}}"
+										   aria-labelledby="lblTeilBestand" aria-required="true" required>
+								</div>
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<legend class="hidden-legend">{{'Ablieferung'|translate:'shoppingCartPage.ablieferung'}}&nbsp;*</legend>
+							<div class="form-group">
+								<label for="inputAblieferung" class="col-sm-3 col-xs-12 control-label"
+									   id="lblAblieferung">{{'Ablieferung'|translate:'shoppingCartPage.ablieferung'}}&nbsp;*
+									<span class="sr-only">{{'Dies ist ein Pflichtfeld' | translate:'shoppingCartPage.fieldIsRequired'}}</span>
+								</label>
+								<div class="col-sm-9 col-xs-12">
+									<input type="text" [(ngModel)]="ablieferung" [ngModelOptions]="{standalone: true}"
+										   class="form-control" id="inputAblieferung"
+										   placeholder="{{'z.B. 1988/234' | translate:'shoppingCartPage.exampleAblieferung'}}"
+										   aria-labelledby="lblAblieferung" aria-required="true" required>
+								</div>
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<legend class="hidden-legend">
+								{{'Behältnisnummer'|translate:'shoppingCartPage.behaeltnisNr'}}&nbsp;**
+							</legend>
+							<div class="form-group">
+								<label for="inputBehaeltnisNr" class="col-sm-3 col-xs-12 control-label"
+									   id="lblBehaeltnisNr">{{'Behältnisnummer'|translate:'shoppingCartPage.behaeltnisNr'}}&nbsp;**
+									<span class="sr-only">{{'Dieses oder das Archivnummer Feld muss ausgefüllt sein.' | translate:'shoppingCartPage.inputBehaeltnisNrIsRequired'}}</span>
+								</label>
+								<div class="col-sm-9 col-xs-12">
+									<input type="text" [(ngModel)]="behaeltnisNr" [ngModelOptions]="{standalone: true}"
+										   class="form-control" id="inputBehaeltnisNr" aria-labelledby="lblBehaeltnisNr"
+										   [attr.aria-required]="isBehaeltnisNrAndArchivNrEmpty() ? 'true' : 'false'" [attr.required]="isBehaeltnisNrAndArchivNrEmpty() ? '' : null">
+								</div>
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<legend class="hidden-legend">
+								{{'Archivnummer'|translate:'shoppingCartPage.archivNr'}}&nbsp;**
+							</legend>
+							<div class="form-group">
+								<label for="inputArchivNr" class="col-sm-3 col-xs-12 control-label"
+									   id="lblArchivNr">{{'Archivnummer'|translate:'shoppingCartPage.archivNr'}}&nbsp;**
+									<span class="sr-only">{{'Dieses oder das Behältnisnummer Feld muss ausgefüllt sein.' | translate:'shoppingCartPage.inputArchivNrIsRequired'}}</span>
+								</label>
+								<div class="col-sm-9 col-xs-12">
+									<input type="text" [(ngModel)]="archivNr" [ngModelOptions]="{standalone: true}"
+										   class="form-control" id="inputArchivNr" aria-labelledby="lblArchivNr"
+										   [attr.aria-required]="isBehaeltnisNrAndArchivNrEmpty() ? 'true' : 'false'" [attr.required]="isBehaeltnisNrAndArchivNrEmpty() ? '' : null">
+								</div>
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<legend class="hidden-legend">{{'Aktenzeichen' | translate:'shoppingCartPage.aktenzeichen'}}&nbsp;*</legend>
+							<div class="form-group">
+								<label for="inputAktenzeichen" class="col-sm-3 col-xs-12 control-label"
+									   id="lblAktenzeichen">{{'Aktenzeichen' |
+									translate:'shoppingCartPage.aktenzeichen'}}&nbsp;*
+									<span class="sr-only">{{'Dies ist ein Pflichtfeld' | translate:'shoppingCartPage.fieldIsRequired'}}</span>
+								</label>
+								<div class="col-sm-9 col-xs-12">
+									<input type="text" [(ngModel)]="aktenzeichen" [ngModelOptions]="{standalone: true}"
+										   class="form-control" id="inputAktenzeichen" aria-labelledby="lblAktenzeichen"
+										   aria-required="true" required>
+								</div>
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<legend class="hidden-legend">{{'Dossiertitel'|translate:'shoppingCartPage.dossierTitel'}}&nbsp;*</legend>
+							<div class="form-group">
+								<label for="inputDossierTitel" class="col-sm-3 col-xs-12 control-label"
+									   id="lblDossiertitel">{{'Dossiertitel'|translate:'shoppingCartPage.dossierTitel'}}&nbsp;*
+									<span class="sr-only">{{'Dies ist ein Pflichtfeld' | translate:'shoppingCartPage.fieldIsRequired'}}</span>
+								</label>
+								<div class="col-sm-9 col-xs-12">
+									<input type="text" [(ngModel)]="dossierTitel" [ngModelOptions]="{standalone: true}"
+										   class="form-control" id="inputDossierTitel" aria-labelledby="lblDossiertitel"
+										   aria-required="true" required>
+								</div>
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<legend class="hidden-legend">{{'Zeitraum des Dossiers'|translate:'shoppingCartPage.zeitraumDossier'}}
+							</legend>
+							<div class="form-group">
+								<label for="inputDossierTitel" class="col-sm-3 col-xs-12 control-label"
+									   id="lblZeitraum">{{'Zeitraum des Dossiers'|translate:'shoppingCartPage.zeitraumDossier'}}
+								</label>
+								<div class="col-sm-9 col-xs-12 no-bottom-margin">
+									<cmi-viaduc-date-range-field #zeitraumDossier [ngModel]="timeSpanField" [ngModelOptions]="{standalone: true}" [requiresTwoDigitDaysAndMonth]="true"
+																 [allowMonthYearEntry]="false" [allowSpaces]="false"
+																 [description]="'Falls vorhanden, zwingend angeben. Z.B. 1957-1962'| translate:'shoppingCartPage.helpDateRangeFieldWithExample'">
+									</cmi-viaduc-date-range-field>
+									<span class="help-block">{{'Falls vorhanden, zwingend angeben. Z.B. 1957-1962'| translate:'shoppingCartPage.helpDateRangeFieldWithExample'}}</span>
+								</div>
+							</div>
+						</fieldset>
+
+						<div class="form-group">
+							<div class="col-sm-offset-3 col-sm-9 col-xs-offset-0 col-xs-12">
+								<button type="submit" role="button" class="btn btn-primary">
+									{{'Hinzufügen'|translate:'shoppingCartPage.addToCart'}}
+								</button>
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,99 @@
+<div class="user-account">
+	<div>
+		<label class="control-label">
+			{{'Bitte erfassen Sie Ihre Benutzerdaten, damit wir Sie bei Bedarf erreichen können. Sie können diese Daten jederzeit aktualisieren.' | translate:'account.contact.changeSettingsDescription'}}
+		</label>
+	</div>
+	<div>
+		<label class="control-label">{{'Mit einem * gekennzeichnete Felder müssen ausgefüllt werden.' |
+			translate:'account.contact.requiredFieldsDescription'}}</label>
+	</div>
+	<cmi-loader *ngIf="loading" class="cmi-visible"></cmi-loader>
+	<div *ngIf="user">
+		<form class="form-horizontal" role="form" (ngSubmit)="onFormSubmitClicked()">
+			<fieldset *ngFor="let row of orderedUserSettings">
+				<div [ngClass]="{'form-group': true, 'has-warning': !row.isReadOnly && allowEditingUserSettings && row.isInvalid && saveClicked}">
+
+					<label class="col-sm-2 control-label" style="text-align: left">{{row.caption}}{{row.addIsRequiredSymbolIfNeccessary}}</label>
+
+					<div class="col-sm-8">
+                        <span *ngIf="row.isReadOnly || !allowEditingUserSettings">
+                            <input *ngIf="!(row.isCountryCode || row.isLanguage)" readonly [id]="row.caption" class="form-control" value="{{row.value}}">
+                            <input *ngIf="row.isCountryCode" readonly class="form-control"
+								   value="{{getLanguageDependantCountryNameFromUserSetting(row)}}">
+							<input *ngIf="row.isLanguage" readonly class="form-control"
+								   value="{{getLanguageFromUserSetting(row)}}">
+							<span *ngIf="row.isEmail && !row.isReadOnly" class="help-block email-hint">
+								{{'Mobiltelefon-Nummer und E-Mail-Adresse dienen zur Kontaktaufnahme. Falls Sie Ihre Daten für das Login ändern möchten, klicken Sie bitte hier:' |
+								translate: 'account.contact.changeLoginData'}}
+								<a [href]="eIAMLink">{{'Logindaten editieren.' | translate: 'account.contact.changeLoginDataLink'}}</a>
+							</span>
+                        </span>
+						<span *ngIf="(!row.isReadOnly) && allowEditingUserSettings">
+                            <span *ngIf="!(row.isCountryCode || row.isLanguage)">
+                                <input [name]="row.caption"
+									   [id]="row.caption"
+									   [(ngModel)]="row.value"
+									   [required]="row.isRequired"
+									   class="form-control"
+									   (ngModelChange)="row.calculateInvalidRegex()"
+									   placeholder="{{row.caption}}">
+                                <span *ngIf="row.isInvalid && saveClicked" class="help-block" role="alert">
+                                    {{row.errorMessage }}
+                                </span>
+								<span *ngIf="row.isEmail && !row.isReadOnly" class="help-block email-hint">
+									{{'Mobiltelefon-Nummer und E-Mail-Adresse dienen zur Kontaktaufnahme. Falls Sie Ihre Daten für das Login ändern möchten, klicken Sie bitte hier:' |
+									translate: 'account.contact.changeLoginData'}}
+									<a [href]="eIAMLink">{{'Logindaten editieren.' | translate: 'account.contact.changeLoginDataLink'}}</a>
+								</span>
+                            </span>
+
+                            <span *ngIf="row.isCountryCode">
+                                <select (change)="onCountryChanged($event.target.value)"
+										class="form-control">
+                                    <option *ngFor="let c of languageDependantCountries"
+											[selected]="getValueForSelectedCountryAttribute(c)"
+											class="form-control">{{c.name}}
+                                    </option>
+                                </select>
+                                 <span *ngIf="row.isInvalid && saveClicked" class="help-block" role="alert">
+                                    {{row.errorMessage}}
+                                </span>
+							</span>
+							<span *ngIf="row.isLanguage">
+                                <select (change)="onLanguageChanged($event.target.value)"
+										class="form-control">
+                                    <option *ngFor="let l of languages"
+											[selected]="getValueForSelectedLanguageAttribute(l)"
+											class="form-control">{{l.name}}
+                                    </option>
+                                </select>
+                                 <span *ngIf="row.isInvalid && saveClicked" class="help-block" role="alert">
+                                    {{row.errorMessage}}
+                                </span>
+                            </span>
+                        </span>
+						<span class="help-block" *ngIf="row.hasDescription">{{row.description}}</span>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-group">
+				<div class="col-sm-8">
+					<div *ngIf="!allowEditingUserSettings">
+						<button type="button" class="btn btn-primary" (click)="onChangeSettingsClicked()">
+							{{'Benutzerdaten ändern' | translate:'account.contact.changeUserSettings'}}
+						</button>
+					</div>
+					<div *ngIf="allowEditingUserSettings" class="form-group">
+						<button class="btn btn-primary" type="submit">
+							{{'Speichern' | translate:'account.contact.save'}}
+						</button>
+						<button class="btn btn-secondary" (click)="onCancelChangeSettingsClicked()">{{'Abbrechen' |
+							translate:'account.contact.cancel'}}
+						</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

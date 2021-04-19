@@ -1,0 +1,34 @@
+<div class="page col-sm-12">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="page-breadcrumb">
+				<cmi-viaduc-breadcrumb [items]="crumbs"></cmi-viaduc-breadcrumb>
+			</div>
+		</div>
+	</div>
+	<cmi-viaduc-layout-left-content>
+		<div left>
+			<cmi-viaduc-usersetting-list></cmi-viaduc-usersetting-list>
+			<cmi-viaduc-favorite-lists></cmi-viaduc-favorite-lists>
+		</div>
+		<div content>
+			<div class="page-content-bordered">
+				<h1 class="page-content-title">
+					<span>{{ 'Benutzerstatus' | translate:'account.state' }}</span>
+				</h1>
+				<div *ngIf="isRegistered">
+					<p>{{ 'Sie sind ein/e registrierte/r Benutzer/in' | translate:'account.registeredUserMessage' }}</p>
+				</div>
+				<div *ngIf="isIdentified">
+					<p>{{ 'Sie sind ein/e identifizierte/r Benutzer/in' | translate:'account.identifiedUserMessage' }}</p>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<cmi-viaduc-account-type-info-list [isRegistered]="isRegistered" [isIdentified]="isIdentified" [canCollapse]="false"></cmi-viaduc-account-type-info-list>
+					</div>
+				</div>
+				<cmi-digital-onboarding-assistant *ngIf="isRegistered"></cmi-digital-onboarding-assistant>
+			</div>
+		</div>
+	</cmi-viaduc-layout-left-content>
+</div>

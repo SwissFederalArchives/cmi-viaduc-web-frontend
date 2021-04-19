@@ -1,0 +1,40 @@
+<div class="page col-sm-12">
+	<div class="page-breadcrumb">
+		<cmi-viaduc-breadcrumb [items]="crumbs"></cmi-viaduc-breadcrumb>
+	</div>
+	<h1>
+		{{'Kontoeröffnung für den Online-Zugang zum Bundesarchiv' | translate: 'registerInfo.title'}}
+	</h1>
+	<p [innerHtml]='getTextZugangEIam()'></p>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="account-type-info clearfix">
+				<cmi-viaduc-account-type-info-list class="pull-right" [isRegistered]="false" [isIdentified]="false" [canCollapse]="true"></cmi-viaduc-account-type-info-list>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="alert alert-info info-box" role="alert">
+				<span class="sr-only">{{'Info-Box' | translate:'registerInfo.infoBox'}}</span>
+				<div class="pull-right ch-login img-rounded">
+					<img src="./assets/img/CH-Login.svg" alt="{{'Logo des CH-Logins' | translate: 'registerInfo.chLoginAltText'}}"/>
+				</div>
+				<h2>
+					{{'Hinweis' | translate: 'registerInfo.infoTitle'}}
+				</h2>
+				<p>{{'Wählen Sie bitte im nächsten Schritt die Option «CH-LOGIN».' | translate: 'registerInfo.chooseCHLogin'}}</p>
+				<p>{{'Ausnahme: Mitarbeitende der Bundesverwaltung müssen sich via «Kerberos» oder «Smartcard» registrieren.' | translate: 'registerInfo.chLoginException'}}</p>
+				<p [innerHtml]="getTextFragen()"></p>
+			</div>
+		</div>
+	</div>
+	<div class="pull-right">
+		<button class="btn" (click)="cancel()">
+			{{'Abbrechen' | translate: 'registerInfo.cancelRegister'}}
+		</button>
+		<button class="btn btn-primary" (click)="login()">
+			{{'Registrieren' | translate: 'registerInfo.registerImEiam'}}
+		</button>
+	</div>
+</div>

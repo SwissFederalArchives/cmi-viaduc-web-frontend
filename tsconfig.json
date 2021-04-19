@@ -1,0 +1,33 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "importHelpers": true,
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "types": [
+      "file-saver"
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "strictNullChecks": false,
+    "baseUrl": "./",
+    "module": "esnext"
+  },
+	"angularCompilerOptions": {
+		"preserveWhitespaces": true
+	}
+}

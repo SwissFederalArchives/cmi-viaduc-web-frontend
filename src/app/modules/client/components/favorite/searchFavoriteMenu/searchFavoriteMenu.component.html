@@ -1,0 +1,118 @@
+<cmi-viaduc-modal [opened]="true" id="searchFavoriteModal"  modalTitle="{{'Suche als Favorit speichern' | translate:'favorites.searchFavoriteTitle'}}">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="menu-search-favorites">
+					<div *ngIf="!authenticated">
+						<p>{{ 'Bitte melden Sie sich an, um die Favoriten verwenden zu können' | translate:'favorites.pleaseLogin'}}</p>
+						<a class="btn btn-small" (click)="login($event)"><span>{{ 'Anmelden' | translate:'anmelden' }}</span></a>
+					</div>
+					<form *ngIf="isEnabled()">
+						<div class="collapse-box" id="accordion1">
+							<div class="row">
+								<div class="col-xs-12 no-bottom-margin">
+									<fieldset>
+										<legend class="sr-only">
+											{{'Informationen zur Speicherung der Suche' | translate: 'favorites.sRLegendInfoSaveFavorite'}}
+										</legend>
+										<div class="row form-group" [ngClass]="(!searchTitle || searchTitle.trim() === '') && addFavoriteClicked ? 'has-warning' : ''">
+											<label for="newSearchTitle" class="col-sm-3 col-xs-12 control-label no-bottom-margin">
+												<span>{{ 'Name der Suche ' | translate: 'favorites.newSearchFavoritePlaceholder'}}*</span>
+											</label>
+											<div class="col-sm-9 col-xs-12 no-bottom-margin">
+												<input autofocus type="text" name="newSearchTitle" required class="form-control" id="newSearchTitle"
+													   [readonly]="isExistingFavorite"
+													   [tooltip]="'Diese Suchabfrage ist bereits auf mindestens einer Favoritenliste gespeichert. Der Name kann nicht mehr verändert werden.' | translate:'favorites.renamingBlocked'"
+													   [tooltipDisabled]="!isExistingFavorite"
+													   placeholder="{{'Meine gespeicherte Suche' |translate:'favorites.favoriteTitlePlaceholder'}}"
+													   [(ngModel)]="searchTitle">
+
+												<div *ngIf="(!searchTitle || searchTitle.trim() === '') && addFavoriteClicked">
+													{{'Dies ist ein Pflichtfeld.' | translate: 'favorites.mandatorySearchTitle'}}
+												</div>
+											</div>
+										</div>
+									</fieldset>
+								</div>
+							</div>
+
+							<a data-toggle="collapse" [ngClass]="existingListsHeaderCss" (click)="showHideExistingLists(!showExistingLists, $event)" role="tab" [attr.aria-selected]="showExistingLists" [attr.aria-expanded]="showExistingLists">
+								{{ 'Aus Liste auswählen' | translate:'favorites.chooseExistingList' }}
+							</a>
+
+							<div id="collapseOne" class="collapse-box-content" [ngClass]="existingListsContentCss" *ngIf="showExistingLists" [attr.aria-expanded]="showExistingLists">
+								<div class="row">
+									<div class="form-group col-xs-12">
+										<span *ngIf="!lists || lists.length == 0">
+											{{'Es sind noch keine Favoritenlisten vorhanden.' | translate:'favorite.noExistingListsLabel'}}
+										</span>
+
+										<div class="fav-links-wrapper">
+											<div id="linkList" class="checkbox checkbox--left" *ngFor="let list of lists">
+												<label [for]="'checkbox' + list.id" [attr.aria-describedby]="getToggleTooltip(list)">
+													<input type="checkbox" [id]="'checkbox' + list.id" [name]="'checkbox' + list.id" (change)="toggleOn($event, list)" [checked]="list.included">
+													<span>{{ list.name }}</span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row" *ngIf="isEnabled() && !success">
+									<div class="col-xs-12">
+										<fieldset class="favorite-btn-bar">
+											<div class="form-group">
+												<button class="btn btn-small pull-left btn-primary" type="button" (click)="saveDialog()">
+													<span>{{ 'Speichern' | translate:'save' }}</span>
+												</button>
+											</div>
+										</fieldset>
+									</div>
+								</div>
+							</div>
+
+							<a data-toggle="collapse" [ngClass]="addNewHeaderCss" (click)="showHideAddNew(!showAddNewListGroup, $event)" role="tab" [attr.aria-selected]="showAddNewListGroup" [attr.aria-expanded]="showAddNewListGroup">
+								{{ 'Speichern auf neuer Favoritenliste ...' | translate:'favorites.createOnNewList' }}
+							</a>
+							<div id="collapseTwo" class="collapse-box-content" [ngClass]="addNewContentCss" *ngIf="isEnabled() && showAddNewListGroup" [attr.aria-expanded]="showAddNewListGroup">
+								<form [formGroup]="form">
+									<fieldset>
+										<legend class="sr-only">{{'Neue Favoritenliste erfassen' | translate: 'favorites.sRLegendNewListLegend'}}</legend>
+										<div class="row form-group" [ngClass]="{ 'has-warning': form.hasError('required', ['newListName']) && addNewListClicked}">
+											<label for="newSearchTitle" class="col-sm-3 col-xs-12 control-label no-bottom-margin">
+												<span>{{ 'Name der Liste' | translate:'favorites.newListLabel' }}</span>
+											</label>
+											<div class="col-sm-9 col-xs-12 no-bottom-margin">
+												<input type="text" name="nameOfList" class="form-control"
+													   placeholder="{{ 'Neue Liste' | translate:'favorites.newListNamePlaceholder' }}"
+													   formControlName="newListName">
+											</div>
+											<div *ngIf="form.hasError('required', ['newListName']) && addNewListClicked" class="help-block" role="alert">
+												{{ 'Bitte geben Sie einen Namen für die neue Liste ein.' | translate:'favorites.newListNameRequired' }}
+											</div>
+										</div>
+										<div class="row">
+											<fieldset class="favorite-btn-bar col-xs-12">
+												<div class="form-group">
+													<button class="btn btn-small pull-left btn-primary" (click)="addNewList()">
+														<span>{{ 'Hinzufügen' | translate:'add' }}</span>
+													</button>
+												</div>
+											</fieldset>
+										</div>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+						<div class="row" *ngIf="authenticated && error">
+							<div class="col-xs-12 alert alert-danger" role="alert">
+								<p>{{ 'Es trat ein Fehler auf. Bitte versuchen Sie es erneut oder melden sich neu an.' | translate:'favorites.errorPleaseTryAgain'}}</p>
+							</div>
+						</div>
+						<cmi-loader *ngIf="loading" class="cmi-visible"></cmi-loader>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</cmi-viaduc-modal>

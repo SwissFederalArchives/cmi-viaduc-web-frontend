@@ -1,0 +1,148 @@
+<table class="table table-responsive scrollableTable user-info-table">
+	<caption class="sr-only">{{ 'Liste der Rechte je Benutzertyp' | translate:'account.rightsPerUserTypeTableCaption' }}</caption>
+	<thead>
+		<tr>
+			<th scope="col" class="description-col">
+				<div *ngIf="canCollapse">
+					<div>
+						<a class="text-toggle collapsed" data-toggle="collapse" href="#tableBody" aria-expanded="false" aria-controls="tableBody">
+							<span class="text-collapsed">
+								{{ 'Funktionen für jeden Benutzerstatus anzeigen' | translate:'account.headerShowFunctions' }}
+							</span>
+							<span class="text-expanded">
+									{{ 'Funktionen für jeden Benutzerstatus verbergen' | translate:'account.headerHideFunctions' }}
+							</span>
+						</a>
+					</div>
+				</div>
+			</th>
+			<th scope="col" class="text-center">
+				<span class="glyphicon glyphicon-old-man user-col-icon"></span>
+				<span class="block-span">
+					{{ 'Anonym' | translate:'account.headerAnonymousUser' }}
+				</span>
+				<span class="block-span">
+					{{ '(ohne Konto)' | translate:'account.headerWithoutAccount' }}
+				</span>
+			</th>
+			<th scope="col" class="text-center" [ngClass]="{ 'active-col-header': isRegistered}">
+				<span class="glyphicon glyphicon-user user-col-icon"></span>
+				<span class="block-span">
+					{{ 'Registriert' | translate:'account.headerRegisteredUser' }}
+				</span>
+				<span class="block-span">
+					{{ '(mit Konto)' | translate:'account.headerWithAccount' }}
+				</span>
+			</th>
+			<th scope="col" class="text-center" [ngClass]="{ 'active-col-header': isIdentified}">
+				<span class="glyphicon glyphicon-user-key user-col-icon"></span>
+				<span class="block-span">
+					{{ 'Identifiziert' | translate:'account.headerIdentifiedUser' }}
+				</span>
+				<span class="block-span">
+					{{ '(mit Konto)' | translate:'account.headerWithAccount' }}
+				</span>
+			</th>
+		</tr>
+	</thead>
+	<tbody id="tableBody" [ngClass]="{'collapse': canCollapse}">
+		<tr>
+			<th scope="row">{{ 'Suche in öffentlichen Metadaten' | translate:'account.rightSearchPulicMetadata' }}
+			</th>
+			<td class="text-center">
+				<span class="glyphicon glyphicon-ok text-success" attr.aria-label="{{ 'Erlaubt' | translate:'account.iconMeaningOk' }}"></span>
+			</td>
+			<td class="text-center" [ngClass]="{ 'active-col-row': isRegistered}">
+				<span class="glyphicon glyphicon-ok text-success" attr.aria-label="{{ 'Erlaubt' | translate:'account.iconMeaningOk' }}"></span>
+			</td>
+			<td class="text-center" [ngClass]="{ 'active-col-row': isIdentified}">
+				<span class="glyphicon glyphicon-ok text-success" attr.aria-label="{{ 'Erlaubt' | translate:'account.iconMeaningOk' }}"></span>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">{{ 'Frei zugängliche Unterlagen herunterladen' | translate:'account.rightDownloadPublicPrimaryData' }}
+			</th>
+			<td class="text-center">
+				<span class="glyphicon glyphicon-remove text-danger" attr.aria-label="{{ 'Nicht erlaubt' | translate:'account.iconMeaningNotOk' }}"></span>
+			</td>
+			<td class="text-center" [ngClass]="{ 'active-col-row': isRegistered}">
+				<span class="glyphicon glyphicon-ok text-success" attr.aria-label="{{ 'Erlaubt' | translate:'account.iconMeaningOk' }}"></span>
+			</td>
+			<td class="text-center" [ngClass]="{ 'active-col-row': isIdentified}">
+				<span class="glyphicon glyphicon-ok text-success" attr.aria-label="{{ 'Erlaubt' | translate:'account.iconMeaningOk' }}"></span>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">{{ 'Favoriten verwalten' | translate:'account.rightManageFavorites' }}</th>
+			<td class="text-center">
+				<span class="glyphicon glyphicon-remove text-danger" attr.aria-label="{{ 'Nicht erlaubt' | translate:'account.iconMeaningNotOk' }}"></span>
+			</td>
+			<td class="text-center" [ngClass]="{ 'active-col-row': isRegistered}">
+				<span class="glyphicon glyphicon-ok text-success" attr.aria-label="{{ 'Erlaubt' | translate:'account.iconMeaningOk' }}"></span>
+			</td>
+			<td class="text-center" [ngClass]="{ 'active-col-row': isIdentified}">
+				<span class="glyphicon glyphicon-ok text-success" attr.aria-label="{{ 'Erlaubt' | translate:'account.iconMeaningOk' }}"></span>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">{{ 'Digitalisierungsaufträge erstellen' | translate:'account.rightPlaceDigitizationOrders' }}</th>
+			<td class="text-center">
+				<span class="glyphicon glyphicon-remove text-danger" attr.aria-label="{{ 'Nicht erlaubt' | translate:'account.iconMeaningNotOk' }}"></span>
+			</td>
+			<td class="text-center" [ngClass]="{ 'active-col-row': isRegistered}">
+				<span class="glyphicon glyphicon-ok text-success" attr.aria-label="{{ 'Erlaubt' | translate:'account.iconMeaningOk' }}"></span>
+			</td>
+			<td class="text-center" [ngClass]="{ 'active-col-row': isIdentified}">
+				<span class="glyphicon glyphicon-ok text-success" attr.aria-label="{{ 'Erlaubt' | translate:'account.iconMeaningOk' }}"></span>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">{{ 'Lesesaalausleihen absetzen' | translate:'account.rightPlaceReadingRoomOrders' }}</th>
+			<td class="text-center">
+				<span class="glyphicon glyphicon-remove text-danger" attr.aria-label="{{ 'Nicht erlaubt' | translate:'account.iconMeaningNotOk' }}"></span>
+			</td>
+			<td class="text-center" [ngClass]="{ 'active-col-row': isRegistered}">
+				<span class="glyphicon glyphicon-ok text-success" attr.aria-label="{{ 'Erlaubt' | translate:'account.iconMeaningOk' }}"></span>
+			</td>
+			<td class="text-center" [ngClass]="{ 'active-col-row': isIdentified}">
+				<span class="glyphicon glyphicon-ok text-success" attr.aria-label="{{ 'Erlaubt' | translate:'account.iconMeaningOk' }}"></span>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">{{ 'Einsichtsgesuche einreichen' | translate:'account.rightPlaceEinsichtsgesuche' }}</th>
+			<td class="text-center">
+				<span class="glyphicon glyphicon-remove text-danger" attr.aria-label="{{ 'Nicht erlaubt' | translate:'account.iconMeaningNotOk' }}"></span>
+			</td>
+			<td class="text-center" [ngClass]="{ 'active-col-row': isRegistered}">
+				<span class="glyphicon glyphicon-ok text-success" attr.aria-label="{{ 'Erlaubt' | translate:'account.iconMeaningOk' }}"></span>
+			</td>
+			<td class="text-center" [ngClass]="{ 'active-col-row': isIdentified}">
+				<span class="glyphicon glyphicon-ok text-success" attr.aria-label="{{ 'Erlaubt' | translate:'account.iconMeaningOk' }}"></span>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">{{ 'Bewilligungspflichtige Unterlagen konsultieren' | translate:'account.rightViewApprovedDossiers' }}</th>
+			<td class="text-center">
+				<span class="glyphicon glyphicon-remove text-danger" attr.aria-label="{{ 'Nicht erlaubt' | translate:'account.iconMeaningNotOk' }}"></span>
+			</td>
+			<td class="text-center" [ngClass]="{ 'active-col-row': isRegistered}">
+				<span class="glyphicon glyphicon-remove text-danger" attr.aria-label="{{ 'Nicht erlaubt' | translate:'account.iconMeaningNotOk' }}"></span>
+			</td>
+			<td class="text-center" [ngClass]="{ 'active-col-row': isIdentified}">
+				<span class="glyphicon glyphicon-ok text-success" attr.aria-label="{{ 'Erlaubt' | translate:'account.iconMeaningOk' }}"></span>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">{{ 'Auskunftsgesuch in eigene Unterlagen einreichen' | translate:'account.rightPlaceDisclosureRequest' }}</th>
+			<td class="text-center">
+				<span class="glyphicon glyphicon-remove text-danger" attr.aria-label="{{ 'Nicht erlaubt' | translate:'account.iconMeaningNotOk' }}"></span>
+			</td>
+			<td class="text-center" [ngClass]="{ 'active-col-footer': isRegistered}">
+				<span class="glyphicon glyphicon-remove text-danger" attr.aria-label="{{ 'Nicht erlaubt' | translate:'account.iconMeaningNotOk' }}"></span>
+			</td>
+			<td class="text-center" [ngClass]="{ 'active-col-footer': isIdentified}">
+				<span class="glyphicon glyphicon-ok text-success" attr.aria-label="{{ 'Erlaubt' | translate:'account.iconMeaningOk' }}"></span>
+			</td>
+		</tr>
+	</tbody>
+</table>

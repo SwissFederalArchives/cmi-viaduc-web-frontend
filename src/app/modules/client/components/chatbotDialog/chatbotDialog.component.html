@@ -1,0 +1,22 @@
+<div class="fixed-wrapper">
+	<div class="dialog-container">
+		<div class="chatbot-dialog" [style.height.px]="dialogHeight">
+			<div class="dialog-content">
+				<div class="hide-header">
+					<div class="header-line">
+						<p>{{'Chatbot (Beta)' | translate:'chatbotDialog.title'}}</p>
+						<a (click)="onHideClick()" tabindex="0" (keydown.enter)="onHideClick()">
+							<span class="sr-only">
+								{{'Chatbot (Beta) minimieren' | translate:'chatbotDialog.minimize'}}
+							</span>
+							<span class="glyphicon glyphicon-minus" aria-hidden="true" [tooltip]="'Chatbot (Beta) minimieren' | translate:'chatbotDialog.minimize'" tooltipPlacement="left">
+							</span>
+						</a>
+					</div>
+				</div>
+				<iframe class="chatbot-iframe" [src]="urlForChatbot" height="100%" width="100%">
+				</iframe>
+			</div>
+		</div>
+	</div>
+</div>
