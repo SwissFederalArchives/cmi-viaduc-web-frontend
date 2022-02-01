@@ -17,10 +17,10 @@
     "schliessen": "Chiudi",
     "und": "e"
   },
-	"engagementbubbles": {
-		"chat": "Chat",
-		"chatbot": "Chatbot"
-	},
+  "engagementbubbles": {
+    "chat": "Chat",
+    "chatbot": "Chatbot"
+  },
   "account": {
     "backToPage": "Torna alla pagina iniziale",
     "birthday": "Data di nascita",
@@ -124,7 +124,8 @@
     "title": "Il mio conto utente"
   },
   "accountFavoritesDetailPageComponent": {
-    "pageTitle": "Elenco dei preferiti"
+    "pageTitle": "Elenco dei preferiti",
+    "fileName": "freferiti_"
   },
   "accountFavoritesListPageComponent": {
     "pageTitle": "Elenco dei preferiti"
@@ -152,8 +153,8 @@
     "treeNode": {
       "collapse": "Riduci",
       "expand": "Espandi",
-			"onlyVisibleForIdentifiedUsers": "I dossier sono visibili soltanto agli utenti autorizzati."
-		},
+      "onlyVisibleForIdentifiedUsers": "I dossier sono visibili soltanto agli utenti autorizzati."
+    },
     "zeigen": "Mostra nel piano d'archivio",
     "zuFavoritenHinzufuegen": "Aggiungi ai preferiti",
     "lokalisieren": "Localizza nel piano d'archivio"
@@ -265,7 +266,7 @@
     "notFoundMessageNotOe1": "Forse non disponi dell'autorizzazione necessaria per visualizzare la pagina. Verifica i tuoi diritti nel <a href=\"#{0}\">conto utente</a>.</br></br>",
     "notFoundMessageOe1": "Forse non disponi delle autorizzazioni necessarie per visualizzare la pagina (v. <a href=\"#{0}\">Registrazione e identificazione</a>).</br></br>"
   },
-	"detailPage": {
+  "detailPage": {
     "information": "Informazione"
   },
   "detailHierarchy": {
@@ -294,7 +295,7 @@
     "downloadSuccess": "L'avvio del download è riuscito.",
     "downloadSuccessTitle": "Il download riuscito",
     "estimatedPrepTime": "La preparazione dura ca.",
-		"preparationInfo": "Tempo di preparazione previsto: {0}.",
+    "preparationInfo": "Tempo di preparazione previsto: {0}.",
     "pleaseLogin": "Effettua l'accesso per poter ordinare i documenti",
     "pleaseLoginDetailsAt": "Dettagli sotto",
     "preparationPending": "Riceverai una mail quando la preparazione sarà conclusa. Puoi chiudere la pagina.",
@@ -304,7 +305,7 @@
     "registerAndIdentify": "Registrazione e identificazione",
     "unknown": "sconosciuto",
     "xSecondsOverdue": "più del previsto",
-		"downloadNow": "Scarica i documenti. Nel file index.html trovi l’elenco dei documenti."
+    "downloadNow": "Scarica i documenti. Nel file index.html trovi l’elenco dei documenti."
   },
   "einsichtCheckoutOrderDetailsStep": {
     "artDerArbeit": "Genere di lavoro",
@@ -328,7 +329,7 @@
   },
   "engagement": {
     "chatbotInfo": "Passa al tedesco per utilizzare il chatbot (beta).",
-    "chatInfo": "Puoi chattare con l'Archivio federale dal martedì al giovedì, dalle 9 alle 12 e dalle 13 alle 15 - saremo lieti di poterti aiutare.",
+    "chatInfo": "Puoi chattare con l'Archivio federale dal martedì al giovedì, dalle 9 alle 12 e dalle 13 alle 16 - saremo lieti di poterti aiutare.",
     "headerTitle": "Come possiamo aiutarti?"
   },
   "enums": {
@@ -392,11 +393,6 @@
       "pruefungEinsichtsgesuch": "Esame della domande di consultazione",
       "pruefungFreigabe": "Esame dell'autorizzazione",
       "zumReponierenBereit": "Pronto per essere riposto"
-    },
-    "zugaenglichkeitGemaessBga": {
-      "freiZugaenglich": "Liberamente accessibile",
-      "inSchutzfrist": "Soggetto a un termine di protezione",
-      "pruefungNoetig": "Verifica necessaria"
     }
   },
   "error": {
@@ -501,17 +497,18 @@
     "delete": "Cancella",
     "nameOfNewList": "Nome del nuovo elenco",
     "rename": "Rinomina",
+    "export": "Esporta",
     "save": "Salva"
   },
-	"fileSize": {
-		"kB": "KB",
-		"MB": "MB",
-		"GB": "GB",
-		"TB": "TB",
-		"PB": "PB",
-		"ZB": "ZB",
-		"YB": "YB"
-	},
+  "fileSize": {
+    "kB": "KB",
+    "MB": "MB",
+    "GB": "GB",
+    "TB": "TB",
+    "PB": "PB",
+    "ZB": "ZB",
+    "YB": "YB"
+  },
   "file": {
     "acceptTermsWarning": "Leggi e accetta le condizioni di utilizzazione.",
     "alert": "Attenzione:",
@@ -519,7 +516,7 @@
     "availabilityCheckTitle": "La verifica della disponibilità del documento digitalizzato è in corso...",
     "cancel": "Interrompi",
     "download": "Download",
-		"downloadNow": "Effettua ora il download",
+    "downloadNow": "Effettua ora il download",
     "downloadError": "Si è verificato un errore durante l'avvio del download. L'errore è: ",
     "downloadErrorDefaultMessage": "Si è verificato un errore imprevisto. Riprova più tardi.",
     "downloadErrorTitle": "Errore durante il download",
@@ -531,7 +528,7 @@
     "missingTermsOfUse": "Leggi e accetta le condizioni di utilizzazione.",
     "notAuthorized": "Non disponi dei diritti necessari per consultare o ordinare i documenti digitali di questa unità di descrizione.",
     "order": "Ordina",
-		"chooseDownloadReason": "Seleziona una motivazione per effettuare il download.",
+    "chooseDownloadReason": "Seleziona una motivazione per effettuare il download.",
     "personData": "Sì, questo documento digitalizzato contiene dati personali:",
     "pleaseLogin": "Accedi al tuo conto per usufruire di funzioni supplementari quali la gestione dei preferiti e l'ordinazione.",
     "preparationInfo": "È stato dato l'ordine per la preparazione di: {0}",
@@ -598,16 +595,17 @@
     "title": "Accesso on-line all'Archivio federale",
     "zumBestellkorb": "Vai al carrello con {0} posizioni",
     "einstellungen": "Impostazioni",
-		"favoritesCount": "Preferiti ({0})"
+    "favoritesCount": "Preferiti ({0})"
   },
   "headerContent": {
     "component": {
       "aktiv": "Attivo",
-			"toolTippLoggedIn": "Trovi ulteriori informazioni sul tuo stato utente alla pagina “Registrazione e identificazione” o al menu «Informazioni».",
-			"toolTippLoggedInAsRegisteredUser": "In qualità di utente registrato hai accesso ai dati liberamente accessibili dell’Archivio federale. Se desideri consultare dati protetti devi prima procedere all’identificazione (vedi \"Il mio conto utente\")."
+      "toolTippLoggedIn": "Trovi ulteriori informazioni sul tuo stato utente alla pagina “Registrazione e identificazione” o al menu «Informazioni».",
+      "toolTippLoggedInAsRegisteredUser": "In qualità di utente registrato hai accesso ai dati liberamente accessibili dell’Archivio federale. Se desideri consultare dati protetti devi prima procedere all’identificazione (vedi \"Il mio conto utente\")."
     }
   },
   "hitbar": {
+    "export": "Scarica il file XLS",
     "copyPermalink": "Copia il permalink di questa ricerca negli appunti",
     "groupByArchivplan": "Raggruppa secondo il piano d'archivio",
     "orderableUnits": "Unità ordinabili",
@@ -704,7 +702,7 @@
       "referenceCode": "Segnatura",
       "title": "Titolo",
       "withinInfo": "Contiene"
-		},
+    },
     "sortFields": {
       "creationPeriod": {
         "startDate": {
@@ -765,7 +763,7 @@
       "chat": "Chat",
       "chatbot": "Chatbot",
       "chatbotTeaserText": "Chiedi al chatbot (beta) a disposizione 24 ore su 24.",
-      "chatTeaserText": "Puoi chattare con l'Archivio federale dal martedì al giovedì, dalle 9 alle 12 e dalle 13 alle 15 - saremo lieti di poterti aiutare.",
+      "chatTeaserText": "Puoi chattare con l'Archivio federale dal martedì al giovedì, dalle 9 alle 12 e dalle 13 alle 16 - saremo lieti di poterti aiutare.",
       "email": "E-mail",
       "emailTeaserText": "Per richieste più complesse mandaci una mail.",
       "forum": "Forum",
@@ -815,11 +813,8 @@
   "orderCheckoutPage": {
     "bestellbestaetigung": "Conferma dell'ordinazione",
     "chooseShippingType": "Seleziona la modalità di consegna",
-    "digitalErhalten": "in forma <strong>digitale</strong>. L’evasione del mandato di digitalizzazione richiede di norma due settimane. Dopo la ricezione dei documenti digitalizzati è possibile ordinare ulteriori dossier.",
     "finishOrder": "Concludi l'ordinazione",
-    "inLesesaalLiefern": "per consultazione nelle <strong>sale di lettura</strong>. Se la richiesta è effettuata 24 ore prima, i documenti sono disponibili il giorno desiderato nelle sale di lettura (martedì, mercoledì e giovedì)",
     "inMyName": "Per me",
-    "insAmtLiefern": "per consultazione nell'<strong>unità amministrativa</strong> (termine di consegna: 1-2 giorni lavorativi)",
     "inTheNameOfAnother": "Per conto di un altro utente",
     "iWantThisDossierOrdered": "Desidero ordinare questo dossier",
     "iWantThisDossierPlural": "Desidero questi dossier",
@@ -832,18 +827,18 @@
     "reasons": "Motivo",
     "title": "Ordinazione",
     "userSelect": "Seleziona utente",
-		"warningInfo": "Diffida",
-		"warningTitle": "Tempi d’attesa più lunghi per la digitalizzazione!",
-		"warningMessagePart1": "La grande richiesta sta mettendo a dura prova la nostra infrastruttura di digitalizzazione. Non possiamo pertanto escludere tempi di attesa più lunghi per l’evasione del Suo mandato. Se avesse bisogno rapidamente dei documenti o il loro quantitativo fosse importante, Le consigliamo di ordinarli per la consultazione nelle sale di lettura.",
-		"warningMessagePart2": "I dipendenti dell’Amministrazione federale possono farsi inviare i documenti prodotti dalla propria unità amministrativa direttamente in ufficio.",
-		"digitalisierungNichtMoeglichTitle": "Contingente esaurito",
-		"digitalisierungNichtMoeglichIntro": "abbiamo ricevuto il Suo mandato di digitalizzazione per {0} dossier.",
-		"digitalisierungNichtMoeglichAsBvw": "La invitiamo a ordinare i documenti per consultazione nelle sale di lettura o nella Sua unità amministrativa, oppure ad attendere il completamento dei precedenti mandati di digitalizzazione.",
-		"digitalisierungNichtMoeglichOthers": "La invitiamo a ordinare i documenti per consultazione nelle sale di lettura o ad attendere il completamento dei precedenti mandati di digitalizzazione.",
-		"exceedDigitalisierungTitle": "Contingente quasi esaurito: possono essere digitalizzati ancora soltanto {0} dossier",
-		"exceedDigitalisierungIntro": "tra i dossier che figurano nel mandato di digitalizzazione, La invitiamo a selezionare quelli che hanno la priorità. Non appena saranno stati digitalizzati, potrà inviare un nuovo mandato.",
-		"exceedDigitalisierungAsBvw": "In alternativa può ordinare i documenti per consultazione nelle sale di lettura o nella Sua unità amministrativa.",
-		"exceedDigitalisierungOthers": "In alternativa può ordinare i documenti per consultazione nelle sale di lettura."
+    "warningInfo": "Avvertimento",
+    "warningTitle": "Tempi d’attesa più lunghi per la digitalizzazione!",
+    "warningMessagePart1": "La grande richiesta sta mettendo a dura prova la nostra infrastruttura di digitalizzazione. Non possiamo pertanto escludere tempi di attesa più lunghi per l’evasione del Suo mandato. Se avesse bisogno rapidamente dei documenti o il loro quantitativo fosse importante, Le consigliamo di ordinarli per la consultazione nelle sale di lettura.",
+    "warningMessagePart2": "I dipendenti dell’Amministrazione federale possono farsi inviare i documenti prodotti dalla propria unità amministrativa direttamente in ufficio.",
+    "digitalisierungNichtMoeglichTitle": "Contingente esaurito",
+    "digitalisierungNichtMoeglichIntro": "abbiamo ricevuto il Suo mandato di digitalizzazione per {0} dossier.",
+    "digitalisierungNichtMoeglichAsBvw": "La invitiamo a ordinare i documenti per consultazione nelle sale di lettura o nella Sua unità amministrativa, oppure ad attendere il completamento dei precedenti mandati di digitalizzazione.",
+    "digitalisierungNichtMoeglichOthers": "La invitiamo a ordinare i documenti per consultazione nelle sale di lettura o ad attendere il completamento dei precedenti mandati di digitalizzazione.",
+    "exceedDigitalisierungTitle": "Contingente quasi esaurito: possono essere digitalizzati ancora soltanto {0} dossier",
+    "exceedDigitalisierungIntro": "tra i dossier che figurano nel mandato di digitalizzazione, La invitiamo a selezionare quelli che hanno la priorità. Non appena saranno stati digitalizzati, potrà inviare un nuovo mandato.",
+    "exceedDigitalisierungAsBvw": "In alternativa può ordinare i documenti per consultazione nelle sale di lettura o nella Sua unità amministrativa.",
+    "exceedDigitalisierungOthers": "In alternativa può ordinare i documenti per consultazione nelle sale di lettura."
   },
   "orderCheckoutPageComponent": {
     "pageTitle": "Ordinazione"
@@ -861,7 +856,7 @@
   },
   "orderOverviewPage": {
     "closeModal": "Chiudi",
-		"itemsCount": "Numero: {0}",
+    "itemsCount": "Numero: {0}",
     "columnItems": {
       "abbruchgrundDisplay": "Motivo dell'interruzione",
       "artDerArbeitDisplay": "Genere di lavoro",
@@ -936,7 +931,7 @@
         "zugaenglichkeitGemaessBga": {
           "freiZugaenglich": "Liberamente accessibile",
           "inSchutzfrist": "Soggetto a un termine di protezione",
-          "pruefungNoetig": "Verifica necessaria"
+          "pruefungNoetig": "Esame necessario"
         }
       },
       "group": {
@@ -990,7 +985,161 @@
       "bis": "fino a",
       "ja": "Sì",
       "nein": "No",
-      "resultateOhneZeitraum": "Risultati senza periodo"
+      "resultateOhneZeitraum": "Risultati senza periodo",
+      "weitereLaden": "Ulteriore carico",
+			"Hauptabteilung": "Sezione principale",
+			"Bestaendeserie": "Serie di fondi",
+			"Bestand": "Fondo",
+			"Akzession": "Accessione",
+			"Teilbestand": "Sezione di fondo",
+			"Serie": "Serie",
+			"Dossier": "Dossier",
+			"Subdossier": "Sezione di dossier",
+			"Dokument": "Documento",
+			"Archiv": "Archivio",
+			"frei zugaenglich": "Liberamente accessibile",
+			"in schutzfrist": "Soggetto a un termine di protezione",
+			"pruefung noetig": "Esame necessario",
+			"thematicInventoryOverview": {
+				"1 Staat, Volk und Behörden": "1 Stato, popolo e autorità",
+				"11 Eidgenoessisches Parlament": "11 Parlamento federale",
+				"111 Eidgenoessische Raete": "111 Camere federali",
+				"112 Parlamentarische Kommissionen": "112 Commissioni parlamentari",
+				"113 Parlamentsdienste": "113 Servizi del Parlamento",
+				"12 Regierung": "12 Governo",
+				"121 Bundesrat": "121 Consiglio federale",
+				"13 Bundesverwaltung": "13 Amministrazione federale",
+				"131 Bundeskanzlei": "131 Cancelleria federale",
+				"132 Departementsvorsteher": "132 Capidipartimento",
+				"133 Departementssekretariate": "133 Segreterie dipartimentali",
+				"134 Bundespersonal": "134 Personale federale",
+				"135 Organisation": "135 Organizzazione",
+				"136 Bundesbauten, Liegenschaften und Logistik": "136 Costruzioni federali",
+				"137 Informationstechnologie": "137 Tecnologia dell'informazione",
+				"14 Ausserparlamentarische Kommissionen und Spezialmandate": "14 Commissioni extraparlamentari e mandati speciali",
+				"141 Ausserparlamentarische Kommissionen und Spezialmandate": "141 Commissioni extraparlamentari e mandati speciali",
+				"2 Aussenpolitik": "2 Politica estera",
+				"21 Aussenpolitische und aussenwirtschaftliche Beziehungen": "21 Relazioni di politica e di economia estera",
+				"211 Aussenpolitische Beziehungen": "211 Relazioni di politica estera",
+				"212 Aussenwirtschaft": "212 Economia esterna",
+				"213 Vertretung fremder Interessen": "213 Rappresentanza di interessi esteri",
+				"214 Berichterstattung und Dokumentation": "214 Rapporto e documentazione",
+				"215 Schweizerische Auslandvertretungen": "215 Rappresentanze svizzere all'estero",
+				"22 Internationale Zusammenarbeit": "22 Cooperazione internazionale",
+				"221 Internationale Organisationen": "221 Organizzazioni internazionali",
+				"222 Entwicklungszusammenarbeit": "222 collaborazione allo sviluppo",
+				"3 Justiz und Polizei": "3 Giustizia e polizia",
+				"31 Gesetzgebung und Rechtswahrung": "31 Legislazione",
+				"311 Justiz": "311 Giustizia",
+				"312 Handels- und Gueterrechtsregister": "312 Registro di commercio e dei beni matrimoniali",
+				"313 Zivilstand": "313 Stato civile",
+				"314 Grundbuch": "314 Registro fondiario",
+				"315 Geistiges Eigentum": "315 Proprietà intellettuale",
+				"316 Zensur": "316 Censura",
+				"32 Polizeiliche Ermittlung, Anklage und Vollzug": "32 Indagine di polizia, accusa e esecuzione",
+				"321 Polizei": "321 Polizia",
+				"322 Bundesanwaltschaft": "322 Ministero pubblico della Confederazione",
+				"33 Immigration": "33 Immigrazione",
+				"331 Fremdenpolizei und Auslaenderfragen": "331 Polizia degli stranieri",
+				"332 Fluechtlinge": "332 Rifugiati",
+				"4 Bildung, Wissenschaft und Kultur": "4 Educazione, scienza e cultura",
+				"41 Bildung, Schule und Sport": "41 Educazione, scuola e sport",
+				"411 Bildung": "411 Educazione",
+				"412 Berufsbildung und Fachhochschulen": "412 Formazione professionale e scuole universitarie professionali",
+				"413 Sport": "413 Sport",
+				"42 Wissenschaft und Forschung": "42 Scienza e ricerca",
+				"421 Wissenschaftspolitik": "421 Politica scientifica",
+				"422 Meteorologie": "422 Meteorologia",
+				"423 Landestopographie": "423 Topografia",
+				"424 Statistik": "424 Statistica",
+				"43 Kultur": "43 Cultura",
+				"431 Kunst und Kultur": "431 Arte e cultura",
+				"432 Archive, Bibliotheken und Museen": "432 Archivi, biblioteche e musei",
+				"433 Ausstellungen": "433 Esposizioni",
+				"434 Stiftungen": "434 Fondazioni",
+				"5 Landesverteidigung": "5 Difesa nazionale",
+				"51 Militaerische Fuehrung": "51 Condotta militare",
+				"511 Generalstab": "511 Stato maggiore generale",
+				"512 General": "512 Generale",
+				"513 Armeestab": "513 Stato maggiore dell¿esercito",
+				"514 Militaerische Reformen und Projekte": "514 Riforme e progetti militari",
+				"52 Landesverteidigung": "52 Difesa nazionale",
+				"521 Landesverteidigung 1848-1950, Aktivdienst": "521 Difesa nazionale 1848-1950, servizio attivo",
+				"53 Ausbildung, Rekrutierung und Verwaltung": "53 Istruzione, reclutamento e amministrazione",
+				"531 Ausbildung": "531 Istruzione",
+				"532 Paedagogische Rekrutenpruefungen": "532 Esami pedagogici delle reclute",
+				"533 Verwaltung der Armee": "533 Amministrazione dell¿esercito",
+				"54 Armee": "54 Esercito",
+				"541 Truppengattungen": "541 Armi",
+				"542 Grosse Verbaende und Formationen": "542 Formazioni",
+				"543 Personelles, Betreuung und Spezialdienste": "543 Personale dell'esercito, assistenza e servizi speciali",
+				"55 Ruestung": "55 Armamento",
+				"551 Ruestungsdienste": "551 Servizi d'armamento",
+				"552 Ruestungsbetriebe": "552 Imprese d¿armamento",
+				"553 Armeematerial und Kriegskommissariat": "553 Materiale dell'esercito e commissariato di guerra",
+				"56 Militaerjustiz": "56 Giustizia militare",
+				"561 Oberauditorat und militaerischer Strafvollzug": "561 Ufficio dell'uditore in capo e esecuzione militare",
+				"57 Gesamtverteidigung, Zivilschutz und Landesversorgung": "57 Difesa integrata, protezione civile e approvvigionamento del Paese",
+				"571 Gesamtverteidigung": "571 Difesa integrata",
+				"572 Zivilschutz": "572 Protezione civile",
+				"573 Landesversorgung und Kriegswirtschaft": "573 Approvvigionamento del Paese e economia di guerra",
+				"6 Finanzen": "6 Finanze",
+				"61 Staatshaushalt": "61 Bilancio dello Stato",
+				"611 Finanzverwaltung": "611 Amministrazione delle finanze",
+				"612 Kassen- und Rechnungswesen": "612 Servizi di cassa e contabilità",
+				"613 Darlehenskasse": "613 Cassa di prestito",
+				"614 Muenzwesen, Edelmetalle": "614 Monete, metalli preziosi",
+				"62 Zoll und Grenzwacht": "62 Dogana e guardie di confine",
+				"621 Zollverwaltung": "621 Amministrazione delle dogane",
+				"622 Zollkreise": "622 Circondari doganali",
+				"623 Grenzwacht": "623 Guardie di confine",
+				"63 Steuern und Abgaben": "63 Imposte e tributi",
+				"631 Steuerverwaltung": "631 Amministrazione delle contribuzioni",
+				"632 Alkoholverwaltung": "632 Regìa degli alcool",
+				"7 Umwelt, Verkehr, Energie und Kommunikation": "7 Ambiente, trasporti, energia e comunicazioni",
+				"71 Energie und Umwelt": "71 Energia e ambiente",
+				"711 Wasserbau und Wasserwirtschaft": "711 Sistemazione dei corsi d¿acqua e economia idrica",
+				"712 Raumplanung und Meliorationen": "712 Pianificazione del territorio e migliorie fondiarie",
+				"713 Energie": "713 Energia",
+				"714 Umweltschutz": "714 Protezione dell'ambiente",
+				"72 Verkehr": "72 Trasporti",
+				"721 Strassenbau und Strassenverkehr": "721 Costruzioni stradali e traffico stradale",
+				"722 Eisenbahnen und Postautos": "722 Ferrovie e autopostali",
+				"723 Zivilluftfahrt": "723 Aviazione civile",
+				"724 Schifffahrt": "724 Navigazione",
+				"73 Kommunikation": "73 Comunicazioni",
+				"731 Medien und Kommunikation": "731 Media e comunicazioni",
+				"732 Post- und Fernmeldeverkehr": "732 Posta e telecomunicazioni",
+				"8 Gesundheit, Arbeit und Soziale Sicherheit": "8 Sanità, lavoro e sicurezza sociale",
+				"81 Gesundheit": "81 Sanità",
+				"811 Gesundheit": "811 Sanità",
+				"82 Arbeit": "82 Lavoro",
+				"821 Arbeit und Beschaeftigung": "821 Lavoro e impiego",
+				"822 Arbeitslosenversicherung": "822 Assicurazione contro la disoccupazione",
+				"823 Arbeitnehmerschutz und Arbeitsrecht": "823 Tutela dei lavoratori e diritto del lavoro",
+				"824 Fabrik- und Arbeitsinspektorate": "824 Ispettorati del lavoro e delle fabbriche",
+				"825 Arbeitskraft und Auswanderung": "825 Manodopera e emigrazione",
+				"83 Soziale Sicherheit": "83 Sicurezza sociale",
+				"831 Sozialversicherung": "831 Assicurazioni sociali",
+				"832 Militaerversicherung": "832 Assicurazione militare",
+				"833 Fuersorge": "833 Assistenza pubblica",
+				"834 Wohnungswesen und Mieterschutz": "834 Abitazione e protezione dei locatari",
+				"9 Wirtschaft": "9 Economia",
+				"91 Landwirtschaft, Forstwesen, Jagd und Fischerei": "91 Agricoltura, attività forestale, caccia e pesca",
+				"911 Schutz und Foerderung der Landwirtschaft": "911 Protezione e promozione dell'agricoltura",
+				"912 Landwirtschaftliche Forschungsanstalten": "912 Stazioni di ricerche agronomiche",
+				"913 Getreideverwaltung": "913 Amministrazione dei cereali",
+				"914 Veterinaerwesen": "914 Veterinaria",
+				"915 Forstwesen, Jagd und Fischerei": "915 Attività forestale, caccia e pesca",
+				"92 Handel, Industrie und Gewerbe": "92 Commercio, industria e artigianato",
+				"921 Handel": "921 Commercio",
+				"922 Industrie und Gewerbe": "922 Industria e artigianato",
+				"923 Fremdenverkehr": "923 Turismo",
+				"924 Gebundener Zahlungsverkehr": "924 Servizio disciplinato dei pagamenti",
+				"93 Aufsicht ueber Kreditinstitute und Privatversicherungen": "93 Vigilanza sugli istituti di credito e le assicurazioni private",
+				"931 Banken, Sparkassen und Anlagefonds": "931 Banche, casse di risparmio e fondi di investimento",
+				"932 Privatversicherungen": "932 Assicurazioni private"
+			}
     },
     "fieldoperator": {
       "and": "Tutti i termini",
@@ -1182,7 +1331,7 @@
     "infoSymbol": "Simbolo dell'informazione"
   },
   "user": {
-		"cancelRegistrationMessage": "Si prega di completare la registrazione e salvare i dati.",
+    "cancelRegistrationMessage": "Si prega di completare la registrazione e salvare i dati.",
     "birthday": "Data di nascita",
     "countryCode": "Paese",
     "emailAddress": "E-mail",
@@ -1226,7 +1375,24 @@
     "saveSuccess": "Dati utente salvati",
     "saveSuccessTitle": "Salvataggio riuscito"
   },
-	"orderSection": {
-		"orderText": "Aggiungi i documenti al carrello. Da qui potrai ordinarli direttamente o presentare una domanda di consultazione."
+  "orderSection": {
+    "orderText": "Aggiungi i documenti al carrello. Da qui potrai ordinarli direttamente o presentare una domanda di consultazione."
+  },
+  "veExportRecord": {
+    "referenceCode": "Segnatura",
+    "fileReference": "Riferimento",
+    "title": "Titolo",
+    "creationPeriod": "Periodo di costituzione",
+    "withinInfo": "Contiene",
+    "level": "Livello",
+    "accessibility": "Accessibilità secondo la LAr",
+    "fileName": "risultato-di-una-ricerca",
+    "favourites": "freferiti"
+  },
+	"canDeactivateGuard": {
+	  "Title": "Avvertimento",
+	  "close": "Chiudi",
+	  "yes": "Sì",
+	  "no": "No"
 	}
 }

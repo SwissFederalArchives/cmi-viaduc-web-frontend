@@ -9,6 +9,7 @@ import {ClientModule, ContextService} from './modules/client';
 import {ToastrModule} from 'ngx-toastr';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { MatomoModule } from 'ngx-matomo';
+import {MarkdownModule} from 'ngx-markdown';
 
 initRoutes(ROUTES);
 
@@ -31,9 +32,10 @@ export function preloadServiceFactory(preloadService: PreloadService, ctx: Conte
 		OrdersModule,
 		DeviceDetectorModule.forRoot(),
 		ClientModule.forRoot(),
-		RouterModule.forRoot(ROUTES, {useHash: true}),
+		RouterModule.forRoot(ROUTES, { useHash: true, relativeLinkResolution: 'legacy' }),
 		ToastrModule.forRoot(toastrOptions),
-		MatomoModule
+		MatomoModule,
+		MarkdownModule.forRoot()
 	],
 	bootstrap: [RootComponent],
 	declarations: [

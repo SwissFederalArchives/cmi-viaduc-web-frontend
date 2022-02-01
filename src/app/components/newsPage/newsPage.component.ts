@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {INewsForOneLanguage, NewsForOneLanguage} from '../../modules/client/model';
+import {Component, OnInit} from '@angular/core';
+import {NewsForOneLanguage} from '../../modules/client/model';
 import {NewsService} from '../../modules/client/services';
 
 @Component({
@@ -8,34 +8,21 @@ import {NewsService} from '../../modules/client/services';
 	styleUrls: ['./newsPage.component.less']
 })
 
-export class NewsPageComponent {
+export class NewsPageComponent implements OnInit {
 
-	private _news: NewsForOneLanguage[];
+	public news: NewsForOneLanguage[];
 
 	constructor(private _newsService: NewsService) {
-		this._getAndStoreNews();
 	}
 
-	public get news(): NewsForOneLanguage[] {
-		return this._news;
+	public async ngOnInit(): Promise<void> {
+		this.news = await this._newsService.getRelevantNewsForViaducClient();
 	}
 
 	public get hasNews(): boolean {
-		if (this._news) {
-			return this._news.length > 0;
+		if (this.news) {
+			return this.news.length > 0;
 		}
 		return false;
-	}
-
-	private _getAndStoreNews(): void {
-		let promise: Promise<INewsForOneLanguage[]> = this._newsService.getRelevantNewsForViaducClient();
-
-		promise.then((data) => {
-				this._news = <NewsForOneLanguage[]>data;
-			},
-			(error) => {
-				console.log(error);
-				this._news = [];
-			});
 	}
 }

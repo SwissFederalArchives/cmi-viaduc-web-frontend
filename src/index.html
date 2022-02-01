@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de" class="cmi-boot">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -24,13 +25,15 @@
 
 	<style>
 		/* inline styles while booting */
-		body,html {
-			width:100%;
-			overflow-x:hidden;
+		body,
+		html {
+			width: 100%;
+			overflow-x: hidden;
 		}
+
 		body {
-			position:relative;
-			background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowODgwMTE3NDA3MjA2ODExOTJCMEU3MzMzRkJFNzE5OSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozQkUwMzkzOTUxRUIxMUUxQUM3QUY2RTk4MDRDNEQ5MyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozQkUwMzkzODUxRUIxMUUxQUM3QUY2RTk4MDRDNEQ5MyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RThDMTZCNzExNDIwNjgxMThDMTRFM0RGRkZDOTk3OTYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDg4MDExNzQwNzIwNjgxMTkyQjBFNzMzM0ZCRTcxOTkiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz62j5vnAAAAI0lEQVR42mK8c/OymJgoAxgwwVmvXr1mgrOAokxwFpABEGAALl8L0RQMjpMAAAAASUVORK5CYII=);
+			position: relative;
+			background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowODgwMTE3NDA3MjA2ODExOTJCMEU3MzMzRkJFNzE5OSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozQkUwMzkzOTUxRUIxMUUxQUM3QUY2RTk4MDRDNEQ5MyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozQkUwMzkzODUxRUIxMUUxQUM3QUY2RTk4MDRDNEQ5MyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RThDMTZCNzExNDIwNjgxMThDMTRFM0RGRkZDOTk3OTYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDg4MDExNzQwNzIwNjgxMTkyQjBFNzMzM0ZCRTcxOTkiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz62j5vnAAAAI0lEQVR42mK8c/OymJgoAxgwwVmvXr1mgrOAokxwFpABEGAALl8L0RQMjpMAAAAASUVORK5CYII=);
 		}
 
 		html.cmi-boot,
@@ -49,7 +52,8 @@
 			margin-bottom: 25px;
 		}
 
-		cmi-loader, .cmi-loader {
+		cmi-loader,
+		.cmi-loader {
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -68,8 +72,8 @@
 		}
 
 		.cmi-loader.cmi-visible {
-			 opacity: 1;
-		 }
+			opacity: 1;
+		}
 
 		.cmi-three-dots {
 			padding: 10px 20px;
@@ -89,16 +93,16 @@
 		}
 
 		.cmi-three-dots span:nth-child(1) {
-			 animation: lightUp 1.5s linear infinite;
-		 }
+			animation: lightUp 1.5s linear infinite;
+		}
 
 		.cmi-three-dots span:nth-child(2) {
-			 animation: lightUp 1.5s linear infinite 0.5s;
-		 }
+			animation: lightUp 1.5s linear infinite 0.5s;
+		}
 
 		.cmi-three-dots span:nth-child(3) {
-			 animation: lightUp 1.5s linear infinite 1s;
-		 }
+			animation: lightUp 1.5s linear infinite 1s;
+		}
 
 		.page cmi-loader {
 			align-items: flex-start;
@@ -116,24 +120,28 @@
 			margin: -1px;
 			padding: 0;
 			overflow: hidden;
-			clip: rect(0,0,0,0);
-			border:0
+			clip: rect(0, 0, 0, 0);
+			border: 0
 		}
 
 		@keyframes lightUp {
 			0% {
 				opacity: 0.2;
 			}
+
 			40% {
 				opacity: 1;
 			}
+
 			60% {
 				opacity: 0.2;
 			}
+
 			100% {
 				opacity: 0.2;
 			}
 		}
+
 		.access-keys {
 			width: 0;
 			height: 0;
@@ -145,7 +153,8 @@
 			display: inline;
 		}
 
-		.access-keys li a, .access-keys li a:visited {
+		.access-keys li a,
+		.access-keys li a:visited {
 			display: block;
 			position: absolute;
 			left: -3000px;
@@ -170,6 +179,31 @@
 			z-index: 10000000;
 			text-decoration: none;
 		}
+
+		.buorg-buttons {
+			position: fixed;
+			top: 0px;
+			right: 0px;
+		}
+
+		.buorg-pad,
+		div.buorg-pad {
+			padding: 9px 35px 9px 9px;
+		}
+
+		#buorgig {
+			position: absolute;
+			top: 0px;
+			right: 0px;
+		}
+
+		#buorgul {
+			visibility: collapse;
+		}
+
+		#buorgpermanent {
+			visibility: collapse;
+		}
 	</style>
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="assets/img/ico/mstile-144x144.png">
@@ -178,40 +212,91 @@
 
 <body>
 
-<ul class="access-keys">
-	<li><a id="startseiteAccessKey" href="#" accesskey="0">Startseite</a></li>
-	<li><a id="hauptnavigationAccessKey" href="javascript:setFocusOnEnter('mainNav');" accesskey="1">Hauptnavigation</a></li>
-	<li><a id="inhaltAccessKey" href="javascript:setFocusOnEnter('mainContent');" accesskey="2">Inhalt</a></li>
-	<script>
-		function setFocusOnEnter(elementId) {
-			document.getElementById(elementId).focus();
-		}
-	</script>
-</ul>
-
-<cmi-viaduc-root>
-	<div class="cmi-loader cmi-visible">
-		<h3>
-			<span>Online-Zugang zum Bundesarchiv</span>
-			<br/>
-			<span> Accès en ligne aux Archives fédérales</span>
-			<br/>
-			<span>Accesso on-line all'Archivio federale</span>
-			<br/>
-			<span>Online access to the Federal Archives</span>
-			<br/>
-		</h3>
-		<div class="cmi-three-dots">
-			<span></span><span></span><span></span>
-		</div>
-		<div><img src="assets/img/logo-CH.svg" alt="{{'Logo des Bundesarchiv' | translate:'index.logo'}}"></div>
-		<span class="sr-only" id="pageLoadingMessage">Seite wird geladen, La page est en chargement, La pagina si sta caricando, Page is loading</span>
+	<ul class="access-keys">
+		<li><a id="startseiteAccessKey" href="#" accesskey="0">Startseite</a></li>
+		<li><a id="hauptnavigationAccessKey" href="javascript:setFocusOnEnter('mainNav');"
+				accesskey="1">Hauptnavigation</a>
+		</li>
+		<li><a id="inhaltAccessKey" href="javascript:setFocusOnEnter('mainContent');" accesskey="2">Inhalt</a></li>
 		<script>
-			var x = document.getElementById('pageLoadingMessage');
-			x.setAttribute("tabindex", 1);
-			x.focus()
+			function setFocusOnEnter(elementId) {
+				document.getElementById(elementId).focus();
+			}
 		</script>
-	</div>
-</cmi-viaduc-root>
+	</ul>
+
+	<cmi-viaduc-root>
+		<div class="cmi-loader cmi-visible">
+			<h3>
+				<span>Online-Zugang zum Bundesarchiv</span>
+				<br />
+				<span> Accès en ligne aux Archives fédérales</span>
+				<br />
+				<span>Accesso on-line all'Archivio federale</span>
+				<br />
+				<span>Online access to the Federal Archives</span>
+				<br />
+			</h3>
+			<div class="cmi-three-dots">
+				<span></span><span></span><span></span>
+			</div>
+			<div><img src="assets/img/logo-CH.svg" alt="{{'Logo des Bundesarchiv' | translate:'index.logo'}}"></div>
+			<span class="sr-only" id="pageLoadingMessage">Seite wird geladen, La page est en chargement, La pagina si
+				sta caricando, Page is loading</span>
+			<script>
+				var x = document.getElementById('pageLoadingMessage');
+				x.setAttribute("tabindex", 1);
+				x.focus()
+
+				var $buoop = {
+					required: { e: -4, f: -3, o: -3, s: -1, c: -3 },
+					reminder: 0, // Nach wieviel Stunden die Meldung wieder auftaucht. 0 = show all the time
+					reminderClosed: 336, // Falls der Benutzer die Meldung explizit schliesst, erscheint diese wieder nach x Stunden
+					no_permanent_hide: false, // Um den erneuten Erinnerungsmeldungszeitpunkt anzuzeigen, muss dies "false" sein
+					test: false,
+					style: "top",
+					insecure: true,
+					unsupported: true,
+					api: 2021.08,
+					text: {
+						'msg': "Your web browser ({brow_name}) is out of date.",
+						'msgmore': "Update your browser or use a different browser to use www.recherche.bar.admin.ch.",
+						'remind': "You will be reminded next time in {days} days",
+						'bignore': 'X'
+					},
+					text_in_de: {
+						'msg': "Ihr Webbrowser ({brow_name}) ist veraltet.",
+						'msgmore': "Aktualisieren Sie Ihren Browser oder verwenden Sie einen anderen Browser, um www.recherche.bar.admin.ch zu nutzen.",
+						'remind': 'Sie werden das nächste Mal in {days} Tagen erinnert.',
+						'bignore': 'X'
+					},
+					text_in_fr: {
+						'msg': "Votre navigateur web ({brow_name}) n\'est pas à jour.",
+						'msgmore': "Mettez-le à jour ou choisissez un autre navigateur pour utiliser www.recherche.bar.admin.ch.",
+						'remind': 'Vous serez rappelé la prochaine fois dans {days} jours.',
+						'bignore': 'X'
+					},
+					text_in_it: {
+						'msg': "Il tuo browser ({brow_name}) non è aggiornato.",
+						'msgmore': "Aggiorna il tuo browser o usa un altro browser per utilizzare www.recherche.bar.admin.ch.",
+						'remind': 'Ti verrà ricordato la prossima volta tra {days} giorni.',
+						'bignore': 'X'
+					}
+				};
+
+				function $buo_f() {
+					var e = document.createElement("script");
+					e.src = "//browser-update.org/update.min.js";
+					document.body.appendChild(e);
+				};
+				try {
+					document.addEventListener("DOMContentLoaded", $buo_f, false)
+				} catch (e) {
+					window.attachEvent("onload", $buo_f)
+				}
+			</script>
+		</div>
+	</cmi-viaduc-root>
 </body>
+
 </html>

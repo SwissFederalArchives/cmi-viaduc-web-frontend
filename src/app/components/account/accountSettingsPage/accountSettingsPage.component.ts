@@ -34,11 +34,7 @@ export class AccountSettingsPageComponent implements OnInit {
 		this.sortingFields = this._cfg.getSetting('search.simpleSearchSortingFields');
 
 		this.userSettings = this._cfg.getUserSettings();
-
 		this.chosenSortField = this.userSettings.selectedSortingField.displayName;
-
-		console.log('accountSettingsPage: settings are: ');
-		console.log(this.userSettings);
 	}
 
 	public onSortFieldChosen(key: any) {

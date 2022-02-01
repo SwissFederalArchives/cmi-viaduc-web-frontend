@@ -1,4 +1,4 @@
-<li [ngClass]="liCss" (keyup.enter)="toggleActive()" (click)="toggleActive()" tabindex="0">
+<li [ngClass]="liCss" (keyup.enter)="toggleActive()" (click)="toggleActive()" [attr.aria-hidden]="collapsed" [attr.tabindex]="collapsed ? -1 : 0">
 	<a *ngIf="!active">
 		<span [innerHtml]="displayText"></span>
 		<span class="badge">

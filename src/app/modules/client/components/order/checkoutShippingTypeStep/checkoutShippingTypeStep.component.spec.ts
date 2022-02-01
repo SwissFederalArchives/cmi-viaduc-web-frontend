@@ -1,8 +1,8 @@
 import {ClientModel, CoreModule, OrderItem, ShippingType} from '@cmi/viaduc-web-core/';
-import {TranslationService, Ordering, ClientContext} from '@cmi/viaduc-web-core';
+import {TranslationService, Ordering, ClientContext, ConfigService} from '@cmi/viaduc-web-core';
 import {CheckoutShippingTypeStepComponent} from './checkoutShippingTypeStep.component';
 import {AuthorizationService, ShoppingCartService, UrlService} from '../../../services';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {By} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -16,6 +16,7 @@ describe('CheckoutShippingTypeStep', () => {
 	let fixture: ComponentFixture<CheckoutShippingTypeStepComponent>;
 	let auth: AuthorizationService;
 	let txt: TranslationService;
+	let cfg: ConfigService;
 	let shoppingCartService: ShoppingCartService;
 
 	beforeEach(() => {
@@ -40,6 +41,12 @@ describe('CheckoutShippingTypeStep', () => {
 		txt = <TranslationService>{
 			translate(text: string, key?: string, ...args): string {
 				return text;
+			}
+		};
+
+		cfg = <ConfigService>{
+			getSetting(key: string, defaultValue: any): any {
+				return defaultValue;
 			}
 		};
 
@@ -70,7 +77,8 @@ describe('CheckoutShippingTypeStep', () => {
 				RouterTestingModule
 			],
 			providers: [
-				{ provide: TranslationService, useValue: txt },
+				{ provide: TranslationService, useValue: txt},
+				{ provide: ConfigService, useValue: cfg },
 				{ provide: ShoppingCartService, useValue: shoppingCartService },
 				{ provide: AuthorizationService, useValue: auth },
 				{ provide: LocalizeLinkPipe },
@@ -85,22 +93,22 @@ describe('CheckoutShippingTypeStep', () => {
 		});
 	});
 
-	beforeEach(async(async() => {
+	beforeEach(waitForAsync(async() => {
 		fixture = TestBed.createComponent(CheckoutShippingTypeStepComponent);
 		sut = fixture.componentInstance;
-		sut.ngOnInit();
+		await sut.ngOnInit();
 		fixture.detectChanges();
 		await fixture.whenRenderingDone();
 	}));
 
 	describe('when a AS user visits the page', () => {
-		beforeEach(async(async() => {
+		beforeEach(waitForAsync(async() => {
 			let authService = TestBed.inject(AuthorizationService);
 			spyOn(authService, 'isAsUser').and.returnValue(true);
 			spyOn(authService, 'isBvwUser').and.returnValue(false);
 			fixture = TestBed.createComponent(CheckoutShippingTypeStepComponent);
 			sut = fixture.componentInstance;
-			sut.ngOnInit();
+			await sut.ngOnInit();
 
 			fixture.detectChanges();
 			await fixture.whenStable();
@@ -123,13 +131,13 @@ describe('CheckoutShippingTypeStep', () => {
 	});
 
 	describe('when a BVW user visits the page', () => {
-		beforeEach(async(async() => {
+		beforeEach(waitForAsync(async() => {
 			let authService = TestBed.inject(AuthorizationService);
 			spyOn(authService, 'isBvwUser').and.returnValue(true);
 			spyOn(authService, 'isAsUser').and.returnValue(false);
 			fixture = TestBed.createComponent(CheckoutShippingTypeStepComponent);
 			sut = fixture.componentInstance;
-			sut.ngOnInit();
+			await sut.ngOnInit();
 
 			fixture.detectChanges();
 			await fixture.whenStable();
@@ -152,13 +160,13 @@ describe('CheckoutShippingTypeStep', () => {
 	});
 
 	describe('when other users visits the page', () => {
-		beforeEach(async(async() => {
+		beforeEach(waitForAsync(async() => {
 			let authService = TestBed.inject(AuthorizationService);
 			spyOn(authService, 'isBvwUser').and.returnValue(false);
 			spyOn(authService, 'isAsUser').and.returnValue(false);
 			fixture = TestBed.createComponent(CheckoutShippingTypeStepComponent);
 			sut = fixture.componentInstance;
-			sut.ngOnInit();
+			await sut.ngOnInit();
 
 			fixture.detectChanges();
 			await fixture.whenStable();
@@ -186,7 +194,7 @@ describe('CheckoutShippingTypeStep', () => {
 	});
 
 	describe('when the warning option is set', () => {
-		beforeEach(async(async() => {
+		beforeEach(waitForAsync(async() => {
 			let authService = TestBed.inject(AuthorizationService);
 			spyOn(authService, 'isBvwUser').and.returnValue(false);
 			spyOn(authService, 'isAsUser').and.returnValue(false);
@@ -194,13 +202,13 @@ describe('CheckoutShippingTypeStep', () => {
 			spyOn(scs, 'getShowDigitizationWarningSetting').and.returnValue(true);
 			fixture = TestBed.createComponent(CheckoutShippingTypeStepComponent);
 			sut = fixture.componentInstance;
-			sut.ngOnInit();
+			await sut.ngOnInit();
 
 			fixture.detectChanges();
 			await fixture.whenStable();
 		}));
 
-		it('selecting the Digitalisierung option results in showing a warning', async(async() => {
+		it('selecting the Digitalisierung option results in showing a warning', waitForAsync(async() => {
 			const vwOption = fixture.debugElement.query(By.css('#chkAlsDigitalisatBestellen')).nativeElement as HTMLInputElement;
 			vwOption.click();
 			sut.form.controls.shippingType.setValue(ShippingType.Digitalisierungsauftrag);
@@ -214,19 +222,19 @@ describe('CheckoutShippingTypeStep', () => {
 	});
 
 	describe('when the warning option is not set', () => {
-		beforeEach(async(async() => {
+		beforeEach(waitForAsync(async() => {
 			let authService = TestBed.inject(AuthorizationService);
 			spyOn(authService, 'isBvwUser').and.returnValue(false);
 			spyOn(authService, 'isAsUser').and.returnValue(false);
 			fixture = TestBed.createComponent(CheckoutShippingTypeStepComponent);
 			sut = fixture.componentInstance;
-			sut.ngOnInit();
+			await sut.ngOnInit();
 
 			fixture.detectChanges();
 			await fixture.whenStable();
 		}));
 
-		it('selecting the Digitalisierung option does not show a warning', async(async() => {
+		it('selecting the Digitalisierung option does not show a warning', waitForAsync(async() => {
 			const vwOption = fixture.debugElement.query(By.css('#chkAlsDigitalisatBestellen')).nativeElement as HTMLInputElement;
 			vwOption.click();
 			sut.form.controls.shippingType.setValue(ShippingType.Digitalisierungsauftrag);

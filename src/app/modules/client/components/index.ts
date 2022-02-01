@@ -48,3 +48,4 @@ export * from './order/einsichtCheckoutOrderDetailStep/einsichtCheckoutOrderDeta
 export * from './engagementBubbles/engagementBubbles.component';
 export * from './detail/usageSection/usageSection.component';
 export * from './chatbotDialog/chatbotDialog.component';
+export * from './search/searchFacetteShowAll/searchFacetteShowAll.component';

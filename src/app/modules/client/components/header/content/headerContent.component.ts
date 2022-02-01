@@ -103,7 +103,7 @@ export class HeaderContentComponent implements OnInit, AfterViewInit {
 		// altes cookie korrigieren, damit Sprachwechsel wirksam ist
 		this._cookieService.put('viaduc_language', lang.key);
 
-		window.location.reload(true);
+		window.location.reload();
 	}
 
 	public login(): void {

@@ -11,7 +11,9 @@ import {
 	SearchRequest,
 	SearchResponse,
 	SimpleSearchModel,
-	TranslationService, UserUiSettings,
+	TranslationService,
+	FileSaverService,
+	UserUiSettings,
 	Utilities as _util
 } from '@cmi/viaduc-web-core';
 import {SearchFacetteListComponent} from '../../modules/client/components';
@@ -56,7 +58,8 @@ export class SearchResultPageComponent implements OnInit {
 				private _activatedRoute: ActivatedRoute,
 				private _txt: TranslationService,
 				private _searchService: SearchService,
-				private _seoService: SeoService) {
+				private _seoService: SeoService,
+				private _fileSaver: FileSaverService) {
 		this.showLoading = true;
 	}
 
@@ -290,12 +293,32 @@ export class SearchResultPageComponent implements OnInit {
 		}
 
 		let response: SearchResponse | SearchError = await this._searchService.search(request);
-
 		if (this._isErrorResponse(response)) {
 			this._setSearchError(response);
 		} else {
 			this._setSearchResponse(response);
 		}
+	}
+
+	private _searchResultExport(request: SearchRequest) {
+		if (this.loading) {
+			return;
+		}
+		this.loading = true;
+
+		this._preProcessRequest(request);
+		this._delayShowLoading();
+		this._searchService.searchExport(request).subscribe(
+			event => {
+				this._fileSaver.saveDownloadResponseToFile(event);
+			},
+			(error) => {
+				console.log(error);
+				this.loading = false;
+			},
+			() => {
+				this.loading = false;
+			});
 	}
 
 	private _setSearchResponse(response: SearchResponse | SearchError) {
@@ -353,6 +376,10 @@ export class SearchResultPageComponent implements OnInit {
 		if (this.facettenList) {
 			this.facettenList.resetFilters(false);
 		}
+	}
+
+	public async onExportSearch(): Promise<void> {
+		this._searchResultExport(this._context.search.request);
 	}
 
 	public async onFilterRequest(filters: FacetteFilter[]): Promise<void> {

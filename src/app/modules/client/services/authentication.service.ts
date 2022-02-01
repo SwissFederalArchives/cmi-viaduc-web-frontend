@@ -146,27 +146,20 @@ export class AuthenticationService {
 		}
 
 		this.setCurrentSession(session);
-		console.log('_initSession', identity);
 		if (!_util.isEmpty(identity)) {
 			if (!this._userService.hasUserSettingsLoaded && !this._userService.isLoadingUserSettings) {
-				console.log('wait for sign in', identity);
 				this.onSignedIn.pipe(skip(1)).subscribe(res => { // skipping first, because its a behaviour-subject
-						console.log('signed in', res);
-						if (!this._preloadService.settings && !this._preloadService.isPreloaded) {
-							console.log('settings not preloaded, waiting');
-							this._preloadService.settingsloaded.pipe(take(1)).subscribe(() => {
-								console.log('now preloaded, initusersettings now');
-								this._userService.initUserSettings();
-							});
-						} else {
-							console.log('already preloaded, initusersettings now');
-							this._userService.initUserSettings();
-						}
+					if (!this._preloadService.settings && !this._preloadService.isPreloaded) {
+						this._preloadService.settingsloaded.pipe(take(1)).subscribe(() => {
+							this._userService.initUserSettings().then(() => {});
+						});
+					} else {
+						this._userService.initUserSettings().then(() => {});
 					}
-				, (error) => console.log('Auth Service Error', error));
+				}
+				, (error) => console.error('Auth Service Error', error));
 			}
 		}
-
 	}
 
 	private _getIdentity(): Observable<any> {
@@ -223,7 +216,7 @@ export class AuthenticationService {
 					return this.handleIdentityResponse(r, token);
 				},
 				err => {
-					console.log(err);
+					console.error(err);
 					this.clearCurrentSession();
 					throw err;
 				});
@@ -265,9 +258,9 @@ export class AuthenticationService {
 				this._setUrl(dontUseReturnUrl, 'true');
 				this._router.navigate([this._urlService.getErrorSmartcardUrl()]);
 				return true;
-			default:
-				console.log('Keine definierter AuthStatus!');
 				break;
+			default:
+				console.warn('Keine definierter AuthStatus!');
 		}
 
 		return false;

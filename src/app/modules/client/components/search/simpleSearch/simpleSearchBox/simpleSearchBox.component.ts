@@ -85,7 +85,7 @@ export class SimpleSearchComponent implements OnInit {
 
 	public onKeydownSearch(event: KeyboardEvent) {
 		this.searchSynonymeIconComponent.setSynonymSearchTimer();
-		if (event.keyCode === 13) {
+		if (event.key === 'Enter') {
 			event.stopPropagation();
 			this.submit();
 		}

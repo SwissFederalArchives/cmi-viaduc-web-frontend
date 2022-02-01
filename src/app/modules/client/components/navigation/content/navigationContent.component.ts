@@ -169,7 +169,7 @@ export class NavigationContentComponent implements AfterViewInit {
 				this.toggleMainMobileNav();
 				break;
 			default:
-				console.log('unknown menu id', id);
+				console.error('unknown menu id', id);
 				break;
 		}
 	}

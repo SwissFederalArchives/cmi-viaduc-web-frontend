@@ -15,7 +15,7 @@ export class VeFavorite implements Favorite {
 	public listId: number;
 	public veId: string;
 	public referenceCode: string;
-	public title: string = this.referenceCode;
+	public title: string;
 	public creationPeriod: string;
 	public level: string;
 	public createdAt: string;
@@ -23,6 +23,10 @@ export class VeFavorite implements Favorite {
 	public canBeDownloaded: boolean;
 	public kind: FavoriteKind = FavoriteKind.Ve;
 	public id: number;
+
+	constructor() {
+		this.title = this.referenceCode;
+	}
 }
 
 export class SearchFavorite implements Favorite {

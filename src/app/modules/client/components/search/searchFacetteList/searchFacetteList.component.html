@@ -25,6 +25,7 @@
 				[activeFilterStrings]="getActiveFilterStringsForFacette('aggregationFields.ordnungskomponenten')"
 				[collapsed]="true"
 				(onFilter)="onFilterApplied($event)"
+				(onFacetteShowAll)="onShowAllFilterApplied($event)"
 				facetteTitle="{{'Thematische Übersicht' | translate:'facette.bestaendeUebersicht' }}">
 			</cmi-viaduc-facette>
 		</li>
@@ -58,6 +59,7 @@
 				[activeFilterStrings]="getActiveFilterStringsForFacette('aggregationFields.bestand')"
 				[collapsed]="true"
 				(onFilter)="onFilterApplied($event)"
+				(onFacetteShowAll)="onShowAllFilterApplied($event)"
 				facetteTitle="{{'Bestand' | translate:'facette.bestand' }}">
 			</cmi-viaduc-facette>
 		</li>

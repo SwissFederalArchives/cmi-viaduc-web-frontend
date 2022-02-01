@@ -49,6 +49,7 @@ import {EisichtCheckoutOrderDetailsStepComponent} from './order/einsichtCheckout
 import {EngagementBubblesComponent} from './engagementBubbles/engagementBubbles.component';
 import {UsageSectionComponent} from './detail/usageSection/usageSection.component';
 import {ChatbotDialogComponent} from './chatbotDialog/chatbotDialog.component';
+import { SearchFacetteShowAllComponent } from './search/searchFacetteShowAll/searchFacetteShowAll.component';
 
 export const ALL_COMPONENTS = [
 	StaticContentComponent,
@@ -77,6 +78,7 @@ export const ALL_COMPONENTS = [
 	SimpleHitComponent,
 	SearchFacetteComponent,
 	SearchFacetteEntryComponent,
+	SearchFacetteShowAllComponent,
 	OrderSectionComponent,
 	DownloadSectionComponent,
 	SyntaxHelpComponent,

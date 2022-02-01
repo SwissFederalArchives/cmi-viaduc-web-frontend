@@ -78,8 +78,10 @@ export class RegisterPageComponent extends ComponentCanDeactivate implements OnI
 		}
 		this._usr.insertUser(this.user).then(() => {
 			this.canDeactivateFlag = true;
-			this._toastr.success(this._txt.get('user.savesuccess', 'Erfolgreich gespeichert.'));
-			this._router.navigate([this._url.getSimpleSearchUrl()]);
+			this._usr.initUserSettings().then(() => {
+					this._toastr.success(this._txt.get('user.savesuccess', 'Erfolgreich gespeichert.'));
+					this._router.navigate([this._url.getSimpleSearchUrl()]);
+				});
 		});
 	}
 
@@ -103,5 +105,4 @@ export class RegisterPageComponent extends ComponentCanDeactivate implements OnI
 	public message(): string {
 		return this._txt.get('user.cancelRegistrationMessage', 'Bitte schliessen Sie die Registrierung ab und speichern Sie die Daten.');
 	}
-
 }

@@ -70,7 +70,6 @@ export class OrderOverviewPage implements OnInit {
 	}
 
 	private _initTableView() {
-		console.log('_initTableView');
 		this.loading = true;
 
 		// deepcopy

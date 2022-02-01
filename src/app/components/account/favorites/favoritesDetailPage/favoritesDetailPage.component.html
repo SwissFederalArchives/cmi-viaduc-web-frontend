@@ -45,6 +45,9 @@
 					</button>
 				</span>
 				<span class="pull-right">
+					<a class="btn btn-link" *ngIf="!showRenameField" tabindex="0" (keydown.enter)="toggleRenameField()" (click)="exportList()">
+						<span class="icon icon--excel"></span>&nbsp;<span>{{ 'Exportieren' | translate:'favoritesPage.export' }}</span>
+					</a>
 					<a class="btn btn-link" *ngIf="!showRenameField" tabindex="0" (keydown.enter)="toggleRenameField()" (click)="toggleRenameField()">
 						<span class="glyphicon glyphicon-pencil"></span>&nbsp;<span>{{ 'Umbenennen' | translate:'favoritesPage.rename' }}</span>
 					</a>

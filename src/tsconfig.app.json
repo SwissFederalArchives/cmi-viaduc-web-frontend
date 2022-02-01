@@ -3,8 +3,7 @@
 	"compilerOptions": {
 		"outDir": "../out-tsc/app",
 		"baseUrl": "./",
-		"types": [],
-		"emitDecoratorMetadata": true,
+    "types": [],
 		"experimentalDecorators": true,
 		"paths": {
 			"jszip": [

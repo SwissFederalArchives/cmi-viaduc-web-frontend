@@ -14,7 +14,7 @@ import {
 } from '../../../services';
 import {ToastrService} from 'ngx-toastr';
 import {User} from '../../../model';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 
 describe('UserAccount', () => {
@@ -110,7 +110,7 @@ describe('UserAccount', () => {
 		});
 	});
 
-	beforeEach(async(async() => {
+	beforeEach(waitForAsync(async() => {
 		fixture = TestBed.createComponent(UserAccountComponent);
 		sut = fixture.componentInstance;
 		sut.ngOnInit();
@@ -129,7 +129,7 @@ describe('UserAccount', () => {
 			sut.ngOnInit();
 		});
 
-		it('should show a hint to also edit the email in eiam (PVW-258, AK-1, AK-2)', async(async() => {
+		it('should show a hint to also edit the email in eiam (PVW-258, AK-1, AK-2)', waitForAsync(async() => {
 			fixture.detectChanges();
 
 			const emailSpan = fixture.debugElement.query(By.css('.email-hint'));
@@ -155,7 +155,7 @@ describe('UserAccount', () => {
 	});
 
 	describe('when user is BAR, BVW or AS', () => {
-		beforeEach(async(async() => {
+		beforeEach(waitForAsync(async() => {
 			let authService = TestBed.inject(AuthorizationService);
 			spyOn(authService, 'isInternalUser').and.returnValue(true);
 			sut.ngOnInit();
@@ -163,7 +163,7 @@ describe('UserAccount', () => {
 			await fixture.whenStable();
 		}));
 
-		it('should NOT show a hint to edit the email in eiam', async(async() => {
+		it('should NOT show a hint to edit the email in eiam', waitForAsync(async() => {
 			fixture.detectChanges();
 
 			const emailSpan = fixture.debugElement.query(By.css('.email-hint'));

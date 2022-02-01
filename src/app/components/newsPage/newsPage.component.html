@@ -6,6 +6,6 @@
 			<br>
 			<span class="news-heading">{{n.heading}}</span>
 		</div>
-		<div>{{n.text}}</div>
+		<markdown [data]="n.text" ngPreserveWhitespaces></markdown>
 	</div>
 </div>

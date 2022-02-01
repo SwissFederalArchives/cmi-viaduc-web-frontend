@@ -94,6 +94,12 @@ export class FavoriteService {
 		return this._http.post<void>(url, {}, this._http.noCaching).toPromise();
 	}
 
+	public exportFavoriteList(listId: number): any {
+		const queryString = `?listId=${listId}`;
+		const url = `${this._apiUrl}/ExportList${queryString}`;
+		return this._http.download(url);
+	}
+
 	public addFavorite(listId: number, favorite: Favorite): Promise<Favorite> {
 		if (favorite.kind === FavoriteKind.Ve) {
 			const url = `${this._apiUrl}/AddVeFavorite?listId=${listId}`;

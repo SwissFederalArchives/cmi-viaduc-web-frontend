@@ -13,7 +13,7 @@ import {
 } from '../../../modules/client/services';
 import {ToastrService} from 'ngx-toastr';
 import {User} from '../../../modules/client/model';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {RegisterPageComponent} from './registerPage.component';
 import {RouterTestingModule} from '@angular/router/testing';
@@ -131,7 +131,7 @@ describe('RegisterPage', () => {
 		});
 	});
 
-	beforeEach(async(async() => {
+	beforeEach(waitForAsync(async() => {
 		fixture = TestBed.createComponent(RegisterPageComponent);
 		sut = fixture.componentInstance;
 		await sut.ngOnInit();
@@ -144,8 +144,8 @@ describe('RegisterPage', () => {
 	});
 
 	describe('when user is Ö2 OR Ö3', () => {
-		beforeEach(async(async() => {
-			let authService = TestBed.get(AuthorizationService);
+		beforeEach(waitForAsync(async() => {
+			let authService = TestBed.inject(AuthorizationService);
 			spyOn(authService, 'isInternalUser').and.returnValue(false);
 			fixture = TestBed.createComponent(RegisterPageComponent);
 			sut = fixture.componentInstance;
@@ -168,8 +168,8 @@ describe('RegisterPage', () => {
 	});
 
 	describe('when user is BAR, BVW or AS', () => {
-		beforeEach(async(async() => {
-			let authService = TestBed.get(AuthorizationService);
+		beforeEach(waitForAsync(async() => {
+			let authService = TestBed.inject(AuthorizationService);
 			spyOn(authService, 'isInternalUser').and.returnValue(true);
 			fixture = TestBed.createComponent(RegisterPageComponent);
 			sut = fixture.componentInstance;

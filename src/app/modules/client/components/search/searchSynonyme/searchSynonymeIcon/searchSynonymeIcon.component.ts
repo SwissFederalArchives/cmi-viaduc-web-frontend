@@ -72,7 +72,7 @@ export class SearchSynonymeIconComponent implements OnInit {
 		}
 
 		this._publicService.getSynonyme(this.searchTerm)
-			.subscribe(syn => this.synonymList = syn, (e => console.log(e)), () => this.setVisibiltySynonymResult());
+			.subscribe(syn => this.synonymList = syn, (e => console.error(e)), () => this.setVisibiltySynonymResult());
 	}
 
 	private setVisibiltySynonymResult(): void {

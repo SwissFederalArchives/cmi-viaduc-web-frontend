@@ -10,6 +10,7 @@
 		<div *ngIf="!facetteCollapsed" class="row result-content-expanded">
 			<cmi-viaduc-facette-list #facetteList
 									  (onFilter)="onFilterRequest($event)"
+									  (onShowAllFilter)="onShowAllFilterRequest()"
 									  *ngIf="searchResponse?.facets && !hasAnyErrors"
 									  [facetts]="searchResponse.facets"
 									  [(collapsed)]="facetteCollapsed"
@@ -41,7 +42,7 @@
 				</div>
 			</div>
 
-			<h2 class="sr-only">{{'Treffer' | translate:'search.trefferTitle'}}</h2>
+			<h3 class="sr-only">{{'Treffer' | translate:'search.trefferTitle'}}</h3>
 			<div class="row hitbox-container">
 				<div *ngIf="facetteCollapsed && !hasAnyErrors" class="col-md-1 col-sm-1 col-xs-2 no-bottom-margin">
 					<button type="button" class="btn btn-link fac-collapsed-btn" (click)="onFacetteToggle(false)">
@@ -54,10 +55,10 @@
 				</div>
 				<div class="no-bottom-margin" [ngClass]="{'col-md-11 col col-sm-11 col-xs-10': facetteCollapsed && !hasAnyErrors, 'col-xs-12 fixed-hitbar': !facetteCollapsed || hasAnyErrors}">
 					<div class="row hitbar-row">
-						<div class="col-md-3 col-xs-4 no-bottom-margin">
+						<div class="col-md-3 col-xs-3 hitbar-hits-col">
 							<span class="hit-count">{{'{0} Treffer' | translate:'hitbar.totalHits':totalhits}}</span>
 						</div>
-						<div class="col-md-7 col-xs-5 no-bottom-margin">
+						<div class="col-md-6 col-xs-5 no-bottom-margin">
 							<form role="form" class="sort-form">
 								<fieldset>
 									<div class="form-group">
@@ -74,7 +75,15 @@
 								</fieldset>
 							</form>
 						</div>
-						<div class="col-md-2 col-xs-3 no-bottom-margin hitbar-icon-col">
+						<div class="col-md-3 col-xs-4 no-bottom-margin hitbar-icon-col">
+							<a  (keydown.enter)="toggleSearchFavoriteMenu()"
+							   (click)="onExportSearch()"
+								[tooltip]="'XLS-Datei herunterladen' | translate:'hitbar.export'"
+							   [tooltipPlacement]="'left'"
+							   tabindex="0">
+								<span class="icon icon--excel" aria-hidden="true"></span>
+								<span class="sr-only">{{ 'XLS-Datei herunterladen' | translate:'hitbar.export' }}</span>
+							</a>
 							<a [tooltip]="'Permalink dieser Suche in die Zwischenablage kopieren' | translate:'hitbar.copyPermalink'"
 							   [tooltipPlacement]="'left'"
 							   tabindex="0"

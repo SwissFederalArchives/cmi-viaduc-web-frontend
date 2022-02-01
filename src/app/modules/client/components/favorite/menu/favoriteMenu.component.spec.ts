@@ -1,7 +1,7 @@
 import {CoreModule} from '@cmi/viaduc-web-core/';
 import {TranslationService, ClientContext, ClientModel} from '@cmi/viaduc-web-core';
 import {AuthenticationService, FavoriteService} from '../../../services/index';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {By} from '@angular/platform-browser';
 import {FavoriteMenuComponent} from './favoriteMenu.component';
@@ -112,7 +112,7 @@ describe('favoriteMenu (PVW-63)', () => {
 		});
 	});
 
-	beforeEach(async(async() => {
+	beforeEach(waitForAsync(async() => {
 		fixture = TestBed.createComponent(FavoriteMenuComponent);
 		sut = fixture.componentInstance;
 		await sut.ngOnInit();
@@ -125,7 +125,7 @@ describe('favoriteMenu (PVW-63)', () => {
 	});
 
 	describe('when a guest opens favoriteMenu', () => {
-		beforeEach(async(async() => {
+		beforeEach(waitForAsync(async() => {
 			ctx = TestBed.inject(ClientContext);
 			spyOnProperty(ctx, 'authenticated', 'get').and.returnValue(false);
 			fixture = TestBed.createComponent(FavoriteMenuComponent);
@@ -143,7 +143,7 @@ describe('favoriteMenu (PVW-63)', () => {
 	});
 
 	describe('when a registered user opens favoriteMenu', () => {
-		beforeEach(async(async() => {
+		beforeEach(waitForAsync(async() => {
 			ctx = TestBed.inject(ClientContext);
 			spyOnProperty(ctx, 'authenticated', 'get').and.returnValue(true);
 			fixture = TestBed.createComponent(FavoriteMenuComponent);

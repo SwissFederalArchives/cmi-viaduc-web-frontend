@@ -67,7 +67,7 @@ export class ShoppingCartItemList implements OnInit {
 			this.refreshRequested.emit();
 		}, (e) => {
 			this.updateError = true;
-			console.log(e);
+			console.error(e);
 		});
 	}
 

@@ -11,15 +11,16 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "aot": true,
             "outputPath": "dist",
-						"deployUrl": "client/",
-						"index": "src/index.html",
+            "deployUrl": "client/",
+            "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
             "preserveSymlinks": true,
-						"showCircularDependencies": true,
             "polyfills": "src/polyfills.ts",
+						"allowedCommonJsDependencies": [
+							"pikaday"
+						],
             "assets": [
               "src/assets",
               "src/favicon.ico",
@@ -40,23 +41,34 @@
               "src/assets/js/polyfills.min.js",
               "src/assets/js/main.js",
               "node_modules/jszip/dist/jszip.min.js",
-              {"inject":false,
+              "node_modules/marked/lib/marked.js",
+              {
+                "inject": false,
                 "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.de-CH.js",
                 "bundleName": "wijmo.culture.de-CH"
               },
-              {"inject":false,
+              {
+                "inject": false,
                 "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.fr.js",
                 "bundleName": "wijmo.culture.fr"
               },
-              {"inject":false,
+              {
+                "inject": false,
                 "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.it.js",
                 "bundleName": "wijmo.culture.it"
               },
-              {"inject":false,
+              {
+                "inject": false,
                 "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.en.js",
                 "bundleName": "wijmo.culture.en"
               }
-            ]
+            ],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -69,9 +81,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -82,7 +92,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -113,19 +124,24 @@
               "src/assets/js/polyfills.min.js",
               "src/assets/js/main.js",
               "node_modules/jszip/dist/jszip.min.js",
-              {"inject":false,
+              "node_modules/marked/lib/marked.js",
+              {
+                "inject": false,
                 "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.de-CH.js",
                 "bundleName": "wijmo.culture.de-CH"
               },
-              {"inject":false,
+              {
+                "inject": false,
                 "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.fr.js",
                 "bundleName": "wijmo.culture.fr"
               },
-              {"inject":false,
+              {
+                "inject": false,
                 "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.it.js",
                 "bundleName": "wijmo.culture.it"
               },
-              {"inject":false,
+              {
+                "inject": false,
                 "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.en.js",
                 "bundleName": "wijmo.culture.en"
               }
@@ -153,31 +169,6 @@
             "tsConfig": [
               "src/tsconfig.app.json",
               "src/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "cmi-viaduc-web-frontend-e2e": {
-      "root": "e2e",
-      "sourceRoot": "e2e",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "cmi-viaduc-web-frontend:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "e2e/tsconfig.e2e.json"
             ],
             "exclude": [
               "**/node_modules/**"

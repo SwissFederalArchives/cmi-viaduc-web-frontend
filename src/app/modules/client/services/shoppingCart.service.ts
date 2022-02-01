@@ -174,7 +174,6 @@ export class ShoppingCartService {
 			return observableOf(null);
 		}
 		return this.isOe2WithEinsichtsgesuch(ve, signatur).pipe(flatMap(booleanResponse => {
-			console.log(booleanResponse);
 			if (booleanResponse.value) {
 				this._showMissingOe3RoleToast();
 				return observableOf(null);

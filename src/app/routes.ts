@@ -393,6 +393,4 @@ export function initRoutes(routes: any[]) {
 			}
 		}
 	});
-
-	console.log('initRoutes', routes);
 }

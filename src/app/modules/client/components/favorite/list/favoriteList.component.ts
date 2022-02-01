@@ -23,6 +23,9 @@ export class FavoriteListComponent implements OnInit {
 	@Output()
 	public onFavoriteRemoved: EventEmitter<void> = new EventEmitter<void>();
 
+	@Output()
+	public onExportFavorite: EventEmitter<void> = new EventEmitter<void>();
+
 	public error: any;
 
 	constructor(private _url: UrlService, private _favService: FavoriteService, private _scs: ShoppingCartService) {
@@ -66,6 +69,16 @@ export class FavoriteListComponent implements OnInit {
 
 		this._favService.removeFavorite(this.list.id, item.id).then(() => {
 			this.onFavoriteRemoved.emit();
+		}, (e) => {
+			this.error = e;
+		});
+	}
+
+	public exportItem(item: Favorite) {
+		this.error = undefined;
+
+		this._favService.exportFavoriteList(this.list.id).then(() => {
+			this.onExportFavorite.emit();
 		}, (e) => {
 			this.error = e;
 		});

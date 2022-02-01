@@ -191,4 +191,16 @@ export class SearchFacetteListComponent implements OnInit, OnChanges {
 			}
 		}
 	}
+
+	public onShowAllFilterApplied(facetteKey: string) {
+		let facette = this.activeFacets.filter(af => af.facet === facetteKey)[0];
+		if (!facette) {
+			let fac = <FacetteFilter> {filters: []};
+			fac.facet = facetteKey;
+			this.activeFacets.push(fac);
+			facette = this.activeFacets.filter(af => af.facet === facetteKey)[0];
+		}
+		facette.showAll = true;
+		this.onFilter.emit(this.activeFacets);
+	}
 }

@@ -280,7 +280,6 @@ export class UserAccountComponent implements OnInit {
 				true, null, this._errorMandatoryField, this._txt.get('account.preferredLanguageHelpText', 'Bitte geben Sie an, in welcher Sprache Sie mit dem Bundesarchiv kommunizieren möchten.')));
 
 		} catch (e) {
-			console.log(e);
 			throw e;
 		}
 		finally {
@@ -380,7 +379,7 @@ export class UserAccountComponent implements OnInit {
 					}
 					break;
 				default:
-					console.log('Not implemented: user setting \'' + userSetting.userSettingType + '\' in userAccount._saveUserSettingsIfChanged()');
+					console.warn('Not implemented: user setting \'' + userSetting.userSettingType + '\' in userAccount._saveUserSettingsIfChanged()');
 			}
 		}
 

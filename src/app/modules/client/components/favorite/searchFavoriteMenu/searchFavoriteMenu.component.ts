@@ -149,7 +149,6 @@ export class SearchFavoriteMenuComponent implements AfterViewInit {
 	public async addNewList(): Promise<void> {
 		this.addNewListClicked = true;
 		if (this.form.invalid) {
-			console.log(this.form.controls.newListName.value, this.form.controls.newListName.errors);
 			return;
 		}
 

@@ -13,7 +13,6 @@ export class StaticPageComponent implements OnDestroy {
 	constructor(_router: Router) {
 		this._navigationSubscription = _router.events.subscribe(event => {
 			if (event instanceof NavigationEnd ) {
-				console.log('StaticPageComponent.url', event.url);
 				this.contentUrl = event.url;
 			}
 		});

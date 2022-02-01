@@ -22,6 +22,9 @@ export class SearchFacetteEntryComponent implements OnInit {
 	@Input()
 	public facette: SearchFacetteComponent;
 
+	@Input()
+	public collapsed: boolean;
+
 	public liCss: string;
 
 	constructor(private _txt: TranslationService, private sanitizer: DomSanitizer) {

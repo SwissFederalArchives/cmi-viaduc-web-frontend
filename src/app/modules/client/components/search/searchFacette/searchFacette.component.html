@@ -1,8 +1,17 @@
-<button [ngClass]="buttonCss" [attr.aria-expanded]="!collapsed" (click)="toggle()">{{facetteTitle}}</button>
-<ul [id]="normalizedId" [attr.aria-hidden]="collapsed" [ngClass]="ulCss" [@collapsedState]="collapsed ? 'collapsed' : 'expanded'">
-	<cmi-viaduc-facette-entry *ngFor="let a of facette?.items" [active]="isActive(a.filter)" [agg]="a"
-							  [facette]="this"></cmi-viaduc-facette-entry>
-	<li class="nav-item-other" tabindex="0" *ngIf="facette && facette.sumOtherDocCount > 0">
-		<span><span>{{'Andere' | translate:'facette.weitereTreffer'}}</span><span class="badge">{{facette.sumOtherDocCount}}<span class="sr-only">{{'Treffer' | translate:'facette.treffer'}}</span></span></span>
-	</li>
+<button [ngClass]="buttonCss" (click)="toggle()" [attr.aria-expanded]="!collapsed">{{facetteTitle}}</button>
+<ul [id]="normalizedId" [ngClass]="ulCss" [@collapsedState]="collapsed ? 'collapsed' : 'expanded'" [attr.aria-hidden]="collapsed" [attr.tabindex]="collapsed ? -1 : 0">
+		<cmi-viaduc-facette-entry *ngFor="let a of facette?.items" [active]="isActive(a.filter)" [agg]="a" [facette]="this" [collapsed]="collapsed">
+		</cmi-viaduc-facette-entry>
+
+		<li class="nav-item-other" tabindex="0" *ngIf="facette && facette.sumOtherDocCount > 0" [attr.aria-hidden]="collapsed" [attr.tabindex]="collapsed ? -1 : 0">
+			<span>
+				<span>{{'Andere' | translate:'facette.weitereTreffer'}}</span>
+				<span class="badge">{{facette.sumOtherDocCount}}
+					<span class="sr-only">{{'Treffer' |	translate:'facette.treffer'}}</span>
+				</span>
+			</span>
+		</li>
+
+	<cmi-search-facette-show-all (onFacetteShowAll)="showAll($event)" *ngIf="facette && facette.sumOtherDocCount > 0" [facette]="this" [collapsed]="collapsed">
+	</cmi-search-facette-show-all>
 </ul>

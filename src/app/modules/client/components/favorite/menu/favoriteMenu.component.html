@@ -27,6 +27,7 @@
 				<a [attr.title]="getToggleTooltip(list)">
 					<input (change)="toggleOn($event, list)" type="checkbox" [id]="list.id" [name]="list.id" [checked]="list.included">
 					<span (click)="toggleOn($event, list)">{{ list.name }}</span>
+					<label class="sr-only" [for]="list.id">{{ list.name }}</label>
 				</a>
 			</li>
 		</ul>

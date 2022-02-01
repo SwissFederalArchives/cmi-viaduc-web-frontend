@@ -109,7 +109,6 @@ export class CheckoutSubmittedStepComponent implements OnInit {
 		let html = '';
 		if (this._items) {
 			html = '<ul>';
-			console.log('Order:', this._items);
 			for (let item of this._items) {
 				html += `<li><a href="#/archiv/einheit/${item.veId}">${item.referenceCode}</a></li>`;
 			}

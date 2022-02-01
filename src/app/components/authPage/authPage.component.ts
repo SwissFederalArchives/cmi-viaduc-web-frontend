@@ -25,7 +25,6 @@ export class AuthPageComponent implements OnInit {
 				this.redirectToOriginBeforeLogin();
 			},
 			e => {
-				console.log('Login error', e);
 				this.success = false;
 				this._authentication.isSigningIn = false;
 				this._authentication.onSignedIn.next(false);

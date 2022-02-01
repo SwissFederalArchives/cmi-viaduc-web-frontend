@@ -125,12 +125,10 @@ export class CheckoutReasonsStepComponent implements OnInit {
 	public async validateFields(): Promise<void> {
 		this.nextClicked = true;
 		if (this.form.invalid || this.form.get('items').invalid) {
-			console.log(this.form.invalid);
 			this._validateAllFields(this.form);
 			return;
 		}
 
-		console.log(this.form.invalid, this.form.errors);
 		await this._saveActiveOrder();
 		this.onNextClicked.emit();
 	}

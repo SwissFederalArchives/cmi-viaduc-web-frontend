@@ -41,7 +41,6 @@ export class UnbluService {
 		node.src = `https://unblu.cloud/unblu/visitor.js?x-unblu-apikey=${UNBLU_APIKEY}`;
 		node.type = 'text/javascript';
 		node.async = false;
-		node.charset = 'utf-8';
 		document.getElementsByTagName('head')[0].appendChild(node);
 
 		await new Promise((resolve, reject) => {

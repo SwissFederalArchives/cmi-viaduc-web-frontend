@@ -4,7 +4,7 @@ import {
 	AdvancedSearchField, AdvancedSearchGroup, AdvancedSearchModel,
 	DropdownSearchField, DropdownSearchFieldValue,
 	ConfigService, ClientContext, Utilities as _util,
-	CountriesService
+	CountriesService, TranslationService
 } from '@cmi/viaduc-web-core';
 
 @Injectable()
@@ -13,7 +13,8 @@ export class AdvancedSearchService {
 
 	constructor(private _config: ConfigService,
 				private _context: ClientContext,
-				private _countries: CountriesService) {
+				private _countries: CountriesService,
+				private _txt: TranslationService) {
 	}
 
 	public createNewSearchField(id: string, def: SearchFieldDefinition = null): AdvancedSearchField {
@@ -161,11 +162,10 @@ export class AdvancedSearchService {
 	private _createDropdownSearchField(def: SearchFieldDefinition, language: string): DropdownSearchField {
 		const field = new DropdownSearchField();
 		if (def.key.indexOf('zugänglichkeitGemässBga') >= 0) {
-			// Zugänglichkeiten werden aktuell nicht übersetzt
 			field.values = [
-				this._toDropdownSearchFieldValue('Frei*', 'Frei zugänglich'),
-				this._toDropdownSearchFieldValue('In*', 'In Schutzfrist'),
-				this._toDropdownSearchFieldValue('Prüfung*', 'Prüfung nötig')
+				this._toDropdownSearchFieldValue('Frei*', this._txt.translate('Frei zugänglich', 'search.advanced.field.zugaenglichkeitGemaessBga.freiZugaenglich')),
+				this._toDropdownSearchFieldValue('In*', this._txt.translate('In Schutzfrist', 'search.advanced.field.zugaenglichkeitGemaessBga.inSchutzfrist')),
+				this._toDropdownSearchFieldValue('Prüfung*', this._txt.translate('Prüfung nötig', 'search.advanced.field.zugaenglichkeitGemaessBga.pruefungNoetig'))
 			];
 		} else if (def.key.indexOf('land') >= 0) {
 			this.getElasticCountries(field);

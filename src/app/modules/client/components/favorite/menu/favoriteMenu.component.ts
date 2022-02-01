@@ -51,7 +51,7 @@ export class FavoriteMenuComponent {
 				this.lists.push(l);
 			}
 		} catch (err) {
-			console.log(err);
+			console.error(err);
 			this.error = err;
 		} finally {
 			this.loading = false;
@@ -162,7 +162,8 @@ export class FavoriteMenuComponent {
 				} else {
 					let list = this.lists.filter(l => l.id === change.id)[0];
 					this._favoriteService.getFavoritesContainedOnList(list.id).then(items => {
-						let item = items.filter(i => (<VeFavorite>i).veId.toString() === this.entityId);
+						// not all are VeFavorite there are also SearchFavorite,therefore check to null
+						let item = items.filter(i => (<VeFavorite>i)?.veId?.toString() === this.entityId);
 						this._favoriteService.removeFavorite(change.id, item[0].id).then(
 							() => this._toastr.success(this._txt.get('favorites.saveSuccessfull', 'Favoriten erfolgreich mutiert.'))
 						);

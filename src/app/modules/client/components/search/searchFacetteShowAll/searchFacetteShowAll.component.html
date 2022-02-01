@@ -1,0 +1,7 @@
+<li (keyup.enter)="loadAll()" (click)="loadAll()" [attr.aria-hidden]="facette.collapsed" [attr.tabindex]="collapsed ? -1 : 0">
+	<a class="facette-load-all">
+		<span>
+			<i class="glyphicon glyphicon-arrow-down"></i>&nbsp;&nbsp;<span [innerHtml]="displayText"></span>
+		</span>
+	</a>
+</li>

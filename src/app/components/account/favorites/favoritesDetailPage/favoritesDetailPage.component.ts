@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TranslationService} from '@cmi/viaduc-web-core';
+import {FileSaverService, TranslationService} from '@cmi/viaduc-web-core';
 import {FavoriteList} from '../../../../modules/client/model';
 import {FavoriteListsComponent} from '../../../../modules/client/components';
 import {FavoriteService, SeoService, UrlService} from '../../../../modules/client/services';
@@ -29,7 +29,9 @@ export class AccountFavoritesDetailPageComponent implements OnInit {
 				private _url: UrlService,
 				private _router: Router,
 				private _route: ActivatedRoute,
-				private _seoService: SeoService) {
+				private _seoService: SeoService,
+				private _fileSaver: FileSaverService) {
+
 	}
 
 	public ngOnInit(): void {
@@ -116,5 +118,19 @@ export class AccountFavoritesDetailPageComponent implements OnInit {
 		}, (e) => {
 			this.error = e;
 		});
+	}
+
+	public exportList(): void {
+		this._favoriteService.exportFavoriteList(this.list.id).subscribe(
+			event => {
+				this._fileSaver.saveDownloadResponseToFile(event);
+			},
+			(e) => {
+				this.loading = false;
+				this.error = e;
+			},
+			() => {
+				this.loading = false;
+			});
 	}
 }

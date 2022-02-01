@@ -82,8 +82,7 @@ export class CheckoutUserSelectStepComponent implements OnInit {
 			}
 			return 1;
 		});
-		for (let user of sortedUserList )
-		{
+		for (let user of sortedUserList ) {
 			if (!_util.isEmpty(user.familyName) || !_util.isEmpty(user.firstName)) {
 				user.displayName = (user.familyName + ' ' + user.firstName + ' (' + user.userExtId + ')').trim();
 				list.push(user);

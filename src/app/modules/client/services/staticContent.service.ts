@@ -20,8 +20,6 @@ export class StaticContentService {
 	public getContent(relativeUrl: string): Observable<any> {
 		const url = `${this._apiUrl}/GetContent?url=${relativeUrl}`;
 
-		console.log('StaticContentService.loadContent', url);
-
 		return this._http.get(url, {responseType: 'text'});
 	}
 

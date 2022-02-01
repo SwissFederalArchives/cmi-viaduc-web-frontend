@@ -17,10 +17,10 @@
     "schliessen": "Close",
     "und": "and"
   },
-	"engagementbubbles": {
-		"chat": "Chat",
-		"chatbot": "Chatbot"
-	},
+  "engagementbubbles": {
+    "chat": "Chat",
+    "chatbot": "Chatbot"
+  },
   "account": {
     "backToPage": "Back to start page",
     "birthday": "Date of birth",
@@ -124,7 +124,8 @@
     "title": "My user account"
   },
   "accountFavoritesDetailPageComponent": {
-    "pageTitle": "Favourites list"
+    "pageTitle": "Favourites list",
+    "fileName": "favourites_"
   },
   "accountFavoritesListPageComponent": {
     "pageTitle": "Favourites list"
@@ -152,8 +153,8 @@
     "treeNode": {
       "collapse": "Collapse",
       "expand": "Expand",
-			"onlyVisibleForIdentifiedUsers": "Dossiers are only visible to authorised users."
-		},
+      "onlyVisibleForIdentifiedUsers": "Dossiers are only visible to authorised users."
+    },
     "zeigen": "Show in archive plan",
     "zuFavoritenHinzufuegen": "Add to favourites",
     "lokalisieren": "Localise in archive plan"
@@ -265,7 +266,7 @@
     "notFoundMessageNotOe1": "It is possible that you do not have the necessary rights to access the page. Please check your rights in your <a href=\"#{0}\">user account</a>.</br></br>",
     "notFoundMessageOe1": "It is possible that you do not have the necessary rights to access the page (see <a href=\"#{0}\">Login and identification</a>).</br></br>"
   },
-	"detailPage": {
+  "detailPage": {
     "information": "Information"
   },
   "detailHierarchy": {
@@ -294,7 +295,7 @@
     "downloadSuccess": "Download successfully initiated.",
     "downloadSuccessTitle": "Download successful",
     "estimatedPrepTime": "Preparation will take approx.",
-		"preparationInfo": "Expected preparation time: {0}.",
+    "preparationInfo": "Expected preparation time: {0}.",
     "pleaseLogin": "Please log in to order the documents",
     "pleaseLoginDetailsAt": "Details under",
     "preparationPending": "You will receive an e-mail when preparation is complete. You can now close the page.",
@@ -304,7 +305,7 @@
     "registerAndIdentify": "Registration and identification",
     "unknown": "unknown",
     "xSecondsOverdue": "overdue",
-		"downloadNow": "Download the documents now. In the index.html file you will find an overview of all the documents."
+    "downloadNow": "Download the documents now. In the index.html file you will find an overview of all the documents."
   },
   "einsichtCheckoutOrderDetailsStep": {
     "artDerArbeit": "Nature of work",
@@ -328,7 +329,7 @@
   },
   "engagement": {
     "chatbotInfo": "To use the chatbot (beta) switch to German",
-    "chatInfo": "Chat with the Federal Archives Tuesdays to Thursdays from 9 a.m. to 12 midday and 1 p.m. to 3 p.m. – we’ll be happy to help.",
+    "chatInfo": "Chat with the Federal Archives Tuesdays to Thursdays from 9 a.m. to 12 midday and 1 p.m. to 4 p.m. – we’ll be happy to help.",
     "headerTitle": "How may we assist you?"
   },
   "enums": {
@@ -392,11 +393,6 @@
       "pruefungEinsichtsgesuch": "Review request to consult",
       "pruefungFreigabe": "Review approval",
       "zumReponierenBereit": "Ready for return to stacks"
-    },
-    "zugaenglichkeitGemaessBga": {
-      "freiZugaenglich": "Freely accessible",
-      "inSchutzfrist": "Within closure period",
-      "pruefungNoetig": "Review required"
     }
   },
   "error": {
@@ -501,17 +497,18 @@
     "delete": "Delete",
     "nameOfNewList": "New name for list",
     "rename": "Rename",
+    "export": "Export",
     "save": "Save"
   },
-	"fileSize": {
-		"kB": "KB",
-		"MB": "MB",
-		"GB": "GB",
-		"TB": "TB",
-		"PB": "PB",
-		"ZB": "ZB",
-		"YB": "YB"
-	},
+  "fileSize": {
+    "kB": "KB",
+    "MB": "MB",
+    "GB": "GB",
+    "TB": "TB",
+    "PB": "PB",
+    "ZB": "ZB",
+    "YB": "YB"
+  },
   "file": {
     "acceptTermsWarning": "Please read and accept the conditions of use.",
     "alert": "Please note:",
@@ -519,7 +516,7 @@
     "availabilityCheckTitle": "Checking availability of digitised material...",
     "cancel": "Cancel",
     "download": "Download",
-		"downloadNow": "Download now",
+    "downloadNow": "Download now",
     "downloadError": "An error occurred when initiating the download. The error is: ",
     "downloadErrorDefaultMessage": "An unexpected error has occurred. Please try again later.",
     "downloadErrorTitle": "Download error",
@@ -531,7 +528,7 @@
     "missingTermsOfUse": "Please read and accept the conditions of use.",
     "notAuthorized": "You do not have sufficient rights to view or order digital documents from this unit of description.",
     "order": "Order",
-		"chooseDownloadReason": "Please select a reason for downloading.",
+    "chooseDownloadReason": "Please select a reason for downloading.",
     "personData": "Yes, this digitised material contains personal data:",
     "pleaseLogin": "Log in to use additional functions such as managing favourites and placing orders.",
     "preparationInfo": "Submitted for preparation: {0}",
@@ -598,16 +595,17 @@
     "title": "Online access to the Federal Archives",
     "zumBestellkorb": "Navigate to shopping cart with {0} items",
     "einstellungen": "Settings",
-		"favoritesCount": "Favourites ({0})"
+    "favoritesCount": "Favourites ({0})"
   },
   "headerContent": {
     "component": {
       "aktiv": "Active",
-			"toolTippLoggedIn": "For more information about your user status consult the page “Registration & identification” and the menu “Information”.",
-			"toolTippLoggedInAsRegisteredUser": "As a registered user you have access to publicly accessible data in the Federal Archives. If you wish to consult data within a closure period you must identify yourself first (see \"My user account\")."
+      "toolTippLoggedIn": "For more information about your user status consult the page “Registration & identification” and the menu “Information”.",
+      "toolTippLoggedInAsRegisteredUser": "As a registered user you have access to publicly accessible data in the Federal Archives. If you wish to consult data within a closure period you must identify yourself first (see \"My user account\")."
     }
   },
   "hitbar": {
+    "export": "Download XLS file",
     "copyPermalink": "Copy permalink to this search to the clipboard",
     "groupByArchivplan": "Group by archive plan",
     "orderableUnits": "Units available for order",
@@ -680,7 +678,7 @@
       "level": "Level",
       "referenceCode": "Reference code",
       "title": "Title",
-      "withinInfo": "In which",
+      "withinInfo": "Contains",
       "archiveType": "Type of archival materials"
     },
     "searchFields": {
@@ -703,7 +701,7 @@
       "formerReferenceCode": "Previous reference codes",
       "referenceCode": "Reference code",
       "title": "Title",
-      "withinInfo": "In which"
+      "withinInfo": "Contains"
 		},
     "sortFields": {
       "creationPeriod": {
@@ -765,7 +763,7 @@
       "chat": "Chat",
       "chatbot": "Chatbot",
       "chatbotTeaserText": "Ask the chatbot (beta) – it is available around the clock.",
-      "chatTeaserText": "Chat with the Federal Archives Tuesdays to Thursdays from 9 a.m. to 12 midday and 1 p.m. to 3 p.m. – we’ll be happy to help.",
+      "chatTeaserText": "Chat with the Federal Archives Tuesdays to Thursdays from 9 a.m. to 12 midday and 1 p.m. to 4 p.m. – we’ll be happy to help.",
       "email": "E-mail",
       "emailTeaserText": "For more complex enquiries, send us an e-mail.",
       "forum": "Forum",
@@ -815,11 +813,8 @@
   "orderCheckoutPage": {
     "bestellbestaetigung": "Order confirmation",
     "chooseShippingType": "Select form of delivery",
-    "digitalErhalten": "for <strong>digital</strong> delivery. It will normally take two weeks to process your digitisation order. Once you have received your digitised versions you can order further dossiers.",
     "finishOrder": "Complete order",
-    "inLesesaalLiefern": "for consultation in the <strong>reading room</strong>. Order 24 hours in advance to ensure that your documents are ready for you on your desired day (Tuesday, Wednesday and Thursday).",
     "inMyName": "In my own name",
-    "insAmtLiefern": "for delivery to the <strong>office</strong> (delivery takes one to two working days)",
     "inTheNameOfAnother": "On behalf of another user",
     "iWantThisDossierOrdered": "I would like to order this dossier",
     "iWantThisDossierPlural": "I would like to order these dossiers",
@@ -832,18 +827,18 @@
     "reasons": "Reason",
     "title": "Order",
     "userSelect": "User selection",
-		"warningInfo": "Warning",
-		"warningTitle": "Lengthy waiting times for digitised documents!",
-		"warningMessagePart1": "Owing to high demand, the digitisation infrastructure is currently under heavy load. You should therefore expect longer processing times for your order. If you wish to view the documents urgently or submit a large order, please order the dossiers for consultation in the reading room.",
-		"warningMessagePart2": "Federal Administration staff can order documents submitted by their administrative unit for delivery direct to the office.",
-		"digitalisierungNichtMoeglichTitle": "You have exhausted your quota",
-		"digitalisierungNichtMoeglichIntro": "You have already requested us to digitise {0} dossiers.",
-		"digitalisierungNichtMoeglichAsBvw": "Please order the documents for consultation in the reading room or delivery to the office, or wait until your existing digitisation orders have been completed.",
-		"digitalisierungNichtMoeglichOthers": "Please order the documents for consultation in the reading room or wait until your existing digitisation orders have been completed.",
-		"exceedDigitalisierungTitle": "You can only have {0} more dossiers digitised",
-		"exceedDigitalisierungIntro": "Please select below the dossiers you wish to have digitised now. As soon as they have been digitised, you can order further dossiers.",
-		"exceedDigitalisierungAsBvw": "Alternatively you can order them for consultation in the reading room or delivery to the office at any time.",
-		"exceedDigitalisierungOthers": "Alternatively you can order them for consultation in the reading room at any time."
+    "warningInfo": "Warning",
+    "warningTitle": "Lengthy waiting times for digitised documents!",
+    "warningMessagePart1": "Owing to high demand, the digitisation infrastructure is currently under heavy load. You should therefore expect longer processing times for your order. If you wish to view the documents urgently or submit a large order, please order the dossiers for consultation in the reading room.",
+    "warningMessagePart2": "Federal Administration staff can order documents submitted by their administrative unit for delivery direct to the office.",
+    "digitalisierungNichtMoeglichTitle": "You have exhausted your quota",
+    "digitalisierungNichtMoeglichIntro": "You have already requested us to digitise {0} dossiers.",
+    "digitalisierungNichtMoeglichAsBvw": "Please order the documents for consultation in the reading room or delivery to the office, or wait until your existing digitisation orders have been completed.",
+    "digitalisierungNichtMoeglichOthers": "Please order the documents for consultation in the reading room or wait until your existing digitisation orders have been completed.",
+    "exceedDigitalisierungTitle": "You can only have {0} more dossiers digitised",
+    "exceedDigitalisierungIntro": "Please select below the dossiers you wish to have digitised now. As soon as they have been digitised, you can order further dossiers.",
+    "exceedDigitalisierungAsBvw": "Alternatively you can order them for consultation in the reading room or delivery to the office at any time.",
+    "exceedDigitalisierungOthers": "Alternatively you can order them for consultation in the reading room at any time."
   },
   "orderCheckoutPageComponent": {
     "pageTitle": "Order"
@@ -861,7 +856,7 @@
   },
   "orderOverviewPage": {
     "closeModal": "Close",
-		"itemsCount": "Number: {0}",
+    "itemsCount": "Number: {0}",
     "columnItems": {
       "abbruchgrundDisplay": "Reason for cancellation",
       "artDerArbeitDisplay": "Nature of work",
@@ -934,9 +929,9 @@
       "addNewGroup": "Add another search group",
       "field": {
         "zugaenglichkeitGemaessBga": {
-          "freiZugaenglich": "Freely accessible",
-          "inSchutzfrist": "Within closure period",
-          "pruefungNoetig": "Review required"
+          "freiZugaenglich": "Without restriction",
+          "inSchutzfrist": "Subject to closure period",
+          "pruefungNoetig": "Review necessary"
         }
       },
       "group": {
@@ -990,7 +985,161 @@
       "bis": "to",
       "ja": "Yes",
       "nein": "No",
-      "resultateOhneZeitraum": "Results without time period"
+      "resultateOhneZeitraum": "Results without time period",
+      "weitereLaden": "Load more",
+      "Hauptabteilung": "Main departments",
+      "Bestaendeserie": "Fonds series",
+      "Akzession": "Accessions",
+      "Bestand": "Fonds",
+      "Teilbestand": "Sub-fonds",
+      "Subdossier": "Sub-dossiers",
+      "Serie": "Series",
+      "Dossier": "Dossiers",
+      "Dokument": "Documents",
+			"Archiv": "Archives",
+      "frei zugaenglich": "Without restriction",
+      "in schutzfrist": "Subject to closure period",
+      "pruefung noetig": "Review necessary",
+			"thematicInventoryOverview": {
+				"1 Staat, Volk und Behoerden": "1 State, people and authorities",
+				"11 Eidgenoessisches Parlament": "11 Federal parliament",
+				"111 Eidgenoessische Raete": "111 Federal Assembly",
+				"112 Parlamentarische Kommissionen": "112 Parliamentary committees",
+				"113 Parlamentsdienste": "113 Parliamentary Services",
+				"12 Regierung": "12 Government",
+				"121 Bundesrat": "121 Federal Council",
+				"13 Bundesverwaltung": "13 Federal Administration",
+				"131 Bundeskanzlei": "131 Federal Chancellery",
+				"132 Departementsvorsteher": "132 Head of department",
+				"133 Departementssekretariate": "133 Departmental secretariats",
+				"134 Bundespersonal": "134 Personnel employed by the Confederation",
+				"135 Organisation": "135 Organisation",
+				"136 Bundesbauten, Liegenschaften und Logistik": "136 Federal buildings",
+				"137 Informationstechnologie": "137 Information technology/IT",
+				"14 Ausserparlamentarische Kommissionen und Spezialmandate": "14 Extra-parliamentary committees and special mandates",
+				"141 Ausserparlamentarische Kommissionen und Spezialmandate": "141 Extra-parliamentary committees and special mandates",
+				"2 Aussenpolitik": "2 Foreign policy",
+				"21 Aussenpolitische und aussenwirtschaftliche Beziehungen": "21 Foreign policy and foreign economic relations",
+				"211 Aussenpolitische Beziehungen": "211 Foreign relations",
+				"212 Aussenwirtschaft": "212 Foreign economic affairs",
+				"213 Vertretung fremder Interessen": "213 Protection of foreign interests",
+				"214 Berichterstattung und Dokumentation": "214 Reporting and documentation",
+				"215 Schweizerische Auslandvertretungen": "215 Swiss representation abroad",
+				"22 Internationale Zusammenarbeit": "22 International Cooperation",
+				"221 Internationale Organisationen": "221 International organizations",
+				"222 Entwicklungszusammenarbeit": "222 development cooperation",
+				"3 Justiz und Polizei": "3 Justice and Police",
+				"31 Gesetzgebung und Rechtswahrung": "31 Legislation",
+				"311 Justiz": "311 Justice",
+				"312 Handels- und Gueterrechtsregister": "312 Commercial register and property law register",
+				"313 Zivilstand": "313 Civil status",
+				"314 Grundbuch": "314 Land register",
+				"315 Geistiges Eigentum": "315 Intellectual property",
+				"316 Zensur": "316 Censorship",
+				"32 Polizeiliche Ermittlung, Anklage und Vollzug": "32 Investigation, prosecution and enforcement",
+				"321 Polizei": "321 Police",
+				"322 Bundesanwaltschaft": "322 Office of the Attorney General of Switzerland",
+				"33 Immigration": "33 Immigration",
+				"331 Fremdenpolizei und Auslaenderfragen": "331 Migration authority and related issues",
+				"332 Fluechtlinge": "332 Refugees",
+				"4 Bildung, Wissenschaft und Kultur": "4 Education, science and culture",
+				"41 Bildung, Schule und Sport": "41 Education, school and sports",
+				"411 Bildung": "411 Education",
+				"412 Berufsbildung und Fachhochschulen": "412 Professional Education and Universities of Applied Sciences",
+				"413 Sport": "413 Sports",
+				"42 Wissenschaft und Forschung": "42 Science and research",
+				"421 Wissenschaftspolitik": "421 Science Policy",
+				"422 Meteorologie": "422 Meteorology",
+				"423 Landestopographie": "423 Topography",
+				"424 Statistik": "424 Statistics",
+				"43 Kultur": "43 Culture",
+				"431 Kunst und Kultur": "431 Art and culture",
+				"432 Archive, Bibliotheken und Museen": "432 Archives, libraries and museums",
+				"433 Ausstellungen": "433 Exhibitions",
+				"434 Stiftungen": "434 Foundations",
+				"5 Landesverteidigung": "5 National defence",
+				"51 Militaerische Fuehrung": "51 Military leadership",
+				"511 Generalstab": "511 General Staff",
+				"512 General": "512 General",
+				"513 Armeestab": "513 Armed forces staff",
+				"514 Militaerische Reformen und Projekte": "514 Military reforms and projects",
+				"52 Landesverteidigung": "52 National defence",
+				"521 Landesverteidigung 1848-1950, Aktivdienst": "521 National defence 1848-1950, active service",
+				"53 Ausbildung, Rekrutierung und Verwaltung": "53 Training, recruitment and administration",
+				"531 Ausbildung": "531 Training",
+				"532 Paedagogische Rekrutenpruefungen": "532 Pedagogical recruitment tests",
+				"533 Verwaltung der Armee": "533 Armed Forces administration",
+				"54 Armee": "54 Armed Forces",
+				"541 Truppengattungen": "541 Service branches",
+				"542 Grosse Verbaende und Formationen": "542 Major units and formations",
+				"543 Personelles, Betreuung und Spezialdienste": "543 Armed Forces Personnel",
+				"55 Ruestung": "55 Armament",
+				"551 Ruestungsdienste": "551 Defence Technology and Procurement",
+				"552 Ruestungsbetriebe": "552 Armaments companies",
+				"553 Armeematerial und Kriegskommissariat": "553 Armed Forces material and war commissariat",
+				"56 Militaerjustiz": "56 Military justice",
+				"561 Oberauditorat und militaerischer Strafvollzug": "561 Office of the Armed Forces Attorney General and execution of sentences and measures",
+				"57 Gesamtverteidigung, Zivilschutz und Landesversorgung": "57 General defence, civil defence and national supply",
+				"571 Gesamtverteidigung": "571 General defence",
+				"572 Zivilschutz": "572 Civil defence",
+				"573 Landesversorgung und Kriegswirtschaft": "573 National supply and war economy",
+				"6 Finanzen": "6 Finances",
+				"61 Staatshaushalt": "61 National budget",
+				"611 Finanzverwaltung": "611 Finance administration",
+				"612 Kassen- und Rechnungswesen": "612 Cash policy and accounting",
+				"613 Darlehenskasse": "613 Lending bank",
+				"614 Muenzwesen, Edelmetalle": "614 Coinage, precious metals",
+				"62 Zoll und Grenzwacht": "62 Customs and border guard",
+				"621 Zollverwaltung": "621 Customs administration",
+				"622 Zollkreise": "622 Customs districts",
+				"623 Grenzwacht": "623 Border guard",
+				"63 Steuern und Abgaben": "63 Taxes and duties",
+				"631 Steuerverwaltung": "631 Tax administration",
+				"632 Alkoholverwaltung": "632 Alcohol board",
+				"7 Umwelt, Verkehr, Energie und Kommunikation": "7 Environment, transport, energy and communications",
+				"71 Energie und Umwelt": "71 Energy and environment",
+				"711 Wasserbau und Wasserwirtschaft": "711 Hydraulic engineering and water management",
+				"712 Raumplanung und Meliorationen": "712 Spatial planning and land improvement",
+				"713 Energie": "713 Energy",
+				"714 Umweltschutz": "714 Environmental protection",
+				"72 Verkehr": "72 Transport",
+				"721 Strassenbau und Strassenverkehr": "721 Road transport and construction",
+				"722 Eisenbahnen und Postautos": "722 Railways and post bus",
+				"723 Zivilluftfahrt": "723 Civil aviation",
+				"724 Schifffahrt": "724 Navigation",
+				"73 Kommunikation": "73 Communications",
+				"731 Medien und Kommunikation": "731 Media and Communications",
+				"732 Post- und Fernmeldeverkehr": "732 Postal services and telecommunications",
+				"8 Gesundheit, Arbeit und Soziale Sicherheit": "8 Health, work and social security",
+				"81 Gesundheit": "81 Health",
+				"811 Gesundheit": "811 Health",
+				"82 Arbeit": "82 Work",
+				"821 Arbeit und Beschaeftigung": "821 Work and employment",
+				"822 Arbeitslosenversicherung": "822 Unemployment insurance",
+				"823 Arbeitnehmerschutz und Arbeitsrecht": "823 Employee protection and labour law",
+				"824 Fabrik- und Arbeitsinspektorate": "824 Factory and labour inspectorates",
+				"825 Arbeitskraft und Auswanderung": "825 Labour force and emigration",
+				"83 Soziale Sicherheit": "83 Social security",
+				"831 Sozialversicherung": "831 Social insurance",
+				"832 Militaerversicherung": "832 Military insurance",
+				"833 Fuersorge": "833 Welfare",
+				"834 Wohnungswesen und Mieterschutz": "834 Housing and tenant protection",
+				"9 Wirtschaft": "9 Economy/Economic affairs",
+				"91 Landwirtschaft, Forstwesen, Jagd und Fischerei": "91 Agriculture, forestry, hunting and fishing",
+				"911 Schutz und Foerderung der Landwirtschaft": "911 Protection and promotion of agriculture",
+				"912 Landwirtschaftliche Forschungsanstalten": "912 Agricultural research institutes",
+				"913 Getreideverwaltung": "913 Grain administration",
+				"914 Veterinaerwesen": "914 Veterinary services",
+				"915 Forstwesen, Jagd und Fischerei": "915 Forestry, hunting and fishery",
+				"92 Handel, Industrie und Gewerbe": "92 Trade, industry and commerce",
+				"921 Handel": "921 Trade",
+				"922 Industrie und Gewerbe": "922 Industry and commerce",
+				"923 Fremdenverkehr": "923 Tourism",
+				"924 Gebundener Zahlungsverkehr": "924 Controlled payment transacations",
+				"93 Aufsicht ueber Kreditinstitute und Privatversicherungen": "93 Supervision of credit and private insurance institutions",
+				"931 Banken, Sparkassen und Anlagefonds": "931 Banks, savings bank and investment funds",
+				"932 Privatversicherungen": "932 Private insurance"
+			}
     },
     "fieldoperator": {
       "and": "All of the terms",
@@ -1182,7 +1331,7 @@
     "infoSymbol": "Info symbol"
   },
   "user": {
-		"cancelRegistrationMessage": "Please complete the registration and save the data.",
+    "cancelRegistrationMessage": "Please complete the registration and save the data.",
     "birthday": "Date of birth",
     "countryCode": "Country",
     "emailAddress": "E-mail",
@@ -1226,7 +1375,24 @@
     "saveSuccess": "Your user data were successfully saved",
     "saveSuccessTitle": "Data successfully saved"
   },
-	"orderSection": {
-		"orderText": "Add documents to your shopping cart. There you can order them directly or you can submit a consultation request."
+  "orderSection": {
+    "orderText": "Add documents to your shopping cart. There you can order them directly or you can submit a consultation request."
+  },
+  "veExportRecord": {
+    "referenceCode": "Reference code",
+    "fileReference": "File reference",
+    "title": "Title",
+    "creationPeriod": "Creation period",
+    "withinInfo": "Contains",
+    "level": "Level",
+    "accessibility": "Accessibility under ArchA",
+    "fileName": "search-result",
+    "favourites": "favourites"
+  },
+	"canDeactivateGuard": {
+	  "Title": "Warning",
+	  "close": "Close",
+	  "yes": "Yes",
+	  "no": "No"
 	}
 }

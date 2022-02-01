@@ -16,7 +16,6 @@ export class ErrorSmartcardPageComponent implements OnInit {
 
 	public ngOnInit() {
 		const errInfo = this.error = (this._route.snapshot.data['error'] || <ErrorInfo>{});
-		console.log(errInfo);
 		if (_util.isEmpty(errInfo.title)) {
 			errInfo.title = this._txt.get(
 				'errors.smartcardErrorTitle',

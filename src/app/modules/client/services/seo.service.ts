@@ -57,7 +57,7 @@ export class SeoService {
 			this._html.attr('lang', language);
 			this.setMeta('language', language);
 		} catch (ex) {
-			console.log(ex);
+			console.error(ex);
 		}
 	}
 
@@ -69,7 +69,7 @@ export class SeoService {
 			this.setTitle('');
 			this.setMeta('description', description);
 		} catch (ex) {
-			console.log(ex);
+			console.error(ex);
 		}
 	}
 }

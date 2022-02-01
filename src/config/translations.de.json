@@ -17,10 +17,10 @@
     "schliessen": "Schliessen",
     "und": "und"
   },
-	"engagementbubbles": {
-		"chat": "Chat",
-		"chatbot": "Chatbot"
-	},
+  "engagementbubbles": {
+    "chat": "Chat",
+    "chatbot": "Chatbot"
+  },
   "account": {
     "backToPage": "Zurück zur Ausgangsseite",
     "birthday": "Geburtsdatum",
@@ -122,7 +122,8 @@
     "zipcode": "PLZ"
   },
   "accountFavoritesDetailPageComponent": {
-    "pageTitle": "Favoritenliste"
+    "pageTitle": "Favoritenliste",
+    "fileName": "favoriten_"
   },
   "accountFavoritesListPageComponent": {
     "pageTitle": "Favoritenliste"
@@ -150,8 +151,8 @@
     "treeNode": {
       "collapse": "einklappen",
       "expand": "aufklappen",
-			"onlyVisibleForIdentifiedUsers": "Dossiers können nur berechtigten NutzerInnen angezeigt werden."
-		},
+      "onlyVisibleForIdentifiedUsers": "Dossiers können nur berechtigten NutzerInnen angezeigt werden."
+    },
     "zeigen": "Im Archivplan zeigen",
     "zuFavoritenHinzufuegen": "Zu den Favoriten hinzufügen"
   },
@@ -289,7 +290,7 @@
     "downloadSuccess": "Der Download wurde erfolgreich ausgelöst.",
     "downloadSuccessTitle": "Download erfolgreich",
     "estimatedPrepTime": "Die Aufbereitung dauert ca.",
-		"preparationInfo": "Die Aufbereitung dauert voraussichtlich noch: {0}.",
+    "preparationInfo": "Die Aufbereitung dauert voraussichtlich noch: {0}.",
     "pleaseLogin": "Bitte melden Sie sich an, um die Unterlagen zu bestellen",
     "pleaseLoginDetailsAt": "Details unter",
     "preparationPending": "Wenn die Aufbereitung abgeschlossen ist, erhalten Sie eine E-Mail. Sie können die Seite jetzt schliessen.",
@@ -299,7 +300,7 @@
     "registerAndIdentify": "Registrieren und Identifizieren",
     "unknown": "unbekannt",
     "xSecondsOverdue": "überfällig",
-		"downloadNow": "Laden Sie die Unterlagen jetzt herunter. In der Datei index.html erhalten Sie einen Überblick über sämtliche Dokumente."
+    "downloadNow": "Laden Sie die Unterlagen jetzt herunter. In der Datei index.html erhalten Sie einen Überblick über sämtliche Dokumente."
   },
   "einsichtCheckoutOrderDetailsStep": {
     "artDerArbeit": "Art der Arbeit",
@@ -323,7 +324,7 @@
   },
   "engagement": {
     "chatbotInfo": "Nutzen Sie den Chatbot (Beta) – er steht rund um die Uhr zur Verfügung.",
-    "chatInfo": "Chatten Sie von Dienstag bis Donnerstag von 9-12 und 13-15 Uhr mit dem Bundesarchiv - wir helfen Ihnen gerne weiter.",
+    "chatInfo": "Chatten Sie von Dienstag bis Donnerstag von 9-12 und 13-16 Uhr mit dem Bundesarchiv - wir helfen Ihnen gerne weiter.",
     "headerTitle": "Wie können wir Ihnen helfen?"
   },
   "enums": {
@@ -387,13 +388,8 @@
       "pruefungEinsichtsgesuch": "Einsichtsgesuch prüfen",
       "pruefungFreigabe": "Freigabe prüfen",
       "zumReponierenBereit": "Zum Reponieren bereit"
-    },
-    "zugaenglichkeitGemaessBga": {
-      "freiZugaenglich": "Frei zugänglich",
-      "inSchutzfrist": "In Schutzfrist",
-      "pruefungNoetig": "Prüfung nötig"
     }
-  },
+    },
   "error": {
     "orderErrorMessage": "Ihre Bestellung konnte leider nicht durchgeführt werden. Bitte versuchen Sie es später erneut. Falls das Problem bestehen bleibt, wenden Sie sich bitte an die Beratung oder an bestellung@bar.admin.ch.",
     "unknownErrorMessage": "Bitte versuchen Sie es später erneut. Falls das Problem bestehen bleibt, wenden Sie sich bitte an die Beratung oder an benutzer-admin@bar.admin.ch.",
@@ -494,17 +490,18 @@
     "delete": "Löschen",
     "nameOfNewList": "Neuer Name für die Liste",
     "rename": "Umbenennen",
+    "export": "Exportieren",
     "save": "Speichern"
   },
-	"fileSize": {
-		"kB": "KB",
-		"MB": "MB",
-		"GB": "GB",
-		"TB": "TB",
-		"PB": "PB",
-		"ZB": "ZB",
-		"YB": "YB"
-	},
+  "fileSize": {
+    "kB": "KB",
+    "MB": "MB",
+    "GB": "GB",
+    "TB": "TB",
+    "PB": "PB",
+    "ZB": "ZB",
+    "YB": "YB"
+  },
   "file": {
     "acceptTermsWarning": "Bitte lesen und akzeptieren Sie die Nutzungsbestimmungen.",
     "alert": "Achtung:",
@@ -512,7 +509,7 @@
     "availabilityCheckTitle": "Verfügbarkeit des Digitalisats wird geprüft...",
     "cancel": "Abbrechen",
     "download": "Download",
-		"downloadNow": "Jetzt herunterladen",
+    "downloadNow": "Jetzt herunterladen",
     "downloadError": "Beim Starten des Downloads ist folgender Fehler aufgetreten: ",
     "downloadErrorDefaultMessage": "Es ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es später erneut",
     "downloadErrorTitle": "Fehler beim Download",
@@ -524,7 +521,7 @@
     "missingTermsOfUse": "Bitte lesen und akzeptieren Sie die Nutzungsbestimmungen.",
     "notAuthorized": "Sie haben nicht genügend Rechte, um die digitalen Unterlagen dieser Verzeichnungseinheit einzusehen oder zu bestellen.",
     "order": "Bestellen",
-		"chooseDownloadReason": "Bitte wählen Sie einen Grund für den Download aus.",
+    "chooseDownloadReason": "Bitte wählen Sie einen Grund für den Download aus.",
     "personData": "Ja, dieses Digitalisat beinhaltet Personendaten:",
     "pleaseLogin": "Melden Sie sich an, um zusätzliche Funktionen wie Favoritenverwaltung und Bestellungen nutzen zu können.",
     "preparationInfo": "Zur Aufbereitung aufgegeben: {0}",
@@ -590,16 +587,17 @@
     "srBreadcrumbOrientation": "Orientierung auf der Webseite",
     "title": "Online-Zugang zum Bundesarchiv",
     "zumBestellkorb": "Zum Bestellkorb mit {0} Positionen navigieren",
-		"favoritesCount": "Favoriten ({0})"
+    "favoritesCount": "Favoriten ({0})"
   },
   "headerContent": {
     "component": {
       "aktiv": "Aktiv",
-			"toolTippLoggedIn": "Weitere Informationen zu Ihrem Benutzerstatus finden Sie auf der Seite «Registrieren & Identifizieren» und unter dem Menü «Informationen»",
-			"toolTippLoggedInAsRegisteredUser": "Als registrierte/r Benutzer/in haben Sie Zugriff auf die öffentlich zugänglichen Daten im Bundesarchiv. Wenn Sie Daten innerhalb einer Schutzfrist einsehen wollen, müssen Sie sich vorgängig identifizieren (siehe \"Mein Benutzerkonto\")."
+      "toolTippLoggedIn": "Weitere Informationen zu Ihrem Benutzerstatus finden Sie auf der Seite «Registrieren & Identifizieren» und unter dem Menü «Informationen»",
+      "toolTippLoggedInAsRegisteredUser": "Als registrierte/r Benutzer/in haben Sie Zugriff auf die öffentlich zugänglichen Daten im Bundesarchiv. Wenn Sie Daten innerhalb einer Schutzfrist einsehen wollen, müssen Sie sich vorgängig identifizieren (siehe \"Mein Benutzerkonto\")."
     }
   },
   "hitbar": {
+    "export": "XLS-Datei herunterladen",
     "copyPermalink": "Permalink dieser Suche in die Zwischenablage kopieren",
     "groupByArchivplan": "Nach Archivplan gruppieren",
     "orderableUnits": "Bestellbare Einheiten",
@@ -756,7 +754,7 @@
       "chat": "Chat",
       "chatbot": "Chatbot",
       "chatbotTeaserText": "Fragen Sie den Chatbot (Beta) – er steht rund um die Uhr zur Verfügung.",
-      "chatTeaserText": "Chatten Sie von Dienstag bis Donnerstag von 9–12 und 13–15 Uhr mit dem Bundesarchiv – wir helfen Ihnen gerne weiter.",
+      "chatTeaserText": "Chatten Sie von Dienstag bis Donnerstag von 9–12 und 13–16 Uhr mit dem Bundesarchiv – wir helfen Ihnen gerne weiter.",
       "email": "E-Mail",
       "emailTeaserText": "Senden Sie uns eine E-Mail für komplexere Anfragen.",
       "forum": "Forum",
@@ -806,11 +804,8 @@
   "orderCheckoutPage": {
     "bestellbestaetigung": "Bestellbestätigung",
     "chooseShippingType": "Lieferart auswählen",
-    "digitalErhalten": "<strong>digital</strong> erhalten. Die Bearbeitung Ihres Digitalisierungsauftrags dauert in der Regel zwei Wochen. Nach Erhalt der Digitalisate können Sie weitere Dossiers bestellen.",
     "finishOrder": "Bestellung abschliessen",
-    "inLesesaalLiefern": "zur Konsultation in den <strong>Lesesaal</strong> bestellen. Bestellen Sie 24 Stunden im Voraus, damit Ihnen die Unterlagen am gewünschten Tag zur Verfügung stehen (Dienstag, Mittwoch und Donnerstag).",
     "inMyName": "In meinem eigenen Namen",
-    "insAmtLiefern": "ins <strong>Amt</strong> bestellen (Lieferfrist: ein bis zwei Arbeitstage)",
     "inTheNameOfAnother": "Im Namen eines anderen Benutzers",
     "iWantThisDossierOrdered": "Ich möchte dieses Dossier bestellen",
     "iWantThisDossierPlural": "Ich möchte diese Dossiers",
@@ -822,19 +817,19 @@
     "previousPage": "Zurück",
     "reasons": "Begründung",
     "title": "Bestellen",
-		"userSelect": "Benutzerauswahl",
-		"warningInfo": "Warnung",
-		"warningTitle": "Längere Wartezeiten für Digitalisate!",
-		"warningMessagePart1": "Aufgrund der grossen Nachfrage ist die Digitalisierungsinfrastruktur derzeit stark ausgelastet. Daher müssen Sie mit längeren Bearbeitungszeiten für Ihren Auftrag rechnen. Falls Sie die Unterlagen kurzfristig einsehen oder eine umfangreiche Bestellung aufgeben möchten, bestellen Sie die Dossiers bitte in den Lesesaal.",
-		"warningMessagePart2": "Mitarbeitende der Bundesverwaltung können von Ihrer eigenen Verwaltungseinheit abgelieferte Unterlagen direkt ins Amt bestellen.",
-		"digitalisierungNichtMoeglichTitle": "Kontingent ausgeschöpft",
-		"digitalisierungNichtMoeglichIntro": "Sie haben uns bereits mit der Digitalisierung von {0} Dossiers beauftragt.",
-		"digitalisierungNichtMoeglichAsBvw": "Bitte bestellen Sie die Unterlagen in den Lesesaal, ins Amt oder warten Sie, bis Ihre Digitalisierungsaufträge abgeschlossen sind.",
-		"digitalisierungNichtMoeglichOthers": "Bitte bestellen Sie die Unterlagen in den Lesesaal oder warten Sie, bis Ihre Digitalisierungsaufträge abgeschlossen sind.",
-		"exceedDigitalisierungTitle": "Sie können nur noch {0} Dossiers digitalisieren lassen",
-		"exceedDigitalisierungIntro": "Bitte wählen Sie unten jene Dossiers aus, die Sie jetzt digitalisieren lassen möchten. Sobald diese digitalisiert sind, können Sie weitere Dossier in Auftrag geben.",
-		"exceedDigitalisierungAsBvw": "Alternativ dazu ist eine Bestellung in den Lesesaal oder ins Amt jederzeit möglich.",
-		"exceedDigitalisierungOthers": "Alternativ dazu ist eine Bestellung in den Lesesaal jederzeit möglich."
+    "userSelect": "Benutzerauswahl",
+    "warningInfo": "Warnung",
+    "warningTitle": "Längere Wartezeiten für Digitalisate!",
+    "warningMessagePart1": "Aufgrund der grossen Nachfrage ist die Digitalisierungsinfrastruktur derzeit stark ausgelastet. Daher müssen Sie mit längeren Bearbeitungszeiten für Ihren Auftrag rechnen. Falls Sie die Unterlagen kurzfristig einsehen oder eine umfangreiche Bestellung aufgeben möchten, bestellen Sie die Dossiers bitte in den Lesesaal.",
+    "warningMessagePart2": "Mitarbeitende der Bundesverwaltung können von Ihrer eigenen Verwaltungseinheit abgelieferte Unterlagen direkt ins Amt bestellen.",
+    "digitalisierungNichtMoeglichTitle": "Kontingent ausgeschöpft",
+    "digitalisierungNichtMoeglichIntro": "Sie haben uns bereits mit der Digitalisierung von {0} Dossiers beauftragt.",
+    "digitalisierungNichtMoeglichAsBvw": "Bitte bestellen Sie die Unterlagen in den Lesesaal, ins Amt oder warten Sie, bis Ihre Digitalisierungsaufträge abgeschlossen sind.",
+    "digitalisierungNichtMoeglichOthers": "Bitte bestellen Sie die Unterlagen in den Lesesaal oder warten Sie, bis Ihre Digitalisierungsaufträge abgeschlossen sind.",
+    "exceedDigitalisierungTitle": "Sie können nur noch {0} Dossiers digitalisieren lassen",
+    "exceedDigitalisierungIntro": "Bitte wählen Sie unten jene Dossiers aus, die Sie jetzt digitalisieren lassen möchten. Sobald diese digitalisiert sind, können Sie weitere Dossier in Auftrag geben.",
+    "exceedDigitalisierungAsBvw": "Alternativ dazu ist eine Bestellung in den Lesesaal oder ins Amt jederzeit möglich.",
+    "exceedDigitalisierungOthers": "Alternativ dazu ist eine Bestellung in den Lesesaal jederzeit möglich."
   },
   "orderCheckoutPageComponent": {
     "pageTitle": "Bestellung"
@@ -852,7 +847,7 @@
   },
   "orderOverviewPage": {
     "closeModal": "Schliessen",
-		"itemsCount": "Anzahl: {0}",
+    "itemsCount": "Anzahl: {0}",
     "columnItems": {
       "abbruchgrundDisplay": "Abbruchgrund",
       "artDerArbeitDisplay": "Art der Arbeit",
@@ -979,7 +974,161 @@
       "bis": "bis",
       "ja": "Ja",
       "nein": "Nein",
-      "resultateOhneZeitraum": "Resultate ohne Zeitraum"
+      "resultateOhneZeitraum": "Resultate ohne Zeitraum",
+      "weitereLaden": "Weitere laden",
+      "Hauptabteilung": "Hauptabteilung",
+      "Bestaendeserie": "Beständeserie",
+      "Bestand": "Bestand",
+      "Akzession": "Akzession",
+      "Teilbestand": "Teilbestand",
+      "Serie": "Serie",
+      "Dossier": "Dossier",
+      "Subdossier": "Subdossier",
+      "Dokument": "Dokument",
+		  "Archiv": "Archiv",
+      "frei zugaenglich": "Frei zugänglich",
+      "in schutzfrist": "In Schutzfrist",
+      "pruefung noetig": "Prüfung nötig",
+			"thematicInventoryOverview": {
+				"1 Staat, Volk und Behoerden": "1 Staat, Volk und Behörden",
+				"11 Eidgenoessisches Parlament": "11 Eidgenössisches Parlament",
+				"111 Eidgenoessische Raete": "111 Eidgenössische Räte",
+				"112 Parlamentarische Kommissionen": "112 Parlamentarische Kommissionen",
+				"113 Parlamentsdienste": "113 Parlamentsdienste",
+				"12 Regierung": "12 Regierung",
+				"121 Bundesrat": "121 Bundesrat",
+				"13 Bundesverwaltung": "13 Bundesverwaltung",
+				"131 Bundeskanzlei": "131 Bundeskanzlei",
+				"132 Departementsvorsteher": "132 Departementsvorsteher",
+				"133 Departementssekretariate": "133 Departementssekretariate",
+				"134 Bundespersonal": "134 Bundespersonal",
+				"135 Organisation": "135 Organisation",
+				"136 Bundesbauten, Liegenschaften und Logistik": "136 Bundesbauten, Liegenschaften und Logistik",
+				"137 Informationstechnologie": "137 Informationstechnologie",
+				"14 Ausserparlamentarische Kommissionen und Spezialmandate": "14 Ausserparlamentarische Kommissionen und Spezialmandate",
+				"141 Ausserparlamentarische Kommissionen und Spezialmandate": "141 Ausserparlamentarische Kommissionen und Spezialmandate",
+				"2 Aussenpolitik": "2 Aussenpolitik",
+				"21 Aussenpolitische und aussenwirtschaftliche Beziehungen": "21 Aussenpolitische und aussenwirtschaftliche Beziehungen",
+				"211 Aussenpolitische Beziehungen": "211 Aussenpolitische Beziehungen",
+				"212 Aussenwirtschaft": "212 Aussenwirtschaft",
+				"213 Vertretung fremder Interessen": "213 Vertretung fremder Interessen",
+				"214 Berichterstattung und Dokumentation": "214 Berichterstattung und Dokumentation",
+				"215 Schweizerische Auslandvertretungen": "215 Schweizerische Auslandvertretungen",
+				"22 Internationale Zusammenarbeit": "22 Internationale Zusammenarbeit",
+				"221 Internationale Organisationen": "221 Internationale Organisationen",
+				"222 Entwicklungszusammenarbeit": "222 Entwicklungszusammenarbeit",
+				"3 Justiz und Polizei": "3 Justiz und Polizei",
+				"31 Gesetzgebung und Rechtswahrung": "31 Gesetzgebung und Rechtswahrung",
+				"311 Justiz": "311 Justiz",
+				"312 Handels- und Gueterrechtsregister": "312 Handels- und Güterrechtsregister",
+				"313 Zivilstand": "313 Zivilstand",
+				"314 Grundbuch": "314 Grundbuch",
+				"315 Geistiges Eigentum": "315 Geistiges Eigentum",
+				"316 Zensur": "316 Zensur",
+				"32 Polizeiliche Ermittlung, Anklage und Vollzug": "32 Polizeiliche Ermittlung, Anklage und Vollzug",
+				"321 Polizei": "321 Polizei",
+				"322 Bundesanwaltschaft": "322 Bundesanwaltschaft",
+				"33 Immigration": "33 Immigration",
+				"331 Fremdenpolizei und Auslaenderfragen": "331 Fremdenpolizei und Ausländerfragen",
+				"332 Fluechtlinge": "332 Flüchtlinge",
+				"4 Bildung, Wissenschaft und Kultur": "4 Bildung, Wissenschaft und Kultur",
+				"41 Bildung, Schule und Sport": "41 Bildung, Schule und Sport",
+				"411 Bildung": "411 Bildung",
+				"412 Berufsbildung und Fachhochschulen": "412 Berufsbildung und Fachhochschulen",
+				"413 Sport": "413 Sport",
+				"42 Wissenschaft und Forschung": "42 Wissenschaft und Forschung",
+				"421 Wissenschaftspolitik": "421 Wissenschaftspolitik",
+				"422 Meteorologie": "422 Meteorologie",
+				"423 Landestopographie": "423 Landestopographie",
+				"424 Statistik": "424 Statistik",
+				"43 Kultur": "43 Kultur",
+				"431 Kunst und Kultur": "431 Kunst und Kultur",
+				"432 Archive, Bibliotheken und Museen": "432 Archive, Bibliotheken und Museen",
+				"433 Ausstellungen": "433 Ausstellungen",
+				"434 Stiftungen": "434 Stiftungen",
+				"5 Landesverteidigung": "5 Landesverteidigung",
+				"51 Militaerische Fuehrung": "51 Militärische Führung",
+				"511 Generalstab": "511 Generalstab",
+				"512 General": "512 General",
+				"513 Armeestab": "513 Armeestab",
+				"514 Militaerische Reformen und Projekte": "514 Militärische Reformen und Projekte",
+				"52 Landesverteidigung": "52 Landesverteidigung",
+				"521 Landesverteidigung 1848-1950, Aktivdienst": "521 Landesverteidigung 1848-1950, Aktivdienst",
+				"53 Ausbildung, Rekrutierung und Verwaltung": "53 Ausbildung, Rekrutierung und Verwaltung",
+				"531 Ausbildung": "531 Ausbildung",
+				"532 Paedagogische Rekrutenpruefungen": "532 Pädagogische Rekrutenprüfungen",
+				"533 Verwaltung der Armee": "533 Verwaltung der Armee",
+				"54 Armee": "54 Armee",
+				"541 Truppengattungen": "541 Truppengattungen",
+				"542 Grosse Verbaende und Formationen": "542 Grosse Verbände und Formationen",
+				"543 Personelles, Betreuung und Spezialdienste": "543 Personelles, Betreuung und Spezialdienste",
+				"55 Ruestung": "55 Rüstung",
+				"551 Ruestungsdienste": "551 Rüstungsdienste",
+				"552 Ruestungsbetriebe": "552 Rüstungsbetriebe",
+				"553 Armeematerial und Kriegskommissariat": "553 Armeematerial und Kriegskommissariat",
+				"56 Militaerjustiz": "56 Militärjustiz",
+				"561 Oberauditorat und militaerischer Strafvollzug": "561 Oberauditorat und militärischer Strafvollzug",
+				"57 Gesamtverteidigung, Zivilschutz und Landesversorgung": "57 Gesamtverteidigung, Zivilschutz und Landesversorgung",
+				"571 Gesamtverteidigung": "571 Gesamtverteidigung",
+				"572 Zivilschutz": "572 Zivilschutz",
+				"573 Landesversorgung und Kriegswirtschaft": "573 Landesversorgung und Kriegswirtschaft",
+				"6 Finanzen": "6 Finanzen",
+				"61 Staatshaushalt": "61 Staatshaushalt",
+				"611 Finanzverwaltung": "611 Finanzverwaltung",
+				"612 Kassen- und Rechnungswesen": "612 Kassen- und Rechnungswesen",
+				"613 Darlehenskasse": "613 Darlehenskasse",
+				"614 Muenzwesen, Edelmetalle": "614 Münzwesen, Edelmetalle",
+				"62 Zoll und Grenzwacht": "62 Zoll und Grenzwacht",
+				"621 Zollverwaltung": "621 Zollverwaltung",
+				"622 Zollkreise": "622 Zollkreise",
+				"623 Grenzwacht": "623 Grenzwacht",
+				"63 Steuern und Abgaben": "63 Steuern und Abgaben",
+				"631 Steuerverwaltung": "631 Steuerverwaltung",
+				"632 Alkoholverwaltung": "632 Alkoholverwaltung",
+				"7 Umwelt, Verkehr, Energie und Kommunikation": "7 Umwelt, Verkehr, Energie und Kommunikation",
+				"71 Energie und Umwelt": "71 Energie und Umwelt",
+				"711 Wasserbau und Wasserwirtschaft": "711 Wasserbau und Wasserwirtschaft",
+				"712 Raumplanung und Meliorationen": "712 Raumplanung und Meliorationen",
+				"713 Energie": "713 Energie",
+				"714 Umweltschutz": "714 Umweltschutz",
+				"72 Verkehr": "72 Verkehr",
+				"721 Strassenbau und Strassenverkehr": "721 Strassenbau und Strassenverkehr",
+				"722 Eisenbahnen und Postautos": "722 Eisenbahnen und Postautos",
+				"723 Zivilluftfahrt": "723 Zivilluftfahrt",
+				"724 Schifffahrt": "724 Schifffahrt",
+				"73 Kommunikation": "73 Kommunikation",
+				"731 Medien und Kommunikation": "731 Medien und Kommunikation",
+				"732 Post- und Fernmeldeverkehr": "732 Post- und Fernmeldeverkehr",
+				"8 Gesundheit, Arbeit und Soziale Sicherheit": "8 Gesundheit, Arbeit und Soziale Sicherheit",
+				"81 Gesundheit": "81 Gesundheit",
+				"811 Gesundheit": "811 Gesundheit",
+				"82 Arbeit": "82 Arbeit",
+				"821 Arbeit und Beschaeftigung": "821 Arbeit und Beschäftigung",
+				"822 Arbeitslosenversicherung": "822 Arbeitslosenversicherung",
+				"823 Arbeitnehmerschutz und Arbeitsrecht": "823 Arbeitnehmerschutz und Arbeitsrecht",
+				"824 Fabrik- und Arbeitsinspektorate": "824 Fabrik- und Arbeitsinspektorate",
+				"825 Arbeitskraft und Auswanderung": "825 Arbeitskraft und Auswanderung",
+				"83 Soziale Sicherheit": "83 Soziale Sicherheit",
+				"831 Sozialversicherung": "831 Sozialversicherung",
+				"832 Militaerversicherung": "832 Militärversicherung",
+				"833 Fuersorge": "833 Fürsorge",
+				"834 Wohnungswesen und Mieterschutz": "834 Wohnungswesen und Mieterschutz",
+				"9 Wirtschaft": "9 Wirtschaft",
+				"91 Landwirtschaft, Forstwesen, Jagd und Fischerei": "91 Landwirtschaft, Forstwesen, Jagd und Fischerei",
+				"911 Schutz und Foerderung der Landwirtschaft": "911 Schutz und Förderung der Landwirtschaft",
+				"912 Landwirtschaftliche Forschungsanstalten": "912 Landwirtschaftliche Forschungsanstalten",
+				"913 Getreideverwaltung": "913 Getreideverwaltung",
+				"914 Veterinaerwesen": "914 Veterinärwesen",
+				"915 Forstwesen, Jagd und Fischerei": "915 Forstwesen, Jagd und Fischerei",
+				"92 Handel, Industrie und Gewerbe": "92 Handel, Industrie und Gewerbe",
+				"921 Handel": "921 Handel",
+				"922 Industrie und Gewerbe": "922 Industrie und Gewerbe",
+				"923 Fremdenverkehr": "923 Fremdenverkehr",
+				"924 Gebundener Zahlungsverkehr": "924 Gebundener Zahlungsverkehr",
+				"93 Aufsicht ueber Kreditinstitute und Privatversicherungen": "93 Aufsicht über Kreditinstitute und Privatversicherungen",
+				"931 Banken, Sparkassen und Anlagefonds": "931 Banken, Sparkassen und Anlagefonds",
+				"932 Privatversicherungen": "932 Privatversicherungen"
+			}
     },
     "fieldoperator": {
       "and": "Alle Begriffe",
@@ -1169,7 +1318,7 @@
     "infoSymbol": "Info-Symbol"
   },
   "user": {
-		"cancelRegistrationMessage": "Bitte schliessen Sie die Registrierung ab und speichern Sie die Daten.",
+    "cancelRegistrationMessage": "Bitte schliessen Sie die Registrierung ab und speichern Sie die Daten.",
     "birthday": "Geburtsdatum",
     "countryCode": "Land",
     "emailAddress": "E-Mail",
@@ -1213,7 +1362,24 @@
     "saveSuccess": "Ihre Benutzerdaten wurden erfolgreich gespeichert",
     "saveSuccessTitle": "Erfolgreich gespeichert"
   },
-	"orderSection": {
-		"orderText": "Legen Sie die Unterlagen in den Bestellkorb, um sie dort direkt zu bestellen oder ein Einsichtsgesuch einzureichen."
+  "orderSection": {
+    "orderText": "Legen Sie die Unterlagen in den Bestellkorb, um sie dort direkt zu bestellen oder ein Einsichtsgesuch einzureichen."
+  },
+  "veExportRecord": {
+    "referenceCode": "Signatur",
+    "fileReference": "Aktenzeichen",
+    "title": "Titel",
+    "creationPeriod": "Entstehungszeitraum",
+    "withinInfo": "Darin",
+    "level": "Stufe",
+    "accessibility": "Zugänglichkeit gem. BGA",
+    "fileName": "suchresultat",
+    "favourites": "favoriten"
+  },
+	"canDeactivateGuard": {
+	  "Title": "Warnung",
+	  "close": "Schliessen",
+	  "yes": "Ja",
+	  "no": "Nein"
 	}
 }

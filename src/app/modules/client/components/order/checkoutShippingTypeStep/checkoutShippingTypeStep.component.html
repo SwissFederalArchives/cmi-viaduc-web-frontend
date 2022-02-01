@@ -96,7 +96,7 @@
 									<input type="checkbox" (click)="updateDigitalisationSelection($event, item)" [checked]="isSelected(item)">
 								</td>
 								<th class="text-left">
-									<a *ngIf="item.veId" href="#{{ '/de/archiv/einheit/' + item.veId}}">{{item.referenceCode}}</a>
+									<a *ngIf="item.veId" href="#{{ '/de/archiv/einheit/' + item.veId | localizeLink}}">{{item.referenceCode}}</a>
 									<ng-container *ngIf="!item.veId">{{item.referenceCode}}</ng-container>
 								</th>
 								<td class="text-left shc-title-column">{{item.title}}</td>

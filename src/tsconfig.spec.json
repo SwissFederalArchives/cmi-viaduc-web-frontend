@@ -1,12 +1,11 @@
 {
 	"extends": "../tsconfig.json",
-	"compilerOptions": {
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
+  "compilerOptions": {
+    "experimentalDecorators": true,
 		"outDir": "../out-tsc/spec",
 		"baseUrl": "./",
 		"target": "es5",
-		"module": "commonjs",
+		"module": "es2020",
 		"types": [
 			"jasmine",
 			"node"

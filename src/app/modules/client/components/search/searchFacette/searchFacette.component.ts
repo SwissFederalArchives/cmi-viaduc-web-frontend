@@ -43,6 +43,9 @@ export class SearchFacetteComponent implements OnInit {
 	@Output()
 	public onFilter = new EventEmitter<FacetteFilterItem>();
 
+	@Output()
+	public onFacetteShowAll = new EventEmitter<string>();
+
 	@Input()
 	public activeFilterStrings: string[] = [];
 
@@ -75,7 +78,12 @@ export class SearchFacetteComponent implements OnInit {
 		} else {
 			ff.action = FacetteAction.Add;
 		}
+
 		this.onFilter.emit(ff);
+	}
+
+	public showAll(facetteKey: string) {
+		this.onFacetteShowAll.emit(facetteKey);
 	}
 
 	public toggle() {

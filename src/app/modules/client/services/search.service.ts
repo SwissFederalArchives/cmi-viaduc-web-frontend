@@ -40,6 +40,13 @@ export class SearchService {
 			.toPromise();
 	}
 
+	public searchExport(request: SearchRequest): any   {
+		const apiDataUrl = this._options.serverUrl + this._options.privatePort + '/api/Data';
+		const queryString = `?SearchText=${JSON.stringify(request)}`;
+		const url = `${apiDataUrl}/ExportSearchResultToExcel${queryString}`;
+		return this._http.download(url);
+	}
+
 	public searchBySignatur(signatur: string): Promise<string> {
 		const apiDataUrl = this._options.serverUrl + this._options.publicPort + '/api/Data';
 		const query = encodeURIComponent(signatur);

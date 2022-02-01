@@ -49,7 +49,6 @@ export class ContextService {
 
 		if (language !== this._context.language) {
 			this._context.loadingLanguage = language;
-			// console.log('ContextService.updateLanguage: ' + this._context.language + '->' + language, this._preloadService.hasTranslationsFor(language));
 			if (this._preloadService.hasTranslationsFor(language)) {
 				this._onLanguageUpdated(language);
 			} else {
