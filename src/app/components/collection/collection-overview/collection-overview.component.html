@@ -1,0 +1,38 @@
+<div *ngIf="collections && collections.length > 0">
+	<div *ngIf="this.isOnMainPage && collections.length < 3"  class="row" [ngClass]="{ 'text-center': centerContent}">
+		<div class="col-md-6 col-md-offset-3">
+			<markdown [data]=headerText></markdown>
+		</div>
+	</div>
+	<div *ngIf="this.isOnMainPage && collections.length === 3"  class="row" [ngClass]="{ 'text-center': centerContent}">
+		<div class="col-md-8 col-md-offset-2">
+			<markdown [data]=headerText></markdown>
+		</div>
+	</div>
+	<div *ngIf="!this.isOnMainPage || collections.length > 3" [ngClass]="{ 'text-center': centerContent}">
+		<markdown [data]=headerText></markdown>
+	</div>
+	<div class="row row-flex margin-x-1" [ngClass]="{'justify-content-center': centerContent}">
+		<div class="col-md-3 padding-x-1 d-flex align-items-stretch" *ngFor="let col of collections">
+			<div class="card">
+				<a href="#{{ '/de/sammlung/' | localizeLink }}{{col.collectionId}}">
+					<img *ngIf="col.imageMimeType" class="card-img-top"
+						 [src]="this.collectionService.getSizedImageURL(col.collectionId)"
+						 [alt]="col.imageAltText"/>
+				</a>
+				<div class="card-body">
+					<h5 class="card-title"><a href="#{{ '/de/sammlung/' | localizeLink }}{{col.collectionId}}">{{col.title}}</a></h5>
+					<p class="card-text">
+						<markdown [data]="col.descriptionShort" ngPreserveWhitespaces></markdown>
+					</p>
+					<a ></a>
+					<a href="#{{ '/de/sammlung/' | localizeLink }}{{col.collectionId}}">
+						<span >
+							{{'Weiter' | translate: 'collections.continue'}}
+						</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

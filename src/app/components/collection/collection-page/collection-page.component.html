@@ -1,0 +1,60 @@
+<div class="page col-sm-12" *ngIf="detailItem">
+	<div class="page-breadcrumb">
+		<cmi-viaduc-breadcrumb [items]="getBreadCrumb()"></cmi-viaduc-breadcrumb>
+	</div>
+	<div>
+		<div>
+			<h1>{{detailItem.title}}</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-8 markdown-text">
+				<div class="row">
+					<div class="col-md-12">
+						<markdown [data]="detailItem.description" ngPreserveWhitespaces></markdown>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 link" *ngIf="detailItem.link"  >
+						<a  *ngIf="!this.isInternalLink" role="btn" class="btn btn-primary"[href]="detailItem.link" target="_blank">
+							{{'Details öffnen' | translate: 'collections.openDetails'}}&nbsp;
+							<i class="glyphicon glyphicon-new-window" aria-hidden="true"></i>
+						</a>
+						<a  *ngIf="this.isInternalLink" role="btn" class="btn btn-primary"[href]="this.internalLink" >
+							{{'Details öffnen' | translate: 'collections.openDetails'}}
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="image-container col-md-4" *ngIf="detailItem.imageMimeType">
+				<img style="cursor: zoom-in" (click)="modalImg()"
+					 [src]="this._collectionService.getImageURL(detailItem.collectionId)"
+					 [alt]="detailItem.imageAltText"/>
+			</div>
+		</div>
+	</div>
+	<div *ngIf="!isValid">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="alert alert-warning">
+					<a href="#{{'' | localizeLink}}">
+					{{'Sammlung ist nicht in der ausgewählten Sprache vorhanden' | translate: 'collections.notFound'}}
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<cmi-collection-overview [parentId]="detailItem?.childCollections?.length > 0 ? detailItem.collectionId : -1"
+									 [headerText]= "'## ' + ('Enthält' | translate: 'collections.containsHeader')"></cmi-collection-overview>
+		</div>
+	</div>
+	<cmi-viaduc-modal [(opened)]="showImageModal" modalTitle="{{detailItem.imageAltText}}">
+		<cmi-viaduc-modal-body>
+			<img style="cursor: zoom-out" (click)="modalImg()"
+				 [src]="this._collectionService.getImageURL(detailItem.collectionId)"
+				 [alt]="detailItem.imageAltText"/>
+		</cmi-viaduc-modal-body>
+	</cmi-viaduc-modal>
+</div>
+<cmi-loader *ngIf="loading" class="cmi-visible"></cmi-loader>

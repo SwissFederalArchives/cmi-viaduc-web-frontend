@@ -14,7 +14,7 @@
 		<ng-template #noAccess>
 			<a (click)="callMenuAction('addtocart')"
 			   (keydown.enter)="callMenuAction('addtocart')"
-			   *ngIf="entity?.canBeOrdered === true"
+			   *ngIf="entity?.canBeOrdered === true || entity?.primaryDataLink !== null"
 			   tooltip="{{ 'In den Bestellkorb legen' | translate:'icon.menu.bestellkorb'}}"
 			   tooltipPlacement="left"
 			   tabindex="0">

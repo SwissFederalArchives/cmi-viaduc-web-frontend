@@ -243,6 +243,12 @@ export class UrlService {
 		return url;
 	}
 
+	public getCollectionUrl(id: string)	{
+		let url = this.localizeUrl(this._context.language, '/sammlung/');
+		url = _util.addToString(url, '/', id);
+		return url;
+	}
+
 	public setQuery(qs: string): void {
 		let h = window.location.hash.split('?');
 		window.location.hash = h[0] + '?' + qs;

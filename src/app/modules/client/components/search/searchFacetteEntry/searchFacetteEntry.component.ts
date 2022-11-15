@@ -50,23 +50,20 @@ export class SearchFacetteEntryComponent implements OnInit {
 			return '';
 		}
 
-		let value = this.agg.key;
 		let valueString = this.agg.keyAsString;
 		if (valueString === 'true') {
 			return this._txt.get('search.facetteEntry.ja', 'Ja');
 		} else if (valueString === 'false') {
 			return this._txt.get('search.facetteEntry.nein', 'Nein');
 		} else {
-			const key = value;
-			let parts = value.split('.');
-			let text = parts[parts.length - 1];
-
-			if (text.indexOf('-') > 0) {
+			const key = this.agg.key;
+			// The key is usually the keyword for the translation if there is no translation for the facet, it is the German text.
+			let translated = (this._txt.has(key) ) ? this._txt.get(key) : key;
+			if (this.facette.key === 'aggregationFields.creationPeriodYears' && translated.indexOf('-') > 0 ) {
 				// - für screenreader durch 'bis' ersetzen..
 				const bis = this._txt.get('search.facetteEntry.bis', 'bis');
-				text =  text.replace('-', '<span class="sr-only">' + bis + '</span><span aria-hidden="true"> - </span>');
+				translated =  translated.replace('-', '<span class="sr-only">' + bis + '</span><span aria-hidden="true"> - </span>');
 			}
-			const translated = (this._txt.has(key) || (key.indexOf('.') > 0)) ? this._txt.get(key, text) : text;
 			return this.sanitizer.bypassSecurityTrustHtml(translated);
 		}
 	}

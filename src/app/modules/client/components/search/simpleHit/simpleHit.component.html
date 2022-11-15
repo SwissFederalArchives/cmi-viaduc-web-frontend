@@ -6,21 +6,23 @@
 			</div>
 			<div class="col-md-9 single-bottom-margin col-xs-7">
 				<h4 class="no-margin-bottom">
-					<a href="#{{ '/de/archiv/einheit/' + entity.archiveRecordId | localizeLink }}" [innerHtml]="htmlForTitle"></a>
+					<a href="#{{ '/de/archiv/einheit/' + entity.archiveRecordId | localizeLink }}" [innerHtml]="htmlForTitle|anonymizedHtml"></a>
+					<span *ngIf="entity.isAnonymized && isBarUser" aria-label="{{'Für nicht berechtigte NutzerInnen anonymisiert.' | translate:'simpleHit.anonymToolTip'}}"
+						  [tooltip]="'Für nicht berechtigte NutzerInnen anonymisiert.' | translate:'simpleHit.anonymToolTip'" class="glyphicon glyphicon-eye-close text-danger"></span>
 				</h4>
 				<label class="signature">
 					<span>{{ 'Signatur' | translate: 'simpleHit.signatur'}}:&nbsp;</span><span>{{entity.referenceCode}}</span>
 				</label>
 				<div>
 					<img *ngIf="getPictureAsBase64() !== null" [src]="getPictureAsBase64()">
-					<p *ngIf="htmlForText && htmlForText !== 'null'; else emptyPTag" [innerHtml]="htmlForText"></p>
+					<p *ngIf="htmlForText && htmlForText !== 'null'; else emptyPTag" [innerHtml]="htmlForText|anonymizedHtml"></p>
 				</div>
 				<ng-template #emptyPTag>&nbsp;</ng-template>
 
 				<span id="archivePlanTitle{{entity.archiveRecordId}}" tabindex="-1"></span>
 				<div class="detail-hierarchy" *ngIf="displayArchivplanContext && entity._context?.ancestors">
 					<h4>{{'Archivplankontext' | translate:'simpleHit.archivplankontext'}}</h4>
-					<cmi-viaduc-detail-hierarchy [items]="entity._context.ancestors"></cmi-viaduc-detail-hierarchy>
+					<cmi-viaduc-detail-hierarchy [items]="entity._context.ancestors" [isBarUser]="isBarUser"></cmi-viaduc-detail-hierarchy>
 				</div>
 				<div *ngIf="enableExplanations">
 					<label>{{'Relevanz' | translate: 'simpleHit.relevance'}}&nbsp;</label>

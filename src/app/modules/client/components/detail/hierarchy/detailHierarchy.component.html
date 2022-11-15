@@ -3,11 +3,15 @@
 		  [ngStyle]="{ 'padding-left.em': (inset*(item.depth)) }">
 		<a tabindex="0" (keyup.enter)="open(item)" (click)="open(item)" *ngIf="item.itemClasses !== 'selected'">
             <span *ngIf="item.referenceCode">{{item.referenceCode}}&nbsp;</span>
-            <span>{{item.title}}</span>
+            <span [innerHTML]="item.title|anonymizedHtml"></span>
+			<i *ngIf="item.isAnonymized && isBarUser" aria-label="{{'Für nicht berechtigte NutzerInnen anonymisiert.' | translate:'simpleHit.anonymToolTip'}}"
+				  [tooltip]="'Für nicht berechtigte NutzerInnen anonymisiert.' | translate:'simpleHit.anonymToolTip'" class="glyphicon glyphicon-eye-close text-danger" role="img"></i>
         </a>
 		<span *ngIf="item.itemClasses === 'selected'" tabindex="0" [attr.aria-describedby]="'Aktuell angezeigte Verzeichnungseinheit' | translate:'detailHierarchy.activePosition'">
 			<span *ngIf="item.referenceCode">{{item.referenceCode}}&nbsp;</span>
-            <span>{{item.title}}</span>
+			<span [innerHtml]="item.title|anonymizedHtml"></span>
+			<i *ngIf="item.isAnonymized && isBarUser" aria-label="{{'Für nicht berechtigte NutzerInnen anonymisiert.' | translate:'simpleHit.anonymToolTip'}}"
+				  [tooltip]="'Für nicht berechtigte NutzerInnen anonymisiert.' | translate:'simpleHit.anonymToolTip'" class="glyphicon glyphicon-eye-close text-danger" role="img"></i>
 		</span>
     </span>
 </div>

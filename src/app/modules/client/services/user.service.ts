@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {User} from '../model/account/user';
 import {Subject, Observable} from 'rxjs';
 import {ConfigService, CoreOptions, HttpService} from '@cmi/viaduc-web-core';
+import {OnboardingModel} from '../model/account/onboardingModel';
 
 @Injectable()
 export class UserService {
@@ -68,9 +69,9 @@ export class UserService {
 		return this._http.get<Array<User>>(url, this._http.noCaching).toPromise();
 	}
 
-	public GetOnboardingUri(): Promise<string> {
-		const url = this._createBaseUrl() + 'getOnboardingUri';
-		return this._http.get<string>(url, this._http.noCaching).toPromise();
+	public startOnboardingProcess(model:OnboardingModel): Promise<string> {
+		const url = this._options.serverUrl + this._options.publicPort + '/api/Onboarding/StartProcess';
+		return this._http.post<string>(url, model).toPromise();
 	}
 
 	private _createUrl(methodName: string): string {

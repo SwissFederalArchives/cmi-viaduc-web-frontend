@@ -1,25 +1,33 @@
 <div class="row">
 	<div *ngIf="hasAccess === true">
-		<div class="col-md-4">
+		<div class="col-md-3">
 			<dl>
-				<dt>metadataAccessTokens</dt>
+				<dt>Metadata</dt>
 				<dd *ngFor="let metadata of this.permission?.metadataAccessToken">
 					{{metadata}}
 				</dd>
 			</dl>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-3">
 			<dl>
-				<dt>primaryDataFulltextAccessTokens</dt>
+				<dt>PrimaryDataFulltext</dt>
 				<dd *ngFor="let metadata of this.permission?.primaryDataFulltextAccessTokens">
 					{{metadata}}
 				</dd>
 			</dl>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-3">
 			<dl>
-				<dt>primaryDataDownloadAccessTokens</dt>
+				<dt>PrimaryDataDownload</dt>
 				<dd *ngFor="let metadata of this.permission?.primaryDataDownloadAccessTokens">
+					{{metadata}}
+				</dd>
+			</dl>
+		</div>
+		<div class="col-md-3">
+			<dl>
+				<dt>Field</dt>
+				<dd *ngFor="let metadata of this.permission?.fieldAccessTokens">
 					{{metadata}}
 				</dd>
 			</dl>

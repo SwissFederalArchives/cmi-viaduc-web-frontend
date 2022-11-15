@@ -35,3 +35,30 @@
 @mobile-landscape: ~"only screen and (min-width: 601px) and (max-width: 960px)";
 
 @ie10-11: ~"all and (-ms-high-contrast: none), (-ms-high-contrast: active)";
+
+// Variables for cards
+// Copied from Bootstrap 5
+@spacer: 1rem;
+@border-width:                1px;
+@border-radius:               .25rem;
+@grid-gutter-width:           1.5rem;
+@link-hover-decoration:                   null;
+@enable-rounded: false;
+
+@card-spacer-y:                     @spacer;
+@card-spacer-x:                     @spacer;
+@card-title-spacer-y:               @spacer * .5;
+@card-border-width:                 @border-width;
+@card-border-color:                 rgba(@color-black, .125);
+@card-border-radius:                @border-radius;
+@card-box-shadow:                   null;
+@card-inner-border-radius:          subtract(@card-border-radius, @card-border-width);
+@card-cap-padding-y:                @card-spacer-y * .5;
+@card-cap-padding-x:                @card-spacer-x;
+@card-cap-bg:                       rgba(@color-black, .03);
+@card-cap-color:                    null;
+@card-height:                       null;
+@card-color:                        null;
+@card-bg:                           @color-white;
+@card-img-overlay-padding:          @spacer;
+@card-group-margin:                 @grid-gutter-width * .5;

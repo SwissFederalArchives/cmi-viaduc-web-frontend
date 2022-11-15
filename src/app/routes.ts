@@ -22,6 +22,7 @@ import {RegisterPageInfoComponent} from './components/register/registerPageInfo/
 import {RegisterPageComponent} from './components/register/registerPage/registerPage.component';
 import {ErrorPageComponent} from './components/errorPage/errorPage.component';
 import {ErrorSmartcardPageComponent} from './components/errorPage/errorSmartcardPage.component';
+import {CollectionPageComponent} from './components/collection/collection-page/collection-page.component';
 
 // region Template for localizable routes.
 export const defaultRouteChildren: any = [
@@ -50,6 +51,11 @@ export const defaultRouteChildren: any = [
 		path: 'beratung',
 		_localize: {'fr': 'conseil', 'it': 'consulenza', 'en': 'advice'},
 		component: StaticPageComponent
+	},
+	{
+		path: 'sammlung/:id',
+		_localize: {'fr': 'collection', 'it': 'collezione', 'en': 'collection'},
+		component: CollectionPageComponent
 	},
 	{
 		path: 'informationen',

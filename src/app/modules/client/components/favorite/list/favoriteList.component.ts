@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UrlService} from '../../../services/url.service';
 import {Favorite, FavoriteKind, SearchFavorite, VeFavorite} from '../../../model/favorite/favorite';
 import * as moment from 'moment';
@@ -11,7 +11,7 @@ import {ShoppingCartService} from '../../../services/shoppingCart.service';
 	templateUrl: 'favoriteList.component.html',
 	styleUrls: ['./favoriteList.component.less']
 })
-export class FavoriteListComponent implements OnInit {
+export class FavoriteListComponent implements OnInit, AfterViewInit {
 
 	@Input()
 	public list: FavoriteList;
@@ -27,12 +27,18 @@ export class FavoriteListComponent implements OnInit {
 	public onExportFavorite: EventEmitter<void> = new EventEmitter<void>();
 
 	public error: any;
+	private readonly _elem: any;
 
-	constructor(private _url: UrlService, private _favService: FavoriteService, private _scs: ShoppingCartService) {
+	constructor(private _url: UrlService, private _favService: FavoriteService, private _scs: ShoppingCartService, private _elemRef: ElementRef) {
+		this._elem = this._elemRef.nativeElement;
 	}
 
 	public ngOnInit(): void {
 		this._groupList();
+	}
+
+	public ngAfterViewInit(): void {
+		_util.initJQForElement(this._elem);
 	}
 
 	private _groupList(): void {
@@ -85,7 +91,7 @@ export class FavoriteListComponent implements OnInit {
 	}
 
 	private _hasActions(): boolean {
-		return this.veItems && this.veItems.filter(i => i.canBeDownloaded || i.canBeOrdered).length > 0;
+		return this.veItems && this.veItems.filter(i => i.canBeOrdered || i.hasPrimaryLink).length > 0;
 	}
 
 	public allListsAreEmpty(): boolean {

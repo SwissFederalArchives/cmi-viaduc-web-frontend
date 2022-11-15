@@ -14,7 +14,7 @@
 		</div>
 		<div [ngClass]="getMainTableCellNavCss()">
 			<a tabindex="0" class="nav-mobile-menu dropdown-toggle" (click)="toggleMainMobileNav()" (keyup.enter)="toggleMainMobileNav()">
-				<span class="icon icon--menu" aria-hidden="true"></span>
+				<span class="icon icon--menu" role="img" aria-hidden="true"></span>
 				<span class="sr-only" *ngIf="mobileMainNavOpen">{{ 'Navigation schliessen' | translate: 'header.closeMobileNavigation'}}</span>
 				<span class="sr-only" *ngIf="!mobileMainNavOpen">{{ 'Navigation öffnen' | translate: 'header.openMobileNavigation'}}</span>
 			</a>
@@ -62,7 +62,7 @@
 										</li>
 									</ul>
 									<button class="yamm-close-bottom" (click)="toggleMainMobileNav()" menuid="closeNav">
-										<span class="icon icon--top" aria-hidden="true"></span>
+										<span class="icon icon--top" role="img" aria-hidden="true"></span>
 									</button>
 								</nav>
 							</li>
@@ -90,14 +90,14 @@
 										</li>
 									</ul>
 									<button class="yamm-close-bottom" menuid="closeNav">
-										<span class="icon icon--top" aria-hidden="true"></span>
+										<span class="icon icon--top" role="img" aria-hidden="true"></span>
 									</button>
 								</nav>
 							</li>
 							<li class="list-sub">
 								<a href="javascript:void(0)">{{ 'Informationen' | translate:'navigation.services' }}</a>
 								<nav class="drilldown-sub">
-									<a href="javascript:void(0)" [attr.aria-label]="'Zurück' | translate:'navigation.back'" class="icon icon--before icon--less drilldown-back">
+									<a href="javascript:void(0)" [attr.aria-label]="'Zurück' | translate:'navigation.back'" class="icon icon--before icon--less drilldown-back" >
 										{{'Zurück' | translate:'navigation.back'}}
 									</a>
 									<ul role="menu">
@@ -133,7 +133,7 @@
 										</li>
 									</ul>
 									<button class="yamm-close-bottom" (click)="toggleMainMobileNav()" menuid="closeNav">
-										<span class="icon icon--top" aria-hidden="true"></span>
+										<span class="icon icon--top" role="img" aria-hidden="true"></span>
 									</button>
 								</nav>
 							</li>
@@ -144,7 +144,7 @@
 							</li>
 						</ul>
 						<a class="yamm-close-bottom" (click)="toggleMainMobileNav()">
-							<span class="icon icon--top" aria-hidden="true"></span>
+							<span class="icon icon--top" role="img" aria-hidden="true"></span>
 							<span class="sr-only">{{'Navigation schliessen' | translate:'header.closeNav'}}</span>
 						</a>
 					</nav>
@@ -153,9 +153,8 @@
 		</div>
 		<div class="table-cell dropdown">
 			<a href="#{{ '/de/konto/bestellkorb' | localizeLink }}" class="nav-mobile-menu">
-                <span class="icon icon--cart" aria-hidden="true">
-                    <span class="number-circle" *ngIf="cartItemsCount">{{cartItemsCount}}</span>
-                </span>
+                <span class="icon icon--cart" role="img" aria-hidden="true"></span>
+				<span class="number-circle" *ngIf="cartItemsCount">{{cartItemsCount}}</span>
 				<span class="sr-only">
 					{{'Zum Bestellkorb mit {0} Positionen navigieren' | translate:'header.zumBestellkorb':cartItemsCount}}
 				</span>
@@ -163,7 +162,7 @@
 		</div>
 		<div [ngClass]="getUserTableCellNavCss()">
 			<a tabindex="0" class="nav-mobile-menu dropdown-toggle" (click)="toggleUserMobileNav()" (keyup.enter)="toggleUserMobileNav()" [attr.aria-expanded]="mobileUserNavOpen">
-				<span class="glyphicon glyphicon-user more-pad" aria-hidden="true"></span>
+				<i class="glyphicon glyphicon-user more-pad" role="img" aria-hidden="true"></i>
 				<span class="sr-only" *ngIf="mobileUserNavOpen" >{{'Benutzermenu schliessen' | translate:'header.closeUserAccount'}}</span>
 				<span class="sr-only" *ngIf="!mobileUserNavOpen">{{'Benutzermenu öffnen' | translate:'header.openUserAccount'}}</span>
 			</a>
@@ -173,14 +172,11 @@
 						<ul role="menu">
 							<li class="infoicon-container" role="presentation" *ngIf="!authenticated">
 								<span>{{ 'Sie sind nicht angemeldet' | translate:'header.notLoggedInInfo'}}</span>
-								<span class="glyphicon glyphicon-info-sign infoicon" data-toggle="tooltip"
-									  data-placement="bottom"
-									  aria-hidden="true"
+								<i class="glyphicon glyphicon-info-sign infoicon" data-toggle="tooltip"
+									  data-placement="bottom" role="img"
+									  aria-label="{{ 'Info: Melden Sie sich an, um zusätzliche Funktionen wie Favoritenverwaltung oder Bestellungen nutzen zu können.' | translate:'header.notLoggedInTipInfo'}}"
 									   tooltip="{{ 'Melden Sie sich an, um zusätzliche Funktionen wie Favoritenverwaltung oder Bestellungen nutzen zu können.' | translate:'header.notLoggedInTip'}}">
-								</span>
-								<span class="sr-only">
-									{{ 'Info: Melden Sie sich an, um zusätzliche Funktionen wie Favoritenverwaltung oder Bestellungen nutzen zu können.' | translate:'header.notLoggedInTipInfo'}}
-								</span>
+								</i>
 							</li>
 							<li role="presentation">
 								<a *ngIf="!authenticated" tabindex="0" (click)="login()" (keyup.enter)="login()">
@@ -198,7 +194,7 @@
 							</li>
 						</ul>
 						<a class="yamm-close-bottom" (click)="toggleUserMobileNav()">
-							<span class="icon icon--top" aria-hidden="true"></span>
+							<span class="icon icon--top"  role="img" aria-hidden="true"></span>
 							<span class="sr-only">{{'Navigation schliessen' | translate:'header.closeNav'}}</span>
 						</a>
 					</nav>
@@ -220,7 +216,7 @@
 					<div class="col-sm-12">
 						<a class="yamm-close pull-right" tabindex="-1">
 							<span aria-hidden="true">{{ 'Schliessen' | translate:'schliessen' }}</span>
-							<span class="icon icon--close" aria-hidden="true"></span>
+							<span class="icon icon--close" role="img" aria-hidden="true"></span>
 							<span class="sr-only">{{'Navigation schliessen' | translate:'navigation.closemenu'}}</span>
 						</a>
 					</div>
@@ -228,7 +224,7 @@
 				<div class="row" (click)="nullifyClick($event)">
 					<li class="col-sm-3" role="menuitem">
 						<div class="yamm-content container-fluid">
-							<i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+							<i class="glyphicon glyphicon-search" role="img" aria-hidden="true"></i>
 							<h4>
 								<a href="#{{ '/de/suche/einfach' | localizeLink }}">
 									{{ 'Einfache Suche' | translate:'search.standardSearch' }}
@@ -241,8 +237,8 @@
 					</li>
 					<li class="col-sm-3" role="menuitem">
 						<div class="yamm-content container-fluid">
-							<i class="glyphicon glyphicon-search" aria-hidden="true"></i>
-							<i class="glyphicon-plus search-icon-plus" aria-hidden="true"></i>
+							<i class="glyphicon glyphicon-search" role="img" aria-hidden="true"></i>
+							<i class="glyphicon-plus search-icon-plus" role="img"aria-hidden="true"></i>
 							<h4>
 								<a href="#{{ '/de/suche/erweitert' | localizeLink }}">
 									{{ 'Erweiterte Suche' | translate:'search.extendedSearch' }}
@@ -255,7 +251,7 @@
 					</li>
 					<li class="col-sm-3" role="menuitem">
 						<div class="yamm-content container-fluid">
-							<i class="glyphicon glyphicon-tree-structure" aria-hidden="true"></i>
+							<i class="glyphicon glyphicon-tree-structure" role="img" aria-hidden="true"></i>
 							<h4>
 								<a href="#{{ '/de/suche/archivplan' | localizeLink }}">
 									{{ 'Archivplan' | translate:'search.archivePlanSearch' }}
@@ -268,7 +264,7 @@
 					</li>
 					<li class="col-sm-3" role="menuitem">
 						<div class="yamm-content container-fluid">
-							<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+							<i class="glyphicon glyphicon-list-alt" role="img" aria-hidden="true"></i>
 							<h4>
 								<a href="#{{ '/de/suche/bestaendeuebersicht' | localizeLink }}">
 									{{ 'Thematische Übersicht' | translate:'search.browseArchive'}}
@@ -283,7 +279,7 @@
 				<div class="row" (click)="nullifyClick($event)">
 					<li class="col-sm-3" role="menuitem">
 						<div class="yamm-content container-fluid">
-							<i class="glyphicon glyphicon-step-backward" aria-hidden="true"></i>
+							<i class="glyphicon glyphicon-step-backward" role="img" aria-hidden="true"></i>
 							<h4>
 								<a *ngIf="lastSearchResult" href="#{{lastSearchResult}}">
 									{{ 'Letztes Suchresultat' | translate:'search.lastSearchResult' }}
@@ -297,7 +293,7 @@
 					</li>
 				</div>
 				<a class="yamm-close-bottom" tabindex="-1">
-					<span class="icon icon--top" aria-hidden="true"></span>
+					<span class="icon icon--top" role="img" aria-hidden="true"></span>
 					<span class="sr-only">{{'Navigation schliessen' | translate:'navigation.closemenu'}}</span>
 				</a>
 			</div>
@@ -314,7 +310,7 @@
 					<div class="col-sm-12">
 						<a class="yamm-close pull-right" tabindex="-1">
 							<span aria-hidden="true">{{ 'Schliessen' | translate:'schliessen' }}</span>
-							<span class="icon icon--close" aria-hidden="true"></span>
+							<span class="icon icon--close" role="img" aria-hidden="true"></span>
 							<span class="sr-only">{{'Navigation schliessen' | translate:'navigation.closemenu'}}</span>
 						</a>
 					</div>
@@ -322,7 +318,7 @@
 				<div class="row" (click)="nullifyClick($event)">
 					<li class="col-sm-3" role="menuitem">
 						<div class="yamm-content container-fluid">
-							<i class="glyphicon glyphicon-comments" aria-hidden="true"></i>
+							<i class="glyphicon glyphicon-comments" role="img" aria-hidden="true"></i>
 							<h4>
 								<a href="javascript:void(0)" (click)="openChat()">
 									{{'Chat' | translate:'navigation.beratung.chat' }}
@@ -335,7 +331,7 @@
 					</li>
 					<li class="col-sm-3" role="menuitem">
 						<div class="yamm-content container-fluid" [ngClass]="{'disabled': !chatBotEnabled}">
-							<i class="glyphicon glyphicon-robot" aria-hidden="true"></i>
+							<i class="glyphicon glyphicon-robot" role="img" aria-hidden="true"></i>
 							<h4>
 								<a (click)="openBot()" [attr.aria-disabled]="!chatBotEnabled" [ngClass]="{'disabled': !chatBotEnabled}">
 									{{'ChatBot' | translate:'navigation.beratung.chatbot' }}
@@ -348,7 +344,7 @@
 					</li>
 					<li class="col-sm-3" role="menuitem">
 						<div class="yamm-content container-fluid">
-							<i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
+							<i class="glyphicon glyphicon-envelope" role="img" aria-hidden="true"></i>
 							<h4>
 								<a tabindex="0" href="mailto:info@bar.admin.ch">
 									{{ 'E-Mail' | translate:'navigation.beratung.email' }}
@@ -361,7 +357,7 @@
 					</li>
 				</div>
 				<a class="yamm-close-bottom" tabindex="-1">
-					<span class="icon icon--top" aria-hidden="true"></span>
+					<span class="icon icon--top" role="img" aria-hidden="true"></span>
 					<span class="sr-only">{{'Navigation schliessen' | translate:'navigation.closemenu'}}</span>
 				</a>
 			</div>
@@ -378,7 +374,7 @@
 					<div class="col-sm-12">
 						<a class="yamm-close pull-right" tabindex="-1">
 							<span aria-hidden="true">{{ 'Schliessen' | translate:'schliessen' }}</span>
-							<span class="icon icon--close" aria-hidden="true"></span>
+							<span class="icon icon--close" role="img" aria-hidden="true"></span>
 							<span class="sr-only">{{'Navigation schliessen' | translate:'navigation.closemenu'}}</span>
 						</a>
 					</div>
@@ -386,7 +382,7 @@
 				<div class="row" (click)="nullifyClick($event)">
 					<li class="col-sm-3" role="menuitem">
 						<div class="yamm-content container-fluid">
-							<i class="glyphicon glyphicon-list" aria-hidden="true"></i>
+							<i class="glyphicon glyphicon-list" role="img" aria-hidden="true"></i>
 							<h4>
 								<a href="#{{ '/de/informationen/bestaende' | localizeLink }}">
 								  {{ 'Bestände' |	translate:'navigation.information.stocks' }}
@@ -399,7 +395,7 @@
 					</li>
 					<li class="col-sm-3" role="menuitem">
 						<div class="yamm-content container-fluid">
-							<i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+							<i class="glyphicon glyphicon-search" role="img" aria-hidden="true"></i>
 							<h4>
 								<a href="#{{ '/de/informationen/suchen' | localizeLink }}">
 									{{ 'Suchen' | translate:'navigation.information.search' }}
@@ -412,7 +408,7 @@
 					</li>
 					<li class="col-sm-3" role="menuitem">
 						<div class="yamm-content container-fluid">
-							<i class="glyphicon glyphicon-fingerprint-ok" aria-hidden="true"></i>
+							<i class="glyphicon glyphicon-fingerprint-ok" role="img" aria-hidden="true"></i>
 							<h4>
 								<a href="#{{ '/de/informationen/registrieren-und-identifizieren' | localizeLink }}">
 									{{'Registrieren & Identifizieren' | translate:'navigation.information.registerAndAuthentificate' }}
@@ -425,7 +421,7 @@
 					</li>
 					<li class="col-sm-3" role="menuitem">
 						<div class="yamm-content container-fluid">
-							<i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
+							<i class="glyphicon glyphicon-shopping-cart" role="img" aria-hidden="true"></i>
 							<h4>
 								<a href="#{{ '/de/informationen/bestellen-und-konsultieren' | localizeLink }}">
 									{{'Bestellen & Konsultieren' | translate:'navigation.information.orderAndConsult' }}
@@ -438,7 +434,7 @@
 					</li>
 					<li class="col-sm-3" role="menuitem">
 						<div class="yamm-content container-fluid">
-							<i class="glyphicon glyphicon-scale-classic" aria-hidden="true"></i>
+							<i class="glyphicon glyphicon-scale-classic" role="img" aria-hidden="true"></i>
 							<h4>
 								<a href="#{{ '/de/informationen/schutzfristen-und-einsichtsgesuche' | localizeLink }}">
 									{{'Schutzfristen & Einsichtsgesuche' | translate:'navigation.information.protectionAndPetitions' }}
@@ -451,7 +447,7 @@
 					</li>
 					<li class="col-sm-3" role="menuitem">
 						<div class="yamm-content container-fluid">
-							<i class="glyphicon glyphicon-book-open" aria-hidden="true"></i>
+							<i class="glyphicon glyphicon-book-open" role="img" aria-hidden="true"></i>
 							<h4>
 								<a href="#{{ '/de/informationen/zitieren-und-publizieren' | localizeLink }}">
 									{{'Zitieren & Publizieren' | translate:'navigation.beratung.quoteAndPublish' }}
@@ -464,7 +460,7 @@
 					</li>
 					<li class="col-sm-3" role="menuitem">
 						<div class="yamm-content container-fluid">
-							<i class="glyphicon glyphicon-cogwheels" aria-hidden="true"></i>
+							<i class="glyphicon glyphicon-cogwheels" role="img" aria-hidden="true"></i>
 							<h4>
 								<a href="#{{ '/de/informationen/api' | localizeLink }}">
 									{{'API' | translate:'navigation.information.api' }}
@@ -477,7 +473,7 @@
 					</li>
 				</div>
 				<a class="yamm-close-bottom" tabindex="-1">
-					<span class="icon icon--top" aria-hidden="true"></span>
+					<span class="icon icon--top" aria-hidden="true" role="img"></span>
 					<span class="sr-only">{{'Navigation schliessen' | translate:'navigation.closemenu'}}</span>
 				</a>
 			</div>

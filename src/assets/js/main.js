@@ -128,9 +128,9 @@
 						'</span>' +
 						'<ul class="pull-right">' +
 						'<li>' +
-						'<button id="print-button"  tooltip="print" class="btn"><span class="icon icon--print"></span></button>' +
+						'<button id="print-button"  tooltip="print" class="btn"><span class="icon icon--print" role="img" aria-hidden="true"></span></button>' +
 						'&nbsp;&nbsp;' +
-						'<button id="close-button"  tooltip="close" class="btn btn-secondary"><span class="icon icon--close"></span></button>' +
+						'<button id="close-button"  tooltip="close" class="btn btn-secondary"><span class="icon icon--close" role="img" aria-hidden="true"></span></button>' +
 						'</li>' +
 						'</ul>' +
 						'</nav>' +
@@ -193,9 +193,10 @@
 	cmi.initJQForElement = function (elem, services) {
 		var $elem = window.jQuery(elem);
 
-		$elem.find('[data-toggle="tooltip"]').tooltip();
+		/* Tooltip erst nach einem Timeout setzen, anosnsten noch nicht alles Rendering abgeschlossen */
+		setTimeout(function() { $elem.find('[data-toggle="tooltip"]').tooltip(); }, 200);
 
-		/* ==========================================================
+				/* ==========================================================
          * autocomplete.js
          * Deal with the Typeahead.js/Bloodhound library to build the search field autocomplete
          *

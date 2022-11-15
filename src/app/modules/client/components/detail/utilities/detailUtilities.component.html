@@ -4,19 +4,19 @@
 		<li [tooltip]="'Drucken' | translate:'drucken'">
 			<a tabindex="0" (keyup.enter)="printPage()" (click)="printPage()">
 				<span class="sr-only">{{ 'Drucken' | translate:'drucken' }}</span>
-				<span class="icon icon--print"></span>
+				<span class="icon icon--print" role="img" aria-hidden="true"></span>
 			</a>
 		</li>
 		<li *ngIf="entity && entity.archiveRecordId" [tooltip]="'Im Archivplan zeigen' | translate:'archivplan.zeigen'">
 			<a tabindex="0" href="#{{ '/de/suche/archivplan/' + entity?.archiveRecordId | localizeLink }}">
 				<span class="sr-only">{{ 'Im Archivplan zeigen' | translate:'archivplan.zeigen' }}</span>
-				<span class="glyphicon glyphicon-tree-structure"></span>
+				<i class="glyphicon glyphicon-tree-structure" role="img" aria-hidden="true"></i>
 			</a>
 		</li>
 		<li [ngClass]="{ 'menu-open': isShown('favorites') }" [tooltip]="'Zu den Favoriten hinzufügen' | translate:'favorites.menuTooltip'">
 			<a tabindex="0" (keyup.enter)="toggleMenu('favorites')" (click)="toggleMenu('favorites')">
 				<span class="sr-only">{{ 'Zu den Favoriten hinzufügen' | translate:'favorites.menuTooltip' }}</span>
-				<span class="icon icon--star"></span>
+				<span class="icon icon--star" role="img" aria-hidden="true"></span>
 			</a>
 			<cmi-viaduc-favorite-menu *ngIf="isShown('favorites')" class="dropout-menu menu-favorites"
 									  [entityId]="(entity || {}).archiveRecordId"

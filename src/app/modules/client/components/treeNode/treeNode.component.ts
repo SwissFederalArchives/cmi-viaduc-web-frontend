@@ -8,7 +8,7 @@ import {
 	ViewEncapsulation
 } from '@angular/core';
 import {EntityService} from '../../services';
-import {ConfigService, TranslationService} from '@cmi/viaduc-web-core';
+import {ConfigService, TranslationService, Utilities as _util} from '@cmi/viaduc-web-core';
 import {Router} from '@angular/router';
 import {UrlService} from '../../services/url.service';
 
@@ -80,6 +80,7 @@ export class TreeNodeComponent implements OnInit, AfterViewInit {
 		if (notOnlineRecherchableDossiersElem) {
 			notOnlineRecherchableDossiersElem.style.cssText = '';
 		}
+		_util.initJQForElement(childElem);
 		this.loadingChange.emit(false);
 		this.isExpanded = true;
 	}

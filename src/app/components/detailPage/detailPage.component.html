@@ -9,17 +9,21 @@
 				<div class="page-header">
 					<h1 class="page-title">
 						<span *ngIf="entity.iconClasses"><i [class]="entity.iconClasses"></i>&nbsp;</span>
-						<span>{{entity.title}} ({{entity.level}})</span>
+						<span [innerHtml]="entity.title|anonymizedHtml"></span>
+						<span>({{entity.level}})</span>
 					</h1>
 				</div>
 
 				<div class="section">
 					<div class="section-content">
+						<cmi-viaduc-info-section *ngIf="!hasPermission && entity.isAnonymized" [text]="'Diese Daten wurden aus Datenschutzgründen anonymisiert.'|translate:'infoSection.noPermission'"></cmi-viaduc-info-section>
+						<cmi-viaduc-info-section *ngIf="isBarUser && entity.isAnonymized"[text]="'Für NutzerInnen ohne entsprechende Berechtigung werden diese Daten in anonymisierter Form angezeigt.'|translate:'infoSection.barUser'"></cmi-viaduc-info-section>
 						<cmi-viaduc-download-section *ngIf="showDownloadSection" [entity]="entity"></cmi-viaduc-download-section>
 						<cmi-viaduc-order-section *ngIf="showOrderSection" [entity]="entity"></cmi-viaduc-order-section>
 						<cmi-viaduc-usage-section *ngIf="!showDownloadSection && !showOrderSection"
 												  [text]="'Diese Verzeichnungseinheit ist nicht bestellbar. Bitte wenden Sie sich an die Beratung oder an bestellen@bar.admin.ch.' | translate:'simpleHit.failedBecauseOfLevelMessage'">
 						</cmi-viaduc-usage-section>
+
 					</div>
 				</div>
 
@@ -30,7 +34,9 @@
 					<div class="section-content">
 						<cmi-viaduc-detail-section *ngIf="!section.markup && section.data"
 												   [entity]="entity"
-												   [data]="section.data">
+												   [data]="section.data"
+												   [fields] = "fields"
+												   [isBarUser]="isBarUser">
 						</cmi-viaduc-detail-section>
 					</div>
 				</div>
@@ -40,7 +46,7 @@
 						<h4>{{'Archivplan' | translate:'metadata.title.archivplan'}}</h4>
 					</div>
 					<div class="section-content">
-						<cmi-viaduc-detail-hierarchy  [items]="items">
+						<cmi-viaduc-detail-hierarchy  [items]="items" [isBarUser]="isBarUser">
 						</cmi-viaduc-detail-hierarchy>
 					</div>
 				</div>

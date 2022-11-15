@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, BehaviorSubject} from 'rxjs';
+import {Observable, BehaviorSubject, of} from 'rxjs';
 import {Router} from '@angular/router';
 import {
 	ConfigService, CoreOptions, HttpService, PreloadService, Session,
@@ -10,7 +10,7 @@ import {AuthorizationService} from './authorization.service';
 import {SessionStorageService} from './sessionStorage.service';
 import {UserService} from './user.service';
 import {UrlService} from './url.service';
-import {skip, take} from 'rxjs/operators';
+import {catchError, map, skip, take} from 'rxjs/operators';
 import {AuthStatus} from '../model';
 
 const currentSessionKey = 'viaduc_auth_session';
@@ -38,7 +38,7 @@ export class AuthenticationService {
 	}
 
 	public login(): void {
-		const callbackUrl = `${window.location.pathname}#/auth/success?login`; // relative url
+		const callbackUrl = `${window.location.pathname}Auth/ExternalSignIn`; // relative url
 		let returnUrl = window.location.href;
 		let loginUrl = _util.addToString(this._options.serverUrl + this._options.publicPort, '/', 'AuthServices/SignIn?ReturnUrl=' + encodeURIComponent(callbackUrl));
 
@@ -47,9 +47,10 @@ export class AuthenticationService {
 	}
 
 	public logout(): void {
+		const callbackUrl = `${window.location.pathname}Auth/ExternalSignOut`; // relative url
 		this.clearCurrentSession();
 		this._setUrl(logoutReturnUrlKey, window.location.href);
-		const logoutUrl = _util.addToString(this._options.serverUrl + this._options.publicPort, '/', 'private/?logout');
+		const logoutUrl = _util.addToString(this._options.serverUrl + this._options.publicPort, '/', 'AuthServices/Logout?ReturnUrl=' + encodeURIComponent(callbackUrl));
 		window.location.assign(logoutUrl);
 	}
 
@@ -99,9 +100,8 @@ export class AuthenticationService {
 		this.setCurrentSession(<Session>{});
 	}
 
-	private _initSession(token: string, identity?: any): void {
+	private _initSession(identity?: any): void {
 		const session = <Session>{
-			token: token,
 			inited: new Date().getTime()
 		};
 
@@ -136,7 +136,7 @@ export class AuthenticationService {
 				session.emailaddress = matches[0].value;
 			}
 			matches = claims.filter(c => c.type.indexOf('/identity/claims/e-id/userExtId') >= 0);
-			if (!_util.isEmpty(matches)) {
+				if (!_util.isEmpty(matches)) {
 				session.userExtId = matches[0].value;
 			}
 			matches = claims.filter(c => c.type.indexOf('/identity/claims/authenticationmethod') >= 0);
@@ -168,34 +168,14 @@ export class AuthenticationService {
 		return this._http.get<any>(claimsUrl);
 	}
 
-	public activateSession(): Promise<any> {
-		const baseUrl = this._options.serverUrl + this._options.publicPort;
-		const tokenUrl = baseUrl + '/token';
-		const oAuthParameters = 'grant_type=client_credentials';
-
-		return this._http.post<any>(tokenUrl, oAuthParameters).toPromise().then(
-			response => {
-				let token = response.access_token;
-				this._initSession(token);
-				if (token !== '') {
-					return this._getIdentity().toPromise().then(
-						r => {
-							return this.handleIdentityResponse(r, token);
-						},
-						err => {
-							this.clearCurrentSession();
-							console.error(err);
-							throw err;
-						}
-					);
-				} else {
-					return false;
-				}
-			},
-			error => {
-				console.error(error);
-				throw error;
-			}
+	public activateSession(): Observable<boolean> {
+		this._initSession();
+		return this._getIdentity().pipe(map((r) => {
+				return this.handleIdentityResponse(r);
+			}), catchError(() => {
+				this.clearCurrentSession();
+				return of(false);
+			})
 		);
 	}
 
@@ -209,11 +189,10 @@ export class AuthenticationService {
 
 		let session = this._sessionStorage.getItem<Session>(currentSessionKey);
 		if (session != null && session.authenticated) {
-			let token = session.token;
-			this._initSession(session.token);
+			this._initSession();
 
 			return this._getIdentity().toPromise().then(r => {
-					return this.handleIdentityResponse(r, token);
+					return this.handleIdentityResponse(r);
 				},
 				err => {
 					console.error(err);
@@ -223,8 +202,8 @@ export class AuthenticationService {
 		}
 	}
 
-	private handleIdentityResponse(response: any, token: any): boolean {
-		this._initSession(token, response);
+	private handleIdentityResponse(response: any): boolean {
+		this._initSession(response);
 
 		switch (response.authStatus) {
 			case AuthStatus.ok:

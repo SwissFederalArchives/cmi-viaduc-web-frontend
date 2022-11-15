@@ -2661,19 +2661,6 @@
             },
             "fields": [
               {
-                "key": "customFields.nichtOnlineRecherchierbareDossiers",
-                "name": "customFields.nichtOnlineRecherchierbareDossiers",
-                "type": "string",
-                "label": "Nicht online recherchierbare Dossiers",
-                "visibility": 0,
-                "labels": {
-                  "de": "Nicht online recherchierbare Dossiers",
-                  "en": "Dossiers not searchable online",
-                  "fr": "Dossiers ne pouvant faire l'objet d'une recherche en ligne",
-                  "it": "Dossier non reperibili on-line"
-                }
-              },
-              {
                 "key": "customFields.digitalesFindmittelBeschreibung",
                 "name": "customFields.digitalesFindmittelBeschreibung",
                 "type": "string",
@@ -5793,20 +5780,7 @@
             "it": "Contenuto e ordinamento interno"
           },
           "fields": [
-            {
-              "key": "customFields.nichtOnlineRecherchierbareDossiers",
-              "name": "customFields.nichtOnlineRecherchierbareDossiers",
-              "type": "string",
-              "label": "Nicht online recherchierbare Dossiers",
-              "visibility": 0,
-              "labels": {
-                "de": "Nicht online recherchierbare Dossiers",
-                "en": "Dossiers not searchable online",
-                "fr": "Dossiers ne pouvant faire l'objet d'une recherche en ligne",
-                "it": "Dossier non reperibili on-line"
-              }
-            },
-            {
+           {
               "key": "customFields.digitalesFindmittelBeschreibung",
               "name": "customFields.digitalesFindmittelBeschreibung",
               "type": "string",

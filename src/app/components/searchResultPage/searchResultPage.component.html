@@ -46,7 +46,7 @@
 			<div class="row hitbox-container">
 				<div *ngIf="facetteCollapsed && !hasAnyErrors" class="col-md-1 col-sm-1 col-xs-2 no-bottom-margin">
 					<button type="button" class="btn btn-link fac-collapsed-btn" (click)="onFacetteToggle(false)">
-						<span class="icon icon--greater collapse-icon" aria-label="Facettenliste einklappen"></span>
+						<span class="icon icon--greater collapse-icon" role="img" aria-label="Facettenliste einklappen"></span>
 						<br />
 						<span>
 							{{'Filter' | translate:'search.filterTitle'}}
@@ -81,14 +81,14 @@
 								[tooltip]="'XLS-Datei herunterladen' | translate:'hitbar.export'"
 							   [tooltipPlacement]="'left'"
 							   tabindex="0">
-								<span class="icon icon--excel" aria-hidden="true"></span>
+								<span class="icon icon--excel" role="img" aria-hidden="true"></span>
 								<span class="sr-only">{{ 'XLS-Datei herunterladen' | translate:'hitbar.export' }}</span>
 							</a>
 							<a [tooltip]="'Permalink dieser Suche in die Zwischenablage kopieren' | translate:'hitbar.copyPermalink'"
 							   [tooltipPlacement]="'left'"
 							   tabindex="0"
 							   [copy-clipboard]="deepLinkUrl">
-								<span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+								<i class="glyphicon glyphicon-link" role="img" aria-hidden="true"></i>
 								<span class="sr-only">{{ 'Permalink dieser Suche in die Zwischenablage kopieren' | translate:'hitbar.copyPermalink' }}</span>
 							</a>
 							<a (keydown.enter)="toggleSearchFavoriteMenu()"
@@ -96,7 +96,7 @@
 							   [tooltip]="'Suche in Favoriten speichern' | translate:'hitbar.saveAsFavorite'"
 							   tabindex="0"
 							   [tooltipPlacement]="'left'">
-								<span class="icon icon--star" aria-hidden="true"></span>
+								<span class="icon icon--star" role="img" aria-hidden="true" ></span>
 								<span class="sr-only">{{ 'Suche in Favoriten speichern' | translate:'hitbar.saveAsFavorite' }}</span>
 							</a>
 						</div>

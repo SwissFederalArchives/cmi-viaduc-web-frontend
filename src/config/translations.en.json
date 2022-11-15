@@ -39,31 +39,38 @@
     "country": "Country",
     "dateFieldFormat": "The format does not correspond to a valid date (dd.mm.yyyy).",
     "digitalOnboarding": {
-      "fullfillsRequirementsMessage": "You meet the requirements for identification via video call. For the identification process you will be leaving the Confederation’s infrastructure. The video call will be conducted with an external company (Managed Service Digital Identification & Signing by Swisscom).",
-      "fullfillsRequirementsMessageError": "Unfortunately you do not meet the requirements for identification via video call. Please contact us to proceed with identification:",
+      "fullfillsRequirementsMessage": "You meet the requirements for identification using live verification by means of artificial intelligence. For the identification process, you will be leaving the Confederation’s infrastructure. The identification process using live verification by means of artificial intelligence is conducted by an external company (Identity verification via document scan and liveness check from fidentity AG).",
+      "fullfillsRequirementsMessageBold": "You will be notified of the change in your status shortly after the identification process is successfully completed. If identification fails, you will be contacted by a member of our staff.",
+      "fullfillsRequirementsMessageError": "Unfortunately, you do not meet the requirements for identification using live verification by means of artificial intelligence. Please contact us to proceed with identification:",
       "hasIdFromCountry": "Or from which country do you hold a valid identity card?",
-      "hasMobilePhone": "Do you have a mobile phone number and can you receive text messages?",
       "hasPassportFromCountry": "From which country do you hold a valid passport?",
-      "hasSmartphoneOrComputer": "Do you have access to a smartphone or a computer equipped with a camera and microphone?",
+      "hasSmartphoneOrComputer": "Do you have access to a smartphone with a camera?",
       "nextStep": "Continue",
       "no": "No",
       "noIdOfListedCountry": "I do not hold an identity card from one of the countries listed",
       "noPassportOfListedCountry": "I do not hold a passport from one of the countries listed",
       "passportAndIdNeeded": "You need a valid means of identification (passport or identity card).",
       "previousStep": "Go back",
+      "start": "Start",
+      "startInfo": "Press «Start» to begin the identification process.",
+			"userData": "Please check your user data.",
       "step1": "Step 1",
       "step2": "Step 2",
       "step3": "Step 3",
       "step4": "Step 4",
-      "videochatLink": "Start video call (Monday to Saturday, 8 a.m. to 10 p.m. CET)",
+      "videochatLink": "Continue online identification (24 hours a day, 7 days a week)",
       "videoChatNotPossible": "Video call not possible",
+			"fidentityError": "The identification has failed. Try again later or contact",
       "videoChatPossible": "Video call possible",
-      "wizardInfo": "In order to obtain “identified user” status, you must conduct a video call. Before proceeding, please answer the following questions:",
+      "wizardInfo": "Please answer the following questions so that the identification process can be prepared.",
       "wizardTitle": "Apply for “identified user” status",
       "yes": "Yes"
     },
     "email": "E-mail",
     "errorPhoneNumber": "Telephone numbers can begin with a \"+\", may contain numbers, spaces and \\\"-\\\", and must be between 6 and 20 characters long",
+		"title": "Title",
+		"masculineForm": "Mr.",
+		"femaleForm": "Ms.",
     "familyName": "Last name",
     "firstName": "First name",
     "headerAnonymousUser": "Anonymous",
@@ -235,7 +242,7 @@
   "checkoutSubmittedStep": {
     "cartText": "You still have open orders in your <a href=\"#/{0}\">shopping cart</a>.",
     "checkStatusText": "You can monitor the status of your order in your <a href=\"#/{0}\">user account</a>.",
-    "disclaimerText": "The video call will be recorded but the recording will be deleted once identification is complete. The Federal Archives will store only a copy of the identification document, the photograph and the user information in tabular form. You may request information about your stored data at any time (Art. 8 FADP).",
+    "disclaimerText": "The identification process using live verification by means of artificial intelligence will be recorded, but the recording will be deleted once identification is complete. The Federal Archives will store only a copy of the identification document, the photograph and the user information in tabular form. You may request information about your stored data at any time (Art. 8 FADP).",
     "thxTextDigi": "Thank you for your order. You will receive an e-mail as soon as the documents have been digitised. It will normally take two weeks to process your order.",
     "thxTextEischtisgesuch": "We will forward your request to the office responsible. You will normally receive a decision within four to six weeks.",
     "thxTextEischtisgesuchAnmeldenUndIndentifizieren": "If your request is approved, you will need to identify yourself in order to consult the documents (see <a href=\"{0}\">Registration and identification</a>).",
@@ -247,6 +254,14 @@
     "success": "Successfully copied to the clipboard!",
     "title": "Clipboard"
   },
+	"collections": {
+		"continue": "continue",
+		"header": "Collections",
+		"notFound": "Collection is not available in the selected language",
+		"containsHeader": "Contains",
+		"notNumber": "The url of the collection is wrong",
+		"openDetails": "Open details"
+	},
   "columnpicker": {
     "einAusblenden": "Show/hide columns",
     "hiddenColumns": "Hidden columns",
@@ -262,7 +277,7 @@
   "detail": {
     "notFound": "The page you have requested cannot be displayed",
     "notFoundMessage": "It is possible that you do not have the necessary rights. Please check your rights in your <a href=\"#{0}\">user account.</a></br></br>",
-    "notFoundMessage2": "If you have questions about accessibility of documents in the Federal Archives, please contact our advice service or send an e-mail to <a href=\"mailto:bundesarchiv@bar.admin.ch\">bundesarchiv@bar.admin.ch</a>.",
+    "notFoundMessage2": "If you have questions about accessibility of documents in the Federal Archives, please contact our advice service or send an e-mail to <a href=\"mailto:info@bar.admin.ch\">info@bar.admin.ch</a>.",
     "notFoundMessageNotOe1": "It is possible that you do not have the necessary rights to access the page. Please check your rights in your <a href=\"#{0}\">user account</a>.</br></br>",
     "notFoundMessageOe1": "It is possible that you do not have the necessary rights to access the page (see <a href=\"#{0}\">Login and identification</a>).</br></br>"
   },
@@ -276,7 +291,8 @@
     "pageTitle": "Detail view"
   },
   "detailSection": {
-    "internalField": "Field only visible to SFA users"
+    "internalField": "Field only visible to SFA users",
+    "anonymisiert": "anonymized"
   },
   "digitalisierungskategorie": {
     "amt": "Office",
@@ -631,6 +647,7 @@
   },
   "main": {
     "errorMandatoryField": "This field must be completed.",
+    "errorMaxLength60": "Text must not be longer than 60 characters.",
     "errorMandatoryMailField": "This field must contain a valid e-mail address",
     "errorMobil": "Mobile phone numbers can begin with a \"+\", may contain numbers, spaces and \"-\", and must be between 6 and 20 characters long",
     "errorPhone": "Telephone numbers can begin with a \"+\", may contain numbers, spaces and \\\"-\\\", and must be between 6 and 20 characters long"
@@ -658,7 +675,6 @@
         "kategorieDia": "Cat. automation",
         "land": "Country",
         "nachfolgerbehoerden": "Successor authority/authorities",
-        "nichtOnlineRecherchierbareDossiers": "Dossiers not searchable online",
         "publikationsrechte": "Publication rights",
         "signaturArchivplan": "Archive plan reference code",
         "thema": "Subject",
@@ -856,7 +872,8 @@
   },
   "orderOverviewPage": {
     "closeModal": "Close",
-    "itemsCount": "Number: {0}",
+    "itemsCount": "Count: {0}",
+		"itemsCountFiltered": "Count: {0} of {1}",
     "columnItems": {
       "abbruchgrundDisplay": "Reason for cancellation",
       "artDerArbeitDisplay": "Nature of work",
@@ -909,7 +926,7 @@
   "registerInfo": {
     "cancelRegister": "Cancel",
     "chLoginAltText": "CH-Login logo",
-    "chLoginException": "Exception: Federal Administration staff must register via Kerberos or a smartcard.",
+    "chLoginException": "Exception: Federal Administration staff must register via “FED-LOGIN“.",
     "chooseCHLogin": "Please select the “CH-LOGIN” option in the next step.",
     "info1": "You can use the online access service anonymously or as a registered or identified person. Depending on your user status, the functions available to you will vary.",
     "infoBox": "Info box",
@@ -1273,28 +1290,32 @@
     "loginToUseBasketText": "Please log in to use the shopping cart.",
     "loginToUsebasketTitle": "Log in now",
     "noHitsInfo": {
-      "header": "There may be a number of reasons why your search did not return any results:",
-      "hinweis": "Grade",
-      "reason1": "It is possible that you do not have the necessary rights. Please check your rights in your user account.",
+      "header": "There are a number of potential reasons why your search did not return any results:",
+      "hinweis": "Tip",
+      "reason1": "The Federal Archives publishes metadata containing names of persons and personal data or personality profiles requiring special protection only after the protection period has expired.",
       "reason2": "The documents you are looking for have not yet been catalogued and recorded in the system.",
       "reason3": "Spelling error or unknown search terms: please check the spelling or search for other terms.",
-      "reason4": "There are definitely no documents on your topic in the Federal Archives. You can find other archives in the Archive Addresses of Switzerland database or on the archive portal Europa.",
+      "reason4": "There are no documents on your topic in the Federal Archives. You can find further archives in the database <a href=\"{0}\">Archivadressen der Schweiz</a>, the research portal  <a href=\"{1}\">archivesonline.org</a> or on the <a href=\"{2}\">Archives Portal Europe</a>.",
       "showHinweis": "Do not show this tip again"
     },
     "noHitsTitle": "No results for your search term",
     "noHitsTitleForQuery": "No archival materials corresponding to your search - {0} - were found.",
     "oe3RoleRequired": "To order documents with an authorisation to consult, you require \"identified user\" status. To proceed to the identification process please click on this notice.",
     "oe3RoleRequiredTitle": "Order not possible",
-    "reason4": "There are definitely no documents on your topic in the Federal Archives. You can find other archives in the <a href=\"{0}\">Archive Addresses of Switzerland database</a> or on the <a href=\"{1}\">archive portal Europa</a>.",
     "relevance": "Relevance",
     "signatur": "Reference code",
     "zugangTooltip": "Accessibility under ArchA",
     "reason1Oe1": "It is possible that you do not have the necessary rights (see <a href=\"#{0}\">Registration & identification</a>).",
-    "reason1Oe2": "It is possible that you do not have the necessary rights. Please check your rights in your <a href=\"#{0}\">user account</a>."
+    "reason1Oe2": "It is possible that you do not have the necessary rights. Please check your rights in your <a href=\"#{0}\">user account</a>.",
+		"anonymToolTip":"Anonymised for non-authorised users."
   },
   "simpleHitList": {
     "sortierung": "Sorting"
   },
+	"infoSection": {
+    "noPermission":"These data were anonymised for data protection reasons (<a href='https://www.fedlex.admin.ch/eli/cc/1999/371/en' target='_blank' rel='noopener noreferrer' >Art. 12.3 Archiving Ordinance</a>).",
+    "barUser":"For users without the necessary authorisation, this data is displayed in anonymised form."
+	},
   "simpleSearchPageComponent": {
     "pageTitle": "Simple search"
   },
@@ -1394,5 +1415,8 @@
 	  "close": "Close",
 	  "yes": "Yes",
 	  "no": "No"
-	}
+	},
+  "anonymized": {
+    "Tooltip": "Anonymised for data protection reasons."
+  }
 }

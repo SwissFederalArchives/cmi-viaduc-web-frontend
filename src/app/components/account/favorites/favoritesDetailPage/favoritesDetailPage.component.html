@@ -46,13 +46,14 @@
 				</span>
 				<span class="pull-right">
 					<a class="btn btn-link" *ngIf="!showRenameField" tabindex="0" (keydown.enter)="toggleRenameField()" (click)="exportList()">
-						<span class="icon icon--excel"></span>&nbsp;<span>{{ 'Exportieren' | translate:'favoritesPage.export' }}</span>
+						<span class="icon icon--excel" role="img" aria-hidden="true"></span>&nbsp;<span>
+						{{ 'Exportieren' | translate:'favoritesPage.export' }}</span>
 					</a>
 					<a class="btn btn-link" *ngIf="!showRenameField" tabindex="0" (keydown.enter)="toggleRenameField()" (click)="toggleRenameField()">
-						<span class="glyphicon glyphicon-pencil"></span>&nbsp;<span>{{ 'Umbenennen' | translate:'favoritesPage.rename' }}</span>
+						<i class="glyphicon glyphicon-pencil" role="img" aria-hidden="true"></i>&nbsp;<span>{{ 'Umbenennen' | translate:'favoritesPage.rename' }}</span>
 					</a>
-					<a class="btn btn-link" *ngIf="!showRenameField" tabindex="0" (keydown.enter)="toggleRenameField()" (click)="toggleDeleteModal()">
-						<span class="glyphicon glyphicon-remove"></span>&nbsp;<span>{{ 'Löschen' | translate:'favoritesPage.delete' }}</span>
+					<a class="btn btn-link"  *ngIf="!showRenameField" tabindex="0" (keydown.enter)="toggleRenameField()" (click)="toggleDeleteModal()">
+						<i class="glyphicon glyphicon-remove" role="img" aria-hidden="true"></i>&nbsp;<span>{{ 'Löschen' | translate:'favoritesPage.delete' }}</span>
 					</a>
 				</span>
 			</h1>

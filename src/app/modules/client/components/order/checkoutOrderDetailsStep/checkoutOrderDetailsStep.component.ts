@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AuthorizationService, ShoppingCartService, UrlService} from '../../../services';
 import {ArtDerArbeit, Ordering, ShippingType, StammdatenService, TranslationService} from '@cmi/viaduc-web-core';
 import * as moment from 'moment';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
 	selector: 'cmi-viaduc-order-details-step',
@@ -37,8 +37,9 @@ export class CheckoutOrderDetailsStepComponent implements OnInit {
 
 		this.form = this._formBuilder.group({
 			artDerArbeitDropdown: [ordering.artDerArbeit || undefined, this.isAsUser ? null : Validators.required],
-			konsultierungsDatum: [ordering.lesesaalDate ? moment(ordering.lesesaalDate).format('DD.MM.YYYY') : null,
-				ordering.type === ShippingType.Lesesaalausleihen ? Validators.required : null],
+			konsultierungsDatum:  new FormControl (ordering.lesesaalDate ? moment(ordering.lesesaalDate).format('DD.MM.YYYY') : null,
+				ordering.type === ShippingType.Lesesaalausleihen ?
+					[Validators.required, Validators.minLength(6), Validators.pattern(/^(0?[1-9]|[12][0-9]|3[01])[.](0?[1-9]|1[012])[.]\d{4}$/)] : null),
 			bemerkungBestellung: [ordering.comment, null],
 			termsofUse: [ordering.termsAccepted, Validators.requiredTrue]
 		});
@@ -60,7 +61,6 @@ export class CheckoutOrderDetailsStepComponent implements OnInit {
 		if (!lesesaalCtrl || !lesesaalCtrl.value || lesesaalCtrl.value.length < 6) {
 			return null;
 		}
-
 		const m = moment(lesesaalCtrl.value, 'DD.MM.YYYY');
 		return m.isValid() ? m.toDate() : null;
 	}
@@ -86,6 +86,12 @@ export class CheckoutOrderDetailsStepComponent implements OnInit {
 				const control = this.form.controls[field];
 				control.markAsTouched({ onlySelf: true });
 			});
+			// e. g. ++.10.++++ is not detected as invalid in validateDate method, but the form
+			if (this.form.controls.konsultierungsDatum.invalid) {
+				// only this field show the warning message
+				this.invalidDateError = true;
+			}
+
 			return;
 		}
 

@@ -7,6 +7,7 @@ export class SectionRow {
 	public label: string;
 	public visibility: number;
 	public entity: Entity;
+	public isAnonymized: boolean;
 
 	public data: any;
 }

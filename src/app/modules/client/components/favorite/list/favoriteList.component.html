@@ -22,14 +22,14 @@
 				<tbody>
 					<tr *ngFor="let item of veItems">
 						<td *ngIf="hasActions" class="text-center">
-							<a class="btn btn-link" *ngIf="item.canBeOrdered && !item.canBeDownloaded" (click)="addToCart(item)" data-toggle="tooltip"  tooltip="{{ 'In den Bestellkorb legen' | translate:'icon.menu.bestellkorb'}}">
-								<span class="icon icon--cart" aria-hidden="true"></span>
+							<a class="btn btn-link" *ngIf="(item.canBeOrdered || item.hasPrimaryLink) && !item.canBeDownloaded" (click)="addToCart(item)" data-toggle="tooltip"  tooltip="{{ 'In den Bestellkorb legen' | translate:'icon.menu.bestellkorb'}}">
+								<span class="icon icon--cart" role="img" aria-hidden="true"></span>
 								<span class="sr-only">
 									{{ 'In den Bestellkorb legen' | translate:'icon.menu.bestellkorb'}}
 								</span>
 							</a>
 							<a class="btn btn-link" *ngIf="item.canBeDownloaded" [routerLink]="goToVe(item)" data-toggle="tooltip"  tooltip="{{ 'Zur Downloadseite wechseln ' | translate:'icon.menu.bestellkorbdownload'}}">
-								<span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>
+								<i class="glyphicon glyphicon-cloud-download" role="img" aria-hidden="true"></i>
 								<span class="sr-only">
 									{{ 'Zur Downloadseite wechseln ' | translate:'icon.menu.bestellkorbdownload'}}
 								</span>
@@ -40,13 +40,13 @@
 								{{item.referenceCode}}
 							</a>
 						</td>
-						<td class="shc-title-column">{{item.title}}</td>
+						<td class="shc-title-column"><span [innerHtml]='item.title|anonymizedHtml'></span></td>
 						<td>{{item.creationPeriod}}</td>
 						<td>{{item.level}}</td>
 						<td class="fl-saved-at-column">{{getFormattedDate(item.createdAt)}}</td>
 						<td class="fl-remove-column">
 							<a class="btn btn-link" (click)="removeItem(item)">
-								<span class="icon icon--close"></span>
+								<span class="icon icon--close" role="img" aria-hidden="true"></span>
 							</a>
 						</td>
 					</tr>
@@ -75,7 +75,7 @@
 					<td class="fl-saved-at-column">{{getFormattedDate(item.createdAt)}}</td>
 					<td class="text-center fl-remove-column">
 						<a class="btn btn-link" (click)="removeItem(item)">
-							<span class="icon icon--close"></span>
+							<span class="icon icon--close" role="img" aria-hidden="true"></span>
 						</a>
 					</td>
 				</tr>

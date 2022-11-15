@@ -1,10 +1,11 @@
 <nav id="facette-main-nav" class="nav-page-list nav-page-list--facette">
-	<a (click)="toggleStatus()" class="icon icon--before icon--less facette-header" (keydown.enter)="toggleStatus()" tabindex="0">
+	<a (click)="toggleStatus()" class="icon icon--before icon--less facette-header"
+	   (keydown.enter)="toggleStatus()" tabindex="0">
 		{{'Filter ausblenden' | translate:'facette.hideFilter' }}
 	</a>
 	<a tabindex="0" *ngIf="activeFacets?.length > 0" (keyup.enter)="resetFilters()" (click)="resetFilters()"
-	   class="icon icon--after icon--close reset-filters">{{'Alle Filter zurücksetzen ({0})'|
-		translate:'facette.clearAll':getActiveFacetCount()}}</a>
+	   class="icon icon--after icon--close reset-filters">
+		{{'Alle Filter zurücksetzen ({0})'| translate:'facette.clearAll':getActiveFacetCount()}}</a>
 	<ul>
 		<li>
 			<cmi-viaduc-facette

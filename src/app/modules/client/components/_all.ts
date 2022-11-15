@@ -25,6 +25,7 @@ import {FavoriteListsComponent} from './favorite/lists/favoriteLists.component';
 import {FavoritesMigrationComponent} from './favorite/migration/favoritesMigration.component';
 import {TreeNodeComponent} from './treeNode/treeNode.component';
 import {OrderSectionComponent} from './detail/orderSection/orderSection.component';
+import {InfoSectionComponent} from './detail/infoSection/infoSection.component';
 import {DownloadSectionComponent} from './detail/downloadSection/downloadSection.component';
 import {SyntaxHelpComponent} from './search/syntaxHelp/syntaxHelp.component';
 import {UserAccountComponent} from './user/account/userAccount.component';
@@ -103,5 +104,6 @@ export const ALL_COMPONENTS = [
 	SearchSynonymeIconComponent,
 	EisichtCheckoutOrderDetailsStepComponent,
 	EngagementBubblesComponent,
-	UsageSectionComponent
+	UsageSectionComponent,
+	InfoSectionComponent
 ];

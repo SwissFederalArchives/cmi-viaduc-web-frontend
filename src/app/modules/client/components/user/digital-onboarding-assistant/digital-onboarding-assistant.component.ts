@@ -1,7 +1,12 @@
 import { UserService } from '../../../services';
-import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
-import { Countries, CountriesService, ClientContext } from '@cmi/viaduc-web-core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit, AfterViewInit, ElementRef} from '@angular/core';
+import {Countries, CountriesService, ClientContext, TranslationService, Country} from '@cmi/viaduc-web-core';
+import {ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {User} from '../../../model';
+import {OnboardingModel} from '../../../model/account/onboardingModel';
+import {DigitalOnboardingAssistantErrorMessages} from './digital-onboarding-assistant.ErrorMessages';
+import * as moment from 'moment/moment';
 
 @Component({
 	selector: 'cmi-digital-onboarding-assistant',
@@ -10,34 +15,33 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewInit {
 	public currentStep: number;
-	public hasPhoneWithSms: boolean = false;
-	public hasSmartphoneOrPc: boolean = false;
 	public userCanOnboard: boolean;
-	public swisscomLink: string;
+	public fidentityCanOnboard: boolean = true;
 	public passportCountries: Countries;
 	public idCountries: Countries;
-	public selectedId: string;
-	public selectedCountry: string;
+	public allCountries: Countries;
+	public myForm: FormGroup;
+	public errors: { [key: string]: string } = {};
+	private user: User;
+	public url: string;
+	public formStep1: FormGroup;
+	public formStep2: FormGroup;
+	private residenceCountries: Country[];
 
 	constructor(
 		private _context: ClientContext,
 		private _userService: UserService,
 		private _countriesService: CountriesService,
 		private _elemRef: ElementRef,
-		private _route: ActivatedRoute) { }
+		private _route: ActivatedRoute,
+		private _formBuilder: FormBuilder,
+		private _txt: TranslationService) {
+	}
 
 	public ngOnInit() {
+		this.errors = {};
 		this.currentStep = 1;
-		this._userService.GetOnboardingUri()
-			.then(link => this.swisscomLink = link);
-		const lang = this._context.language;
-		this._countriesService.loadCountries(lang)
-			.then(res => {
-				this.passportCountries = res.filter(country => country.canOnboardWithPassport);
-				this.idCountries = res.filter(country => country.canOnboardWithIdentityCard);
-		});
-		this.selectedId = '0';
-		this.selectedCountry = '0';
+		this.loadData();
 	}
 
 	public ngAfterViewInit(): void {
@@ -48,8 +52,8 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 		});
 	}
 
-	public setNextStep(nextStep: number) {
-		this.currentStep = nextStep;
+	public get languageDependantCountries(): any {
+		return this.residenceCountries;
 	}
 
 	public getClassForStep(step: number): string {
@@ -67,9 +71,9 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 		}
 
 		// Schritt 3 darf nur aktiv sein, wenn Schritt 2 erfolgreich
-		if (step === 3 && this.currentStep === step && this.hasPhoneWithSms) {
+		if (step === 3 && this.currentStep === step && this.formStep2.controls['hasSmartphoneOrPc'].value) {
 			retVal += 'active ';
-		} else if (step === 3 && !this.hasPhoneWithSms) {
+		} else if (step === 3 && this.currentStep === step && !this.formStep2.controls['hasSmartphoneOrPc'].value) {
 			retVal += 'disabled ';
 		}
 
@@ -82,7 +86,6 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 		if (step > this.currentStep) {
 			retVal += 'disabled ';
 		}
-
 		return retVal;
 	}
 
@@ -92,25 +95,20 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 	}
 
 	public wizardPreviousPage() {
-		// Wenn auf Schritt 2 oder 3 dann kann imer zurück gegangen werden
-		// Wenn Schritt 4 und Schrit 3 erfolgreich dann auch.
-		if (this.currentStep === 2 || this.currentStep === 3 ||
-			(this.currentStep === 4 && this.hasSmartphoneOrPc)) {
+		// Wenn Schritt 4 und Schritt 2 nicht erfolgreich, dann zurück zu 2
+		if (this.currentStep === 4 && !this.formStep2.controls['hasSmartphoneOrPc'].value) {
+			this.currentStep = 2;
+		}
+		// Wenn Schritt 4 und gar kein Schritt erfolgreich, dann zurück zu 1
+		if (this.currentStep === 4 && ! this.formStep2.controls['hasSmartphoneOrPc'].value && !this.isCountryValid()) {
+			this.currentStep = 1;
+		}
+
+		if ( this.currentStep === 3 || this.currentStep === 2) {
 			this.currentStep--;
 		}
 
-		// Wenn Schritt 4 und nur Schritt 2 erfolgreich, dann zurück zu 3
-		if (this.currentStep === 4 && !this.hasSmartphoneOrPc && this.hasPhoneWithSms) {
-			this.currentStep = 3;
-		}
-
-		// Wenn Schritt 4 und nur Schritt 1 erfolgreich, dann zurück zu 2
-		if (this.currentStep === 4 && !this.hasSmartphoneOrPc && !this.hasPhoneWithSms && this.isCountryValid()) {
-			this.currentStep = 2;
-		}
-
-		// Wenn Schritt 4 und gar kein Schritt erfolgreich, dann zurück zu 1
-		if (this.currentStep === 4 && !this.hasSmartphoneOrPc && !this.hasPhoneWithSms && !this.isCountryValid()) {
+		if (!this.fidentityCanOnboard && this.currentStep === 4) {
 			this.currentStep = 1;
 		}
 
@@ -129,16 +127,23 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 
 		// Zur letzten Seite, wenn kein gültiges Land vorhanden
 		if (nr === 2 && !this.isCountryValid()) {
-			nr = 4;
+			this.currentStep = 4;
+			return;
 		}
 
-		// Zur letzten Seite, wenn kein SMS fähiges Phone vorhanden
-		if (nr === 3 && !this.hasPhoneWithSms) {
-			nr = 4;
+		if (nr === 3 ) {
+			if ( !this.formStep2.controls['hasSmartphoneOrPc'].value) {
+				this.userCanOnboard = false;
+				this.currentStep = 4;
+				return;
+			}
 		}
 
-		// Nur wenn alle Voraussetzungen erüllt, kann der Benutzer digital onboarden
-		this.userCanOnboard = nr === 4 && this.isCountryValid() && this.hasPhoneWithSms && this.hasSmartphoneOrPc;
+		if (nr === 4 &&  this.formStep2.controls['hasSmartphoneOrPc'].value) {
+			this.currentStep = 3;
+			this.startOnboardingProcess(this.sendData());
+			return;
+		}
 
 		this.currentStep = nr;
 	}
@@ -150,8 +155,124 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 	public getUserMail(): string {
 		return 'benutzer-admin@bar.admin.ch';
 	}
+	private async loadData() {
+		const lang = this._context.language;
+		this._loadUser().then(async r => {
+			this.user = r;
+			this._countriesService.loadCountries(lang)
+				.then(async res => {
+					this.passportCountries = res.filter(country => country.canOnboardWithPassport && country.newLaenderCode !== null);
+					this.idCountries = res.filter(country => country.canOnboardWithIdentityCard && country.newLaenderCode !== null);
+					this.passportCountries.push(new Country('00', this._txt.get('account.digitalOnboarding.noPassportOfListedCountry'
+						, 'Ich besitze keinen Pass von einem der aufgeführten Länder'), false, false, '000'));
+					this.residenceCountries = res.filter(country => country.newLaenderCode !== null);
+					this.idCountries.push(new Country('00', this._txt.get('account.digitalOnboarding.noIdOfListedCountry'
+						, 'Ich besitze keine Identitätskarte von einem der aufgeführten Länder'), false, false, '000'));
+					this.allCountries = res;
+					this.InitForm();
+			});
+		});
+	}
+
+	private sendData(): OnboardingModel {
+		let userData = new OnboardingModel();
+		userData.dateOfBirth = this.myForm.controls['dateOfBirth'].value;
+		userData.email = this.myForm.controls['email'].value;
+		userData.name = this.myForm.controls['name'].value;
+		userData.firstname = this.myForm.controls['firstName'].value;
+		if (this.formStep1.controls['pass'].value !== '000') {
+			userData.idType = 'PASSPORT';
+			userData.nationality = this.formStep1.controls['pass'].value;
+		} else {
+			userData.idType = 'ID_CARD';
+			userData.nationality = this.formStep1.controls['idCard'].value;
+		}
+
+		return userData;
+	}
 
 	private isCountryValid(): boolean {
-		return this.selectedCountry !== '0' || this.selectedId !== '0';
+		if (this.formStep1) {
+			return this.formStep1.controls['pass'].value && this.formStep1.controls['pass'].value.length === 3  && this.formStep1.controls['pass'].value !== '000' ||
+				(this.formStep1.controls['idCard'] && this.formStep1.controls['idCard'].value.length === 3)  && this.formStep1.controls['idCard'].value !== '000';
+		}
+
+		return true;
+	}
+
+	private InitForm() {
+		if (this.allCountries) {
+			this.formStep1 = this._formBuilder.group({
+			pass: new FormControl('000', [Validators.required, Validators.maxLength(3)]),
+			idCard: new FormControl('000',  [Validators.required, Validators.maxLength(3)]),
+		});
+
+		let birth = null;
+		if (this.user.birthday) {
+			birth = moment(this.user.birthday).format('DD.MM.YYYY');
+		}
+
+		this.formStep2 = this._formBuilder.group({
+			hasSmartphoneOrPc: new FormControl(false, [Validators.required])
+		});
+		this.myForm = this._formBuilder.group({
+			userId: new FormControl(this.user.userExtId, Validators.required),
+			hasSmartphoneOrPc: new FormControl(false),
+			name: new FormControl({
+					value: this.user.familyName,
+					disabled: false
+				},
+				[Validators.required, Validators.maxLength(60)]),
+			firstName: new FormControl(this.user.firstName, [Validators.required, Validators.maxLength(60)]),
+			dateOfBirth: new FormControl(birth, [Validators.required, this.dateValidator.bind(this)]),
+			email: new FormControl(this.user.emailAddress, [Validators.required, Validators.maxLength(60)])
+		});
+		this.myForm.statusChanges.subscribe(() => this.updateErrorMessages());
+			// Erzeugt eine Warnung;
+			this.updateErrorMessages();
+		} else {
+			this.loadData();
+		}
+	}
+
+	private async startOnboardingProcess(model:OnboardingModel) {
+		await this._userService.startOnboardingProcess(model).then(async res => {
+			this.currentStep = 4,
+			this.url = res;
+			// Nur wenn alle Voraussetzungen erüllt, kann der Benutzer digital onboarden
+			this.userCanOnboard =  true;
+			this.fidentityCanOnboard = true;
+		},
+		err => {
+			this.userCanOnboard =  true;
+			this.fidentityCanOnboard =  false;
+			this.currentStep = 4;
+		});
+	}
+
+	private async _loadUser(): Promise<User> {
+		return await this._userService.getUser();
+	}
+
+	private updateErrorMessages() {
+		this.errors = {};
+		for (const message of DigitalOnboardingAssistantErrorMessages) {
+			const control = this.myForm.get(message.forControl);
+			if (control &&
+				control.invalid &&
+				control.errors[message.forValidator] &&
+				!this.errors[message.forControl]) {
+				this.errors[message.forControl] = this._txt.get(message.key, message.text);
+			}
+		}
+	}
+
+	private dateValidator(control: FormControl): any | null {
+		if (control.value !== null && moment(control.value, 'DD.MM.YYYY', true).isValid()) {
+			return null;
+		}
+
+		// return error object
+		return {'invalidDate': {'value': control.value}};
 	}
 }

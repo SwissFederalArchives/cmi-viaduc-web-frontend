@@ -21,6 +21,8 @@ import {OrderEinsichtCheckoutPageComponent} from './orderEinsichtCheckoutPage/or
 import {RegisterPageComponent} from './register/registerPage/registerPage.component';
 import {RegisterPageInfoComponent} from './register/registerPageInfo/registerPageInfo.component';
 import {ErrorSmartcardPageComponent} from './errorPage/errorSmartcardPage.component';
+import {CollectionOverviewComponent} from './collection/collection-overview/collection-overview.component';
+import {CollectionPageComponent} from './collection/collection-page/collection-page.component';
 
 export const ALL_COMPONENTS = [
 	RootComponent,
@@ -45,5 +47,7 @@ export const ALL_COMPONENTS = [
 	RegisterPageComponent,
 	RegisterPageInfoComponent,
 	ErrorSmartcardPageComponent,
-	AccountTypeInfoListComponent
+	AccountTypeInfoListComponent,
+	CollectionOverviewComponent,
+	CollectionPageComponent
 ];

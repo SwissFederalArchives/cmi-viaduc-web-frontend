@@ -39,31 +39,38 @@
     "country": "Land",
     "dateFieldFormat": "Das Format entspricht keinem gültigen Datum (tt.mm.jjjj).",
     "digitalOnboarding": {
-      "fullfillsRequirementsMessage": "Sie erfüllen die Voraussetzung für die Identifizierung mit Videoanruf. Für den Identifizierungsprozess verlassen Sie die Infrastruktur des Bundes. Der Videoanruf wird mit einer externen Firma geführt (Managed Service Digital Identification & Signing von Swisscom).",
-      "fullfillsRequirementsMessageError": "Sie erfüllen die Voraussetzungen für die Identifizierung per Videoanruf leider nicht. Bitte setzen Sie sich für die Identifizierung mit uns in Verbindung:",
+      "fullfillsRequirementsMessage": "Sie erfüllen die Voraussetzung für die Online-Identifikation über eine KI-Engine. Für den Identifizierungsprozess verlassen Sie die Infrastruktur des Bundes. Der Identifizierungsprozess per Online-Identifikation über eine KI-Engine wird mit einer externen Firma durchgeführt (Identitätsprüfung via Ausweisdokument und Liveness-Check der Fidentity AG).",
+      "fullfillsRequirementsMessageBold": "Sie werden kurz nach erfolgreichem Abschluss des Identifizierungsprozesses über Ihren neuen Status informiert. Sollte die Identifikation scheitern, wird eine/r unserer Mitarbeitenden Sie kontaktieren.",
+      "fullfillsRequirementsMessageError": "Sie erfüllen die Voraussetzungen für eine Online-Identifikation leider nicht. Bitte setzen Sie sich für die Identifikation mit uns in Verbindung:",
       "hasIdFromCountry": "Oder von welchem Land besitzen Sie eine gültige Identitätskarte?",
-      "hasMobilePhone": "Verfügen Sie über eine Mobiltelefonnummer und können Sie SMS empfangen?",
       "hasPassportFromCountry": "Von welchem Land besitzen Sie einen gültigen Pass?",
-      "hasSmartphoneOrComputer": "Haben Sie Zugang zu einem Smartphone oder einem Computer mit Kamera und Mikrofon?",
+      "hasSmartphoneOrComputer": "Verfügen Sie über ein Smartphone mit Kamera?",
       "nextStep": "Weiter",
       "no": "Nein",
       "noIdOfListedCountry": "Ich besitze keine Identitätskarte von einem der aufgeführten Länder",
       "noPassportOfListedCountry": "Ich besitze keinen Pass von einem der aufgeführten Länder",
       "passportAndIdNeeded": "Sie benötigen ein gültiges Identifizierungsmittel (Pass oder Identitätskarte).",
+      "start": "Starten",
+      "startInfo": "Mit «Starten» beginnen Sie den Identifizierungsprozess",
       "previousStep": "Zurück",
       "step1": "Schritt 1",
       "step2": "Schritt 2",
       "step3": "Schritt 3",
       "step4": "Schritt 4",
-      "videochatLink": "Videoanruf starten (Montag bis Samstag, 8 bis 22 Uhr MEZ)",
+			"userData": "Bitte prüfen Sie Ihre Benutzerdaten.",
+      "videochatLink": "Online-Identifikation fortsetzen (24/7)",
       "videoChatNotPossible": "Kein Videoanruf möglich",
+			"fidentityError": "Die Identifizierung ist fehlgeschlagen. Versuchen Sie es später noch einmal oder wenden Sie sich an",
       "videoChatPossible": "Videoanruf möglich",
-      "wizardInfo": "Um den Status «Identifizierte/r Benutzer/in» zu erhalten, müssen Sie ein Gespräch per Videoanruf führen. Beantworten Sie dazu bitte vorgängig folgende Fragen:",
+      "wizardInfo": "Beantworten Sie bitte folgende Fragen, damit der Identifizierungsprozess vorbereitet werden kann.",
       "wizardTitle": "Status «Identifizierte/r Benutzer/in» beantragen",
       "yes": "Ja"
     },
     "email": "E-Mail",
     "errorPhoneNumber": "Telefonnummern können mit einem \"+\" beginnen, Zahlen, Leerzeichen und \\\"-\\\" enthalten und müssen zwischen 6 und 20 Zeichen lang sein",
+		"title": "Anrede",
+		"masculineForm": "Herr",
+		"femaleForm": "Frau",
     "familyName": "Name",
     "firstName": "Vorname",
     "headerAnonymousUser": "Anonym",
@@ -232,7 +239,7 @@
   "checkoutSubmittedStep": {
     "cartText": "Sie haben noch offene Bestellungen im <a href=\"#/{0}\">Bestellkorb</a>.",
     "checkStatusText": "Den Status Ihrer Bestellung können Sie in Ihrem <a href=\"#/{0}\">Benutzerkonto</a> verfolgen.",
-    "disclaimerText": "Der Videoanruf wird aufgezeichnet, nach Abschluss der Identifizierung aber wieder gelöscht. Das Bundesarchiv speichert ausschliesslich die Kopie des Ausweises, die Fotografie und tabellarische Benutzerdaten. Sie haben jederzeit das Recht, Auskunft über Ihre gespeicherten Daten zu verlangen (Art. 8 DSG).",
+    "disclaimerText": "Der Identifizierungsprozess per Online-Identifikation über eine KI-Engine wird aufgezeichnet, nach Abschluss der Identifikation aber wieder gelöscht. Das Bundesarchiv speichert ausschliesslich die Kopie des Ausweises, die Fotografie und tabellarische Benutzerdaten. Sie haben jederzeit das Recht, Auskunft über Ihre gespeicherten Daten zu verlangen (Art. 8 DSG).",
     "thxTextDigi": "Vielen Dank für Ihren Auftrag. Sie erhalten eine E-Mail, sobald die Unterlagen digitalisiert worden sind. Die Bearbeitung Ihres Auftrags dauert in der Regel zwei Wochen.",
     "thxTextEischtisgesuch": "Wir werden Ihr Gesuch an die zuständige Stelle weiterleiten. Mit einem Entscheid können Sie in der Regel innerhalb von vier bis sechs Wochen rechnen.",
     "thxTextEischtisgesuchAnmeldenUndIndentifizieren": "Falls Ihr Gesuch bewilligt wird, müssen Sie sich identifizieren, um die Unterlagen zu konsultieren (siehe <a href=\"{0}\">Anmelden und Identifizieren</a>).",
@@ -244,6 +251,14 @@
     "success": "Erfolgreich in die Zwischenablage kopiert!",
     "title": "Zwischenablage"
   },
+	"collections": {
+		"continue": "weiter",
+		"header": "Sammlungen",
+		"notFound": "Sammlung ist nicht in der ausgewählten Sprache vorhanden",
+		"containsHeader": "Enthält",
+		"notNumber": "Die Url der Sammlung ist falsch",
+		"openDetails": "Details öffnen"
+	},
   "columnpicker": {
     "einAusblenden": "Spalten ein/ausblenden",
     "hiddenColumns": "Versteckte Spalten",
@@ -259,7 +274,7 @@
   "detail": {
     "notFound": "Die gewünschte Seite kann nicht angezeigt werden",
     "notFoundMessage": "Womöglich verfügen Sie nicht über die nötige Berechtigung, um die Seite aufzurufen (siehe <a href=\"#{0}\">Anmelden und Identifizieren</a>).</br></br>",
-    "notFoundMessage2": "Bei Fragen zur Zugänglichkeit der Unterlagen im Bundesarchiv wenden Sie sich bitte an die Beratung oder per E-Mail an <a href=\"mailto:bundesarchiv@bar.admin.ch\">bundesarchiv@bar.admin.ch</a>."
+    "notFoundMessage2": "Bei Fragen zur Zugänglichkeit der Unterlagen im Bundesarchiv wenden Sie sich bitte an die Beratung oder per E-Mail an <a href=\"mailto:info@bar.admin.ch\">info@bar.admin.ch</a>."
   },
   "detailHierarchy": {
     "activePosition": "Aktuell angezeigte Verzeichnungseinheit"
@@ -271,7 +286,8 @@
     "pageTitle": "Detailansicht"
   },
   "detailSection": {
-    "internalField": "Feld nur für BAR Benutzer sichtbar"
+    "internalField": "Feld nur für BAR Benutzer sichtbar",
+    "anonymisiert": "anonymisiert"
   },
   "digitalisierungskategorie": {
     "amt": "Amt",
@@ -623,6 +639,7 @@
   },
   "main": {
     "errorMandatoryField": "Dieses Feld muss ausgefüllt werden.",
+    "errorMaxLength60": "Text darf nicht länger als 60 Zeichen sein.",
     "errorMandatoryMailField": "Dieses Feld muss eine gültige E-Mail-Adresse enthalten",
     "errorMobil": "Mobilnummern können mit einem \"+\" beginnen, Zahlen, Leerzeichen und \"-\" enthalten und müssen zwischen 6 und 20 Zeichen lang sein",
     "errorPhone": "Telefonnummern können mit einem \"+\" beginnen, Zahlen, Leerzeichen und \"-\" enthalten und müssen zwischen 6 und 20 Zeichen lang sein"
@@ -650,7 +667,6 @@
         "kategorieDia": "Kat. Automatisierung",
         "land": "Land",
         "nachfolgerbehoerden": "Nachfolgerbehörde(n)",
-        "nichtOnlineRecherchierbareDossiers": "Nicht online recherchierbare Dossiers",
         "publikationsrechte": "Publikationsrechte",
         "signaturArchivplan": "Signatur Archivplan",
         "thema": "Thema",
@@ -848,6 +864,7 @@
   "orderOverviewPage": {
     "closeModal": "Schliessen",
     "itemsCount": "Anzahl: {0}",
+		"itemsCountFiltered": "Anzahl: {0} von {1}",
     "columnItems": {
       "abbruchgrundDisplay": "Abbruchgrund",
       "artDerArbeitDisplay": "Art der Arbeit",
@@ -900,7 +917,7 @@
   "registerInfo": {
     "cancelRegister": "Abbrechen",
     "chLoginAltText": "Logo des CH-Logins",
-    "chLoginException": "Ausnahme: Mitarbeitende der Bundesverwaltung müssen sich via «Kerberos» oder «Smartcard» registrieren.",
+    "chLoginException": "Ausnahme: Mitarbeitende der Bundesverwaltung müssen sich via «FED-LOGIN» registrieren.",
     "chooseCHLogin": "Wählen Sie bitte im nächsten Schritt die Option «CH-LOGIN».",
     "info1": "Sie können den Online-Zugang anonym, als registrierte oder als identifizierte Person nutzen. Je nach Benutzerstatus stehen Ihnen unterschiedliche Funktionen zur Verfügung.",
     "infoBox": "Info-Box",
@@ -1264,21 +1281,25 @@
     "noHitsInfo": {
       "header": "Es kann verschiedene Gründe haben, warum Ihre Suche keine Treffer ergeben hat:",
       "hinweis": "Hinweis",
-      "reason1": "Metadaten, die Personennamen und besonders schützenswerte Personendaten oder Persönlichkeitsprofile enthalten, darf das Bundesarchiv erst nach Ablauf der Schutzfrist publizieren. Diese Metadaten sind nur im Lesesaal einsehbar.",
+      "reason1": "Metadaten, die Personennamen und besonders schützenswerte Personendaten oder Persönlichkeitsprofile enthalten, darf das Bundesarchiv erst nach Ablauf der Schutzfrist publizieren.",
       "reason2": "Die gesuchten Unterlagen sind noch nicht erschlossen und im System erfasst.",
       "reason3": "Tippfehler oder unbekannte Suchbegriffe: Bitte prüfen Sie die Schreibweise oder suchen Sie nach anderen Begriffen.",
-      "reason4": "Es gibt im Bundesarchiv tatsächlich keine Unterlagen zu Ihrem Thema. Weitere Archive finden Sie in der <a href=\"{0}\">Datenbank Archivadressen der Schweiz</a> oder auf dem <a href=\"{1}\">Archivportal Europa</a>.",
+      "reason4": "Es gibt im Bundesarchiv tatsächlich keine Unterlagen zu Ihrem Thema. Weitere Archive finden Sie in der Datenbank <a href=\"{0}\">Archivadressen der Schweiz</a>, dem Rechercheportal <a href=\"{1}\">archivesonline.org</a> oder auf dem <a href=\"{2}\">Archivportal Europa</a>.",
       "showHinweis": "Diesen Hinweis zukünftig nicht mehr anzeigen"
     },
     "noHitsTitle": "Keine Treffer zu Ihrem Suchbegriff",
     "noHitsTitleForQuery": "Es wurden keine mit Ihrer Suchanfrage - {0} - übereinstimmenden Archivalien gefunden.",
     "oe3RoleRequired": "Um Unterlagen mit einer Einsichtsbewilligung bestellen zu können, ist der Benutzerstatus «identifizierter Benutzer» notwendig. Um zum Identifizierungsprozess zu gelangen, klicken Sie bitte auf diese Meldung.",
     "oe3RoleRequiredTitle": "Bestellung nicht möglich",
-    "reason4": "Es gibt im Bundesarchiv tatsächlich keine Unterlagen zu Ihrem Thema. Weitere Archive finden Sie in der <a href=\"{0}\">Datenbank Archivadressen der Schweiz</a> oder auf dem <a href=\"{1}\">Archivportal Europa</a>.",
     "relevance": "Relevanz",
     "signatur": "Signatur",
-    "zugangTooltip": "Zugänglichkeit gemäss BGA"
+    "zugangTooltip": "Zugänglichkeit gemäss BGA",
+		"anonymToolTip":"Für nicht berechtigte NutzerInnen anonymisiert."
   },
+	"infoSection": {
+			"noPermission":"Diese Daten wurden aus Datenschutzgründen anonymisiert (<a href='https://www.admin.ch/ch/d/sr/c152_11.html' target='_blank' rel='noopener noreferrer' >Art. 12.3 VBGA</a>).",
+			"barUser":"Für NutzerInnen ohne entsprechende Berechtigung werden diese Daten in anonymisierter Form angezeigt."
+	},
   "simpleHitList": {
     "sortierung": "Sortierung"
   },
@@ -1381,5 +1402,8 @@
 	  "close": "Schliessen",
 	  "yes": "Ja",
 	  "no": "Nein"
-	}
+	},
+  "anonymized": {
+    "Tooltip": "Aus Datenschutzgründen anonymisiert."
+  }
 }

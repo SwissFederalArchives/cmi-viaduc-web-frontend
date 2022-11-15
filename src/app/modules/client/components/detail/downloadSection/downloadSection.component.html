@@ -32,7 +32,7 @@
 				</div>
 				<div class="col-md-3 col-sm-6 col-xs-12 no-bottom-margin button-container download-box">
 					<a class="btn" (click)="downloadVeToken()" tabindex="0" (keydown.enter)="downloadVeToken()">
-						<i class="glyphicon glyphicon-download-alt"></i>&nbsp;
+						<i class="glyphicon glyphicon-download-alt" aria-hidden="true" ></i>&nbsp;
 						<span>{{ 'Download' | translate:'file.download' }}</span>
 						<span class="text-dimmed">{{' (ZIP, ' + (assetInfo.fileSizeInBytes | measure:'FileSize') + ')'}}</span>
 					</a>
@@ -96,11 +96,11 @@
 
 				<div class="download-cancel-box">
 					<a class="btn" (click)="cancelAction()">
-						<i class="glyphicon glyphicon-remove"></i>&nbsp;
+						<i class="glyphicon glyphicon-remove" aria-hidden="true"></i>&nbsp;
 						<span>{{ 'Abbrechen' | translate:'file.cancel' }}</span>
 					</a>
 					<a class="btn" (click)="proceedDownloadToken($event)">
-						<i [ngClass]="wasDownloadClicked() ? 'glyphicon glyphicon-download-alt' : 'glyphicon glyphicon-sort' "></i>&nbsp;
+						<i [ngClass]="wasDownloadClicked() ? 'glyphicon glyphicon-download-alt' : 'glyphicon glyphicon-sort' " aria-hidden="true"></i>&nbsp;
 						<span> {{ wasDownloadClicked() ? ('Jetzt herunterladen' | translate:'file.downloadNow') : (('Jetzt einsehen' | translate:'file.openNow')) }}</span>
 					</a>
 				</div>

@@ -39,31 +39,38 @@
     "country": "Paese",
     "dateFieldFormat": "Il formato della data non è valido (gg.mm.aaaa).",
     "digitalOnboarding": {
-      "fullfillsRequirementsMessage": "Soddisfi i requisiti per l'identificazione tramite videochiamata. Per il processo di identificazione devi uscire dall'infrastruttura della Confederazione. La videochiamata è condotta con una ditta esterna (Managed Service Digital Identification & Signing di Swisscom).",
-      "fullfillsRequirementsMessageError": "Non soddisfi i requisiti per l'identificazione tramite videochiamata. Mettiti in contatto con noi per l'identificazione:",
+      "fullfillsRequirementsMessage": "Soddisfi i requisiti per l’identificazione tramite verifica in diretta con l’ausilio dell’intelligenza artificiale. Per la procedura di identificazione devi uscire dall’infrastruttura della Confederazione. La procedura di identificazione tramite verifica in diretta con l’ausilio dell’intelligenza artificiale è gestita da una ditta esterna («Identity verification via document scan and liveness check» di fidentity AG).",
+      "fullfillsRequirementsMessageBold": " Sarai informato del cambiamento di statuto poco dopo che la procedura di identificazione si sarà conclusa con successo. Nel caso l’identificazione non dovesse riuscire, ti contatterà uno dei nostri collaboratori.",
+      "fullfillsRequirementsMessageError": "Non soddisfi i requisiti per l'identificazione tramite verifica in diretta con l’ausilio dell’intelligenza artificiale. Mettiti in contatto con noi per l’identificazione:",
       "hasIdFromCountry": "O di quale paese possiedi una carta d'identità valida?",
-      "hasMobilePhone": "Disponi di un numero di cellulare e puoi ricevere SMS?",
       "hasPassportFromCountry": "Di quale paese possiedi un passaporto valido?",
-      "hasSmartphoneOrComputer": "Hai accesso a uno smartphone o a un computer muniti di videocamera e microfono?",
+      "hasSmartphoneOrComputer": "Hai accesso a uno smartphone dotato di videocamera?",
       "nextStep": "Continua",
       "no": "No",
       "noIdOfListedCountry": "Non possiedo una carta d'identità di nessuno dei paesi elencati",
       "noPassportOfListedCountry": "Non possiedo un passaporto di nessuno dei paesi elencati",
       "passportAndIdNeeded": "Ti serve un documento di identificazione valido (passaporto o carta d'indentità).",
       "previousStep": "Torna indietro",
+      "start": "Avvia",
+      "startInfo": "Premere «Avvia» per iniziare il processo di identificazione.",
       "step1": "Passo 1",
       "step2": "Passo 2",
       "step3": "Passo 3",
       "step4": "Passo 4",
-      "videochatLink": "Avvia la videochiamata (dal lunedì al sabato, dalle 8 alle 22 CET)",
+			"userData": "Controlla i tuoi dati utente.",
+      "videochatLink": "Continua l'identificazione online (24 ore su 24, 7 giorni su 7)",
       "videoChatNotPossible": "Non è possibile effettuare la videochiamata",
+			"fidentityError": "L'identificazione è fallita. Riprovi più tardi o contatti",
       "videoChatPossible": "È possibile effettuare la videochiamata",
-      "wizardInfo": "Per ottenere lo stato di «utente identificato», devi sostenere un colloquio mediante videochiamata. Prima però devi rispondere alle seguenti domande:",
+      "wizardInfo": "Ti preghiamo di rispondere alle seguenti domande, in modo da poter preparare il processo di identificazione.",
       "wizardTitle": "Richiedere lo stato di «utente identificato»",
       "yes": "Sì"
     },
     "email": "E-mail",
     "errorPhoneNumber": "I numeri di telefono possono iniziare con \"+\", contenere cifre, spazi vuoti e \\\"-\\\" e devono avere da 6 a 20 segni",
+		"title": "Saluto",
+		"masculineForm": "Il Sig.",
+		"femaleForm": "Signora",
     "familyName": "Cognome",
     "firstName": "Nome",
     "headerAnonymousUser": "Anonimo",
@@ -235,7 +242,7 @@
   "checkoutSubmittedStep": {
     "cartText": "Ci sono ancora ordinazioni non finalizzate nel <a href=\"#/{0}\">carrello</a>.",
     "checkStatusText": "Puoi seguire lo stato dell'ordinazione nel tuo <a href=\"#/{0}\">conto utente</a>.",
-    "disclaimerText": "La videochiamata viene registrata, ma sarà cancellata una volta conclusa l'identificazione. L'Archivio federale conserva soltanto la copia del documento d'identificazione, la fotografia e i dati utente in forma tabellare. Hai il diritto di chiedere in ogni momento informazioni sui  dati conservati che ti concernono (art. 8 LPD).",
+    "disclaimerText": "La procedura di identificazione tramite verifica in diretta con l’ausilio intelligenza artificiale viene registrata, ma sarà cancellata una volta conclusa l’identificazione. L’Archivio federale conserva soltanto la copia del documento d’identificazione, la fotografia e i dati utente in forma tabellare. Hai il diritto di chiedere in ogni momento informazioni sui dati conservati che ti concernono (art. 8 LPD).",
     "thxTextDigi": "Abbiamo ricevuto la Sua ordinazione. Riceverà una mail non appena i documenti saranno stati digitalizzati. La digitalizzazione del primo dossier richiede di norma due settimane.",
     "thxTextEischtisgesuch": "Trasmetteremo la tua domanda al servizio competente. Dovresti ricevere una risposta tra 4-6 settimane.",
     "thxTextEischtisgesuchAnmeldenUndIndentifizieren": "Se la domanda sarà approvata, dovrai identificarti per poter consultare i documenti (v. <a href=\"{0}\">Registrazione e identificazione</a>).",
@@ -247,6 +254,14 @@
     "success": "La copia negli appunti è riuscita!",
     "title": "Appunti"
   },
+	"collections": {
+		"continue": "continua",
+		"header": "Collezioni",
+		"notFound": "La collezione non è disponibile nella lingua selezionata",
+		"containsHeader": "Contiene",
+		"notNumber": "L'url della collezione è sbagliato",
+		"openDetails": "Aprire i dettagli"
+	},
   "columnpicker": {
     "einAusblenden": "Mostra/nascondi colonne",
     "hiddenColumns": "Colonne nascoste",
@@ -262,7 +277,7 @@
   "detail": {
     "notFound": "La pagina richiesta non può essere visualizzata",
     "notFoundMessage": "Forse non disponi delle autorizzazioni necessarie. Verifica i tuoi diritti nel <a href=\"#{0}\">conto utente.</a></br></br>",
-    "notFoundMessage2": "Per informazioni sull'accessibilità ai documenti dell'Archivio federale rivolgiti al servizio di consulenza o invia una mail a <a href=\"mailto:bundesarchiv@bar.admin.ch\">bundesarchiv@bar.admin.ch</a>",
+    "notFoundMessage2": "Per informazioni sull'accessibilità ai documenti dell'Archivio federale rivolgiti al servizio di consulenza o invia una mail a <a href=\"mailto:info@bar.admin.ch\">info@bar.admin.ch</a>",
     "notFoundMessageNotOe1": "Forse non disponi dell'autorizzazione necessaria per visualizzare la pagina. Verifica i tuoi diritti nel <a href=\"#{0}\">conto utente</a>.</br></br>",
     "notFoundMessageOe1": "Forse non disponi delle autorizzazioni necessarie per visualizzare la pagina (v. <a href=\"#{0}\">Registrazione e identificazione</a>).</br></br>"
   },
@@ -276,7 +291,8 @@
     "pageTitle": "Visualizzazione dei dettagli"
   },
   "detailSection": {
-    "internalField": "Campo visibile soltanto agli utenti AFS"
+    "internalField": "Campo visibile soltanto agli utenti AFS",
+    "anonymisiert": "anonimo"
   },
   "digitalisierungskategorie": {
     "amt": "Amt",
@@ -631,6 +647,7 @@
   },
   "main": {
     "errorMandatoryField": "Questo è un campo obbligatorio.",
+    "errorMaxLength60": "Il testo non deve essere più lungo di 60 caratteri.",
     "errorMandatoryMailField": "Questo campo deve contenere un indirizzo e-mail valido",
     "errorMobil": "I numeri di cellulare possono iniziare con \"+\", contenere cifre, spazi vuoti e \\\"-\\\" e devono avere da 6 a 20 segni",
     "errorPhone": "I numeri di telefono possono iniziare con \"+\", contenere cifre, spazi vuoti e \\\"-\\\" e devono avere da 6 a 20 segni"
@@ -658,7 +675,6 @@
         "kategorieDia": "Cat. Automazione",
         "land": "Paese",
         "nachfolgerbehoerden": "Autorità successiva(e)",
-        "nichtOnlineRecherchierbareDossiers": "Dossier non reperibili on-line",
         "publikationsrechte": "Diritti di pubblicazione",
         "signaturArchivplan": "Segnatura nel piano d'archivio",
         "thema": "Tema",
@@ -857,6 +873,7 @@
   "orderOverviewPage": {
     "closeModal": "Chiudi",
     "itemsCount": "Numero: {0}",
+		"itemsCountFiltered": "Numero: {0} di {1}",
     "columnItems": {
       "abbruchgrundDisplay": "Motivo dell'interruzione",
       "artDerArbeitDisplay": "Genere di lavoro",
@@ -909,7 +926,7 @@
   "registerInfo": {
     "cancelRegister": "Interrompi",
     "chLoginAltText": "Logo di CH-Login",
-    "chLoginException": "Eccezione: i dipendenti dell'Amministrazione federale devono registrarsi mediante «Kerberos» o «Smartcard».",
+    "chLoginException": "Eccezione: i dipendenti dell'Amministrazione federale devono registrarsi mediante «FED-LOGIN».",
     "chooseCHLogin": "Seleziona in seguito l'opzione «CH-LOGIN».",
     "info1": "Puoi utilizzare l'accesso on-line come utente anonimo, registrato o identificato. A seconda dello statuto di utente sono disponibili altre funzioni.",
     "infoBox": "Infobox",
@@ -1273,28 +1290,32 @@
     "loginToUseBasketText": "Effettua l'accesso per poter utilizzare il carrello.",
     "loginToUsebasketTitle": "Accedi adesso",
     "noHitsInfo": {
-      "header": "Ci possono essere diversi motivi perché la tua ricerca non ha dato risultati:",
+      "header": "I motivi perché la tua ricerca non ha dato risultati possono essere molteplici:",
       "hinweis": "Messaggio",
-      "reason1": "Forse non disponi della autorizzazione anecessaria. Verifica i tuoi diritti nel conto utente.",
+      "reason1": "L'Archivio federale può pubblicare metadati contenenti nomi di persone e dati personali o profili della personalità che richiedono una protezione speciale solo dopo la scadenza del periodo di protezione.",
       "reason2": "I documenti cercati non sono ancora disponibili e registrati nel sistema.",
-      "reason3": "Errore di battitura e termini di ricerca ignoti: controlla l'ortografia o effettua una ricerca con altri termini.",
-      "reason4": "Nell'Archivio federale non ci sono documenti sul tema scelto. Trovi altri archivi nella banca dati degli indirizzi degli archivi svizzeri o nel Portale europeo degli archivi.",
+      "reason3": "Errori di battitura o termini di ricerca ignoti: controlla l'ortografia o effettua una ricerca con altri termini.",
+      "reason4": "Nell'Archivio federale non ci sono documenti sul tema scelto. Per trovare altri archivi consulta la banca dati degli <a href=\"{0}\">indirizzi degli archivi svizzeri</a>, il portale di ricerca <a href=\"{1}\">archivesonline.org</a> o ancora l'<a href=\"{2}\">Archives Portal Europe</a>.",
       "showHinweis": "Non mostrare più questo messaggio"
     },
     "noHitsTitle": "Nessun risultato per questo termine",
     "noHitsTitleForQuery": "Non è stato trovato nessun documento archiviato che corrisponde alla tua ricerca - {0} -.",
     "oe3RoleRequired": "Per poter ordinare documenti con un'autorizzazione alla consultazione è richiesto lo stato di «utente identificato». Per accedere al processo di identificazione clicca sul presente messaggio.",
     "oe3RoleRequiredTitle": "Ordinazione non possibile",
-    "reason4": "Nell'Archivio federale non ci sono documenti sul tema scelto. Trovi altri archivi nella <a href=\"{0}\">banca dati degli indirizzi degli archivi svizzeri</a> o nel <a href=\"{1}\">Portale europeo degli archivi</a>.",
     "relevance": "Rilevanza",
     "signatur": "Segnatura",
     "zugangTooltip": "Accessibilità secondo la LAr",
     "reason1Oe1": "Forse non disponi dell'autorizzazione necessaria (v. <a href=\"#{0}\">Registrazione e identificazione</a>).",
-    "reason1Oe2": "Forse non disponi dell'autorizzazione necessaria. Verifica i tuoi diritti nel <a href=\"#{0}\">conto utente</a>."
+    "reason1Oe2": "Forse non disponi dell'autorizzazione necessaria. Verifica i tuoi diritti nel <a href=\"#{0}\">conto utente</a>.",
+		"anonymToolTip":"Anonimizzato per gli utenti non autorizzati."
   },
   "simpleHitList": {
     "sortierung": "Ordina per"
   },
+	"infoSection": {
+		"noPermission":"Questi dati sono stati resi anonimi per motivi di protezione dei dati (<a href='https://www.admin.ch/ch/i/sr/c152_11.html' target='_blank' rel='noopener noreferrer' >art. 12.3 OLAr</a>).",
+    "barUser":"Per gli utenti senza l'autorizzazione corrispondente, questi dati vengono visualizzati in forma anonima."
+	},
   "simpleSearchPageComponent": {
     "pageTitle": "Ricerca semplice"
   },
@@ -1394,5 +1415,8 @@
 	  "close": "Chiudi",
 	  "yes": "Sì",
 	  "no": "No"
-	}
+	},
+  "anonymized": {
+    "Tooltip": "Anonimizzato per ragioni di protezione dei dati."
+  }
 }

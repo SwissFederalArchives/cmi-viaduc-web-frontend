@@ -8,7 +8,7 @@
 		<ul class="controls left">
 			<li class="separator" [ngClass]="{ 'disabled': !canGoPrev }">
 				<a tabindex="0" [attr.aria-disabled]="canGoPrev ? '': 'true'" (click)="goToFirst()" (keyup.enter)="goToFirst()">
-					<span class="icon icon--step-backward"  tooltip="{{ 'Erster Treffer' | translate:'search.browser.first' }}">
+					<span class="icon icon--step-backward" role="img" aria-hidden="true" tooltip="{{ 'Erster Treffer' | translate:'search.browser.first' }}">
 						<span class="sr-only">
 							{{ 'Erster Treffer' | translate:'search.browser.first' }}
 						</span>
@@ -17,7 +17,7 @@
 			</li>
 			<li class="separator" [ngClass]="{ 'disabled': !canGoPrev }" >
 				<a tabindex="0" [attr.aria-disabled]="canGoPrev ? '': 'true'" (click)="goToPrevious()" (keyup.enter)="goToPrevious()">
-					<span class="icon icon--left"  tooltip="{{ 'Vorheriger Treffer' | translate:'search.browser.previous' }}">
+					<span class="icon icon--left" role="img" aria-hidden="true" tooltip="{{ 'Vorheriger Treffer' | translate:'search.browser.previous' }}">
 						<span class="sr-only">
 							{{ 'Vorheriger Treffer' | translate:'search.browser.previous' }}
 						</span>
@@ -29,7 +29,7 @@
 		<ul class="controls right">
 			<li class="separator-left" [ngClass]="{ 'disabled': !canGoNext }">
 				<a tabindex="0" [attr.aria-disabled]="canGoNext ? '': 'true'" (click)="goToNext()" (keyup.enter)="goToNext()">
-					<span class="icon icon--right"  tooltip="{{ 'Nächster Treffer' | translate:'search.browser.next' }}">
+					<span class="icon icon--right" role="img" aria-hidden="true" tooltip="{{ 'Nächster Treffer' | translate:'search.browser.next' }}">
 						<span class="sr-only">
 							{{ 'Nächster Treffer' | translate:'search.browser.next' }}
 						</span>
@@ -38,7 +38,7 @@
 			</li>
 			<li class="separator-left" [ngClass]="{ 'disabled': !canGoToLast }">
 				<a tabindex="0" [attr.aria-disabled]="canGoToLast ? '': 'true'" (click)="goToLast()" (keyup.enter)="goToLast()">
-					<span class="icon icon--step-forward"  tooltip="{{ 'Letzter Treffer' | translate:'search.browser.last' }}">
+					<span class="icon icon--step-forward" role="img" aria-hidden="true" tooltip="{{ 'Letzter Treffer' | translate:'search.browser.last' }}">
 						<span class="sr-only">
 							{{ 'Letzter Treffer' | translate:'search.browser.last' }}
 						</span>

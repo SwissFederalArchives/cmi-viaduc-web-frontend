@@ -12,10 +12,10 @@
 	<tbody>
 	<tr *ngFor="let item of items">
 		<th class="text-left">
-			<a *ngIf="item.veId" href="#{{ '/de/archiv/einheit/' + item.veId| localizeLink}}">{{item.referenceCode}}</a>			
+			<a *ngIf="item.veId" href="#{{ '/de/archiv/einheit/' + item.veId| localizeLink}}">{{item.referenceCode}}</a>
 			<ng-container *ngIf="!item.veId">{{item.referenceCode}}</ng-container>
 		</th>
-		<td class="text-left shc-title-column">{{item.title}}</td>
+		<td class="text-left shc-title-column" [innerHtml]='item.title|anonymizedHtml'></td>
 		<td class="text-left">{{item.period}}</td>
 		<td>
 			<label class="sr-only" for="commentInput">{{'Bemerkung zum Dossier' | translate:'shoppingCartItemList.commentDossier'}}</label>
@@ -23,13 +23,14 @@
 				   placeholder="{{'Bemerkung zum Dossier' | translate:'shoppingCartItemList.commentDossier'}}">
 		</td>
 		<td class="text-center">
-			<a tabindex="0" class="btn btn-link" (click)="removeFromCart(item)" (keyup.enter)="removeFromCart(item)" data-toggle="tooltip"  tooltip="{{'Klicken, um die Bestellposition zu entfernen' | translate:'shoppingCartItemList.removeOrderItemTooltip'}}">
-				<span class="icon icon--close"></span>
+			<a tabindex="0" class="btn btn-link" (click)="removeFromCart(item)" (keyup.enter)="removeFromCart(item)" data-toggle="tooltip"
+			   tooltip="{{'Klicken, um die Bestellposition zu entfernen' | translate:'shoppingCartItemList.removeOrderItemTooltip'}}" >
+				<span class="icon icon--close" role="img" aria-hidden="true"></span>
 			</a>
 		</td>
 		<td *ngIf="einsichtsGesuche" class="shc-bewilligung-vorhande-column">
-			<a class="btn btn-link" (click)="showModal(item)" data-toggle="tooltip"  tooltip="{{'Klicken, um die vorhandene Bewilligung zu hinterlegen' | translate:'shoppingCartItemList.bewilligungVorhandenTooltip'}}">
-				<span class="glyphicon glyphicon-unlock"></span>&nbsp;<span>{{'Bewilligung bereits vorhanden' | translate:'shoppingCartItemList.bewilligungVorhandenTitle'}}</span>
+			<a class="btn btn-link" (click)="showModal(item)" role="button" data-toggle="tooltip"  tooltip="{{'Klicken, um die vorhandene Bewilligung zu hinterlegen' | translate:'shoppingCartItemList.bewilligungVorhandenTooltip'}}">
+				<i class="glyphicon glyphicon-unlock" role="img" aria-hidden="true"></i>&nbsp;<span>{{'Bewilligung bereits vorhanden' | translate:'shoppingCartItemList.bewilligungVorhandenTitle'}}</span>
 				<span class="sr-only">{{'Bewilligung hinterlegen Button' | translate:'shoppingCartItemList.sRBewilligungHinterlegenButton'}}</span>
 			</a>
 		</td>
@@ -53,7 +54,7 @@
 			<tbody>
 			<tr *ngIf="chosenBewilligungsItem">
 				<th class="text-left">{{chosenBewilligungsItem.referenceCode}}</th>
-				<td class="text-left shc-title-column">{{chosenBewilligungsItem.title}}</td>
+				<td class="text-left shc-title-column" [innerHtml]='chosenBewilligungsItem.title|anonymizedHtml'></td>
 				<td class="text-left">{{chosenBewilligungsItem.period}}</td>
 			</tr>
 			</tbody>

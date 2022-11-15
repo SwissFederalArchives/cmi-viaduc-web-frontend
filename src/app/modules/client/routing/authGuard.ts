@@ -1,10 +1,10 @@
-import {of as observableOf, Observable} from 'rxjs';
+import {of as observableOf, Observable, of} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot} from '@angular/router';
 import {DefaultContextGuard} from './defaultContextGuard';
 import {ContextService, AuthenticationService} from '../services';
 import {ClientContext, PreloadService} from '@cmi/viaduc-web-core';
-import {flatMap, skip} from 'rxjs/operators';
+import {mergeMap, skip} from 'rxjs/operators';
 
 @Injectable()
 export class AuthGuard extends DefaultContextGuard {
@@ -22,18 +22,25 @@ export class AuthGuard extends DefaultContextGuard {
 			return can;
 		}
 
-		if (this._preload.isPreloading || !this._preload.isPreloaded) {
-			return this._preload.preloaded.pipe(flatMap(() => {
-				return this._waitForSignedIn().pipe(flatMap(res => {
-					if (!res) {
-						return observableOf(false);
-					}
+		return this._auth.activateSession().pipe(
+			mergeMap(isAuthenticated => {
+				if (isAuthenticated) {
+					return of(true);
+				}
 
-					return can;
-				}));
+				if (this._preload.isPreloading || !this._preload.isPreloaded) {
+					return this._preload.preloaded.pipe(mergeMap(() => {
+						return this._waitForSignedIn().pipe(mergeMap(res => {
+							if (!res) {
+								return of(false);
+							}
+
+							return can;
+						}));
+					}));
+				}
+				return this._waitForSignedIn();
 			}));
-		}
-		return this._waitForSignedIn();
 	}
 
 	private _waitForSignedIn(): Observable<boolean> {

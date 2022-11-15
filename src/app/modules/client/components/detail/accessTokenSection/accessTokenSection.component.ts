@@ -38,4 +38,5 @@ export class PermissionInfo {
 	public metadataAccessToken: string[];
 	public primaryDataFulltextAccessTokens: string[];
 	public primaryDataDownloadAccessTokens: string[];
+	public fieldAccessTokens: string[];
 }

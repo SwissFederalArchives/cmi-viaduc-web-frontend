@@ -39,31 +39,38 @@
     "country": "Pays",
     "dateFieldFormat": "Merci de saisir un format de date valide (jj.mm.aaaa).",
     "digitalOnboarding": {
-      "fullfillsRequirementsMessage": "Vous remplissez les conditions d'identification par entretien vidéo. Pour la procédure d'identification, vous quittez l'infrastructure web de la Confédération. L’entretien vidéo est réalisé par une société externe (Managed Service Digital Identification & Signing de Swisscom).",
-      "fullfillsRequirementsMessageError": "Vous ne remplissez malheureusement pas les conditions d'identification par entretien vidéo. Pour l'identification, veuillez prendre contact avec nous:",
+      "fullfillsRequirementsMessage": "Vous remplissez les conditions d'identification par vérification en direct via intelligence artificielle. Pour la procédure d'identification, vous quittez l'infrastructure web de la Confédération. Le processus d’identification par vérification en direct via intelligence artificielle est réalisé par une société externe (Identity verification via document scan and liveness check de fidentity AG).",
+      "fullfillsRequirementsMessageBold": "Vous serez informé(e) du changement de votre statut peu après le succès du processus d’identification. Si ce dernier devait échouer, l’un(e) de nos collaborat(rices)eurs vous contactera.",
+      "fullfillsRequirementsMessageError": "Vous ne remplissez malheureusement pas les conditions d'identification par vérification en direct via intelligence artificielle. Pour l'identification, veuillez prendre contact avec nous:",
       "hasIdFromCountry": "Ou de quel pays provient votre carte d'identité valide?",
-      "hasMobilePhone": "Possédez-vous un numéro de téléphone mobile et pouvez-vous recevoir des SMS?",
       "hasPassportFromCountry": "De quel pays provient votre passeport valide?",
-      "hasSmartphoneOrComputer": "Avez-vous accès à un smartphone ou à un ordinateur équipé d'une caméra et d'un micro?",
+      "hasSmartphoneOrComputer": "Avez-vous accès à un smartphone équipé d'une caméra?",
       "nextStep": "Suivant",
       "no": "Non",
-      "noIdOfListedCountry": "Je ne possède pas de carte d'idendité d'un des pays mentionnés.",
+      "noIdOfListedCountry": "Je ne possède pas de carte d'identité d'un des pays mentionnés.",
       "noPassportOfListedCountry": "Je ne possède pas de passeport d'un des pays mentionnés.",
       "passportAndIdNeeded": " Vous avez besoin d'une pièce d'identité valide (passeport ou carte d'identité).",
       "previousStep": "Retour",
+      "start": "Démarrer",
+      "startInfo": "En cliquant «Démarrer», vous commencez le processus d'identification.",
+      "userData": "Veuillez vérifier vos données d'utilisateur.",
       "step1": "1re étape",
       "step2": "2e étape",
       "step3": "3e étape",
       "step4": "4e étape",
-      "videochatLink": "Lancer un entretien vidéo (lundi-samedi, 8h à 22h UTC+1)",
+      "videochatLink": "Poursuivre l'identification en ligne (24h/24, 7j/7)",
       "videoChatNotPossible": "Entretien vidéo impossible",
+			"fidentityError": "L'identification a échoué. Réessayez plus tard ou contactez",
       "videoChatPossible": "Entretien vidéo possible",
-      "wizardInfo": "Pour obtenir le statut d'«utilisateur identifié», vous devez d'abord effectuer un entretien vidéo. Pour commencer, veuillez répondre aux questions suivantes:",
+      "wizardInfo": "Veuillez répondre aux questions suivantes afin de préparer le processus d'identification.",
       "wizardTitle": "Demander le statut d'«utilisateur identifié»",
       "yes": "Oui"
     },
     "email": "Adresse e-mail",
     "errorPhoneNumber": "Votre numéro de téléphone peut commencer par \"+\", contenir des chiffres, des espaces et le signe \\\"-\\\". Il doit comporter entre 6 et 20 signes.",
+		"title": "Titre de civilité",
+		"masculineForm": "Monsieur",
+		"femaleForm": "Mme",
     "familyName": "Nom",
     "firstName": "Prénom",
     "headerAnonymousUser": "Anonyme",
@@ -235,7 +242,7 @@
   "checkoutSubmittedStep": {
     "cartText": "Votre <a href=\"#/{0}\">panier de commande</a> contient encore des commandes non finalisées.",
     "checkStatusText": "Vous pouvez suivre votre commande dans votre <a href=\"#/{0}\">compte d'utilisateur</a>.",
-    "disclaimerText": "L'entretien vidéo est enregistré mais sera effacé une fois l'identification terminée. Les Archives fédérales enregistrent uniquement une copie de la carte d'identité, la photographie et un aperçu des données d'utilisateur. Vous pouvez exiger à tout moment des informations sur les données enregistrées (art. 8 LPD).",
+    "disclaimerText": "Le processus d’identification par vérification en direct via intelligence artificielle est enregistré mais sera effacé une fois l'identification terminée. Les Archives fédérales enregistrent uniquement une copie de la carte d'identité, la photographie et un aperçu des données d'utilisateur. Vous pouvez exiger à tout moment des informations sur les données enregistrées (art. 8 LPD).",
     "thxTextDigi": "Merci de votre commande. Vous recevrez un e-mail dès que les dossiers commandés auront été numérisés. Compter en principe deux semaines pour le traitement de votre commande.",
     "thxTextEischtisgesuch": "Nous transmettons votre demande au service compétent, qui vous communiquera sa décision dans les quatre à six semaines.",
     "thxTextEischtisgesuchAnmeldenUndIndentifizieren": "Une fois l'autorisation de consultation reçue, vous devez vous identifier pour pouvoir consulter les documents (voir <a href=\"{0}\">Connexion et identification</a>).",
@@ -246,7 +253,15 @@
   "clipboard": {
     "success": "Copié avec succès dans le presse-papier!",
     "title": "Presse-papier"
-  },
+	},
+	"collections": {
+		"continue": "continuer",
+		"header": "Collections",
+		"notFound": "La collection n'est pas disponible dans la langue sélectionnée",
+		"containsHeader": "Contient",
+		"notNumber": "L'url de la collection est erronée",
+		"openDetails": "Ouvrir les détails"
+	},
   "columnpicker": {
     "einAusblenden": "Afficher/masquer les colonnes",
     "hiddenColumns": "Colonnes masquées",
@@ -262,7 +277,7 @@
   "detail": {
     "notFound": "La page demandée ne peut pas s'afficher.",
     "notFoundMessage": "Peut-être n'avez-vous pas l'autorisation requise. Veuillez vérifier de quels droits vous disposez dans votre <a href=\"#{0}\">compte d'utilisateur.</a></br></br>",
-    "notFoundMessage2": "Pour toute question sur l'accessibilité des documents aux Archives fédérales, veuillez vous adresser à notre service de conseil ou à l'adresse <a href=\"mailto:bundesarchiv@bar.admin.ch\">bundesarchiv@bar.admin.ch</a>",
+    "notFoundMessage2": "Pour toute question sur l'accessibilité des documents aux Archives fédérales, veuillez vous adresser à notre service de conseil ou à l'adresse <a href=\"mailto:info@bar.admin.ch\">info@bar.admin.ch</a>",
     "notFoundMessageNotOe1": "Peut-être n'avez-vous pas l'autorisation requise pour accéder à la page. Veuillez vérifier de quels droits vous disposez dans votre <a href=\"#{0}\">compte d'utilisateur</a>.</br></br>",
     "notFoundMessageOe1": "Peut-être n'avez-vous pas l'autorisation requise pour accéder à la page (voir <a href=\"#{0}\">Connexion et identification</a>).</br></br>"
   },
@@ -276,7 +291,8 @@
     "pageTitle": "Affichage complet"
   },
   "detailSection": {
-    "internalField": "Champ visible uniquement par les utilisateurs des AFS"
+    "internalField": "Champ visible uniquement par les utilisateurs des AFS",
+    "anonymisiert": "anonymisé"
   },
   "digitalisierungskategorie": {
     "amt": "Office",
@@ -631,6 +647,7 @@
   },
   "main": {
     "errorMandatoryField": "Ce champ est obligatoire.",
+    "errorMaxLength60": "Le texte ne doit pas dépasser 60 caractères.",
     "errorMandatoryMailField": "Ce champ doit contenir une adresse e-mail valide.",
     "errorMobil": "Votre numéro de téléphone mobile peut commencer par \"+\", contenir des chiffres, des espaces et le signe \\\"-\\\". Il doit comporter entre 6 et 20 signes.",
     "errorPhone": "Votre numéro de téléphone peut commencer par \"+\", contenir des chiffres, des espaces et le signe \\\"-\\\". Il doit comporter entre 6 et 20 signes."
@@ -658,7 +675,6 @@
         "kategorieDia": "Catégorie automatisation",
         "land": "Pays",
         "nachfolgerbehoerden": "Autorité compétente ultérieure",
-        "nichtOnlineRecherchierbareDossiers": "Dossiers ne pouvant faire l'objet d'une recherche en ligne",
         "publikationsrechte": "Droits de publication",
         "signaturArchivplan": "Cote du plan d'archivage",
         "thema": "Thème",
@@ -857,6 +873,7 @@
   "orderOverviewPage": {
     "closeModal": "Fermer",
     "itemsCount": "Nombre: {0}",
+		"itemsCountFiltered": "Nombre: {0} sur {1}",
     "columnItems": {
       "abbruchgrundDisplay": "Motif de l'annulation",
       "artDerArbeitDisplay": "Nature du travail",
@@ -909,7 +926,7 @@
   "registerInfo": {
     "cancelRegister": "Interrompre",
     "chLoginAltText": "Logo de CH-Login",
-    "chLoginException": "Exception: les collaborateurs de l’administration fédérale doivent s’enregistrer via l’option Kerberos ou Smartcard.",
+    "chLoginException": "Exception: les collaborateurs de l’administration fédérale doivent s’enregistrer via l’option FED-LOGIN.",
     "chooseCHLogin": "À la prochaine étape, veuillez sélectionner l’option CH-LOGIN.",
     "info1": "Vous pouvez utiliser l’accès en ligne comme utilisateur anonyme, enregistré ou identifié. Les fonctionnalités de recherche à votre disposition diffèrent selon le statut choisi.",
     "infoBox": "InfoBox",
@@ -1268,33 +1285,37 @@
     "explanationCaption": "La pertinence a été calculée par ElasticSearch selon les valeurs suivantes:",
     "failedAddToBasketText": "Une erreur s'est produite lors de l'ajout au panier.",
     "failedAddToBasketTitle": "Erreur",
-    "failedBecauseOfLevelMessage": "Cette unité de descripition ne peut pas être commandée. Si vous avez des questions, veuillez vous adresser à notre service de conseil ou à l'adresse bestellung@bar.admin.ch.",
+    "failedBecauseOfLevelMessage": "Cette unité de description ne peut pas être commandée. Si vous avez des questions, veuillez vous adresser à notre service de conseil ou à l'adresse bestellung@bar.admin.ch.",
     "failedBecauseOfLevelTitle": "Échec de la commande",
     "loginToUseBasketText": "Veuillez vous connecter pour remplir votre panier de commande.",
     "loginToUsebasketTitle": "Connexion",
     "noHitsInfo": {
       "header": "Votre recherche n'a donné aucun résultat. Il peut y avoir plusieurs raisons à cela:",
       "hinweis": "Notification",
-      "reason1": "Peut-être n'avez-vous pas l'autorisation requise. Veuillez vérifier de quels droits vous disposez dans votre compte d'utilisateur.",
+      "reason1": "Les métadonnées contenant des noms de personnes et des données personnelles sensibles ou des profils de la personnalité ne peuvent être publiées par les Archives fédérales qu'après l'expiration du délai de protection.",
       "reason2": "Les documents recherchés ne sont pas encore référencés et enregistrés dans le système.",
       "reason3": "Fautes de frappe ou terme de recherche inconnu: veuillez vérifier l'orthographe ou saisissez d'autres termes de recherche.",
-      "reason4": "Les Archives fédérales ne possèdent pas de documents sur le thème recherché. Vous trouverez d'autres fonds d'archives dans la base de données des adresses d'archives en Suisse ou dans le portail européen des archives.",
+      "reason4": "Les Archives fédérales ne possèdent pas de documents sur le thème recherché. Vous trouverez d'autres institutions archivistiques dans la base de données <a href=\"{0}\">Adresses d'archives en Suisse</a>, sur le portail de recherche <a href=\"{1}\">archivesonline.org</a> ou sur le <a href=\"{2}\">portail d'archives Europa</a>.",
       "showHinweis": "Ne plus afficher cette notification"
     },
     "noHitsTitle": "Votre recherche n'a donné aucun résultat.",
     "noHitsTitleForQuery": "Nous n'avons trouvé aucun fonds d'archives correspondant à votre recherche - {0}.",
     "oe3RoleRequired": "Pour pouvoir commander des documents soumis à autorisation, vous avez besoin du statut d’«utilisateur identifié». Pour lancer la procédure d'identification, veuillez cliquer sur ce message.",
     "oe3RoleRequiredTitle": "Commande impossible",
-    "reason4": "Les Archives fédérales ne possèdent pas de documents sur le thème recherché. Vous trouverez d'autres fonds d'archives dans la <a href=\"{0}\">base de données des adresses d'archives en Suisse</a> ou dans le <a href=\"{1}\">portail européen des archives</a>.",
     "relevance": "Pertinence",
     "signatur": "Cote",
     "zugangTooltip": "Accessibilité selon la LAr",
     "reason1Oe1": "Peut-être n'avez-vous pas l'autorisation requise (voir <a href=\"#{0}\">Enregistrement et identification</a>).",
-    "reason1Oe2": "Peut-être n'avez-vous pas l'autorisation requise. Veuillez vérifier de quels droits vous disposez dans votre <a href=\"#{0}\">compte d'utilisateur</a>."
+    "reason1Oe2": "Peut-être n'avez-vous pas l'autorisation requise. Veuillez vérifier de quels droits vous disposez dans votre <a href=\"#{0}\">compte d'utilisateur</a>.",
+		"anonymToolTip":"Anonymisé pour les utilisateurs non autorisés."
   },
   "simpleHitList": {
     "sortierung": "Trier"
   },
+	"infoSection": {
+		"noPermission":"Ces données ont été rendues anonymes pour des raisons de protection des données (<a href='https://www.admin.ch/ch/f/sr/c152_11.html' target='_blank' rel='noopener noreferrer'>art. 12.3 OLAr</a>).",
+		"barUser":"Pour les utilisateurs sans autorisation correspondante, ces données sont affichées sous forme anonymisée."
+	},
   "simpleSearchPageComponent": {
     "pageTitle": "Recherche simple"
   },
@@ -1334,7 +1355,7 @@
     "cancelRegistrationMessage": "Veuillez compléter l'enregistrement et sauvegarder les données.",
     "birthday": "Date de naissance",
     "countryCode": "Pays",
-    "emailAddress": "E-Mail",
+    "emailAddress": "Adresse e-mail",
     "errorLegalAgreementConsent": "Veuillez lire et accepter la déclaration relative à la protection des données.",
     "familyName": "Nom",
     "firstName": "Prénom(s)",
@@ -1347,7 +1368,7 @@
     "phoneNumber": "Téléphone (fixe)",
     "placeholder": {
       "birthday": "Date de naissance (jj.mm.aaaa)",
-      "emailAddress": "E-Mail",
+      "emailAddress": "Adresse e-mail",
       "familyName": "Nom",
       "firstName": "Prénom(s)",
       "mobileTel": "Téléphone mobile",
@@ -1394,5 +1415,8 @@
 	  "close": "Fermer",
 	  "yes": "Oui",
 	  "no": "Non"
-	}
+	},
+  "anonymized": {
+    "Tooltip": "Anonymisé pour des raisons de protection des données."
+  }
 }

@@ -5,7 +5,7 @@
 		<ul class="nav navbar-nav">
 			<li class="dropdown">
 				<a id="admin-dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown">
-					<span class="icon icon--right"></span>{{'Der Bundesrat' | translate:'header.derBundesrat'}}
+					<span class="icon icon--right" role="img" aria-hidden="true"></span>{{'Der Bundesrat' | translate:'header.derBundesrat'}}
 				</a>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="admin-dropdown">
 					<li class="dropdown-header">
@@ -60,7 +60,7 @@
 
 			<li class="dropdown">
 				<a href="#" id="service-dropdown" class="dropdown-toggle" data-toggle="dropdown">
-					<span class="icon icon--right"></span>{{'EDI' | translate:'header.departementEdiAbbr'}}
+					<span class="icon icon--right" role="img" aria-hidden="true"></span>{{'EDI' | translate:'header.departementEdiAbbr'}}
 				</a>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="service-dropdown">
 					<li class="dropdown-header">
@@ -73,7 +73,7 @@
 
 			<li class="dropdown">
 				<a href="#" id="bar-dropdown" class="dropdown-toggle" data-toggle="dropdown">
-					<span class="icon icon--right"></span>{{'BAR' | translate:'header.barAbbr'}}
+					<span class="icon icon--right" role="img" aria-hidden="true"></span>{{'BAR' | translate:'header.barAbbr'}}
 				</a>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="bar-dropdown">
 					<li class="dropdown-header">
@@ -161,17 +161,17 @@
 <div class="logininfo">
 	<span *ngIf="!authenticated">
 		<span>{{ 'Sie sind nicht angemeldet' | translate:'header.notLoggedInInfo'}}&nbsp;</span>
-		<a class="glyphicon glyphicon-info-sign infoicon" data-toggle="tooltip" data-placement="bottom"
-		    tooltip="{{ 'Melden Sie sich an, um zusätzliche Funktionen wie Favoritenverwaltung oder Bestellungen nutzen zu können.' | translate:'header.notLoggedInTip'}}"></a>
+		<i class="glyphicon glyphicon-info-sign infoicon" role="img" data-toggle="tooltip" data-placement="bottom" aria-label="{{'Melden Sie sich an, um zusätzliche Funktionen wie Favoritenverwaltung oder Bestellungen nutzen zu können.' | translate:'header.notLoggedInTip'}}"
+		    tooltip="{{ 'Melden Sie sich an, um zusätzliche Funktionen wie Favoritenverwaltung oder Bestellungen nutzen zu können.' | translate:'header.notLoggedInTip'}}"></i>
 	</span>
 	<span *ngIf="authenticated && hasRoles('BAR', 'AS', 'BVW', 'Ö3') === true">
 		<span>{{ 'Sie sind als identifizierte/r Benutzer/in angemeldet' | translate:'header.loggedInInfo'}}&nbsp;</span>
-		<a class="glyphicon glyphicon-info-sign infoicon" data-toggle="tooltip" data-placement="bottom"
-		    tooltip="{{getTooltippLoggedIn()}}"></a>
+		<i class="glyphicon glyphicon-info-sign infoicon" role="img" data-toggle="tooltip" data-placement="bottom" aria-label="{{getTooltippLoggedIn()}}"
+		    tooltip="{{getTooltippLoggedIn()}}"></i>
 	</span>
 	<span *ngIf="authenticated && hasRoles('Ö2') === true">
 		<span>{{ 'Sie sind als registrierte/r Benutzer/in angemeldet' | translate:'header.loggedInInfoAsRegisteredUser'}}&nbsp;</span>
-		<a class="glyphicon glyphicon-info-sign infoicon" data-toggle="tooltip" data-placement="bottom"
-		    tooltip="{{getTooltippRegisteredUser()}}"></a>
+		<i class="glyphicon glyphicon-info-sign infoicon" role="img"  data-toggle="tooltip" data-placement="bottom" aria-label="{{getTooltippRegisteredUser()}}"
+		    tooltip="{{getTooltippRegisteredUser()}}"></i>
 	</span>
 </div>

@@ -3,5 +3,5 @@ import {SafeHtmlPipe} from './safeHtmlPipe.pipe';
 
 export const ALL_PIPES = [
 	LocalizeLinkPipe,
-	SafeHtmlPipe,
+	SafeHtmlPipe
 ];

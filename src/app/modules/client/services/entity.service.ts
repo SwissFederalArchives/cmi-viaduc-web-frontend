@@ -7,6 +7,14 @@ export class EntityService {
 	constructor(private _options: CoreOptions, private _http: HttpService, private _context: ClientContext, private _decorator: EntityDecoratorService) {
 	}
 
+	public getAnonymized(id: string): Promise<Object> {
+		const apiDataUrl = this._options.serverUrl + this._options.publicPort + '/api/Data';
+		let queryString = `?id=${id}&language=${this._context.language}`;
+
+		const url = `${apiDataUrl}/GetAnonymized${queryString}`;
+		return this._http.get<Object>(url, this._http.noCaching).toPromise();
+	}
+
 	public get(id: string, paging: Paging = null): Promise<Entity> {
 		const apiDataUrl = this._options.serverUrl + this._options.publicPort + '/api/Data';
 		let queryString = `?id=${id}&language=${this._context.language}`;

@@ -41,7 +41,7 @@
               "src/assets/js/polyfills.min.js",
               "src/assets/js/main.js",
               "node_modules/jszip/dist/jszip.min.js",
-              "node_modules/marked/lib/marked.js",
+              "node_modules/marked/marked.min.js",
               {
                 "inject": false,
                 "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.de-CH.js",
@@ -124,7 +124,7 @@
               "src/assets/js/polyfills.min.js",
               "src/assets/js/main.js",
               "node_modules/jszip/dist/jszip.min.js",
-              "node_modules/marked/lib/marked.js",
+              "node_modules/marked/marked.min.js",
               {
                 "inject": false,
                 "input": "node_modules/@grapecity/wijmo.cultures/wijmo.culture.de-CH.js",

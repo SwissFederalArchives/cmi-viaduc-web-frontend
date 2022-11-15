@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ArchiveModel, ClientContext, Entity, TranslationService, Utilities as _util} from '@cmi/viaduc-web-core';
 import {
@@ -9,13 +9,14 @@ import {
 	ShoppingCartService,
 	UrlService
 } from '../../modules/client/services';
+import {AnonymizedResult} from './anonymizedResult';
 
 @Component({
 	selector: 'cmi-viaduc-detail-page',
 	templateUrl: 'detailPage.component.html',
 	styleUrls: ['./detailPage.component.less']
 })
-export class DetailPageComponent implements OnInit {
+export class DetailPageComponent implements OnInit, AfterViewInit {
 	public loading: boolean;
 
 	public entity: Entity;
@@ -27,8 +28,11 @@ export class DetailPageComponent implements OnInit {
 	public showOrderSection = false;
 	public items: Entity[] = [];
 	public isBarUser: boolean = false;
+	public hasPermission: boolean = false;
+	public fields: Map<string, any> = new Map<string, any>();
 
 	private _error: any;
+	private readonly _elem: any;
 
 	constructor(private _archive: ArchiveModel,
 				private _context: ClientContext,
@@ -39,14 +43,19 @@ export class DetailPageComponent implements OnInit {
 				private _route: ActivatedRoute,
 				private _authorization: AuthorizationService,
 				private _scs: ShoppingCartService,
-				private _seoService: SeoService) {
+				private _seoService: SeoService,
+				private _elemRef: ElementRef) {
+		this._elem = this._elemRef.nativeElement;
 	}
 
 	public ngOnInit(): void {
 		this._buildCrumbs();
 		this._seoService.setTitle(this._txt.translate('Detailansicht', 'detailPageComponent.pageTitle'));
 		this._route.params.subscribe(params => this._loadEntity(params['id']));
-		this.isBarUser = this._authorization.isBarUser();
+	}
+
+	public ngAfterViewInit(): void {
+		_util.initJQForElement(this._elem);
 	}
 
 	private _buildCrumbs(entity?: Entity): void {
@@ -96,21 +105,29 @@ export class DetailPageComponent implements OnInit {
 
 		try {
 			const id = this._url.getDetailIdFromReference(idOrReference);
-			let entity = this.entity = await this._entityService.get(id);
+			this.entity = await this._entityService.get(id);
+			this.hasPermission = this.entity.fieldAccessTokens ? this._authorization.hasAnyAccessToken(this.entity.fieldAccessTokens) : true;
+			this.isBarUser = this._authorization.isBarUser();
+
+			if (this.entity.isAnonymized && this.isBarUser === true ) {
+				let result: AnonymizedResult = await this._entityService.getAnonymized(id);
+				this.fields = new Map(Object.entries(result));
+			}
+
 			this.items = [];
 
-			if (!_util.isEmpty(entity)) {
-				this._buildCrumbs(entity);
+			if (!_util.isEmpty(this.entity)) {
+				this._buildCrumbs(this.entity);
 
 				this.sections = [];
-				if (entity._context) {
-					let ctx = entity._context;
+				if (this.entity._context) {
+					let ctx = this.entity._context;
 					let items = [];
 					if (ctx.ancestors) {
 						Array.prototype.push.apply(items, ctx.ancestors);
 					}
-					entity.itemClasses = 'selected';
-					items.push(entity);
+					this.entity.itemClasses = 'selected';
+					items.push(this.entity);
 					if (ctx.children) {
 						Array.prototype.push.apply(items, ctx.children);
 					}
@@ -118,10 +135,10 @@ export class DetailPageComponent implements OnInit {
 					this.items = items;
 				}
 
-				if (entity._metadata) {
-					for (let key in entity._metadata) {
-						if (entity._metadata.hasOwnProperty(key)) {
-							let sec = this._renderService.renderSection(entity, key);
+				if (this.entity._metadata) {
+					for (let key in this.entity._metadata) {
+						if (this.entity._metadata.hasOwnProperty(key)) {
+							let sec = this._renderService.renderSection(this.entity, key);
 							if (sec) {
 								this.sections.push(sec);
 							}
@@ -130,8 +147,10 @@ export class DetailPageComponent implements OnInit {
 				}
 
 				this.showDownloadSection = this._scs.canDownload(this.entity);
-				this.showOrderSection = !this.showDownloadSection && this.entity.canBeOrdered;
-				this.deepLinkUrl = this._url.getExternalDetailUrl(entity.archiveRecordId, entity.title);
+				// Download wird NICHT angezeigt UND die VE ist bestellbar ODER
+				// Download wird NICHT angezeigt UND es gibt einen PrimarydataLink
+				this.showOrderSection = (!this.showDownloadSection && this.entity.canBeOrdered)  || (!this.showDownloadSection && this.entity.primaryDataLink !== null);
+				this.deepLinkUrl = this._url.getExternalDetailUrl(this.entity.archiveRecordId, this.entity.title);
 
 			} else {
 				this._error = this.createErrorMessage();

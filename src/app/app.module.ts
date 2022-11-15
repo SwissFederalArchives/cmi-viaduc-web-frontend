@@ -4,12 +4,13 @@ import {Router, RouterModule} from '@angular/router';
 import {RootComponent} from './components/root/root.component';
 import {ALL_COMPONENTS} from './components/_all';
 import {ROUTES, initRoutes} from './routes';
-import {CoreModule, OrdersModule, PreloadService} from '@cmi/viaduc-web-core';
-import {ClientModule, ContextService} from './modules/client';
-import {ToastrModule} from 'ngx-toastr';
-import { DeviceDetectorModule } from 'ngx-device-detector';
+import {CoreModule, OrdersModule, PreloadService, ClientContext} from '@cmi/viaduc-web-core';
+import {AuthenticationService, ClientModule, ContextService} from './modules/client';
 import { MatomoModule } from 'ngx-matomo';
 import {MarkdownModule} from 'ngx-markdown';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {AuthInterceptor} from './modules/client/routing/authInterceptor';
+import {ToastrModule} from 'ngx-toastr';
 
 initRoutes(ROUTES);
 
@@ -30,7 +31,6 @@ export function preloadServiceFactory(preloadService: PreloadService, ctx: Conte
 		BrowserModule,
 		CoreModule.forRoot(),
 		OrdersModule,
-		DeviceDetectorModule.forRoot(),
 		ClientModule.forRoot(),
 		RouterModule.forRoot(ROUTES, { useHash: true, relativeLinkResolution: 'legacy' }),
 		ToastrModule.forRoot(toastrOptions),
@@ -47,8 +47,17 @@ export function preloadServiceFactory(preloadService: PreloadService, ctx: Conte
 			useFactory: preloadServiceFactory,
 			deps: [PreloadService, ContextService],
 			multi: true
+		},
+		{
+			provide: HTTP_INTERCEPTORS,
+			useFactory: function(auth: AuthenticationService, context: ClientContext) {
+				return new AuthInterceptor(auth, context);
+			},
+			multi: true,
+			deps: [AuthenticationService, ClientContext]
 		}
 	]
+
 })
 export class AppModule {
 	constructor(_router: Router) {

@@ -4,7 +4,7 @@ import { AuthorizationService } from './authorization.service';
 import {Injectable} from '@angular/core';
 import {AuthenticationService} from './authentication.service';
 import {ToastrService} from 'ngx-toastr';
-import {catchError, flatMap, map, tap} from 'rxjs/operators';
+import {catchError, map, mergeMap, tap} from 'rxjs/operators';
 import {
 	ClientContext,
 	ConfigService,
@@ -55,7 +55,7 @@ export class ShoppingCartService {
 	}
 
 	public downloadPossible(ve:Entity): boolean {
-		return !!ve.primaryDataLink && ve.primaryDataLink.length > 0;
+		return ve.primaryDataLink !== undefined && ve.primaryDataLink !== null && ve.primaryDataLink.length > 0;
 	}
 
 	public getKontingent(forUserId: string = ''): Observable<KontingentResult> {
@@ -121,7 +121,7 @@ export class ShoppingCartService {
 	public order(order: Ordering): Observable<void> {
 		const url = `${this._apiUrl}/Order`;
 
-		return this._http.post(url, order).pipe(flatMap((data) => {
+		return this._http.post(url, order).pipe(mergeMap((data) => {
 			return this.getTotalItemsInCartFromServer().pipe(map(nr => {
 				this._totalItemsInCart = nr;
 				this.activeOrder = null;
@@ -131,7 +131,7 @@ export class ShoppingCartService {
 
 	public orderEinsichtsgesuch(order: Ordering): Observable<void> {
 		const url = `${this._apiUrl}/OrderEinsichtsgesuch`;
-		return this._http.post(url, order).pipe(flatMap((data) => {
+		return this._http.post(url, order).pipe(mergeMap((data) => {
 			return this.getTotalItemsInCartFromServer().pipe(map(nr => {
 				this._totalItemsInCart = nr;
 				this.activeOrder = null;
@@ -165,7 +165,7 @@ export class ShoppingCartService {
 		if (this.canDownload(ve)) {
 			this._showDigitalAvailableToast(ve);
 			return observableOf(null);
-		} else if (ve.canBeOrdered === false) {
+		} else if (ve.canBeOrdered === false && (!ve.primaryDataLink || ve.primaryDataLink.length === 0))  {
 			this._showLevelValidationError();
 			return observableOf(null);
 		}
@@ -173,7 +173,7 @@ export class ShoppingCartService {
 			this._showNotLoggedInToast();
 			return observableOf(null);
 		}
-		return this.isOe2WithEinsichtsgesuch(ve, signatur).pipe(flatMap(booleanResponse => {
+		return this.isOe2WithEinsichtsgesuch(ve, signatur).pipe(mergeMap(booleanResponse => {
 			if (booleanResponse.value) {
 				this._showMissingOe3RoleToast();
 				return observableOf(null);

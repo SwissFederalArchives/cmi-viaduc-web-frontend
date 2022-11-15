@@ -17,6 +17,8 @@ export class SimpleHitComponent implements AfterViewInit, OnInit {
 	public entity: Entity;
 	@Input()
 	public enableExplanations: boolean = false;
+	@Input()
+	public isBarUser: boolean = false;
 
 	public htmlForTitle: string;
 	public htmlForText: string;

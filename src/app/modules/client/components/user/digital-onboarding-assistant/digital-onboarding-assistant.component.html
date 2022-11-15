@@ -1,8 +1,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<h3 id="identifiedUser">{{'Status «Identifizierte/r Benutzer/in» beantragen' | translate:'account.digitalOnboarding.wizardTitle' }}</h3>
-		<p>{{'Um den Status «Identifizierte/r Benutzer/in» zu erhalten, müssen Sie ein Gespräch per Videochat führen. Beantworten
-			Sie dazu bitte vorgängig folgende Fragen:'| translate:'account.digitalOnboarding.wizardInfo'}}</p>
+		<p>{{'Beantworten Sie bitte folgende Fragen, damit der Identifizierungsprozess vorbereitet werden kann.'| translate:'account.digitalOnboarding.wizardInfo'}}</p>
 	</div>
 </div>
 <div class="row">
@@ -34,30 +33,25 @@
 					<h4>
 						{{ 'Sie benötigen ein gültiges Identifizierungsmittel (Pass oder Identitätskarte).'| translate:'account.digitalOnboarding.passportAndIdNeeded' }}
 					</h4>
-					<p>
-						{{ 'Von welchem Land besitzen Sie einen gültigen Pass?'| translate:'account.digitalOnboarding.hasPassportFromCountry' }}
-					</p>
-					<p>
-						<select class="passportAndIdCountriesSelect" [(ngModel)]="selectedCountry" id="passportCountries">
-							<option [ngValue]="'0'"  tooltip="{{ 'Ich besitze keinen Pass von einem der aufgeführten Länder'| translate:'account.digitalOnboarding.noPassportOfListedCountry' }}">
-								{{ 'Ich besitze keinen Pass von einem der aufgeführten Länder'| translate:'account.digitalOnboarding.noPassportOfListedCountry' }}
-							</option>
-							<option *ngFor="let c of passportCountries" [ngValue]="c.code"  tooltip="{{c.name}}">{{c.name}}</option>
-						</select>
-					</p>
-					<p>
-						{{ 'Von welchem Land besitzen Sie eine gültige Identitätskarte?' | translate:'account.digitalOnboarding.hasIdFromCountry' }}
-					</p>
-					<p>
-						<select class="passportAndIdCountriesSelect" [(ngModel)]="selectedId" id="idCountries">
-							<option selected [ngValue]="'0'"  tooltip="{{ 'Ich besitze keine Identitätskarte von einem der aufgeführten Länder'| translate:'account.digitalOnboarding.noIdOfListedCountry' }}">
-								{{ 'Ich besitze keine Identitätskarte von einem der aufgeführten Länder'| translate:'account.digitalOnboarding.noIdOfListedCountry' }}
-							</option>
-							<option *ngFor="let c of idCountries" [ngValue]="c.code"  tooltip="{{c.name}}">{{c.name}}</option>
-						</select>
-					</p>
-					<br>
-					<button class="btn btn-primary" (click)="wizardNextPage()">{{ 'Weiter' | translate:'account.digitalOnboarding.nextStep' }}</button>
+					<form [formGroup]="formStep1" *ngIf="formStep1">
+						<p>
+							{{ 'Von welchem Land besitzen Sie einen gültigen Pass?'| translate:'account.digitalOnboarding.hasPassportFromCountry' }}
+						</p>
+						<p>
+							<select class="passportAndIdCountriesSelect" formControlName="pass" id="passportCountries">
+								<option *ngFor="let c of passportCountries" value="{{c.newLaenderCode}}"  tooltip="{{c.name}}">{{c.name}}</option>
+							</select>
+						</p>
+						<p>
+							{{ 'Von welchem Land besitzen Sie eine gültige Identitätskarte?' | translate:'account.digitalOnboarding.hasIdFromCountry' }}
+						</p>
+						<p class="mb-3">
+							<select class="passportAndIdCountriesSelect" formControlName="idCard" id="idCountries">
+								<option *ngFor="let c of idCountries" value="{{c.newLaenderCode}}" tooltip="{{c.name}}">{{c.name}}</option>
+							</select>
+						</p>
+						<button class="btn btn-primary" [disabled]="(!formStep1.valid)" (click)="wizardNextPage()">{{ 'Weiter' | translate:'account.digitalOnboarding.nextStep' }}</button>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -66,27 +60,25 @@
 		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<p>{{ 'Verfügen Sie über eine Mobiltelefonnummer und können Sie SMS empfangen?'| translate:'account.digitalOnboarding.hasMobilePhone'
-						}}
-					</p>
-					<div class="form-inline">
-						<div class="form-group">
-							<div class="radio radio--left">
-								<label for="hasPhoneWithSmsNo">
-									<input id="hasPhoneWithSmsNo" type="radio" name="hasPhoneWithSms" class="radioFix" [(ngModel)]="hasPhoneWithSms" [value]="false" >
+					<form [formGroup]="formStep2" *ngIf="formStep2">
+						<p>{{ 'Verfügen Sie über ein Smartphone mit Kamera?'| translate:'account.digitalOnboarding.hasSmartphoneOrComputer'
+							}}
+						</p>
+						<div class="form-inline">
+							<div class="form-group">
+								<label for="hasSmartphoneOrPcNo">
+									<input id="hasSmartphoneOrPcNo" type="radio" name="hasSmartphoneOrPc" class="radioFix" formControlName="hasSmartphoneOrPc" [value]="false">
 									{{ 'Nein' | translate:'account.digitalOnboarding.no' }}
 								</label>
-							</div>
-							<div class="radio radio--left">
-								<label for="hasPhoneWithSmsYes">
-									<input id="hasPhoneWithSmsYes" type="radio" name="hasPhoneWithSms" class="radioFix" [(ngModel)]="hasPhoneWithSms" [value]="true">
+								<label for="hasSmartphoneOrPcYes">
+									<input id="hasSmartphoneOrPcYes" type="radio" name="hasSmartphoneOrPc" class="radioFix" formControlName="hasSmartphoneOrPc" [value]="true">
 									{{ 'Ja' | translate:'account.digitalOnboarding.yes' }}
 								</label>
 							</div>
 						</div>
-					</div>
-					<button class="btn btn-primary" (click)="wizardPreviousPage()">{{ 'Zurück' | translate:'account.digitalOnboarding.previousStep' }}</button>&nbsp;
-					<button class="btn btn-primary" (click)="wizardNextPage()">{{ 'Weiter' | translate:'account.digitalOnboarding.nextStep' }}</button>
+						<button class="btn btn-primary" (click)="wizardPreviousPage()">{{ 'Zurück' | translate:'account.digitalOnboarding.previousStep' }}</button>&nbsp;
+						<button class="btn btn-primary" (click)="wizardNextPage()">{{ 'Weiter' | translate:'account.digitalOnboarding.nextStep' }}</button>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -95,27 +87,72 @@
 		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<p>{{ 'Haben Sie Zugang zu einem Smartphone oder einem Computer, die mit Kamera und Mikrofon ausgestattet sind?'| translate:'account.digitalOnboarding.hasSmartphoneOrComputer'
+					<p>{{ 'Bitte erfassen Sie Ihre Benutzerdaten:'| translate:'account.digitalOnboarding.userData'
 						}}
 					</p>
-					<div class="form-inline">
-						<div class="form-group">
-							<div class="radio radio--left">
-								<label for="hasSmartphoneOrPcNo">
-									<input id="hasSmartphoneOrPcNo" type="radio" name="hasSmartphoneOrPc" class="radioFix" [(ngModel)]="hasSmartphoneOrPc" [value]="false">
-									{{ 'Nein' | translate:'account.digitalOnboarding.no' }}
-								</label>
-							</div>
-							<div class="radio radio--left">
-								<label for="hasSmartphoneOrPcYes">
-									<input id="hasSmartphoneOrPcYes" type="radio" name="hasSmartphoneOrPc" class="radioFix" [(ngModel)]="hasSmartphoneOrPc" [value]="true">
-									{{ 'Ja' | translate:'account.digitalOnboarding.yes' }}
-								</label>
+					<form [formGroup]="myForm" *ngIf="myForm">
+						<div class="row" [ngClass]="{'has-warning': (errors.firstName)}">
+							<label tooltip="{{'Vorname(n)' | translate:'user.firstName'}}*" class="col-md-4 control-label">{{'Vorname(n)' | translate:'user.firstName'}}*</label>
+							<div class="col-md-8">
+							<input class="form-control" formControlName="firstName"
+								   name="firstName"/>
+								<div *ngIf="errors.firstName" class="help-block">
+									{{ errors.firstName }}
+								</div>
 							</div>
 						</div>
-					</div>
-					<button class="btn btn-primary" (click)="wizardPreviousPage()">{{ 'Zurück' | translate:'account.digitalOnboarding.previousStep' }}</button>&nbsp;
-					<button class="btn btn-primary" (click)="wizardNextPage()">{{ 'Weiter' | translate:'account.digitalOnboarding.nextStep' }}</button>
+						<div class="row" [ngClass]="{'has-warning': (errors.name)}">
+							<label tooltip="{{'Name' | translate:'user.familyName'}}*" class="col-md-4 control-label">{{'Name' | translate:'user.familyName'}}*</label>
+							<div class="col-md-8">
+								<input class="form-control" formControlName="name"
+									   name="name"/>
+								<div *ngIf="errors.name" class="help-block">
+									{{ errors.name }}
+								</div>
+							</div>
+						</div>
+						<div class="row" [ngClass]="{'has-warning': (errors.dateOfBirth)}">
+							<label tooltip="{{'Geburtsdatum' | translate:'user.birthday'}}" class="col-md-4 control-label">{{'Geburtsdatum' | translate:'user.birthday'}}*</label>
+							<div class="col-md-8">
+								<input class="form-control"
+									   type="text"
+									   datePicker
+									   [minDateToday]="false"
+									   formControlName="dateOfBirth"
+									   aria-labelledby="Date DD.MM.YYYY"
+									   placeholder="{{'Geburtsdatum (dd.mm.jjjj)' | translate: 'user.placeholder.birthday'}}"
+									   name="dateOfBirth">
+								<div *ngIf="errors.dateOfBirth" class="help-block">
+									{{ errors.dateOfBirth }}
+								</div>
+							</div>
+						</div>
+						<div class="row mb-3" [ngClass]="{'has-warning': (errors.email)}">
+							<label tooltip="{{'E-Mail' | translate:'user.emailAddress'}}*" class="col-md-4 control-label ">{{'E-Mail' | translate:'user.emailAddress'}}</label>
+							<div class="col-md-8">
+								<input class="form-control" type="email"
+									   formControlName="email"
+									   [disabled]="true" Readonly
+									   name="email">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<button class="btn btn-primary" (click)="wizardPreviousPage()" >{{ 'Zurück' | translate:'account.digitalOnboarding.previousStep' }}</button>&nbsp;
+								<button class="btn btn-primary"  (click)="wizardNextPage()" [disabled]="(!myForm.valid)">{{ 'Starten' | translate:'account.digitalOnboarding.start' }}</button>
+							</div>
+							<div class="col-md-8">
+								<div>
+									<div class="pull-left">
+										<span class="sr-only">{{'Info-Symbol' | translate:'usageSection.infoSymbol'}}</span>
+										<span class="glyphicon glyphicon-info-sign info-icon" aria-hidden="true"></span>&nbsp;
+									</div>
+									<p>{{'Mit «Starten» beginnen Sie den Identifizierungsprozess.' | translate:'account.digitalOnboarding.startInfo'}}</p>
+								</div>
+
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -123,31 +160,47 @@
 	<ng-template [ngSwitchCase]="4">
 		<div class="col-md-12">
 			<div class="panel panel-default">
-				<div class="panel-body" *ngIf="userCanOnboard">
+				<div class="panel-body" *ngIf="userCanOnboard && fidentityCanOnboard">
 					<div class="pull-left">
 						<span class="glyphicon glyphicon-ok text-success icon-large" attr.aria-label="{{ 'Videochat möglich' | translate:'account.digitalOnboarding.videoChatPossible' }}"></span>
 					</div>
-					<p>{{ 'Sie erfüllen die Voraussetzung für die Identifizierung mit Videochat. Für den Identifizierungsprozess verlassen
-						Sie die Infrastruktur des Bundes. Der Videochat wird mit einer externen Firma geführt (Managed Service Digital Identification
-						& Signing von Swisscom).'| translate:'account.digitalOnboarding.fullfillsRequirementsMessage' }}
+					<p>{{ 'Sie erfüllen die Voraussetzung für die Online-Identifikation über eine KI-Engine. Für das Identverfahren verlassen Sie die Infrastruktur des Bundes. ' +
+					'Das Identverfahren per Online-Identifikation über eine KI-Engine wird mit einer externen Firma durchgeführt (Identitätsprüfung via Ausweisdokument und Liveness-Check der Fidentity AG).'
+						| translate:'account.digitalOnboarding.fullfillsRequirementsMessage' }}
+						<strong>{{ 'Sie werden kurz nach erfolgreichem Abschluss des Identverfahrens über Ihren neuen Status informiert. Sollte die Identifikation scheitern, wird eine/r unserer Mitarbeitenden Sie kontaktieren.'
+							| translate:'account.digitalOnboarding.fullfillsRequirementsMessageBold' }}
+						</strong>
 					</p>
 					<p>
-						<a [href]="swisscomLink" target="_blank" rel="noopener">{{ 'Videochat starten' | translate:'account.digitalOnboarding.videochatLink' }}
+						<a [href]="url" target="_blank" rel="noopener">{{ 'Videochat starten' | translate:'account.digitalOnboarding.videochatLink' }}
 						</a>
 					</p>
 					<p>
-						<small>{{'Der Videochat wird aufgezeichnet, nach Abschluss der Identifizierung aber wieder gelöscht. ' +
+						{{'Der Videochat wird aufgezeichnet, nach Abschluss der Identifizierung aber wieder gelöscht. ' +
 						'Das Bundesarchiv speichert ausschliesslich die Kopie des Ausweises, die Fotografie und tabellarische Benutzerdaten. ' +
 						'Sie haben jederzeit das Recht, Auskunft über Ihre gespeicherten Daten zu verlangen (Art. 8 DSG).' |
-						translate: 'checkoutSubmittedStep.disclaimerText'}}</small>
+						translate: 'checkoutSubmittedStep.disclaimerText'}}
 					</p>
 				</div>
 				<div class="panel-body" *ngIf="!userCanOnboard">
 					<div class="pull-left">
 						<span class="glyphicon glyphicon-remove text-danger icon-large" attr.aria-label="{{ 'Kein Videochat möglich' | translate:'account.digitalOnboarding.videoChatNotPossible' }}"></span>
 					</div>
-					<p>{{ 'Sie erfüllen die Voraussetzungen für die Identifizierung per Videochat leider nicht. Bitte setzen Sie sich für die
-						Identifizierung mit uns in Verbindung:'| translate:'account.digitalOnboarding.fullfillsRequirementsMessageError' }}
+					<p>{{ 'Sie erfüllen die Voraussetzungen für eine Online-Identifikation leider nicht. Bitte setzen Sie sich für die Identifikation mit uns in Verbindung:'
+						| translate:'account.digitalOnboarding.fullfillsRequirementsMessageError' }}
+					</p>
+					<p>
+						<a [href]="getUserMailToLink()">{{ getUserMail() }}</a>
+					</p>
+					<div class="mt-3">
+						<button class="btn btn-primary" (click)="wizardPreviousPage()">{{ 'Zurück' | translate:'account.digitalOnboarding.previousStep' }}</button>&nbsp;
+					</div>
+				</div>
+				<div class="panel-body" *ngIf="!this.fidentityCanOnboard">
+					<div class="pull-left">
+						<span class="glyphicon glyphicon-remove text-danger icon-large" attr.aria-label="{{ 'Kein Videochat möglich' | translate:'account.digitalOnboarding.videoChatNotPossible' }}"></span>
+					</div>
+					<p>{{ 'Die Identifizierung ist fehlgeschlagen. Versuchen Sie es später noch einmal oder wenden Sie sich an'| translate:'account.digitalOnboarding.fidentityError' }}
 					</p>
 					<p>
 						<a [href]="getUserMailToLink()">{{ getUserMail() }}</a>

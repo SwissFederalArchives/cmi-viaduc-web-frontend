@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {
 	Abbruchgrund,
 	ArtDerArbeit, CmiGridComponent,
@@ -8,7 +8,7 @@ import {
 	OrderListDisplayItem,
 	Reason, ShippingType,
 	StammdatenService,
-	TranslationService, UiService, WijmoService,
+	TranslationService, UiService, Utilities as _util, WijmoService,
 } from '@cmi/viaduc-web-core';
 import {DataMap} from '@grapecity/wijmo.grid';
 import {SeoService, ShoppingCartService, UrlService} from '../../../modules/client/services';
@@ -22,7 +22,7 @@ import {map} from 'rxjs/operators';
 	templateUrl: 'orderOverviewPage.component.html',
 	styleUrls: ['./orderOverviewPage.component.less']
 })
-export class OrderOverviewPage implements OnInit {
+export class OrderOverviewPage implements OnInit, AfterViewInit {
 	public loading: boolean;
 	public crumbs: any[] = [];
 	public orderDisplayItems: CollectionView;
@@ -41,6 +41,7 @@ export class OrderOverviewPage implements OnInit {
 	public rowCount = 0;
 	public originalRowCount = 0;
 	public valueFilters: any;
+	private readonly _elem: any;
 
 	constructor(private _txt: TranslationService,
 				private _url: UrlService,
@@ -51,7 +52,9 @@ export class OrderOverviewPage implements OnInit {
 				private _scs: ShoppingCartService,
 				private _seoService: SeoService,
 				private _wjs: WijmoService,
-				private _stamm: StammdatenService) {
+				private _stamm: StammdatenService,
+				private _elemRef: ElementRef) {
+		this._elem = this._elemRef.nativeElement;
 	}
 
 	public ngOnInit(): void {
@@ -61,6 +64,10 @@ export class OrderOverviewPage implements OnInit {
 		this._createFilterMaps().then((m) => {
 			this.valueFilters =	m;
 		});
+	}
+
+	public ngAfterViewInit(): void {
+		_util.initJQForElement(this._elem);
 	}
 
 	public translateColumns() {

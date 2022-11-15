@@ -225,7 +225,7 @@ export class UserAccountComponent implements OnInit {
 	private _loadCountries(language: string) {
 		let countries = this._countriesService.getCountries(language);
 		this._languageDependantCountries = this._countriesService.sortCountriesByName(countries);
-		countries.push(new Country('', ''));
+		countries.push(new Country('', '', false, false, ''));
 		this._languageDependantCountriesWithEmpty = this._countriesService.sortCountriesByName(countries);
 	}
 
