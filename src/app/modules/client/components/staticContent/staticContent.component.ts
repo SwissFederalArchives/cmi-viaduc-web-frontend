@@ -125,7 +125,7 @@ export class StaticContentComponent implements OnChanges {
 	}
 
 	private setTitle() {
-		let h1s = document.getElementById('loadedHtml').getElementsByTagName('h1');
+		const h1s = document.getElementById('loadedHtml').getElementsByTagName('h1');
 		if (h1s && h1s[0]) {
 			this._seoService.setTitle(h1s[0].innerHTML);
 		}

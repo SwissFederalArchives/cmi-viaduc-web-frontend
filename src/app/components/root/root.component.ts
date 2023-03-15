@@ -1,4 +1,3 @@
-import { MatomoInjector, MatomoTracker } from 'ngx-matomo';
 import { AfterViewInit, Component, OnInit, ViewChild, Renderer2 } from '@angular/core';
 import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 import { ClientContext, ConfigService, PreloadService } from '@cmi/viaduc-web-core';
@@ -10,18 +9,23 @@ import {
 	UrlService
 } from '../../modules/client/services';
 import { Router, Event, NavigationEnd } from '@angular/router';
+import MatomoTracker from '@jonkoops/matomo-tracker';
+import {TrackPageViewParams} from '@jonkoops/matomo-tracker/src/types';
 
 @Component({
 	selector: 'cmi-viaduc-root',
 	templateUrl: 'root.component.html',
 	styleUrls: ['./root.component.less']
 })
-export class RootComponent implements OnInit, AfterViewInit {
+export class RootComponent implements OnInit, AfterViewInit{
 	@ViewChild(ToastContainerDirective)
 	public toastContainer: ToastContainerDirective;
 
-	public preloading: boolean = false;
-	public showEngagement: boolean = false;
+	public preloading = false;
+	public showEngagement = false;
+
+	private _matomoTracker: MatomoTracker;
+	private  trackPageViewParams: TrackPageViewParams
 
 	constructor(private _context: ClientContext,
 		private _contextService: ContextService,
@@ -34,14 +38,29 @@ export class RootComponent implements OnInit, AfterViewInit {
 		private _renderer: Renderer2,
 		private _router: Router,
 		private _urlService: UrlService,
-		private _matomoInjector: MatomoInjector,
-		private _matomoTracker: MatomoTracker) {
+		) {
+		const matomoUrl = this._config.getSetting('matomo.url', '');
+		const matomoSiteId = this._config.getSetting('matomo.siteId', '');
+		this._matomoTracker = new MatomoTracker({
+			urlBase: matomoUrl, // https://track.zem.ch  'https://LINK.TO.DOMAIN',
+			siteId: matomoSiteId,
+			// userId: '', // 'UID76903202', // optional, default value: `undefined`.
+			// trackerUrl: matomoUrl, // 'https://LINK.TO.DOMAIN/tracking.php', // optional, default value: `${urlBase}matomo.php`
+			// srcUrl: '', // optional, default value: `${urlBase}matomo.js`
+			// disabled: false, // optional, false by default. Makes all tracking calls no-ops if set to true.
+			heartBeat: { // optional, enabled by default
+				active: true, // optional, default value: true
+				seconds: 10 // optional, default value: `15
+			},
 
-			const matomoUrl = _config.getSetting('matomo.url', '');
-			const matomoSiteId = _config.getSetting('matomo.siteId', '');
-			if (matomoUrl) {
-				this._matomoInjector.init(matomoUrl, matomoSiteId);
+			// linkTracking: false, // optional, default value: true
+			configurations: { // optional, default value: {}
+				// any valid matomo configuration, all below are optional
+				disableCookies: true,
+				setSecureCookie: true,
+				setRequestMethod: 'POST'
 			}
+		})
 	}
 
 	public ngOnInit(): void {
@@ -49,7 +68,10 @@ export class RootComponent implements OnInit, AfterViewInit {
 
 		this._router.events.subscribe((event: Event) => {
 			if (event instanceof NavigationEnd) {
-				this._matomoTracker.trackPageView(event.url);
+				this.trackPageViewParams = {
+					href: event.url,
+				}
+				this._matomoTracker.trackPageView(this.trackPageViewParams);
 			}
 		});
 
@@ -71,7 +93,7 @@ export class RootComponent implements OnInit, AfterViewInit {
 			}, 50);
 		});
 
-		let version = this._config.getSetting('service.version');
+		const version = this._config.getSetting('service.version');
 		this._context.client.setVersion(version);
 
 		this._authentication.tryActivateExistingSession().then((success) => {

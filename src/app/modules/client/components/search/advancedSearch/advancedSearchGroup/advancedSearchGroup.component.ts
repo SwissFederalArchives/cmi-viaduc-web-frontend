@@ -32,7 +32,7 @@ export class AdvancedSearchGroupComponent implements AfterViewInit {
 	}
 
 	public addField(): void {
-		let field = this._adv.addNewSearchField(this.viewModel);
+		const field = this._adv.addNewSearchField(this.viewModel);
 		this.viewModel.searchFields.push(field);
 	}
 

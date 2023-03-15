@@ -15,7 +15,7 @@ export class DetailUtilitiesComponent {
 	@Input()
 	public entity: Entity;
 
-	public showMenu: string = '';
+	public showMenu = '';
 
 	constructor(private _ui: UiService, private _elemRef: ElementRef, private _scs: ShoppingCartService) {
 	}

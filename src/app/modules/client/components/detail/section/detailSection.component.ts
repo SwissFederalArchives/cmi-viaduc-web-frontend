@@ -16,7 +16,7 @@ export class DetailSectionComponent implements OnInit {
 	public entity: Entity;
 
 	@Input()
-	public isBarUser: boolean = false;
+	public isBarUser = false;
 
 	@Input()
 	public fields: Map<string, any> = new Map<string, any>();
@@ -27,16 +27,16 @@ export class DetailSectionComponent implements OnInit {
 	}
 
 	public ngOnInit(): void {
-		let rows = this.rows = [];
+		const rows = this.rows = [];
 
-		for (let key in this.data) {
+		for (const key in this.data) {
 			if (this.data.hasOwnProperty(key)) {
 				try {
-					let row: SectionRow = this._renderService.renderSectionRow(this.entity, key, this.data[key]);
+					const row: SectionRow = this._renderService.renderSectionRow(this.entity, key, this.data[key]);
 					if (row && (row.markup || row.html || row.text)) {
 						rows.push(row);
 						if (this.entity.isAnonymized && this.fields && this.fields.has(key) )	{
-							let item: Partial<SectionRow> = {
+							const item: Partial<SectionRow> = {
 								visibility: row.visibility,
 								text: this.fields.get(key),
 								label: row.label,

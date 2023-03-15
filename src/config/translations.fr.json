@@ -433,6 +433,7 @@
     "entstehungszeitraum": "Date de création",
     "hideFilter": "Masquer les filtres",
     "notActive": "Non actif",
+    "showFilter": "Afficher les filtres",
     "stufen": "Niveaux",
     "treffer": "Résultats",
     "weitereTreffer": "Autres",
@@ -822,6 +823,10 @@
     "next": "Page suivante",
     "previous": "Page précédente"
   },
+	"onlineViewer": {
+		"buttonText": "Voir",
+		"infoText" : "Consultez les documents"
+	},
   "order": {
     "frombar": "(Cette commande a été effectuée par les AFS.)",
     "unknowtext": "[inconnu]"

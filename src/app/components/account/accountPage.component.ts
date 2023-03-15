@@ -12,8 +12,8 @@ export class AccountPageComponent implements OnInit {
 	public crumbs: any[] = [];
 	private submitIdRequestUrl = '';
 
-	public isRegistered: boolean = true;
-	public isIdentified: boolean = false;
+	public isRegistered = true;
+	public isIdentified = false;
 
 	constructor(private _txt: TranslationService,
 				private _url: UrlService,

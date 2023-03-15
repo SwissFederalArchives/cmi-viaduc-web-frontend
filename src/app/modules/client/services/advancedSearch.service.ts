@@ -38,7 +38,7 @@ export class AdvancedSearchService {
 		return field;
 	}
 
-	public addNewSearchField(grp: AdvancedSearchGroup, def: SearchFieldDefinition = null, autoFocus: boolean = false): AdvancedSearchField {
+	public addNewSearchField(grp: AdvancedSearchGroup, def: SearchFieldDefinition = null, autoFocus = false): AdvancedSearchField {
 		def = def || this.possibleSearchDefinitions[0];
 
 		let fieldix = grp.searchFields.length + 1;
@@ -59,30 +59,30 @@ export class AdvancedSearchService {
 	}
 
 	public createNewGroup(groupid: any): AdvancedSearchGroup {
-		let possibleFields = this.getPossibleSearchFields();
+		const possibleFields = this.getPossibleSearchFields();
 
-		let searchGroup = new AdvancedSearchGroup();
+		const searchGroup = new AdvancedSearchGroup();
 		searchGroup.id = groupid;
 
-		let def = possibleFields[0];
-		let fld = this.addNewSearchField(searchGroup, def);
+		const def = possibleFields[0];
+		const fld = this.addNewSearchField(searchGroup, def);
 
 		searchGroup.searchFields.push(fld);
 		return searchGroup;
 	}
 
 	public getInitialSearchGroup(): AdvancedSearchGroup {
-		let grp = new AdvancedSearchGroup();
+		const grp = new AdvancedSearchGroup();
 		grp.id = 1;
-		let lineCount: Number = this._config.getSetting('search.defaultSearchFieldLines');
+		const lineCount: number = this._config.getSetting('search.defaultSearchFieldLines');
 		let i = 0;
 
-		for (let f of this.getPossibleSearchFields()) {
+		for (const f of this.getPossibleSearchFields()) {
 			if (i >= lineCount) {
 				break;
 			}
-			let autoFocus = (i === 0);
-			let field = this.addNewSearchField(grp, f, autoFocus);
+			const autoFocus = (i === 0);
+			const field = this.addNewSearchField(grp, f, autoFocus);
 			grp.searchFields.push(field);
 			i++;
 		}
@@ -91,19 +91,19 @@ export class AdvancedSearchService {
 	}
 
 	public regenerateAdvancedModelFromBaseSearchModel(tempModel: SearchModel): AdvancedSearchModel {
-		let definitions = this.getPossibleSearchFields();
+		const definitions = this.getPossibleSearchFields();
 
-		let model = new AdvancedSearchModel();
+		const model = new AdvancedSearchModel();
 		let i = 1;
 		model.groupOperator = tempModel.groupOperator;
-		for (let tmpGrp of tempModel.searchGroups) {
-			let grp = new AdvancedSearchGroup();
+		for (const tmpGrp of tempModel.searchGroups) {
+			const grp = new AdvancedSearchGroup();
 			grp.fieldOperator = tmpGrp.fieldOperator;
 			grp.id = i;
 			let j = 0;
-			for (let tmpField of tmpGrp.searchFields) {
-				let def = definitions.filter(d => d.key === tmpField.key)[0];
-				let field = this.addNewSearchField(grp, def, (i === 1 && j === 0));
+			for (const tmpField of tmpGrp.searchFields) {
+				const def = definitions.filter(d => d.key === tmpField.key)[0];
+				const field = this.addNewSearchField(grp, def, (i === 1 && j === 0));
 				field.value = tmpField.value;
 				grp.searchFields.push(field);
 				j++;
@@ -122,8 +122,8 @@ export class AdvancedSearchService {
 
 		this.possibleSearchDefinitions = [];
 
-		let fields: any[] = this._config.getSetting('search.advancedSearchFields');
-		for (let f of fields) {
+		const fields: any[] = this._config.getSetting('search.advancedSearchFields');
+		for (const f of fields) {
 			let type: FieldType;
 			switch (f.type.toLowerCase()) {
 				case 'text':
@@ -145,7 +145,7 @@ export class AdvancedSearchService {
 					type = FieldType.Text;
 			}
 
-			let fieldDef = new SearchFieldDefinition(type, f.key, f.displayName);
+			const fieldDef = new SearchFieldDefinition(type, f.key, f.displayName);
 
 			this.possibleSearchDefinitions.push(fieldDef);
 		}
@@ -186,7 +186,7 @@ export class AdvancedSearchService {
 		delete queryModel['possibleFields'];
 		delete queryModel['_config'];
 
-		for (let grp of queryModel.searchGroups) {
+		for (const grp of queryModel.searchGroups) {
 			for (let i = 0; i < grp.searchFields.length; i += 1) {
 				const fld = grp.searchFields[i];
 				grp.searchFields[i] = <SearchField>{

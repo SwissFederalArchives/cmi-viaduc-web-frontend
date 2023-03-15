@@ -20,10 +20,10 @@ export class CheckoutUserSelectStepComponent implements OnInit {
 	public onGoBackClicked: EventEmitter<void> = new EventEmitter<void>();
 	@Output()
 	public onNextClicked: EventEmitter<void> = new EventEmitter<void>();
-	public nextClicked: boolean = false;
-	public loading: boolean = false;
-	public checkingKontingent: boolean = false;
-	public willexceedKontingent: boolean = false;
+	public nextClicked = false;
+	public loading = false;
+	public checkingKontingent = false;
+	public willexceedKontingent = false;
 
 	constructor(private _scs: ShoppingCartService,
 				private _userService: UserService,
@@ -42,9 +42,9 @@ export class CheckoutUserSelectStepComponent implements OnInit {
 			this.onOrderIsForMeChanged(val);
 		});
 
-		let order = this._scs.getActiveOrder();
-		let currentUserId = (this._ctx.currentSession || <any>{}).userid;
-		let orderIsForMe = !(order.userId && currentUserId !== order.userId);
+		const order = this._scs.getActiveOrder();
+		const currentUserId = (this._ctx.currentSession || <any>{}).userid;
+		const orderIsForMe = !(order.userId && currentUserId !== order.userId);
 
 		this.form.patchValue({
 			orderIsForMe: orderIsForMe,
@@ -52,7 +52,7 @@ export class CheckoutUserSelectStepComponent implements OnInit {
 		});
 
 		// possible long operation (all users are fetched)
-		let users = await this._userService.getUsers();
+		const users = await this._userService.getUsers();
 		this.userList = this._prepareUserList(users);
 		this.loading = false;
 
@@ -72,7 +72,7 @@ export class CheckoutUserSelectStepComponent implements OnInit {
 		const list: User[] = [];
 		list.push(new User());
 		// Alphabetisch sortieren nach Nachnamen
-		let sortedUserList = userList.sort((a, b) => {
+		const sortedUserList = userList.sort((a, b) => {
 			if (a && a.familyName && b && b.familyName) {
 				if (a.familyName < b.familyName) {
 					return -1;
@@ -82,7 +82,7 @@ export class CheckoutUserSelectStepComponent implements OnInit {
 			}
 			return 1;
 		});
-		for (let user of sortedUserList ) {
+		for (const user of sortedUserList ) {
 			if (!_util.isEmpty(user.familyName) || !_util.isEmpty(user.firstName)) {
 				user.displayName = (user.familyName + ' ' + user.firstName + ' (' + user.userExtId + ')').trim();
 				list.push(user);
@@ -101,18 +101,19 @@ export class CheckoutUserSelectStepComponent implements OnInit {
 	public onSelectedIndexChanged(): void {
 		this._setUserId();
 
-		let order = this._scs.getActiveOrder();
+		const order = this._scs.getActiveOrder();
 		if (!this._orderIsForMe && order.type === ShippingType.Digitalisierungsauftrag) {
 			this.checkingKontingent = true;
 			this.willexceedKontingent = false;
-			let userId = this.form.controls['userId'].value;
+			const userId = this.form.controls['userId'].value;
 
 			this._scs.getKontingent(userId).subscribe(res => {
 				if (res.bestellkontingent > 0) {
 					this._scs.getOrderableItems().subscribe(ordableItems => {
 							this.willexceedKontingent = res.bestellkontingent - ordableItems.length < 0;
 						},
-						() => {},
+						() => {return
+						},
 						() => {
 							this.checkingKontingent = false;
 						});
@@ -122,7 +123,7 @@ export class CheckoutUserSelectStepComponent implements OnInit {
 				}
 			},
 				() => { this.checkingKontingent = false; },
-				() => {});
+				() => {return});
 		}
 
 	}
@@ -140,7 +141,7 @@ export class CheckoutUserSelectStepComponent implements OnInit {
 	}
 
 	private _saveActiveOrder() {
-		let order = this._scs.getActiveOrder();
+		const order = this._scs.getActiveOrder();
 
 		let userId = this.form.controls['userId'].value;
 		if (this._orderIsForMe) {

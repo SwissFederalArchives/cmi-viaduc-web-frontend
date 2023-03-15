@@ -17,9 +17,9 @@ export class AccountFavoritesDetailPageComponent implements OnInit {
 	public crumbs: any[] = [];
 	public list: FavoriteList;
 
-	public showRenameField: boolean = false;
-	public newListName: string = '';
-	public showDeleteModal: boolean = false;
+	public showRenameField = false;
+	public newListName = '';
+	public showDeleteModal = false;
 
 	@ViewChild('leftNavFavorites', { static: true})
 	public leftNavFavorites: FavoriteListsComponent;
@@ -41,7 +41,7 @@ export class AccountFavoritesDetailPageComponent implements OnInit {
 	}
 
 	private _buildCrumbs(): void {
-		let crumbs: any[] = this.crumbs = [];
+		const crumbs: any[] = this.crumbs = [];
 		crumbs.push(
 			{
 				iconClasses: 'glyphicon glyphicon-home',
@@ -90,16 +90,19 @@ export class AccountFavoritesDetailPageComponent implements OnInit {
 
 	public async onFavoriteRemoved(): Promise<void> {
 		this._loadList(this.list.id);
-		this.leftNavFavorites.refresh().then(() => {});
+		this.leftNavFavorites.refresh().then(() => {
+			return;});
 	}
 
 	public doRename(): void {
 		this._favoriteService.renameFavoriteList(this.list.id, this.newListName)
 			.then(() => {
 				this.list.name = this.newListName;
-				this.leftNavFavorites.refresh().then(() => {});
 				this._buildCrumbs();
 				this.toggleRenameField();
+				this.leftNavFavorites.refresh().then(() => {
+					return
+				});
 			}, (e) => {
 				this.error = e;
 				this.newListName = this.list.name;

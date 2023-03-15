@@ -1,4 +1,4 @@
-import {Component, ElementRef, AfterViewInit, OnInit} from '@angular/core';
+import {Component, ElementRef, AfterViewInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ClientContext, TranslationService, Utilities as _util, CookieService} from '@cmi/viaduc-web-core';
 import {AuthorizationService, FavoriteService, ShoppingCartService} from '../../../services';
@@ -10,7 +10,7 @@ import {AuthenticationService} from '../../../services';
 	templateUrl: 'headerContent.component.html',
 	styleUrls: ['./headerContent.component.less'],
 })
-export class HeaderContentComponent implements OnInit, AfterViewInit {
+export class HeaderContentComponent implements AfterViewInit {
 	private _elem: any;
 	private _languages: any[];
 
@@ -25,9 +25,6 @@ export class HeaderContentComponent implements OnInit, AfterViewInit {
 				private _authentication: AuthenticationService,
 				private _authorization: AuthorizationService) {
 		this._elem = this._elemRef.nativeElement;
-	}
-
-	public ngOnInit(): void {
 	}
 
 	public ngAfterViewInit(): void {
@@ -56,22 +53,22 @@ export class HeaderContentComponent implements OnInit, AfterViewInit {
 	}
 
 	private refresh(): void {
-		let ls = this._languages = (this._languages || []);
+		const ls = this._languages = (this._languages || []);
 		if (_util.isEmpty(ls)) {
 			for (let i = 0; i < this._txt.supportedLanguages.length; i += 1) {
-				let l = {...this._txt.supportedLanguages[i]};
+				const l = {...this._txt.supportedLanguages[i]};
 				ls.push(l);
 			}
 		}
 		for (let i = 0; i < this._languages.length; i += 1) {
-			let l = this._languages[i];
+			const l = this._languages[i];
 			l.active = (l.key === this._context.language);
 			l.label = l.name;
 		}
 	}
 
 	public get versionInfo(): string {
-		let v = this._context.client.version;
+		const v = this._context.client.version;
 		return v ? `${v.major}.${v.minor}.${v.revision}.${v.build}` : void 0;
 	}
 

@@ -12,10 +12,10 @@ import {UrlService} from '../../../services';
 	styleUrls: ['./searchBrowser.component.less']
 })
 export class SearchBrowserComponent implements OnInit {
-	public loading: boolean = false;
+	public loading = false;
 	public currentId: string;
-	public itemIndex: number = 0;
-	public itemCount: number = 0;
+	public itemIndex = 0;
+	public itemCount = 0;
 
 	constructor(private _context: ClientContext,
 				private _searchService: SearchService,
@@ -98,13 +98,14 @@ export class SearchBrowserComponent implements OnInit {
 	private async _update(request: SearchRequest): Promise<void> {
 		this.loading = true;
 		try {
-			let response = await this._searchService.search(request);
+			const response = await this._searchService.search(request);
 
 			if (response && _util.isObject(response['entities'])) {
 				this._context.search.request = request;
 				this._context.search.result = <EntityResult>response['entities'];
 			}
 		} catch (err) {
+			this.loading = false;
 		} finally {
 			this.itemCount = this._getItemCount();
 			this.loading = false;
@@ -112,7 +113,7 @@ export class SearchBrowserComponent implements OnInit {
 	}
 
 	private _paging(): Paging {
-		let r = this._getResult();
+		const r = this._getResult();
 		if (r && r.paging) {
 			if (r.paging) {
 				r.paging.skip = r.paging.skip || 0;
@@ -139,7 +140,7 @@ export class SearchBrowserComponent implements OnInit {
 
 	private _goToCurrent(): void {
 		const b = this._getOffset();
-		let item = this._context.search.result.items[b.offset];
+		const item = this._context.search.result.items[b.offset];
 
 		this._router.navigate([this._url.getDetailUrl(item.archiveRecordId, item.title)]).then(() => {
 			this.itemIndex = this._getCurrentIndex();
@@ -175,7 +176,7 @@ export class SearchBrowserComponent implements OnInit {
 	}
 
 	private _selectItem(index: number) {
-		let lastItem = this._context.search.result.items[index];
+		const lastItem = this._context.search.result.items[index];
 		this.currentId = lastItem.archiveRecordId;
 	}
 

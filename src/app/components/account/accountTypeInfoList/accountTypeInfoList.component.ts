@@ -1,21 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
 	selector: 'cmi-viaduc-account-type-info-list',
 	templateUrl: 'accountTypeInfoList.component.html',
 	styleUrls: ['accountTypeInfoList.component.less']
 })
-export class AccountTypeInfoListComponent implements OnInit {
+export class AccountTypeInfoListComponent {
 	@Input()
-	public isRegistered: boolean = true;
+	public isRegistered = true;
 	@Input()
-	public isIdentified: boolean = false;
+	public isIdentified = false;
 	@Input()
-	public canCollapse: boolean = false;
-
-	constructor() {
-	}
-
-	public ngOnInit(): void {
-	}
+	public canCollapse = false;
 }

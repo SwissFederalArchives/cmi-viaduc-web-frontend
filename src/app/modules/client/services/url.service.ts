@@ -12,7 +12,7 @@ export class UrlService {
 
 	public getDetailIdFromReference(reference: string): string {
 		let id = reference;
-		let i = reference.indexOf(referenceDelimiter);
+		const i = reference.indexOf(referenceDelimiter);
 		if (i > 0) {
 			id = id.substring(0, i);
 		}
@@ -107,7 +107,7 @@ export class UrlService {
 
 	public getSearchRequestFromQueryParams(qp: Params): SearchRequest {
 		if (qp && qp.q) {
-			let sq = new SearchRequest();
+			const sq = new SearchRequest();
 			sq.query = JSON.parse(qp.q);
 
 			if (qp.pf) {
@@ -130,12 +130,12 @@ export class UrlService {
 	}
 
 	public getUrlTreeFromSearchRequest(r: SearchRequest): UrlTree {
-		let q = r.query ? JSON.stringify(r.query, undefined, 0) : undefined;
-		let pf = r.facetsFilters ? JSON.stringify(r.facetsFilters, undefined, 0) : undefined;
-		let op = r.options ? JSON.stringify(r.options, undefined, 0) : undefined;
-		let qs = r.paging ? JSON.stringify(r.paging, undefined, 0) : undefined;
-		let as = r.advancedSearch ? JSON.stringify(r.advancedSearch, undefined, 0) : undefined;
-		let params: Params = <Params> {};
+		const q = r.query ? JSON.stringify(r.query, undefined, 0) : undefined;
+		const pf = r.facetsFilters ? JSON.stringify(r.facetsFilters, undefined, 0) : undefined;
+		const op = r.options ? JSON.stringify(r.options, undefined, 0) : undefined;
+		const qs = r.paging ? JSON.stringify(r.paging, undefined, 0) : undefined;
+		const as = r.advancedSearch ? JSON.stringify(r.advancedSearch, undefined, 0) : undefined;
+		const params: Params = <Params> {};
 
 		if (q) {
 			params.q = q;
@@ -158,7 +158,7 @@ export class UrlService {
 	}
 
 	public getDetailUrl(id: string, title?: string): string {
-		let url = this.localizeUrl(this._context.language, '/archiv/einheit/' + id);
+		const url = this.localizeUrl(this._context.language, '/archiv/einheit/' + id);
 		return url;
 	}
 
@@ -250,7 +250,7 @@ export class UrlService {
 	}
 
 	public setQuery(qs: string): void {
-		let h = window.location.hash.split('?');
+		const h = window.location.hash.split('?');
 		window.location.hash = h[0] + '?' + qs;
 	}
 }

@@ -15,10 +15,10 @@ export class DetailImagesComponent implements OnInit, AfterViewInit {
 	public modalTitle: string;
 	public modalAltText: string;
 	public modalImage: string;
-	public showCaption: boolean = false;
+	public showCaption = false;
 
 	public get items(): EntityImage[] {
-		let p = this.paging;
+		const p = this.paging;
 		return this.images.length <= p.take ? this.images : this.images.slice(p.skip, Math.min(p.total, p.skip + p.take));
 	}
 
@@ -38,10 +38,6 @@ export class DetailImagesComponent implements OnInit, AfterViewInit {
 
 	public ngAfterViewInit(): void {
 		_util.initJQForElement(this._elem);
-	}
-
-	public onPaged(paging: Paging): void {
-
 	}
 
 	public onModalFadeIn(item: EntityImage): void {

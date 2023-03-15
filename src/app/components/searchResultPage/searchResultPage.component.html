@@ -45,8 +45,10 @@
 			<h3 class="sr-only">{{'Treffer' | translate:'search.trefferTitle'}}</h3>
 			<div class="row hitbox-container">
 				<div *ngIf="facetteCollapsed && !hasAnyErrors" class="col-md-1 col-sm-1 col-xs-2 no-bottom-margin">
-					<button type="button" class="btn btn-link fac-collapsed-btn" (click)="onFacetteToggle(false)">
-						<span class="icon icon--greater collapse-icon" role="img" aria-label="Facettenliste einklappen"></span>
+					<button type="button" class="btn btn-link fac-collapsed-btn" (click)="onFacetteToggle(false)"
+					tooltip="{{'Filter einblenden' | translate:'facette.showFilter' }}" >
+						<span class="icon icon--greater collapse-icon" role="img" ></span>
+						<span class="sr-only">{{'Filter einblenden' | translate:'facette.showFilter' }}</span>
 						<br />
 						<span>
 							{{'Filter' | translate:'search.filterTitle'}}

@@ -14,7 +14,7 @@
 					<span>{{ 'Signatur' | translate: 'simpleHit.signatur'}}:&nbsp;</span><span>{{entity.referenceCode}}</span>
 				</label>
 				<div>
-					<img *ngIf="getPictureAsBase64() !== null" [src]="getPictureAsBase64()">
+					<img *ngIf="getPictureAsBase64() !== null" [src]="getPictureAsBase64()" [alt]="entity.title">
 					<p *ngIf="htmlForText && htmlForText !== 'null'; else emptyPTag" [innerHtml]="htmlForText|anonymizedHtml"></p>
 				</div>
 				<ng-template #emptyPTag>&nbsp;</ng-template>

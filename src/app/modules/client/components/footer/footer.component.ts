@@ -8,7 +8,7 @@ import {ContextService} from '../../services/context.service';
 export class FooterComponent implements OnInit, OnDestroy {
 
 	private _contextSubscription: any = null;
-	public reload: boolean = false;
+	public reload = false;
 
 	private _language: string = null;
 
@@ -19,7 +19,8 @@ export class FooterComponent implements OnInit, OnDestroy {
 	public ngOnInit(): void {
 		this._contextSubscription = this._contextService.context.subscribe((ctx) => {
 			if (ctx.language !== this._language) {
-				let _component = this;
+				// eslint-disable-next-line
+				const _component = this;
 				this._language = ctx.language;
 				this.reload = true;
 				window.setTimeout(function () {

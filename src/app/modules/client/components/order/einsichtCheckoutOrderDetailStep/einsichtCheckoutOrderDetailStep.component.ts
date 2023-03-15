@@ -10,9 +10,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class EisichtCheckoutOrderDetailsStepComponent implements OnInit {
 	public artDerArbeiten: ArtDerArbeit[] = [];
-	public isAsUser: boolean = false;
+	public isAsUser = false;
 	public form: FormGroup;
-	public nextClicked: boolean = false;
+	public nextClicked = false;
 	public identifizierungsText: string;
 
 	@Output()
@@ -37,7 +37,7 @@ export class EisichtCheckoutOrderDetailsStepComponent implements OnInit {
 			hasEigenePersonendaten: [null, Validators.required]
 		});
 
-		let activeOrder = this._scs.getActiveOrder();
+		const activeOrder = this._scs.getActiveOrder();
 		if (activeOrder) {
 			this.form.patchValue({
 				artDerArbeit: activeOrder.artDerArbeit,

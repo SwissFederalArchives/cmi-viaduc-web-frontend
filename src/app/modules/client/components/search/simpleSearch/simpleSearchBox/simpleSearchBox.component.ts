@@ -20,7 +20,7 @@ export class SimpleSearchComponent implements OnInit {
 	@ViewChild('searchSynonymeIconComponent', { static: false})
 	private searchSynonymeIconComponent: SearchSynonymeIconComponent;
 
-	public dateRangeValid: boolean = true;
+	public dateRangeValid = true;
 
 	private pagingSize: number;
 	private _shiftKeyPressed: boolean;
@@ -59,7 +59,7 @@ export class SimpleSearchComponent implements OnInit {
 		});
 	}
 	private _search(): void {
-		let request = this._createNewSearchRequest();
+		const request = this._createNewSearchRequest();
 		request.query = SearchRequest.createSearchModelFromSimple(this.search);
 		request.options = <SearchOptions>{
 			enableExplanations: this._shiftKeyPressed,

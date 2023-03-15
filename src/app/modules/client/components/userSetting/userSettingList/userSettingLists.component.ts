@@ -24,8 +24,8 @@ export class UserSettingListComponent implements OnInit {
 	}
 
 	public goTo(section: UserSettingSection): void {
-		let lang = this._ctx.language;
-		let translatedUrl = this._url.localizeUrl(lang, section.url);
+		const lang = this._ctx.language;
+		const translatedUrl = this._url.localizeUrl(lang, section.url);
 		this._router.navigate([translatedUrl]);
 	}
 
@@ -45,7 +45,7 @@ export class UserSettingListComponent implements OnInit {
 		// Mark all inactive
 		this.sections.forEach(s => s.active = false);
 
-		let lang = this._ctx.language;
+		const lang = this._ctx.language;
 		const activeItem = this.sections.find(s => this._url.localizeUrl(lang, s.url).replace(/\/$/, '').toLowerCase() === url);
 		if (activeItem) {
 			activeItem.active = true;

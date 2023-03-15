@@ -19,7 +19,7 @@ import {AdvancedSearchService} from './advancedSearch.service';
 @Injectable()
 export class SearchService {
 
-	public elasticHitLimit: number = 10000;
+	public elasticHitLimit = 10000;
 
 	constructor(private _options: CoreOptions,
 				private _http: HttpService,
@@ -95,23 +95,23 @@ export class SearchService {
 	}
 
 	public toHumanReadableQueryString(searchModel: SearchModel): string {
-		let fieldDefs = this._adv.getPossibleSearchFields();
+		const fieldDefs = this._adv.getPossibleSearchFields();
 
 		let s = '';
-		let groupOperator = searchModel.groupOperator;
-		for (let group of searchModel.searchGroups) {
+		const groupOperator = searchModel.groupOperator;
+		for (const group of searchModel.searchGroups) {
 			let groupString = '';
 
 			if (s !== '') {
 				groupString += ` ${this._getGroupOperatorText(groupOperator)} `;
 			}
 
-			let fieldOperator = group.fieldOperator;
+			const fieldOperator = group.fieldOperator;
 			groupString += this._getFieldOperatorText(fieldOperator);
 
 			groupString += ' (';
 			let fieldString = '';
-			for (let field of group.searchFields) {
+			for (const field of group.searchFields) {
 				if (field.key && field.value && !_util.isEmpty(field.value)) {
 					if (fieldString !== '') {
 						fieldString += ', ';

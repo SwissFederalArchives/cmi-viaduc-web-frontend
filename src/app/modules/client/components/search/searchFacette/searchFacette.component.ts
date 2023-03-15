@@ -32,13 +32,13 @@ export class SearchFacetteComponent implements OnInit {
 	public facette: Facet;
 
 	@Input()
-	public key: string = '';
+	public key = '';
 
 	@Input()
-	public facetteTitle: string = '';
+	public facetteTitle = '';
 
 	@Input()
-	public collapsed: boolean = true;
+	public collapsed = true;
 
 	@Output()
 	public onFilter = new EventEmitter<FacetteFilterItem>();
@@ -66,13 +66,13 @@ export class SearchFacetteComponent implements OnInit {
 	}
 
 	public applyFilter(agg: AggregationEntry): void {
-		let ff = new FacetteFilterItem();
+		const ff = new FacetteFilterItem();
 		ff.key = this.key;
 		ff.chosenFilter = agg;
 		ff.facette = this.facette;
 
-		let filter = ff.chosenFilter.filter;
-		let i = this.activeFilterStrings.findIndex((value) => value === filter);
+		const filter = ff.chosenFilter.filter;
+		const i = this.activeFilterStrings.findIndex((value) => value === filter);
 		if (i !== -1) {
 			ff.action = FacetteAction.Remove;
 		} else {

@@ -1,14 +1,14 @@
 <div class="order-section">
 	<cmi-viaduc-usage-section *ngIf="authenticated"
 							  [text]="'Legen Sie die Unterlagen in den Bestellkorb, um sie dort direkt zu bestellen oder ein Einsichtsgesuch einzureichen.' | translate:'orderSection.orderText'">
-		<a class="btn" (keyup.enter)="orderVe()" (click)="orderVe()" tabindex="0">
+		<a class="btn w-100" (keyup.enter)="orderVe()" (click)="orderVe()" tabindex="0">
 			<span class="icon icon--cart" role="img" aria-hidden="true"></span>&nbsp;
 			<span>{{ 'Bestellen' | translate:'file.order' }} </span>
 		</a>
 	</cmi-viaduc-usage-section>
 	<cmi-viaduc-usage-section *ngIf="!authenticated" [text]="pleaseLoginText">
-		<a class="btn" (click)="login($event)" tabindex="0" (keyup.enter)="login($event)">
-			<i class="glyphicon glyphicon-log-in" role="img" aria-hidden="true"></i>&nbsp;
+		<a class="btn w-100" (click)="login($event)" tabindex="0" (keyup.enter)="login($event)">
+			<i class="glyphicon glyphicon-log-in" role="img" aria-hidden="true" ></i>&nbsp;
 			<span>{{ 'Anmelden' | translate:'anmelden' }}</span>
 		</a>
 	</cmi-viaduc-usage-section>

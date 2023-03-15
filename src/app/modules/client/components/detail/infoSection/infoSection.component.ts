@@ -12,7 +12,4 @@ export class InfoSectionComponent {
 	public text: string;
 	@Input()
 	public entity: Entity;
-
-	constructor() {
-	}
 }

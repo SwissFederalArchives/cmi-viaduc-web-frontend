@@ -433,6 +433,7 @@
     "entstehungszeitraum": "Creation period",
     "hideFilter": "Hide filters",
     "notActive": "Not active",
+    "showFilter": "Show filters",
     "stufen": "Levels",
     "treffer": "Results",
     "weitereTreffer": "Other",
@@ -822,6 +823,10 @@
     "next": "Next",
     "previous": "Previous"
   },
+	"onlineViewer": {
+		"buttonText": "View",
+		"infoText" : "Consult the documents"
+	},
   "order": {
     "frombar": "(This order was initiated by the Federal Archives.)",
     "unknowtext": "[Not visible]"

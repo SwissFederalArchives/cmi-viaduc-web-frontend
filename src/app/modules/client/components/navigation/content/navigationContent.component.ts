@@ -105,7 +105,7 @@ export class NavigationContentComponent implements AfterViewInit {
 	}
 
 	public get drillDownCointainerHeight(): string {
-		let dropdownHeight = (window.screen.height) - 91;
+		const dropdownHeight = (window.screen.height) - 91;
 		return (this.mobileUserNavOpen || this.mobileMainNavOpen) ? dropdownHeight + 'px' : 'auto';
 	}
 
@@ -175,12 +175,12 @@ export class NavigationContentComponent implements AfterViewInit {
 	}
 
 	public nullifyClick(event: any): void {
-		let senderElementName = event.target.tagName.toLowerCase();
+		const senderElementName = event.target.tagName.toLowerCase();
 		if (senderElementName !== 'a' && senderElementName !== 'button') {
 			event.stopPropagation();
 		} else {
 			// something from ci/cd removes click handler of some mobile-nav-items, so execute it this way
-			let id = event.target.getAttribute('menuid');
+			const id = event.target.getAttribute('menuid');
 			if (id) {
 				this._executeMenuItem(id);
 				event.stopPropagation();

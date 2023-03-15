@@ -21,7 +21,7 @@ export class CollectionService {
 	}
 
 	public getActiveCollections(parentId: number | null): Observable<CollectionListItemDto[] | null> {
-		let url = this._createBaseUrl + `GetActiveCollections?parentId=${parentId}&language=${this._context.language}`;
+		const url = this._createBaseUrl + `GetActiveCollections?parentId=${parentId}&language=${this._context.language}`;
 		return this.http.get<CollectionListItemDto[]>(url).pipe(map(arr =>  arr.map(item => CollectionListItemDto.fromJS(item))));
 	}
 
@@ -54,7 +54,7 @@ export class CollectionService {
 	}
 
 	public getCollectionHeader():Observable<string> {
-		let url = this._createBaseUrl + 'GetCollectionsHeader?language=' + this._context.language;
+		const url = this._createBaseUrl + 'GetCollectionsHeader?language=' + this._context.language;
 		return this.http.get<string>(url).pipe(map(r => r));
 	}
 

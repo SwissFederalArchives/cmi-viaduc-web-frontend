@@ -10,8 +10,13 @@ import {
 } from '@cmi/viaduc-web-core';
 import { User, UserSetting, UserSettingType } from '../../../model';
 import { AuthorizationService, UrlService, UserService } from '../../../services';
-import * as moment from 'moment';
+import moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
+import {FlatPickrOutputOptions} from 'angularx-flatpickr/lib/flatpickr.directive';
+import flatpickr from 'flatpickr';
+import {German} from 'flatpickr/dist/l10n/de';
+import {French} from 'flatpickr/dist/l10n/fr';
+import {Italian} from 'flatpickr/dist/l10n/it';
 
 @Component({
 	selector: 'cmi-viaduc-user-account',
@@ -21,9 +26,10 @@ import { ToastrService } from 'ngx-toastr';
 export class UserAccountComponent implements OnInit {
 	public name: string;
 	public user: User;
-	public loading: boolean = false;
+	public loading = false;
 	public isExternalUser: boolean;
 	public saveClicked = false;
+	public birthday: string;
 
 	public get allowEditingUserSettings(): boolean {
 		return this._allowEditingUserSettings;
@@ -38,7 +44,7 @@ export class UserAccountComponent implements OnInit {
 	}
 
 	public get countryIsConfigured(): boolean {
-		let countryCode = this.countryCode;
+		const countryCode = this.countryCode;
 
 		if (countryCode == null) {
 			return false;
@@ -56,7 +62,7 @@ export class UserAccountComponent implements OnInit {
 	}
 
 	private get countryCode(): string {
-		let userSetting = this._getCountryCodeUserSetting();
+		const userSetting = this._getCountryCodeUserSetting();
 
 		if (userSetting == null) {
 			return null;
@@ -88,10 +94,13 @@ export class UserAccountComponent implements OnInit {
 	private _captionMobileNumber: string;
 	private _captionPreferredLanguage: string;
 	private _dateRegex = /(0[1-9]|1[0-9]|2[0-9]|3[01])\.(0[1-9]|1[012])\.(?:18|19|20)[0-9]{2}/;
-	private _emailRegexPattern: string = '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$';
-	private _allowEditingUserSettings: boolean = false;
+		/* eslint-disable  no-useless-escape */
+	private _emailRegexPattern = '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$';
+	/* eslint-enable  no-useless-escape */
+	private _allowEditingUserSettings = false;
 	private _languageDependantCountries: Countries = <Countries>{};
 	private _languages: any;
+	public newDate = new Date();
 
 	constructor(private _context: ClientContext,
 		private _authorization: AuthorizationService,
@@ -102,8 +111,21 @@ export class UserAccountComponent implements OnInit {
 		private _cdr: ChangeDetectorRef,
 		private _url: UrlService,
 		private _toastr: ToastrService) {
-		this.isExternalUser = this._authorization.isExternalUser();
+		this.isExternalUser = this._authorization.isExternalUser()
+		const lang = this._context.language;
+		switch (lang) {
+			case 'de' :
+				flatpickr.localize(German);
+				break;
+			case 'fr' :
+				flatpickr.localize(French);
+				break;
+			case 'it' :
+				flatpickr.localize(Italian);
+				break;
+		}
 	}
+
 
 	public ngOnInit() {
 		this._captionFamilyName = this._txt.get('account.familyName', 'Name');
@@ -130,6 +152,7 @@ export class UserAccountComponent implements OnInit {
 	}
 
 	public onChangeSettingsClicked() {
+		this.birthday = this._formatDateToDayMonthYearFormat(this.user.birthday);
 		this._allowEditingUserSettings = !this._allowEditingUserSettings;
 	}
 
@@ -151,22 +174,22 @@ export class UserAccountComponent implements OnInit {
 	}
 
 	public onCountryChanged(countryName: string): void {
-		let userSetting = this._getCountryCodeUserSetting();
+		const userSetting = this._getCountryCodeUserSetting();
 		userSetting.value = this._getCountryCodeFromLanguageDependantCountryName(countryName);
 	}
 
 	public onLanguageChanged(languageName: string): void {
-		let userSetting = this._getLanguageCodeUserSetting();
+		const userSetting = this._getLanguageCodeUserSetting();
 		userSetting.value = this._getLanguageCodeFromLanguageName(languageName);
 	}
 
 	public getLanguageDependantCountryNameFromUserSetting(userSetting: UserSetting): string {
-		let match = this._languageDependantCountries.find(c => c.code === userSetting.value);
+		const match = this._languageDependantCountries.find(c => c.code === userSetting.value);
 		return match != null ? match.name : '';
 	}
 
 	public getLanguageFromUserSetting(userSetting: UserSetting): string {
-		let match = this._languages.find(c => c.code === userSetting.value);
+		const match = this._languages.find(c => c.code === userSetting.value);
 		return match != null ? match.name : '';
 	}
 
@@ -203,7 +226,7 @@ export class UserAccountComponent implements OnInit {
 	}
 
 	public userSettingsAreInvalid(): boolean {
-		for (let userSetting of this._userSettings) {
+		for (const userSetting of this._userSettings) {
 			if (userSetting.isInvalid) {
 				return true;
 			}
@@ -213,7 +236,7 @@ export class UserAccountComponent implements OnInit {
 	}
 
 	public recalcRegexes(): boolean {
-		for (let userSetting of this._userSettings) {
+		for (const userSetting of this._userSettings) {
 			if (userSetting.calculateInvalidRegex()) {
 				return true;
 			}
@@ -223,7 +246,7 @@ export class UserAccountComponent implements OnInit {
 	}
 
 	private _loadCountries(language: string) {
-		let countries = this._countriesService.getCountries(language);
+		const countries = this._countriesService.getCountries(language);
 		this._languageDependantCountries = this._countriesService.sortCountriesByName(countries);
 		countries.push(new Country('', '', false, false, ''));
 		this._languageDependantCountriesWithEmpty = this._countriesService.sortCountriesByName(countries);
@@ -241,50 +264,45 @@ export class UserAccountComponent implements OnInit {
 
 	private _callLoadOrReload(): void {
 		this._loadOrReloadUserSettings().then(() => {
+			return;
 		});
 	}
 
 	private async _loadOrReloadUserSettings(): Promise<void> {
-		try {
-			this.loading = true;
+		this.loading = true;
 
-			await this._loadUser();
-			this._loadCountries(this._context.language);
+		await this._loadUser();
+		this._loadCountries(this._context.language);
 
-			this._userSettings = [];
-			this._userSettings.push(new UserSetting(UserSettingType.FamilyName, this._captionFamilyName, this.user.familyName,
-				this._authorization.hasMoreThenOe2Rights(), true, null, this._errorMandatoryField, null));
-			this._userSettings.push(new UserSetting(UserSettingType.FirstName, this._captionFirstName, this.user.firstName,
-				this._authorization.hasMoreThenOe2Rights(), true, null, this._errorMandatoryField, null));
-			// Only Ö3 User is not allowed to change birthday
-			this._userSettings.push(new UserSetting(UserSettingType.Birthday, this._captionBirthday, this._formatDateToDayMonthYearFormat(this.user.birthday),
-				this._authorization.hasRole(this._authorization.roles.Oe3), false, this._dateRegex.source, this._errorDateFieldFormat));
-			this._userSettings.push(new UserSetting(UserSettingType.Organization, this._captionOrganization, this.user.organization, false, !this.isExternalUser, null,
-				this.isExternalUser ? null : this._errorMandatoryField));
-			this._userSettings.push(new UserSetting(UserSettingType.Street, this._captionStreet, this.user.street, false,
-				true, null, this._errorMandatoryField, null));
-			this._userSettings.push(new UserSetting(UserSettingType.StreetAttachment, this._captionStreetAttachment, this.user.streetAttachment, false));
-			this._userSettings.push(new UserSetting(UserSettingType.Zipcode, this._captionZipcode, this.user.zipCode, false,
-				true, null, this._errorMandatoryField, null));
-			this._userSettings.push(new UserSetting(UserSettingType.Town, this._captionTown, this.user.town, false,
-				true, null, this._errorMandatoryField, null));
-			this._userSettings.push(new UserSetting(UserSettingType.Country, this._captionCountry, this.user.countryCode, false,
-				true, null, this._errorMandatoryField, null));
-			this._userSettings.push(new UserSetting(UserSettingType.PhoneNumber, this._captionPhonenumber, this.user.phoneNumber, false,
-				false, '^([s()+]*([0-9][s( )-]*){6,20})$', this._errorWrongFormat, ''));
-			this._userSettings.push(new UserSetting(UserSettingType.MobileNumber, this._captionMobileNumber, this.user.mobileNumber, false,
-				false, '^([s()+]*([0-9][s( )-]*){6,20})$', this._errorWrongFormat, ''));
-			this._userSettings.push(new UserSetting(UserSettingType.Email, this._captionEmail, this.user.emailAddress, (this._authorization.isInternalUser()), true,
-				this._emailRegexPattern, this._errorMandatoryField, null));
-			this._userSettings.push(new UserSetting(UserSettingType.Language, this._captionPreferredLanguage, this.user.language, false,
-				true, null, this._errorMandatoryField, this._txt.get('account.preferredLanguageHelpText', 'Bitte geben Sie an, in welcher Sprache Sie mit dem Bundesarchiv kommunizieren möchten.')));
+		this._userSettings = [];
+		this._userSettings.push(new UserSetting(UserSettingType.FamilyName, this._captionFamilyName, this.user.familyName,
+			this._authorization.hasMoreThenOe2Rights(), true, null, this._errorMandatoryField, null));
+		this._userSettings.push(new UserSetting(UserSettingType.FirstName, this._captionFirstName, this.user.firstName,
+			this._authorization.hasMoreThenOe2Rights(), true, null, this._errorMandatoryField, null));
+		// Only Ö3 User is not allowed to change birthday
+		this._userSettings.push(new UserSetting(UserSettingType.Birthday, this._captionBirthday, this._formatDateToDayMonthYearFormat(this.user.birthday),
+			this._authorization.hasRole(this._authorization.roles.Oe3), false, this._dateRegex.source, this._errorDateFieldFormat));
+		this._userSettings.push(new UserSetting(UserSettingType.Organization, this._captionOrganization, this.user.organization, false, !this.isExternalUser, null,
+			this.isExternalUser ? null : this._errorMandatoryField));
+		this._userSettings.push(new UserSetting(UserSettingType.Street, this._captionStreet, this.user.street, false,
+			true, null, this._errorMandatoryField, null));
+		this._userSettings.push(new UserSetting(UserSettingType.StreetAttachment, this._captionStreetAttachment, this.user.streetAttachment, false));
+		this._userSettings.push(new UserSetting(UserSettingType.Zipcode, this._captionZipcode, this.user.zipCode, false,
+			true, null, this._errorMandatoryField, null));
+		this._userSettings.push(new UserSetting(UserSettingType.Town, this._captionTown, this.user.town, false,
+			true, null, this._errorMandatoryField, null));
+		this._userSettings.push(new UserSetting(UserSettingType.Country, this._captionCountry, this.user.countryCode, false,
+			true, null, this._errorMandatoryField, null));
+		this._userSettings.push(new UserSetting(UserSettingType.PhoneNumber, this._captionPhonenumber, this.user.phoneNumber, false,
+			false, '^([s()+]*([0-9][s( )-]*){6,20})$', this._errorWrongFormat, ''));
+		this._userSettings.push(new UserSetting(UserSettingType.MobileNumber, this._captionMobileNumber, this.user.mobileNumber, false,
+			false, '^([s()+]*([0-9][s( )-]*){6,20})$', this._errorWrongFormat, ''));
+		this._userSettings.push(new UserSetting(UserSettingType.Email, this._captionEmail, this.user.emailAddress, (this._authorization.isInternalUser()), true,
+			this._emailRegexPattern, this._errorMandatoryField, null));
+		this._userSettings.push(new UserSetting(UserSettingType.Language, this._captionPreferredLanguage, this.user.language, false,
+			true, null, this._errorMandatoryField, this._txt.get('account.preferredLanguageHelpText', 'Bitte geben Sie an, in welcher Sprache Sie mit dem Bundesarchiv kommunizieren möchten.')));
 
-		} catch (e) {
-			throw e;
-		}
-		finally {
-			this.loading = false;
-		}
+		this.loading = false;
 	}
 	private _formatDateToDayMonthYearFormat(date: string): string {
 		if (_util.isEmpty(date)) {
@@ -295,7 +313,7 @@ export class UserAccountComponent implements OnInit {
 
 	private async _saveUserSettingsIfChanged(): Promise<void> {
 		let hasChanged = false;
-		for (let userSetting of this._userSettings) {
+		for (const userSetting of this._userSettings) {
 			if (userSetting.isReadOnly) {
 				continue;
 			}
@@ -361,8 +379,9 @@ export class UserAccountComponent implements OnInit {
 					}
 					break;
 				case UserSettingType.Birthday:
-					if (!(this.user.birthday === userSetting.value)) {
-						this.user.birthday = userSetting.hasValue ? moment(userSetting.value, 'DD.MM.YYYY', true).utcOffset(0, true).toISOString() : '';
+					console.log(this.user.birthday, userSetting.value);
+					if (this.user.birthday !== userSetting.value) {
+						// was set manually
 						hasChanged = true;
 					}
 					break;
@@ -387,6 +406,7 @@ export class UserAccountComponent implements OnInit {
 			return;
 		}
 
+		console.log(this.user)
 		this._userService.updateUser(this.user).subscribe(() => {
 			this._allowEditingUserSettings = !this._allowEditingUserSettings;
 			this._toastr.success(this._txt.get('userAccount.saveSuccess', 'Ihre Benutzerdaten wurden erfolgreich gespeichert'),
@@ -401,12 +421,12 @@ export class UserAccountComponent implements OnInit {
 	}
 
 	private _getCountryCodeFromLanguageDependantCountryName(countryName: string): string {
-		let match = this._languageDependantCountries.find(c => c.name === countryName);
+		const match = this._languageDependantCountries.find(c => c.name === countryName);
 		return match.code;
 	}
 
 	private _getLanguageCodeFromLanguageName(languageName: string): string {
-		let match = this._languages.find(c => c.name === languageName);
+		const match = this._languages.find(c => c.name === languageName);
 		return match.code;
 	}
 
@@ -424,5 +444,13 @@ export class UserAccountComponent implements OnInit {
 		}
 
 		return a.toLowerCase() === b.toLowerCase();
+	}
+
+	public dataPickerValueUpdate($event: FlatPickrOutputOptions) {
+		if ($event.dateString === ''){
+			this.user.birthday = '';
+		} else {
+			this.user.birthday = $event.selectedDates[0].toDateString();
+		}
 	}
 }

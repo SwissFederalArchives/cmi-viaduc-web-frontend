@@ -15,19 +15,19 @@ export class CheckoutShippingTypeStepComponent implements OnInit {
 	public liefertypAmtText: string;
 	public liefertypDigitalText: string;
 	public liefertypLesesaalText: string;
-	public cartCount: number = 0;
+	public cartCount = 0;
 	public ShippingType = ShippingType;
-	public isAsOrBvwUser: boolean = false;
+	public isAsOrBvwUser = false;
 	public showDigitizationWarning: boolean;
 	public digitalisatBestellungMoeglich = false;
 	public showDigitalisationNichtMoeglichHint = false;
 	public willExceedKontingent = false;
 	public loading = true;
-	public showLoading: boolean = false;
+	public showLoading = false;
 
 	public items: OrderItem[] = [];
 	public form: FormGroup;
-	public nextClicked: boolean = false;
+	public nextClicked = false;
 	public kontingentResult: KontingentResult;
 	public digitalisationItemsToOrder: OrderItem[] = [];
 
@@ -50,14 +50,15 @@ export class CheckoutShippingTypeStepComponent implements OnInit {
 
 		this.liefertypDigitalText = this._cfg.getSetting('frontendDynamicTextSettings.deliveryTypeDigital',
 		'<strong>digital</strong> erhalten. Sie erhalten das digitalisierte Dossier in rund 30 Tagen. Alles Weitere zur Digitalisierung finden Sie unter ' +
+			/* eslint-disable  no-useless-escape */
 		'<a href=\"https://www.recherche.bar.admin.ch/recherche/#/de/informationen/bestellen-und-konsultieren\" target=\"_blank\" rel=\"noopener noreferrer\">Bestellen und Konsultieren</a>.');
-
+		/* eslint-enable  no-useless-escape */
 		this.liefertypLesesaalText = this._cfg.getSetting('frontendDynamicTextSettings.deliveryTypeReadingRoom',
 		'zur Konsultation in den <strong>Lesesaal</strong> bestellen. Bestellen Sie 24 Stunden im Voraus, ' +
 		'damit Ihnen die Unterlagen am gewünschten Tag zur Verfügung stehen (Dienstag, Mittwoch und Donnerstag).');
 
 		this.isAsOrBvwUser = this._author.isAsUser() || this._author.isBvwUser();
-		let activeOrder = this._scs.getActiveOrder();
+		const activeOrder = this._scs.getActiveOrder();
 		if (activeOrder) {
 			this.form.patchValue({
 				shippingType: activeOrder.type
@@ -115,14 +116,14 @@ export class CheckoutShippingTypeStepComponent implements OnInit {
 				this.showDigitalisationNichtMoeglichHint = true;
 				this.willExceedKontingent = false;
 			}
-		}, () => {
+		}, () => { return
 		}, () => {
 			this.loading = false;
 		});
 	}
 
 	public get isNextButtonDisabled(): boolean {
-		let isDigitalisierungsAuftrag = (this.form
+		const isDigitalisierungsAuftrag = (this.form
 			&& this.form.controls.shippingType
 			&& this.form.controls.shippingType.value === ShippingType.Digitalisierungsauftrag);
 
@@ -135,7 +136,7 @@ export class CheckoutShippingTypeStepComponent implements OnInit {
 		}
 
 		// Benutzer darf nicht alle abwählen
-		let excludedAll = this.digitalisationItemsToOrder.length === 0;
+		const excludedAll = this.digitalisationItemsToOrder.length === 0;
 		return isDigitalisierungsAuftrag && (!this.digitalisatBestellungMoeglich || (this.exceedsKontingent()) || this.willExceedKontingent && excludedAll);
 	}
 
@@ -143,7 +144,7 @@ export class CheckoutShippingTypeStepComponent implements OnInit {
 		setTimeout(() => {
 			if (this.loading) {
 				this.showLoading = true;
-				let interval = setInterval(() => {
+				const interval = setInterval(() => {
 					if (!this.loading) {
 						this.showLoading = false;
 						clearInterval(interval);
@@ -193,7 +194,7 @@ export class CheckoutShippingTypeStepComponent implements OnInit {
 	}
 
 	public updateDigitalisationSelection(event: Event, item: OrderItem) {
-		let index = this.digitalisationItemsToOrder.indexOf(item);
+		const index = this.digitalisationItemsToOrder.indexOf(item);
 		if (index >= 0) {
 			this.digitalisationItemsToOrder.splice(index, 1);
 		} else {

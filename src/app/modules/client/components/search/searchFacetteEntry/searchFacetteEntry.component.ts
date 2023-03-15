@@ -50,7 +50,7 @@ export class SearchFacetteEntryComponent implements OnInit {
 			return '';
 		}
 
-		let valueString = this.agg.keyAsString;
+		const valueString = this.agg.keyAsString;
 		if (valueString === 'true') {
 			return this._txt.get('search.facetteEntry.ja', 'Ja');
 		} else if (valueString === 'false') {

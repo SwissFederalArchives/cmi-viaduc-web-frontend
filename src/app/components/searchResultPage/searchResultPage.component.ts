@@ -32,14 +32,14 @@ export class SearchResultPageComponent implements OnInit {
 	public loading: boolean;
 	public showLoading: boolean;
 	public showCaptcha: boolean;
-	public facetteCollapsed: boolean = false;
-	public upperPaginationEnabled: boolean = false;
-	public lowerPaginationEnabled: boolean = true;
+	public facetteCollapsed = false;
+	public upperPaginationEnabled = false;
+	public lowerPaginationEnabled = true;
 	public lastExecutedSimpleSearchModel: SimpleSearchModel;
 	public lastExecutedQueryTerm: string;
 	public deepLinkUrl: string;
-	public showMoreInformationEnabled: boolean = false;
-	public showAddSearchFavorite: boolean = false;
+	public showMoreInformationEnabled = false;
+	public showAddSearchFavorite = false;
 
 	public sortingFields: any[];
 	public selectedSortingField: any;
@@ -85,7 +85,7 @@ export class SearchResultPageComponent implements OnInit {
 			this._context.search &&
 			this._context.search.request &&
 			this._context.search.request.paging) {
-			let cf = this._context.search.request.paging;
+			const cf = this._context.search.request.paging;
 			this.selectedSortingField = this.sortingFields.filter(f => f.orderBy === cf.orderBy && f.sortOrder === cf.sortOrder)[0];
 		}
 
@@ -100,7 +100,7 @@ export class SearchResultPageComponent implements OnInit {
 			return;
 		}
 
-		let paging = this._context.search.request.paging;
+		const paging = this._context.search.request.paging;
 		if (paging) {
 			this._sortingField = paging;
 			this._pagingSize = paging.take;
@@ -116,7 +116,7 @@ export class SearchResultPageComponent implements OnInit {
 		}
 		if (this._context.search.request) {
 			this._setResultPaging();
-			let request = this._context.search.request;
+			const request = this._context.search.request;
 
 			if (!this.isAdvancedSearchResult) {
 				this._createLastExecutedSimpleSearchModel(request);
@@ -137,8 +137,8 @@ export class SearchResultPageComponent implements OnInit {
 	}
 
 	private _createLastExecutedSimpleSearchModel(request) {
-		let query = request.query || <any>{};
-		let searchGroups = query.searchGroups || <any>[];
+		const query = request.query || <any>{};
+		const searchGroups = query.searchGroups || <any>[];
 		if (_util.isEmpty(searchGroups)) {
 			return;
 		}
@@ -147,26 +147,26 @@ export class SearchResultPageComponent implements OnInit {
 			this.lastExecutedSimpleSearchModel = new SimpleSearchModel();
 		}
 
-		let group = searchGroups[0] || <any>{};
-		let searchFields = group.searchFields || <any>[];
+		const group = searchGroups[0] || <any>{};
+		const searchFields = group.searchFields || <any>[];
 		if (_util.isEmpty(searchFields)) {
 			return;
 		}
 
-		let termField = searchFields[0];
+		const termField = searchFields[0];
 		if (termField && _util.isObject(termField)) {
 			this.lastExecutedSimpleSearchModel.term = termField.value;
 		}
 
-		let dateField = searchFields.length > 1 ? searchFields[1] : null;
+		const dateField = searchFields.length > 1 ? searchFields[1] : null;
 		if (dateField) {
 			this.lastExecutedSimpleSearchModel.dateRange = dateField;
 		}
 	}
 
 	public get isAdvancedSearchResult(): boolean {
-		let search = this._context.search || <any> {};
-		let request = search.request || <any>{};
+		const search = this._context.search || <any> {};
+		const request = search.request || <any>{};
 
 		return request.advancedSearch || search.advancedSearch;
 	}
@@ -202,8 +202,8 @@ export class SearchResultPageComponent implements OnInit {
 	}
 
 	private _getErrorSafe(): any {
-		let search = this._context.search || <any>{};
-		let errorResult = search.error || <any> {};
+		const search = this._context.search || <any>{};
+		const errorResult = search.error || <any> {};
 
 		return errorResult.error || {};
 	}
@@ -292,7 +292,7 @@ export class SearchResultPageComponent implements OnInit {
 			this._captchaToken = undefined;
 		}
 
-		let response: SearchResponse | SearchError = await this._searchService.search(request);
+		const response: SearchResponse | SearchError = await this._searchService.search(request);
 		if (this._isErrorResponse(response)) {
 			this._setSearchError(response);
 		} else {
@@ -359,7 +359,7 @@ export class SearchResultPageComponent implements OnInit {
 		setTimeout(() => {
 			if (this.loading) {
 				this.showLoading = true;
-				let interval = setInterval(() => {
+				const interval = setInterval(() => {
 					if (!this.loading) {
 						this.showLoading = false;
 						clearInterval(interval);
@@ -405,13 +405,13 @@ export class SearchResultPageComponent implements OnInit {
 			return 0;
 		}
 
-		let entities = this.searchResponse.entities || <any>{};
-		let paging = entities.paging || <any> {};
+		const entities = this.searchResponse.entities || <any>{};
+		const paging = entities.paging || <any> {};
 		return Math.max(0, paging.total || 0);
 	}
 
 	public editAdvancedSearch() {
-		let qs = JSON.stringify(this._context.search.request.query, undefined, 0);
+		const qs = JSON.stringify(this._context.search.request.query, undefined, 0);
 		this._router.navigate([this._url.getAdvancedSearchUrl()], {queryParams: {q: qs}});
 	}
 
@@ -444,7 +444,7 @@ export class SearchResultPageComponent implements OnInit {
 		return f1 && f2 ? f1.displayName === f2.displayName : f1 === f2;
 	}
 
-	public getSortTranslationKey(field: any): String {
+	public getSortTranslationKey(field: any): string {
 		let key = 'metadata.sortFields.';
 		if (field && field.orderBy && field.orderBy !== '') {
 			key += field.orderBy;

@@ -1,5 +1,4 @@
-import {ClientModel, CoreModule, OrderItem, ShippingType} from '@cmi/viaduc-web-core/';
-import {TranslationService, Ordering, ClientContext, ConfigService} from '@cmi/viaduc-web-core';
+import {ClientModel, CoreModule, OrderItem, ShippingType, TranslationService, Ordering, ClientContext, ConfigService} from '@cmi/viaduc-web-core';
 import {CheckoutShippingTypeStepComponent} from './checkoutShippingTypeStep.component';
 import {AuthorizationService, ShoppingCartService, UrlService} from '../../../services';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';

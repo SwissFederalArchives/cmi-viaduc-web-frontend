@@ -9,8 +9,8 @@ import {AuthorizationService, SeoService, ShoppingCartService, UrlService} from 
 })
 export class
 OrderEinsichtCheckoutPageComponent implements OnInit {
-	public stepNr: number = 1;
-	public isAsUser: boolean = false;
+	public stepNr = 1;
+	public isAsUser = false;
 
 	constructor(private _url: UrlService,
 				private _scs: ShoppingCartService,
@@ -66,7 +66,7 @@ OrderEinsichtCheckoutPageComponent implements OnInit {
 	}
 
 	public canProceed(stepNr: number): boolean {
-		let activeOrder = this._scs.getActiveOrder();
+		const activeOrder = this._scs.getActiveOrder();
 		switch (stepNr) {
 			case 1:
 				return this._isStepOneFullfilled(activeOrder);

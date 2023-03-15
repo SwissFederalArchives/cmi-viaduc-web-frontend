@@ -24,7 +24,7 @@ export class SimpleHitMenuComponent implements AfterViewInit, OnInit {
 	public favoriteMenu: ElementRef;
 
 	public hasAccess: boolean;
-	public showFavoritesMenu: boolean = false;
+	public showFavoritesMenu = false;
 
 	private _elem: any;
 

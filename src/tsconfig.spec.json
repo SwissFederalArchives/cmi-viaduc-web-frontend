@@ -4,8 +4,10 @@
     "experimentalDecorators": true,
 		"outDir": "../out-tsc/spec",
 		"baseUrl": "./",
-		"target": "es5",
+		"target": "es2020",
 		"module": "es2020",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
 		"types": [
 			"jasmine",
 			"node"

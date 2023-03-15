@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import { AdvancedSearchField, SearchField, Utilities as _util } from '@cmi/viaduc-web-core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import * as moment from 'moment';
+import moment from 'moment';
 
 export const DATE_RANGE_FIELD_VALUE_ACCESSOR: any = {
 	provide: NG_VALUE_ACCESSOR,
@@ -36,25 +36,23 @@ export class DateRangeFieldComponent implements ControlValueAccessor {
 	public description: string = null;
 
 	@Input()
-	public requiresTwoDigitDaysAndMonth: boolean = false;
+	public requiresTwoDigitDaysAndMonth = false;
 
 	@Input()
-	public allowMonthYearEntry: boolean = true;
+	public allowMonthYearEntry = true;
 
 	@Input()
-	public allowSpaces: boolean = true;
+	public allowSpaces = true;
 
-	public isValid: boolean = true;
+	public isValid = true;
 
 	@Input()
-	public tabindex: number = 0;
+	public tabindex = 0;
 	@Output()
 	public enterPressed: EventEmitter<void> = new EventEmitter<void>();
 
 	@Output()
 	public onValidate: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-	private _onChangeCallback: (_: any) => void = () => { };
 
 	public onEnter(event: any) {
 		if (event.keyCode === 13) {
@@ -103,7 +101,7 @@ export class DateRangeFieldComponent implements ControlValueAccessor {
 			return;
 		}
 
-		let range = this.selectedField.value.trim();
+		const range = this.selectedField.value.trim();
 		let from = '*';
 		let to = '*';
 		let valid = false;
@@ -119,10 +117,10 @@ export class DateRangeFieldComponent implements ControlValueAccessor {
 			from = range;
 			valid = this.checkDate(from);
 		} else {
-			let parts = range.split('-');
+			const parts = range.split('-');
 			if (parts && parts.length === 2) {
-				let first = parts[0].trim();
-				let second = parts[1].trim();
+				const first = parts[0].trim();
+				const second = parts[1].trim();
 
 				if (first.length > 0) {
 					from = first;
@@ -143,7 +141,6 @@ export class DateRangeFieldComponent implements ControlValueAccessor {
 			this.selectedField.containsValidationErrors = !isValid;
 		}
 		this.onValidate.emit(this.isValid);
-		this._onChangeCallback(this.selectedField);
 	}
 
 	public writeValue(obj: SearchField): void {
@@ -155,7 +152,7 @@ export class DateRangeFieldComponent implements ControlValueAccessor {
 	}
 
 	public registerOnChange(fn: any): void {
-		this._onChangeCallback = fn;
+		return;
 	}
 
 	public registerOnTouched(fn: any): void {

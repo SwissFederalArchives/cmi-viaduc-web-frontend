@@ -14,7 +14,7 @@ import {tap} from 'rxjs/operators';
 export class FavoriteService {
 
 	private _apiUrl: string;
-	private _totalFavorites: number = 0;
+	private _totalFavorites = 0;
 
 	constructor(private _options: CoreOptions,
 				private _http: HttpService,
@@ -36,7 +36,7 @@ export class FavoriteService {
 	}
 
 	public createDefaultFavoriteList(): Promise<FavoriteList> {
-		let newListName = this._txt.get('favorites.defaultNewName', 'Favoritenliste 1');
+		const newListName = this._txt.get('favorites.defaultNewName', 'Favoritenliste 1');
 		return this.addFavoriteList(newListName);
 	}
 
@@ -105,12 +105,12 @@ export class FavoriteService {
 			const url = `${this._apiUrl}/AddVeFavorite?listId=${listId}`;
 			return this._http.post<VeFavorite>(url,  <VeFavorite>favorite, this._http.noCaching)
 				.pipe(tap(() => { this._totalFavorites++; }))
-				.toPromise<VeFavorite>();
+				.toPromise();
 		} else {
 			const url = `${this._apiUrl}/AddSearchFavorite?listId=${listId}`;
 			return this._http.post<SearchFavorite>(url,  <SearchFavorite> favorite, this._http.noCaching)
 				.pipe(tap(() => { this._totalFavorites++; }))
-				.toPromise<SearchFavorite>();
+				.toPromise();
 		}
 	}
 

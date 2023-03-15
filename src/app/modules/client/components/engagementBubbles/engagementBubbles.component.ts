@@ -11,9 +11,9 @@ import {PreloadService, ClientContext, ConfigService} from '@cmi/viaduc-web-core
 })
 export class EngagementBubblesComponent {
 
-	public chatFabVisible: boolean = true;
-	public chatbotFabVisible: boolean = false;
-	public showChatbotDialog: boolean = false;
+	public chatFabVisible = true;
+	public chatbotFabVisible = false;
+	public showChatbotDialog = false;
 
 	constructor(private _unblu: UnbluService,
 				private _device: DeviceDetectorService,
@@ -43,10 +43,10 @@ export class EngagementBubblesComponent {
 	}
 
 	private _setChatbotVisibility() {
-		let isMobile = this._device.isMobile();
+		const isMobile = this._device.isMobile();
 
 		const supportedLanguages = this._cfg.getSetting('chatbot.supportedLanguagesForChatBot', 'de').split(';');
-		let isSupportedLanguage = supportedLanguages.filter(l => l === this._ctx.language).length > 0;
+		const isSupportedLanguage = supportedLanguages.filter(l => l === this._ctx.language).length > 0;
 
 		this.chatbotFabVisible = !isMobile && isSupportedLanguage;
 	}

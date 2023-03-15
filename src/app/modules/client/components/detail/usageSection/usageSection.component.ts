@@ -9,8 +9,4 @@ export class UsageSectionComponent {
 
 	@Input()
 	public text: string;
-
-	constructor() {
-	}
-
 }

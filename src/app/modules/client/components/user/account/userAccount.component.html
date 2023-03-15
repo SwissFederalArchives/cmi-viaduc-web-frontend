@@ -31,13 +31,23 @@
                         </span>
 						<span *ngIf="(!row.isReadOnly) && allowEditingUserSettings">
                             <span *ngIf="!(row.isCountryCode || row.isLanguage)">
-                                <input [name]="row.caption"
+                                <input *ngIf="!row.isBirthday" [name]="row.caption"
 									   [id]="row.caption"
 									   [(ngModel)]="row.value"
 									   [required]="row.isRequired"
 									   class="form-control"
 									   (ngModelChange)="row.calculateInvalidRegex()"
 									   placeholder="{{row.caption}}">
+								<input *ngIf="row.isBirthday" class="form-control" type="date"
+									   autocomplete="off"
+									   mwlFlatpickr
+									   [maxDate]="newDate"
+									   [convertModelValue]="true"
+									   [allowInput]="true"
+									   dateFormat="d.m.Y"
+									   name="Birthday"
+									   (flatpickrValueUpdate)="dataPickerValueUpdate($event)"
+									   [(ngModel)]="birthday">
                                 <span *ngIf="row.isInvalid && saveClicked" class="help-block" role="alert">
                                     {{row.errorMessage }}
                                 </span>

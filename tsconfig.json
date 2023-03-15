@@ -8,6 +8,8 @@
     "declaration": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
     "target": "es2018",
     "types": [
       "file-saver"

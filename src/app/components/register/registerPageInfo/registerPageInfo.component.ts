@@ -22,7 +22,7 @@ export class RegisterPageInfoComponent implements OnInit {
 	}
 
 	private _buildCrumbs(): void {
-		let crumbs: any[] = this.crumbs = [];
+		const crumbs: any[] = this.crumbs = [];
 		crumbs.push({iconClasses: 'glyphicon glyphicon-home', url: this._url.getHomeUrl()});
 		crumbs.push({label: this._txt.get('breadcrumb.registerInfo', 'Infos zur Kontoeröffnung')});
 	}

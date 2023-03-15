@@ -15,10 +15,10 @@ export class CheckoutSubmittedStepComponent implements OnInit {
 	public thxHtmlText: string;
 	public stateHtmlText: string;
 	public backToCartHtmlText: string;
-	public showError: boolean = false;
-	public loading: boolean = true;
+	public showError = false;
+	public loading = true;
 
-	public hasItemsInCartLeft: boolean = false;
+	public hasItemsInCartLeft = false;
 
 	constructor(private _txt: TranslationService,
 				private _scs: ShoppingCartService,
@@ -29,7 +29,7 @@ export class CheckoutSubmittedStepComponent implements OnInit {
 
 	public ngOnInit(): void {
 		this.showError = false;
-		let order = this._scs.getActiveOrder();
+		const order = this._scs.getActiveOrder();
 		this._scs.getItemsWhereEinsichtsGesuchNoeting().subscribe(items => {
 			this._items = items;
 		});
@@ -109,7 +109,7 @@ export class CheckoutSubmittedStepComponent implements OnInit {
 		let html = '';
 		if (this._items) {
 			html = '<ul>';
-			for (let item of this._items) {
+			for (const item of this._items) {
 				html += `<li><a href="#/archiv/einheit/${item.veId}">${item.referenceCode}</a></li>`;
 			}
 			html += '</ul><br>';

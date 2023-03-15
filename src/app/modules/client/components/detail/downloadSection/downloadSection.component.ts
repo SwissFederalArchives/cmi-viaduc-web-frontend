@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit} from '@angular/core';
 import {DownloadAssetResult, AssetDownloadStatus} from '../../../model';
-import * as moment from 'moment';
+import moment from 'moment';
 import {
 	ClientContext,
 	CoreOptions,
@@ -37,27 +37,27 @@ export class DownloadSectionComponent implements OnInit, OnDestroy, AfterViewIni
 		}
 	}
 
-	public downloadPossible: boolean = false;
-	public needReason: boolean = true;
-	public innerhalbSchutzfrist: boolean = true;
-	public showExclamation: boolean = false;
+	public canDownload = false;
+	public needReason = true;
+	public innerhalbSchutzfrist = true;
+	public showExclamation = false;
 
-	public actionName: string = '';
+	public actionName = '';
 	public readonly downloadActionName: string = 'download';
 	public readonly viewActionName: string = 'view';
 
 	public reasons: Reason[] = [];
 	public selectedReason: Reason = null;
-	public termsAccepted: boolean = false;
+	public termsAccepted = false;
 
-	public downloadDone: boolean = false;
-	public downloadPending: boolean = false;
+	public downloadDone = false;
+	public downloadPending = false;
 	public downloadError: string;
 
 	public assetInfo: DownloadAssetResult;
-	public isLoading: boolean = false;
-	public downloadRequested: boolean = false;
-	public proceedDownloadRequested: boolean = false;
+	public isLoading = false;
+	public downloadRequested = false;
+	public proceedDownloadRequested = false;
 
 	public preparationRequiredText: string;
 	public pleaseLoginText: string;
@@ -65,6 +65,7 @@ export class DownloadSectionComponent implements OnInit, OnDestroy, AfterViewIni
 	private _refreshInterval: any;
 	private _entity: Entity;
 	private _ueberfaelligText: string;
+	public showLoginButton = false;
 
 	constructor(private _context: ClientContext,
 				private _elemRef: ElementRef,
@@ -98,7 +99,7 @@ export class DownloadSectionComponent implements OnInit, OnDestroy, AfterViewIni
 	}
 
 	public get humanReadablePreperationEndTime(): string {
-		let estimatedEndDate = this.assetInfo.estimatedPreparationEnd;
+		const estimatedEndDate = this.assetInfo.estimatedPreparationEnd;
 		if (!estimatedEndDate || moment(estimatedEndDate).year() === 1) {
 			return this._txt.get('downloadSection.unknown', 'unbekannt');
 		}
@@ -115,7 +116,7 @@ export class DownloadSectionComponent implements OnInit, OnDestroy, AfterViewIni
 	}
 
 	public get humanReadablePreperationDurationTime(): string {
-		let estimatedPreparationDuration = this.assetInfo.estimatedPreparationDuration;
+		const estimatedPreparationDuration = this.assetInfo.estimatedPreparationDuration;
 		if (!estimatedPreparationDuration || estimatedPreparationDuration === '00:00:00') {
 			return this._txt.get('downloadSection.unknown', 'unbekannt');
 		}
@@ -129,9 +130,15 @@ export class DownloadSectionComponent implements OnInit, OnDestroy, AfterViewIni
 
 	public ngOnInit(): void {
 		this._initTranslatedTexts();
-		this.downloadPossible = this._scs.canDownload(this.entity);
 
-		if (this.authenticated && this.downloadPossible) {
+		if ( this._authorization.isOe1User()){
+			this.canDownload = false;
+			this.showLoginButton = true;
+		} else {
+			this.canDownload = this._scs.canDownload(this.entity);
+		}
+
+		if (this.authenticated && this.canDownload) {
 			this.isLoading = true;
 			this._refreshAssetInfo();
 			this._refreshInterval = setInterval(() => {
@@ -170,19 +177,19 @@ export class DownloadSectionComponent implements OnInit, OnDestroy, AfterViewIni
 	}
 
 	private _translatePleaseLoginText() {
-		let textA = this._txt.translate('Bitte melden Sie sich an, um die Unterlagen zu bestellen', 'downloadSection.pleaseLogin');
-		let textB = this._txt.translate('Details unter', 'downloadSection.pleaseLoginDetailsAt');
-		let registerPart = this._txt.translate('Registrieren und Identifizieren', 'downloadSection.registerAndIdentify');
-		let url = this._url.getExternalRegisterAndIdentifyUrl();
+		const textA = this._txt.translate('Bitte melden Sie sich an, um die Unterlagen zu bestellen', 'downloadSection.pleaseLogin');
+		const textB = this._txt.translate('Details unter', 'downloadSection.pleaseLoginDetailsAt');
+		const registerPart = this._txt.translate('Registrieren und Identifizieren', 'downloadSection.registerAndIdentify');
+		const url = this._url.getExternalRegisterAndIdentifyUrl();
 
-		let linkPart = '<a href="' + url + '" target="_blank" rel="noopener">' + registerPart + '</a>';
+		const linkPart = '<a href="' + url + '" target="_blank" rel="noopener">' + registerPart + '</a>';
 		this.pleaseLoginText = `${textA} (${textB} ${linkPart})`;
 	}
 
 	private _translatePreparationRequiredText() {
-		let firstPart = this._txt.get('downloadSection.preparationRequired',
+		const firstPart = this._txt.get('downloadSection.preparationRequired',
 			'Diese Unterlagen sind bereits digital vorhanden, müssen für den Download aber zuerst aufbereitet werden.');
-		let secondPart = this._txt.get('downloadSection.estimatedPrepTime', 'Die Aufbereitung dauert ca.');
+		const secondPart = this._txt.get('downloadSection.estimatedPrepTime', 'Die Aufbereitung dauert ca.');
 		this.preparationRequiredText = firstPart + '\n' + secondPart;
 	}
 
@@ -198,7 +205,7 @@ export class DownloadSectionComponent implements OnInit, OnDestroy, AfterViewIni
 	}
 
 	private downloadFileWithToken(token:any): void {
-		let form = [];
+		const form = [];
 		form.push(
 			'<form action="',
 			this._options.serverUrl + this._options.privatePort + '/api/File/DownloadFile' ,
@@ -221,8 +228,8 @@ export class DownloadSectionComponent implements OnInit, OnDestroy, AfterViewIni
 	}
 
 	private _showDownloadSuccess() {
-		let msg = this._txt.translate('Der Download wurde erfolgreich ausgelöst.', 'downloadSection.downloadSuccess');
-		let title = this._txt.translate('Download erfolgreich', 'downloadSection.downloadSuccessTitle');
+		const msg = this._txt.translate('Der Download wurde erfolgreich ausgelöst.', 'downloadSection.downloadSuccess');
+		const title = this._txt.translate('Download erfolgreich', 'downloadSection.downloadSuccessTitle');
 		this._toastr.success(msg, title);
 	}
 
@@ -323,7 +330,7 @@ export class DownloadSectionComponent implements OnInit, OnDestroy, AfterViewIni
 	}
 
 	private _createAssetInfoUrl(methodName: string): string {
-		let fileApiUrl = this._options.serverUrl
+		const fileApiUrl = this._options.serverUrl
 			+ this._options.privatePort
 			+ methodName
 			+ '?id='
@@ -353,7 +360,7 @@ export class DownloadSectionComponent implements OnInit, OnDestroy, AfterViewIni
 	}
 
 	private _refreshAssetInfo(): void {
-		let url = this._createAssetInfoUrl('/api/File/GetAssetInfo');
+		const url = this._createAssetInfoUrl('/api/File/GetAssetInfo');
 
 		this._http.get<DownloadAssetResult>(url)
 			.subscribe((data) => {
@@ -374,7 +381,7 @@ export class DownloadSectionComponent implements OnInit, OnDestroy, AfterViewIni
 		// Liefert true wenn bei «Zugänglichkeit gem. BGA» der Wert «In Schutzfrist» oder «Prüfung nötig» eingetragen ist
 		// UND
 		// wo gemäss Behördenmapping (PrimaryDataDownloadAccessTokens AS_yyy) auf diesen Benutzer gemappt sind
-		let hasASToken = this._authorization.hasAnyAccessToken(this.entity.primaryDataDownloadAccessTokens.filter(t => t.indexOf('AS_') === 0));
+		const hasASToken = this._authorization.hasAnyAccessToken(this.entity.primaryDataDownloadAccessTokens.filter(t => t.indexOf('AS_') === 0));
 		return this.innerhalbSchutzfrist && this._authorization.isAsUser() && hasASToken;
 	}
 }

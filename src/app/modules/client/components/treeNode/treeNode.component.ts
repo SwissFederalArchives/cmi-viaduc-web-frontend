@@ -23,7 +23,7 @@ export class TreeNodeComponent implements OnInit, AfterViewInit {
 	public nodesToLoad: string[];
 	@Output()
 	public loadingChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-	public rootNode: string = '';
+	public rootNode = '';
 	public isExpanded: boolean;
 
 	private get _toExpand(): boolean {
@@ -42,14 +42,14 @@ export class TreeNodeComponent implements OnInit, AfterViewInit {
 	}
 
 	public async getNodesAsync() {
-		for (let id of this.nodesToLoad) {
+		for (const id of this.nodesToLoad) {
 			await this.loadOrCollapseNode(id);
 		}
 		if (this._toExpand === true) {
-			let nodes = this.nodesToLoad;
-			let elem = (document.getElementById(nodes.reverse()[0]) || <any>{});
-			let parent = elem.parentElement || {};
-			let grandparent = parent.parentElement;
+			const nodes = this.nodesToLoad;
+			const elem = (document.getElementById(nodes.reverse()[0]) || <any>{});
+			const parent = elem.parentElement || {};
+			const grandparent = parent.parentElement;
 
 			if (grandparent) {
 				grandparent.className += ' highlighted';
@@ -59,9 +59,9 @@ export class TreeNodeComponent implements OnInit, AfterViewInit {
 	}
 
 	public async loadOrCollapseNode(id: string) {
-		let expandElem = document.getElementById(id);
-		let childElem = document.getElementById('children' + id);
-		let notOnlineRecherchableDossiersElem = document.getElementById('notOnlineRecherchableVe' + id);
+		const expandElem = document.getElementById(id);
+		const childElem = document.getElementById('children' + id);
+		const notOnlineRecherchableDossiersElem = document.getElementById('notOnlineRecherchableVe' + id);
 
 		if (childElem !== null) {
 			if (expandElem.className.endsWith('tree-collapse icon icon--before icon--greater') === true) {

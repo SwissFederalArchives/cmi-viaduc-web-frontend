@@ -40,8 +40,8 @@ export class SearchFacetteListComponent implements OnInit, OnChanges {
 	public activeFacets: FacetteFilter[] = [];
 
 	private _elem: any;
-	private _collapsed: boolean = false;
-	private _existingWidth: number = 0;
+	private _collapsed = false;
+	private _existingWidth = 0;
 
 	constructor(private _elemRef: ElementRef, private _context: ClientContext) {
 		this._elem = this._elemRef.nativeElement;
@@ -58,11 +58,11 @@ export class SearchFacetteListComponent implements OnInit, OnChanges {
 			this._context.search.request &&
 			this._context.search.request.query &&
 			this._context.search.request.facetsFilters) {
-			for (let af of this._context.search.request.facetsFilters) {
-				let aa = <FacetteFilter> {filters: []};
+			for (const af of this._context.search.request.facetsFilters) {
+				const aa = <FacetteFilter> {filters: []};
 				aa.facet = af.facet;
 
-				for (let f of aa.filters) {
+				for (const f of aa.filters) {
 					aa.filters.push(f);
 				}
 
@@ -77,7 +77,7 @@ export class SearchFacetteListComponent implements OnInit, OnChanges {
 
 	@HostListener('window:resize', ['$event'])
 	public onResize(event: any) {
-		let width = event.target.innerWidth;
+		const width = event.target.innerWidth;
 
 		if (this._existingWidth === width) {
 			// "Bug" in Safari, height changes on first scroll and triggers window.resize
@@ -118,7 +118,7 @@ export class SearchFacetteListComponent implements OnInit, OnChanges {
 		this.onToggle.emit(this._collapsed);
 	}
 
-	public resetFilters(emitSearch: boolean = true): void {
+	public resetFilters(emitSearch = true): void {
 		this.activeFacets = [];
 		if (emitSearch) {
 			this.onFilter.emit(this.activeFacets);
@@ -126,9 +126,9 @@ export class SearchFacetteListComponent implements OnInit, OnChanges {
 	}
 
 	public getActiveFacetCount(): number {
-		let facets = [];
-		for (let f of this.activeFacets) {
-			for (let filter of f.filters) {
+		const facets = [];
+		for (const f of this.activeFacets) {
+			for (const filter of f.filters) {
 				facets.push(filter);
 			}
 		}
@@ -136,7 +136,7 @@ export class SearchFacetteListComponent implements OnInit, OnChanges {
 	}
 
 	public getActiveFilterStringsForFacette(key: string) {
-		let fac = this.activeFacets.filter(f => f.facet === key)[0];
+		const fac = this.activeFacets.filter(f => f.facet === key)[0];
 		if (fac) {
 			return fac.filters;
 		}
@@ -149,7 +149,7 @@ export class SearchFacetteListComponent implements OnInit, OnChanges {
 			fac.facet = ff.key;
 			this.activeFacets.push(fac);
 		}
-		let filter = fac.filters.filter((value) => value === ff.chosenFilter.filter)[0];
+		const filter = fac.filters.filter((value) => value === ff.chosenFilter.filter)[0];
 		if (!filter && ff.action === FacetteAction.Add) {
 			this.activeFacets.filter((value) => value.facet === ff.key)[0].filters.push(ff.chosenFilter.filter);
 		} else if (ff.action === FacetteAction.Remove) {
@@ -160,14 +160,14 @@ export class SearchFacetteListComponent implements OnInit, OnChanges {
 	}
 	public deleteFacetteFilter(ff: FacetteFilter, filterstring: string) {
 		// remove filter string from facetgroup
-		let index: number = this.activeFacets.filter((value2) => value2.facet === ff.facet)[0].filters.findIndex((value, i, obj) => value === filterstring);
+		const index: number = this.activeFacets.filter((value2) => value2.facet === ff.facet)[0].filters.findIndex((value, i, obj) => value === filterstring);
 		if (index !== -1) {
 			this.activeFacets.filter((value) => value.facet === ff.facet)[0].filters.splice(index, 1);
 		}
 		// remove facetgroup if it has no filterstrings
-		let hasItems = this.activeFacets.filter((value) => value.facet === ff.facet)[0].filters.length > 0;
+		const hasItems = this.activeFacets.filter((value) => value.facet === ff.facet)[0].filters.length > 0;
 		if (!hasItems) {
-			let i = this.activeFacets.findIndex((value) => value.facet === ff.facet);
+			const i = this.activeFacets.findIndex((value) => value.facet === ff.facet);
 			if (i !== -1) {
 				this.activeFacets.splice(i, 1);
 			}
@@ -175,14 +175,14 @@ export class SearchFacetteListComponent implements OnInit, OnChanges {
 	}
 
 	public RemoveOutdatedFacetts() {
-		for (let activeFacette of this.activeFacets) {
+		for (const activeFacette of this.activeFacets) {
 			const matchedFacette = this.facetts[activeFacette.facet];
 			if (matchedFacette == null) {
-				for (let originalFilterName of activeFacette.filters) {
+				for (const originalFilterName of activeFacette.filters) {
 					activeFacette.filters.splice(activeFacette.filters.findIndex(value => value === originalFilterName), 1);
 				}
 			} else {
-				for (let filterName of activeFacette.filters) {
+				for (const filterName of activeFacette.filters) {
 					const filterKeyIndex = matchedFacette.items.findIndex(value => value.filter === filterName);
 					if (filterKeyIndex === -1) {
 						activeFacette.filters.splice(activeFacette.filters.findIndex(value => value === filterName), 1);
@@ -195,7 +195,7 @@ export class SearchFacetteListComponent implements OnInit, OnChanges {
 	public onShowAllFilterApplied(facetteKey: string) {
 		let facette = this.activeFacets.filter(af => af.facet === facetteKey)[0];
 		if (!facette) {
-			let fac = <FacetteFilter> {filters: []};
+			const fac = <FacetteFilter> {filters: []};
 			fac.facet = facetteKey;
 			this.activeFacets.push(fac);
 			facette = this.activeFacets.filter(af => af.facet === facetteKey)[0];

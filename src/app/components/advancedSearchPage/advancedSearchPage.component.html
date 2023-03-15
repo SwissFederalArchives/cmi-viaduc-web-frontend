@@ -15,16 +15,16 @@
 				<div class="col-md-7 col-reduced-margin">
 					<div *ngIf="viewModel.searchGroups && viewModel.searchGroups.length > 1">
 						<label for="groupLinkingTypeDropdown">{{'Verknüpfung der Suchgruppen:' | translate:
-							'search.advanced.groupChaining'}}&nbsp;&nbsp;</label>
-						<select [ngSwitch] class="form-control linkingtypes" id="groupLinkingTypeDropdown"
+							'search.advanced.groupChaining'}}</label>
+						<select [ngSwitch] class="form-control linkingtypes ms-1" id="groupLinkingTypeDropdown"
 								data-placeholder="" [(ngModel)]="viewModel.groupOperator">
 							<option *ngFor="let g of groupOperators" [ngValue]="g">{{groupOperator[g]}}</option>
 						</select>
 					</div>
 				</div>
 				<div class="col-md-5 col-reduced-margin">
-					<button type="button" class="btn btn-link pull-right" (click)="addSearchGroup()">{{'Weitere Suchgruppe hinzufügen' | translate: 'search.advanced.addNewGroup'}}&nbsp;&nbsp;<span
-							class="glyphicon glyphicon-plus"></span></button>
+					<button type="button" class="btn btn-link pull-right" (click)="addSearchGroup()">{{'Weitere Suchgruppe hinzufügen' | translate: 'search.advanced.addNewGroup'}}
+						<span class="glyphicon glyphicon-plus ms-1"></span></button>
 				</div>
 			</div>
 		</fieldset>

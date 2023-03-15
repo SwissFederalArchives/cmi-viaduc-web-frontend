@@ -7,8 +7,8 @@ export class ReasonValidator {
 			return null;
 		}
 
-		let item = c.value;
-		let missing = item.hasPersonendaten && _util.isEmpty(item.reason);
+		const item = c.value;
+		const missing = item.hasPersonendaten && _util.isEmpty(item.reason);
 		return missing ? { missingReason: missing } : null;
 	}
 
@@ -17,8 +17,8 @@ export class ReasonValidator {
 			return null;
 		}
 
-		let item = c.value;
-		let missing = (!item.hasPersonendaten) && !_util.isEmpty(item.reason);
+		const item = c.value;
+		const missing = (!item.hasPersonendaten) && !_util.isEmpty(item.reason);
 		return missing ? {missingFlag: missing} : null;
 	}
 }

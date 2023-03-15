@@ -4,11 +4,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CollectionService} from '../../../modules/client/services/collection.service';
 import {LocalizeLinkPipe, UrlService} from '../../../modules/client';
 import {Observable, of} from 'rxjs';
-import * as moment from 'moment';
-import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import {ToastrTestingModule} from '../mocks';
 import {CollectionOverviewComponent} from './collection-overview.component';
+import moment from 'moment';
+import {By} from '@angular/platform-browser';
 
 describe('auto generate CollectionOverviewComponent', () => {
 	beforeEach(waitForAsync(async() => {
@@ -63,6 +63,7 @@ describe('auto generate CollectionOverviewComponent', () => {
 			collectionTypeId: 0,
 			descriptionShort: 'Short kurz',
 			description: 'Test Lang',
+			imageMimeType: 'png',
 			link: 'www.yahoo.de'
 		}),
 		CollectionListItemDto.fromJS({
@@ -114,8 +115,8 @@ describe('auto generate CollectionOverviewComponent', () => {
 		expect(sut.collections.length).toBe(3);
 	});
 
-	it('should the imageminetype was set image appears', () => {
-		fixture.whenStable().then(
+	it('should the imageminetype was set image appears', async () => {
+		await fixture.whenStable().then(
 			() => {
 				fixture.detectChanges();
 				let elementArray = fixture.debugElement.queryAll(By.css('.card-img-top'));
@@ -125,3 +126,4 @@ describe('auto generate CollectionOverviewComponent', () => {
 	});
 
 });
+

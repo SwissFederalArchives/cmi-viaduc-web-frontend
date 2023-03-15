@@ -16,15 +16,15 @@ export class SimpleHitComponent implements AfterViewInit, OnInit {
 	@Input()
 	public entity: Entity;
 	@Input()
-	public enableExplanations: boolean = false;
+	public enableExplanations = false;
 	@Input()
-	public isBarUser: boolean = false;
+	public isBarUser = false;
 
 	public htmlForTitle: string;
 	public htmlForText: string;
-	public displayArchivplanContext: boolean = false;
+	public displayArchivplanContext = false;
 
-	public displayExplanation: boolean = false;
+	public displayExplanation = false;
 	public score: string;
 
 	private _elem: any;
@@ -90,7 +90,7 @@ export class SimpleHitComponent implements AfterViewInit, OnInit {
 	}
 
 	private _goToArchivplan() {
-		let url = '/suche/archivplan/' + this.entity.archiveRecordId;
+		const url = '/suche/archivplan/' + this.entity.archiveRecordId;
 		this._router.navigate([this._url.localizeUrl(this._context.language, url)]);
 	}
 
@@ -103,6 +103,7 @@ export class SimpleHitComponent implements AfterViewInit, OnInit {
 
 			if (this.entity.highlight) {
 				this.htmlForTitle = this.entity.highlight.title[0]
+					/* eslint-disable  no-useless-escape */
 					.replace(new RegExp('<h1l1ght>', 'g'), '<span class=\"highlight\">')
 					.replace(new RegExp('</h1l1ght>', 'g'), '</span>');
 			} else if (this.entity.title) {
@@ -113,6 +114,7 @@ export class SimpleHitComponent implements AfterViewInit, OnInit {
 				this.htmlForText = this.entity.highlight.mostRelevantVektor.join('&#13;');
 				this.htmlForText = this.htmlForText
 					.replace(new RegExp('<h1l1ght>', 'g'), '<span class=\"highlight\">')
+					/* eslint-enable  no-useless-escape */
 					.replace(new RegExp('</h1l1ght>', 'g'), '</span>');
 			}
 		}
@@ -122,7 +124,7 @@ export class SimpleHitComponent implements AfterViewInit, OnInit {
 		if (!this.entity || !this.entity.customFields['bildAnsicht']) {
 			return null;
 		}
-		let img = this.entity.customFields['bildAnsicht'];
+		const img = this.entity.customFields['bildAnsicht'];
 		return `data:${img['mimeType']};base64,${img['value']}`;
 	}
 }

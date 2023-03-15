@@ -113,7 +113,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#{{ '/de/konto/bestellkorb' | localizeLink }}" class="icon icon--before icon--cart"><span>{{ 'Bestellkorb ({0})' | translate:'header.bestellkorbItemsCount':shoppingCartItemsCount }}</span></a>&nbsp;&nbsp;
+					<a href="#{{ '/de/konto/bestellkorb' | localizeLink }}" class="icon icon--before icon--cart"><span>{{ 'Bestellkorb ({0})' | translate:'header.bestellkorbItemsCount':shoppingCartItemsCount }}</span></a>
 				</li>
 				<li *ngIf="!authenticated" >
 					<a (click)="login()" href="javascript:void(0)"><span>{{ 'Anmelden' | translate:'header.anmelden' }}</span></a>
@@ -125,11 +125,11 @@
 					<ul class="authenticatedUserButton">
 						<li tabindex="0" data-toggle="dropdown">
 							<a href="javascript:void(0)" tabindex="-1">
-								<span class="glyphicon glyphicon-user"></span>
+								<span class="glyphicon glyphicon-user me-1"></span>
 								<span>{{ username }}</span>
-								<span class="glyphicon glyphicon-chevron-down"></span>
+								<span class="glyphicon glyphicon-chevron-down ms-1"></span>
 							</a>
-						</li>&nbsp;&nbsp;
+						</li>
 						<li class="dropdown-menu">
 							<ul>
 								<a tabindex="0" [href]="accountUrl()"><span>{{ 'Mein Benutzerkonto' | translate:'header.meinkonto' }}</span></a>
@@ -153,7 +153,7 @@
 <div class="clearfix">
 	<a href="#/{{language}}" class="brand hidden-xs">
 		<img src="./assets/img/logo-CH.svg" onerror="this.onerror = null; this.src = './assets/img/logo-CH.png'"
-			 alt="Logo der Schweizerischen Eidgenossenschaft – zur Startseite"/>
+			 alt="{{'Logo der Schweizerischen Eidgenossenschaft – zur Startseite' | translate: 'header.altText'}}"/>
 		<h1>{{ 'Online-Zugang zum Bundesarchiv' | translate:'header.claim' }}</h1>
 	</a>
 </div>

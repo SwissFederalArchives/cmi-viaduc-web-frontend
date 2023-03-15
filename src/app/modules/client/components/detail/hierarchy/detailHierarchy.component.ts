@@ -15,7 +15,7 @@ export class DetailHierarchyComponent implements AfterViewInit {
 	@Input()
 	public isBarUser: boolean;
 
-	public inset: number = 1;
+	public inset = 1;
 	private readonly _elem: any;
 
 	constructor(private _elemRef: ElementRef,

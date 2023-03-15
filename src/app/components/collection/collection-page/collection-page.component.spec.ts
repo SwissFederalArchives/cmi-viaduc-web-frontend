@@ -6,7 +6,7 @@ import {CollectionService} from '../../../modules/client/services/collection.ser
 import {SeoService, UrlService} from '../../../modules/client';
 import {Observable, of} from 'rxjs';
 import {CollectionItemResult} from '../../../modules/client/model/collection/collectionItemResult';
-import * as moment from 'moment';
+import moment from 'moment';
 import {By, Title} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import {ToastrTestingModule, MockUserSettingsParamMap} from '../mocks';

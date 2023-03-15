@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {ArchiveModel, ClientContext, Entity, TranslationService, Utilities as _util} from '@cmi/viaduc-web-core';
+import {ArchiveModel, ClientContext, ConfigService, Entity, TranslationService, Utilities as _util} from '@cmi/viaduc-web-core';
 import {
 	AuthorizationService,
 	EntityRenderService,
@@ -18,17 +18,16 @@ import {AnonymizedResult} from './anonymizedResult';
 })
 export class DetailPageComponent implements OnInit, AfterViewInit {
 	public loading: boolean;
-
 	public entity: Entity;
-
 	public crumbs: any[] = [];
 	public sections: any[] = [];
 	public deepLinkUrl: string;
 	public showDownloadSection = false;
+	public showViewerSection = false;
 	public showOrderSection = false;
 	public items: Entity[] = [];
-	public isBarUser: boolean = false;
-	public hasPermission: boolean = false;
+	public isBarUser = false;
+	public hasPermission = false;
 	public fields: Map<string, any> = new Map<string, any>();
 
 	private _error: any;
@@ -44,7 +43,8 @@ export class DetailPageComponent implements OnInit, AfterViewInit {
 				private _authorization: AuthorizationService,
 				private _scs: ShoppingCartService,
 				private _seoService: SeoService,
-				private _elemRef: ElementRef) {
+				private _elemRef: ElementRef,
+				public _config: ConfigService) {
 		this._elem = this._elemRef.nativeElement;
 	}
 
@@ -110,7 +110,7 @@ export class DetailPageComponent implements OnInit, AfterViewInit {
 			this.isBarUser = this._authorization.isBarUser();
 
 			if (this.entity.isAnonymized && this.isBarUser === true ) {
-				let result: AnonymizedResult = await this._entityService.getAnonymized(id);
+				const result: AnonymizedResult = await this._entityService.getAnonymized(id);
 				this.fields = new Map(Object.entries(result));
 			}
 
@@ -121,8 +121,8 @@ export class DetailPageComponent implements OnInit, AfterViewInit {
 
 				this.sections = [];
 				if (this.entity._context) {
-					let ctx = this.entity._context;
-					let items = [];
+					const ctx = this.entity._context;
+					const items = [];
 					if (ctx.ancestors) {
 						Array.prototype.push.apply(items, ctx.ancestors);
 					}
@@ -136,15 +136,19 @@ export class DetailPageComponent implements OnInit, AfterViewInit {
 				}
 
 				if (this.entity._metadata) {
-					for (let key in this.entity._metadata) {
+					for (const key in this.entity._metadata) {
 						if (this.entity._metadata.hasOwnProperty(key)) {
-							let sec = this._renderService.renderSection(this.entity, key);
+							const sec = this._renderService.renderSection(this.entity, key);
 							if (sec) {
 								this.sections.push(sec);
 							}
 						}
 					}
 				}
+
+				this.showViewerSection = this.entity.manifestLink && (this._authorization.isBarUser() ||
+					(this.entity?.primaryDataDownloadAccessTokens.filter(a => a === 'Ö2').length === 1
+					&& this.entity?.primaryDataFulltextAccessTokens.filter(a => a === 'Ö2').length === 1));
 
 				this.showDownloadSection = this._scs.canDownload(this.entity);
 				// Download wird NICHT angezeigt UND die VE ist bestellbar ODER
@@ -165,11 +169,11 @@ export class DetailPageComponent implements OnInit, AfterViewInit {
 
 	private createErrorMessage(): any {
 		// Creating "safe" error message without exposing details
-		let details1 = this._txt.get('detail.notFoundMessage',
+		const details1 = this._txt.get('detail.notFoundMessage',
 				'Womöglich verfügen Sie nicht über die nötige Berechtigung, um die Seite aufzurufen (siehe <a href="#{0}">Anmelden und Identifizieren</a>).</br></br>',
 				this._url.getRegisterAndIdentifyInfo());
 
-		let details2 = this._txt.get('detail.notFoundMessage2',
+		const details2 = this._txt.get('detail.notFoundMessage2',
 			'Bei Fragen zur Zugänglichkeit der Unterlagen im Bundesarchiv wenden Sie sich bitte an die Beratung oder per E-Mail an ' +
 			'<a href="mailto:bundesarchiv@bar.admin.ch">bundesarchiv@bar.admin.ch</a>.');
 

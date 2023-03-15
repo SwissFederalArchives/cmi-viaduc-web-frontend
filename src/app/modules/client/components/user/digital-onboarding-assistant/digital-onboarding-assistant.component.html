@@ -115,11 +115,14 @@
 							<label tooltip="{{'Geburtsdatum' | translate:'user.birthday'}}" class="col-md-4 control-label">{{'Geburtsdatum' | translate:'user.birthday'}}*</label>
 							<div class="col-md-8">
 								<input class="form-control"
-									   type="text"
-									   datePicker
-									   [minDateToday]="false"
+									   type="date"
+									   autocomplete="off"
+									   mwlFlatpickr
 									   formControlName="dateOfBirth"
-									   aria-labelledby="Date DD.MM.YYYY"
+									   [maxDate]="newDate"
+									   [convertModelValue]="true"
+									   [allowInput]="true"
+									   dateFormat="d.m.Y"
 									   placeholder="{{'Geburtsdatum (dd.mm.jjjj)' | translate: 'user.placeholder.birthday'}}"
 									   name="dateOfBirth">
 								<div *ngIf="errors.dateOfBirth" class="help-block">

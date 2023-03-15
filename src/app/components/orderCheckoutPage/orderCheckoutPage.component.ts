@@ -9,12 +9,12 @@ import {ToastrService} from 'ngx-toastr';
 	styleUrls: ['./orderCheckoutPage.component.less']
 })
 export class OrderCheckoutPageComponent implements OnInit {
-	public stepNr: number = 1;
+	public stepNr = 1;
 	public items: OrderItem[] = [];
 	public itemsThatCouldNeedReason: OrderItem[] = [];
-	public skipUserPage: boolean = false;
-	public skipReasonPage: boolean = false;
-	public isAsUser: boolean = false;
+	public skipUserPage = false;
+	public skipReasonPage = false;
+	public isAsUser = false;
 	public crumbs: any[] = [];
 
 	constructor(private _url: UrlService,
@@ -69,7 +69,7 @@ export class OrderCheckoutPageComponent implements OnInit {
 		this.wizzardSetPage(this.stepNr - 1);
 	}
 
-	public wizzardSetPage(nr: number, isProcessView: boolean = false) {
+	public wizzardSetPage(nr: number, isProcessView = false) {
 		if (this.stepNr < 0 || this.stepNr > 5) {
 			return;
 		}
@@ -106,7 +106,7 @@ export class OrderCheckoutPageComponent implements OnInit {
 		if (!this.isAsUser) {
 			return true;
 		}
-		let items = await this._scs.getItemsThatCouldNeedAReason().toPromise();
+		const items = await this._scs.getItemsThatCouldNeedAReason().toPromise();
 		return items.length === 0;
 	}
 

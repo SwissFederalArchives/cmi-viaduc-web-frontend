@@ -39,8 +39,8 @@ export class AuthenticationService {
 
 	public login(): void {
 		const callbackUrl = `${window.location.pathname}Auth/ExternalSignIn`; // relative url
-		let returnUrl = window.location.href;
-		let loginUrl = _util.addToString(this._options.serverUrl + this._options.publicPort, '/', 'AuthServices/SignIn?ReturnUrl=' + encodeURIComponent(callbackUrl));
+		const returnUrl = window.location.href;
+		const loginUrl = _util.addToString(this._options.serverUrl + this._options.publicPort, '/', 'AuthServices/SignIn?ReturnUrl=' + encodeURIComponent(callbackUrl));
 
 		this._setUrl(authReturnUrlKey, returnUrl);
 		window.location.assign(loginUrl);
@@ -79,8 +79,8 @@ export class AuthenticationService {
 	}
 
 	public edit(): void {
-		let hostUrl = this._urlService.getExternalHostUrl();
-		let baseUrl = this._urlService.getExternalBaseUrl();
+		const hostUrl = this._urlService.getExternalHostUrl();
+		const baseUrl = this._urlService.getExternalBaseUrl();
 		const partialEditUrl = this._config.getSetting('account.partialEditUrl');
 		const returnUrl = this._router.url;
 		const targetUrl = _util.addToString(hostUrl, '/', partialEditUrl) + '?returnURL=' + baseUrl + '#' + returnUrl;
@@ -151,10 +151,10 @@ export class AuthenticationService {
 				this.onSignedIn.pipe(skip(1)).subscribe(res => { // skipping first, because its a behaviour-subject
 					if (!this._preloadService.settings && !this._preloadService.isPreloaded) {
 						this._preloadService.settingsloaded.pipe(take(1)).subscribe(() => {
-							this._userService.initUserSettings().then(() => {});
+							this._userService.initUserSettings().then(r => {return});
 						});
 					} else {
-						this._userService.initUserSettings().then(() => {});
+						this._userService.initUserSettings().then(() => {return});
 					}
 				}
 				, (error) => console.error('Auth Service Error', error));
@@ -164,7 +164,7 @@ export class AuthenticationService {
 
 	private _getIdentity(): Observable<any> {
 		const baseUrl = this._options.serverUrl + this._options.publicPort;
-		let claimsUrl = baseUrl + '/api/Auth/GetIdentity';
+		const claimsUrl = baseUrl + '/api/Auth/GetIdentity';
 		return this._http.get<any>(claimsUrl);
 	}
 
@@ -187,7 +187,7 @@ export class AuthenticationService {
 			return false;
 		}
 
-		let session = this._sessionStorage.getItem<Session>(currentSessionKey);
+		const session = this._sessionStorage.getItem<Session>(currentSessionKey);
 		if (session != null && session.authenticated) {
 			this._initSession();
 

@@ -40,10 +40,10 @@ export class AdvancedSearchPageComponent implements OnInit {
 
 	public ngOnInit() {
 		this._seoService.setTitle(this._txt.translate('Erweiterte Suche', 'advancedSearchPageComponent.pageTitle'));
-		let qs = this._route.snapshot.queryParams['q'];
+		const qs = this._route.snapshot.queryParams['q'];
 
 		if (qs && !_util.isEmpty(qs)) {
-			let tempModel: SearchModel = JSON.parse(qs);
+			const tempModel: SearchModel = JSON.parse(qs);
 			this.viewModel = this._adv.regenerateAdvancedModelFromBaseSearchModel(tempModel);
 		} else {
 			this.reset();
@@ -56,13 +56,13 @@ export class AdvancedSearchPageComponent implements OnInit {
 		while (this.viewModel.searchGroups.filter(g => g.id === groupid).length > 0) {
 			groupid++;
 		}
-		let grp = this._adv.createNewGroup(groupid);
+		const grp = this._adv.createNewGroup(groupid);
 		this.viewModel.searchGroups.push(grp);
 	}
 
 	public reset(): void {
 		this.viewModel = new AdvancedSearchModel();
-		let grp = this._adv.getInitialSearchGroup();
+		const grp = this._adv.getInitialSearchGroup();
 		this.viewModel.searchGroups.push(grp);
 	}
 
@@ -83,10 +83,10 @@ export class AdvancedSearchPageComponent implements OnInit {
 	public search(event): void {
 		this.queryString = '';
 
-		for (let g of this.viewModel.searchGroups) {
+		for (const g of this.viewModel.searchGroups) {
 			let fields = '';
 
-			for (let f of g.searchFields) {
+			for (const f of g.searchFields) {
 				if (f.value && f.value !== '') {
 					if (fields !== '') {
 						if (g.fieldOperator === FieldOperator.And) {
@@ -116,9 +116,9 @@ export class AdvancedSearchPageComponent implements OnInit {
 			}
 		}
 
-		let queryModel:SearchModel = <SearchModel>this._adv.getModelForQuery(this.viewModel);
+		const queryModel:SearchModel = <SearchModel>this._adv.getModelForQuery(this.viewModel);
 
-		let request = this._createNewSearchRequest();
+		const request = this._createNewSearchRequest();
 		request.query = queryModel;
 		request.options = {
 			enableExplanations: event.shiftKey,
@@ -143,8 +143,8 @@ export class AdvancedSearchPageComponent implements OnInit {
 	}
 
 	public containsValidationErrors(): boolean {
-		for (let g of this.viewModel.searchGroups) {
-			for (let f of g.searchFields) {
+		for (const g of this.viewModel.searchGroups) {
+			for (const f of g.searchFields) {
 				if (f.containsValidationErrors) {
 					return true;
 				}

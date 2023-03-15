@@ -3,8 +3,12 @@ import {AuthorizationService, UrlService, UserService, SeoService} from '../../.
 import {User} from '../../../modules/client/model';
 import {ClientContext, CountriesService, TranslationService, ComponentCanDeactivate} from '@cmi/viaduc-web-core';
 import {Router} from '@angular/router';
-import * as moment from 'moment';
+import moment from 'moment';
 import {ToastrService} from 'ngx-toastr';
+import flatpickr from 'flatpickr';
+import {German} from 'flatpickr/dist/l10n/de';
+import {French} from 'flatpickr/dist/l10n/fr';
+import {Italian} from 'flatpickr/dist/l10n/it';
 
 @Component({
 	selector: 'cmi-viaduc-register-page',
@@ -14,11 +18,13 @@ import {ToastrService} from 'ngx-toastr';
 export class RegisterPageComponent extends ComponentCanDeactivate implements OnInit  {
 
 	public crumbs: any[] = [];
-	public show:boolean = false;
+	public show = false;
 	public user:User;
 
-	public emailRegexPattern: string = '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$';
-	public phonenumberRegexPattern: string = '^([s()+]*([0-9][s( )-]*){6,20})$';
+	/* eslint-disable  no-useless-escape */
+	public emailRegexPattern = '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$';
+	/* eslint-enable  no-useless-escape */
+	public phonenumberRegexPattern = '^([s()+]*([0-9][s( )-]*){6,20})$';
 	public countries: any;
 	public languages: any;
 
@@ -26,6 +32,7 @@ export class RegisterPageComponent extends ComponentCanDeactivate implements OnI
 	public canDeactivateFlag = false;
 	public isInternalUser: boolean;
 	public minimumDate = moment('01.01.1850', 'DD.MM.YYYY', true).toDate();
+	public maxDate = new Date();
 
 	constructor(private _usr: UserService,
 				private _auth: AuthorizationService,
@@ -37,6 +44,18 @@ export class RegisterPageComponent extends ComponentCanDeactivate implements OnI
 				private _seoService: SeoService,
 				private _toastr: ToastrService) {
 		super();
+		const lang = this._context.language;
+		switch (lang) {
+			case 'de' :
+				flatpickr.localize(German);
+				break;
+			case 'fr' :
+				flatpickr.localize(French);
+				break;
+			case 'it' :
+				flatpickr.localize(Italian);
+				break;
+		}
 	}
 
 	public async ngOnInit(): Promise<void> {
@@ -88,12 +107,13 @@ export class RegisterPageComponent extends ComponentCanDeactivate implements OnI
 	public get legalAgreementConsentText(): string {
 		const url: string = this._url.getNutzungsbestimmungenUrl();
 
+		/* eslint-disable  no-useless-escape */
 		return this._txt.get('user.legelAgreementConsentText',
 			'Ich bin einverstanden, dass das Schweizerische Bundesarchiv (BAR) meine Personendaten wie in ' +
 			'der <a href=\"#/{0}\">Datenschutzerklärung</a> beschrieben zur Erbringung von Benutzungsdienstleistungen ' +
 			'im Rahmen seines Online-Zugangs verwenden darf.',
 			url);
-
+		/* eslint-enable  no-useless-escape */
 	}
 
 	public canDeactivate(): boolean {

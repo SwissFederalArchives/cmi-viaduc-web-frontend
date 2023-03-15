@@ -12,13 +12,13 @@ export class AccountSettingsPageComponent implements OnInit {
 	public crumbs: any[] = [];
 
 	public errorText: string;
-	public saved: boolean = false;
+	public saved = false;
 
 	public possiblePagingSizes: any[];
 	public sortingFields: any[];
 	public userSettings: UserUiSettings;
 
-	public chosenSortField: string = '';
+	public chosenSortField = '';
 
 	constructor(private _txt: TranslationService,
 				private _url: UrlService,
@@ -63,7 +63,7 @@ export class AccountSettingsPageComponent implements OnInit {
 			});
 	}
 
-	public getTranslationKey(field: any): String {
+	public getTranslationKey(field: any): string {
 		let key = 'metadata.sortFields.';
 		if (field && field.orderBy && field.orderBy !== '') {
 			key += field.orderBy;

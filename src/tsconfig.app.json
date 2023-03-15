@@ -5,6 +5,8 @@
 		"baseUrl": "./",
     "types": [],
 		"experimentalDecorators": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
 		"paths": {
 			"jszip": [
 				"../node_modules/jszip/dist/jszip.min.js"

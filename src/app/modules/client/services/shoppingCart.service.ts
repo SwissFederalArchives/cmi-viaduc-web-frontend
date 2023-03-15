@@ -20,7 +20,7 @@ import {
 } from '@cmi/viaduc-web-core';
 import {Router} from '@angular/router';
 import {UrlService} from './url.service';
-import * as moment from 'moment';
+import moment from 'moment';
 import {Moment} from 'moment';
 import {HttpErrorResponse} from '@angular/common/http';
 import { SearchService } from './search.service';
@@ -31,9 +31,9 @@ export class ShoppingCartService {
 	private activeOrder: Ordering;
 	private _apiUrl: string;
 
-	private _totalItemsInCart: number = 0;
+	private _totalItemsInCart = 0;
 	private _openingDays: Moment[];
-	private _isAddingNewItem: boolean = false;
+	private _isAddingNewItem = false;
 
 	constructor(private _toastr: ToastrService,
 				private _context: ClientContext,
@@ -58,7 +58,7 @@ export class ShoppingCartService {
 		return ve.primaryDataLink !== undefined && ve.primaryDataLink !== null && ve.primaryDataLink.length > 0;
 	}
 
-	public getKontingent(forUserId: string = ''): Observable<KontingentResult> {
+	public getKontingent(forUserId = ''): Observable<KontingentResult> {
 		const url = `${this._apiUrl}/GetKontingent?forUserId=${forUserId}`;
 		return this._http.get<KontingentResult>(url);
 	}
@@ -90,12 +90,12 @@ export class ShoppingCartService {
 	}
 
 	public getOrderableItems(): Observable<OrderItem[]> {
-		let basket = this.getBasket();
+		const basket = this.getBasket();
 		return basket.pipe(map(items => items.filter(i => !i.einsichtsbewilligungNotwendig)));
 	}
 
 	public getItemsWhereEinsichtsGesuchNoeting(): Observable<OrderItem[]> {
-		let basket = this.getBasket();
+		const basket = this.getBasket();
 		return basket.pipe(map(items => items.filter(i => i.einsichtsbewilligungNotwendig)));
 	}
 
@@ -180,7 +180,7 @@ export class ShoppingCartService {
 			}
 
 			this._isAddingNewItem = true;
-			let result = this.getBasket().pipe(items => {
+			const result = this.getBasket().pipe(items => {
 				if (signatur !== undefined && signatur !== null) {
 					return this._addUnknownToBasket(items, signatur).pipe(catchError((err: HttpErrorResponse) => {
 						this._catchAndShowAddToBasketServerErrors(err);
@@ -260,7 +260,7 @@ export class ShoppingCartService {
 	}
 
 	public getOpeningDays(): string[] {
-		let days = this._cfg.getSetting('managementClientSettings.openingDaysLesesaal');
+		const days = this._cfg.getSetting('managementClientSettings.openingDaysLesesaal');
 		if (days && days !== '') {
 			return days.split(';');
 		}
@@ -287,7 +287,8 @@ export class ShoppingCartService {
 	}
 
 	public updateBewilligungsDatum(orderItem: OrderItem): Observable<any> {
-		const url = `${this._apiUrl}/UpdateBewilligungsDatum?orderItemId=${orderItem.id}&bewilligung=${orderItem.bewilligungsDatum}`;
+		const isoDateString = orderItem.bewilligungsDatum.toISOString();
+		const url = `${this._apiUrl}/UpdateBewilligungsDatum?orderItemId=${orderItem.id}&bewilligung=${isoDateString}`;
 		return this._http.post(url, null);
 	}
 
@@ -300,21 +301,21 @@ export class ShoppingCartService {
 	}
 
 	private _showSuccessfullyAddedToast(title: string) {
-		let successMessage = this._txt.translate('{0} wurde erfolgreich dem Bestellkorb hinzugefügt.', 'simpleHit.addedToBasketText', title);
-		let successTitle = this._txt.translate('Im Bestellkorb', 'simpleHit.addedToBasketTitle');
+		const successMessage = this._txt.translate('{0} wurde erfolgreich dem Bestellkorb hinzugefügt.', 'simpleHit.addedToBasketText', title);
+		const successTitle = this._txt.translate('Im Bestellkorb', 'simpleHit.addedToBasketTitle');
 		this._toastr.success(successMessage, successTitle);
 	}
 
 	private _showAlreadyInCartToast(title: string) {
-		let message = this._txt.translate('{0} ist bereits schon im Bestellkorb vorhanden.', 'simpleHit.alreadyAddedToBasketText', title);
-		let titleWarning = this._txt.translate('Bereits hinzugefügt', 'simpleHit.alreadyAddedToBasketTitle');
+		const message = this._txt.translate('{0} ist bereits schon im Bestellkorb vorhanden.', 'simpleHit.alreadyAddedToBasketText', title);
+		const titleWarning = this._txt.translate('Bereits hinzugefügt', 'simpleHit.alreadyAddedToBasketTitle');
 		this._toastr.warning(message, titleWarning);
 	}
 
 	private _showDigitalAvailableToast(ve: Entity) {
-		let message = this._txt.translate('Dieses Dossier liegt bereits digital vor. Sie können es hier anschauen oder herunterladen.', 'simpleHit.digitalAvailableText');
-		let title = this._txt.translate('Digital verfügbar', 'simpleHit.digitalAvailableTitle');
-		let t = this._toastr.info(message, title);
+		const message = this._txt.translate('Dieses Dossier liegt bereits digital vor. Sie können es hier anschauen oder herunterladen.', 'simpleHit.digitalAvailableText');
+		const title = this._txt.translate('Digital verfügbar', 'simpleHit.digitalAvailableTitle');
+		const t = this._toastr.info(message, title);
 
 		t.onTap.subscribe(() => {
 			this._router.navigateByUrl(this._url.getDetailUrl(ve.archiveRecordId));
@@ -322,36 +323,36 @@ export class ShoppingCartService {
 	}
 
 	private _showLevelValidationError() {
-		let title = this._txt.get('simpleHit.failedBecauseOfLevelTitle', 'Bestellen fehlgeschlagen');
-		let message = this._txt.get('simpleHit.failedBecauseOfLevelMessage',
+		const title = this._txt.get('simpleHit.failedBecauseOfLevelTitle', 'Bestellen fehlgeschlagen');
+		const message = this._txt.get('simpleHit.failedBecauseOfLevelMessage',
 			'Diese Verzeichnungseinheit ist nicht bestellbar. Bei Fragen wenden Sie sich bitte an die Beratung oder an bestellen@bar.admin.ch.');
 
 		this._toastr.error(message, title);
 	}
 
 	private _showErrorWhenAddingToBasket(error: any) {
-		let message = this._txt.translate('Beim Hinzufügen in den Bestellkorb gab es einen Fehler.', 'simpleHit.failedAddToBasketText') + ' ' + error;
-		let title = this._txt.translate('Fehler', 'simpleHit.failedAddToBasketTitle');
+		const message = this._txt.translate('Beim Hinzufügen in den Bestellkorb gab es einen Fehler.', 'simpleHit.failedAddToBasketText') + ' ' + error;
+		const title = this._txt.translate('Fehler', 'simpleHit.failedAddToBasketTitle');
 
 		this._toastr.error(message, title);
 	}
 
 	private _showNotLoggedInToast() {
-		let message = this._txt.translate('Bitte melden Sie sich an, um den Bestellkorb nutzen zu können.', 'simpleHit.loginToUseBasketText');
-		let title = this._txt.translate('Jetzt anmelden', 'simpleHit.loginToUsebasketTitle');
+		const message = this._txt.translate('Bitte melden Sie sich an, um den Bestellkorb nutzen zu können.', 'simpleHit.loginToUseBasketText');
+		const title = this._txt.translate('Jetzt anmelden', 'simpleHit.loginToUsebasketTitle');
 
-		let t = this._toastr.warning(message, title);
+		const t = this._toastr.warning(message, title);
 		t.onTap.subscribe(() => {
 			this._authentication.login();
 		});
 	}
 
 	private _showMissingOe3RoleToast() {
-		let message = this._txt.translate('Um Unterlagen mit einer Einsichtsbewilligung bestellen zu können, ist der Benutzerstatus «identifizierter Benutzer» notwendig.' +
+		const message = this._txt.translate('Um Unterlagen mit einer Einsichtsbewilligung bestellen zu können, ist der Benutzerstatus «identifizierter Benutzer» notwendig.' +
 			' Um zum Identifizierungsprozess zu gelangen, klicken Sie bitte auf diese Meldung.', 'simpleHit.oe3RoleRequired');
-		let title = this._txt.translate('Bestellung nicht möglich', 'simpleHit.oe3RoleRequiredTitle');
+		const title = this._txt.translate('Bestellung nicht möglich', 'simpleHit.oe3RoleRequiredTitle');
 
-		let t = this._toastr.warning(message, title, {disableTimeOut: true, closeButton: true});
+		const t = this._toastr.warning(message, title, {disableTimeOut: true, closeButton: true});
 		t.onTap.subscribe(() => {
 			this._router.navigate([this._url.getAccountUrl()], {fragment: 'identifiedUser'});
 		});

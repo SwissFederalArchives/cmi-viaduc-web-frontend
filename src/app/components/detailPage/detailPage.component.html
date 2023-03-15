@@ -16,6 +16,9 @@
 
 				<div class="section">
 					<div class="section-content">
+						<cmi-viaduc-viewer-section *ngIf="showViewerSection" [manifestLink]="entity.manifestLink" [viewerLink]="_config.getSetting('viewer.url', '')"></cmi-viaduc-viewer-section>
+					</div>
+					<div class="section-content">
 						<cmi-viaduc-info-section *ngIf="!hasPermission && entity.isAnonymized" [text]="'Diese Daten wurden aus Datenschutzgründen anonymisiert.'|translate:'infoSection.noPermission'"></cmi-viaduc-info-section>
 						<cmi-viaduc-info-section *ngIf="isBarUser && entity.isAnonymized"[text]="'Für NutzerInnen ohne entsprechende Berechtigung werden diese Daten in anonymisierter Form angezeigt.'|translate:'infoSection.barUser'"></cmi-viaduc-info-section>
 						<cmi-viaduc-download-section *ngIf="showDownloadSection" [entity]="entity"></cmi-viaduc-download-section>
@@ -23,7 +26,6 @@
 						<cmi-viaduc-usage-section *ngIf="!showDownloadSection && !showOrderSection"
 												  [text]="'Diese Verzeichnungseinheit ist nicht bestellbar. Bitte wenden Sie sich an die Beratung oder an bestellen@bar.admin.ch.' | translate:'simpleHit.failedBecauseOfLevelMessage'">
 						</cmi-viaduc-usage-section>
-
 					</div>
 				</div>
 

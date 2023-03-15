@@ -61,12 +61,14 @@
 					</label>
 					<div class="col-md-9 col-xs-9">
 						<input class="form-control"
-							   type="text"
-							   datePicker
-							   [minDateToday]="false"
+							   type="date"
+							   autocomplete="off"
+							   mwlFlatpickr
 							   [minDate]="minimumDate"
+							   [maxDate]="maxDate"
 							   [(ngModel)]="user.birthday"
-							   aria-labelledby="Date DD.MM.YYYY"
+							   [allowInput]="true"
+							   dateFormat="d.m.Y"
 							   placeholder="{{'Geburtsdatum (tt.mm.jjjj)' | translate: 'user.placeholder.birthday'}}"
 							   name="birthday">
 					</div>

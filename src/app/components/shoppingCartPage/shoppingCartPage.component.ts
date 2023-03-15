@@ -88,10 +88,10 @@ export class ShoppingCartPageComponent implements OnInit {
 			return;
 		}
 
-		let signaturesString = this.signatureToSearch.replace(/\n/g, ';');
-		let signatures = signaturesString.split(';').map(s => s.trim());
+		const signaturesString = this.signatureToSearch.replace(/\n/g, ';');
+		const signatures = signaturesString.split(';').map(s => s.trim());
 
-		for (let signatureToSearch of signatures) {
+		for (const signatureToSearch of signatures) {
 			if (_util.isEmpty(signatureToSearch)) {
 				continue;
 			}
@@ -104,7 +104,7 @@ export class ShoppingCartPageComponent implements OnInit {
 	}
 
 	private async _searchAndAddSignature(signatureToSearch: string) {
-		let archiveRecordId = await this._searchService.searchBySignatur(signatureToSearch);
+		const archiveRecordId = await this._searchService.searchBySignatur(signatureToSearch);
 		if (!archiveRecordId || _util.isEmpty(archiveRecordId)) {
 			this._showNotFoundToast();
 			return;
@@ -134,8 +134,8 @@ export class ShoppingCartPageComponent implements OnInit {
 	}
 
 	private _showNotFoundToast() {
-		let message = this._txt.translate('Keine Verzeichnungseinheit mit dieser Signatur gefunden', 'shoppingCartPage.veNotFound');
-		let title = this._txt.translate('Nicht gefunden', 'shoppingCartPage.veNotFoundTitle');
+		const message = this._txt.translate('Keine Verzeichnungseinheit mit dieser Signatur gefunden', 'shoppingCartPage.veNotFound');
+		const title = this._txt.translate('Nicht gefunden', 'shoppingCartPage.veNotFoundTitle');
 		this._toastr.error(message, title);
 	}
 
@@ -144,7 +144,7 @@ export class ShoppingCartPageComponent implements OnInit {
 			return;
 		}
 
-		let selfmadeItem = <SelfMadeOrderItem> {
+		const selfmadeItem = <SelfMadeOrderItem> {
 			period: this.timeSpanField.value,
 			title: this.dossierTitel,
 			aktenzeichen: this.aktenzeichen,

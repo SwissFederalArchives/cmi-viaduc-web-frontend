@@ -22,10 +22,10 @@ export class FavoriteMenuComponent {
 	public lists: FavoriteList[];
 	private _changes: Change[] = [];
 
-	public loading: boolean = false;
-	public addingNew: boolean = false;
-	public authenticated: boolean = false;
-	public addNewClicked: boolean = false;
+	public loading = false;
+	public addingNew = false;
+	public authenticated = false;
+	public addNewClicked = false;
 
 	public formData: any = {
 		listName: ''
@@ -47,7 +47,7 @@ export class FavoriteMenuComponent {
 
 			if (this.lists.length === 0) {
 				// Benutzer hat noch keine Liste, daher automatisch eine erste erstellen
-				let l = await this._favoriteService.createDefaultFavoriteList();
+				const l = await this._favoriteService.createDefaultFavoriteList();
 				this.lists.push(l);
 			}
 		} catch (err) {
@@ -83,8 +83,8 @@ export class FavoriteMenuComponent {
 	}
 
 	public toggleOn(event: any, list: FavoriteList): void {
-		let value = event;
-		let change = new Change();
+		const value = event;
+		const change = new Change();
 		change.id = list.id;
 		change.value = value.target.checked;
 
@@ -98,7 +98,7 @@ export class FavoriteMenuComponent {
 	}
 
 	public getToggleTooltip(list: FavoriteList): string {
-		let remove = (list && list.included === true);
+		const remove = (list && list.included === true);
 		return remove
 			? this._txt.get('favorites.removeFavoriteFromList', 'Aus der Liste {0} entfernen', list.name)
 			: this._txt.get('favorites.addFavoriteToList', 'Zu Liste {0} hinzufügen', list.name);
@@ -121,7 +121,7 @@ export class FavoriteMenuComponent {
 			return;
 		}
 
-		let l = await this._createList(this.formData.newListName);
+		const l = await this._createList(this.formData.newListName);
 
 		const veFavorite = new VeFavorite();
 		veFavorite.veId = this.entityId;
@@ -149,8 +149,8 @@ export class FavoriteMenuComponent {
 			return;
 		}
 
-		let ids:any[] = [];
-		for (let change of this._changes.reverse()) {
+		const ids:any[] = [];
+		for (const change of this._changes.reverse()) {
 			if (ids.indexOf(change.id) === -1) {
 				if (change.value) {
 					const veFavorite = new VeFavorite();
@@ -160,10 +160,10 @@ export class FavoriteMenuComponent {
 						() => this._toastr.success(this._txt.get('favorites.saveSuccessfull', 'Favoriten erfolgreich mutiert.'))
 					);
 				} else {
-					let list = this.lists.filter(l => l.id === change.id)[0];
+					const list = this.lists.filter(l => l.id === change.id)[0];
 					this._favoriteService.getFavoritesContainedOnList(list.id).then(items => {
 						// not all are VeFavorite there are also SearchFavorite,therefore check to null
-						let item = items.filter(i => (<VeFavorite>i)?.veId?.toString() === this.entityId);
+						const item = items.filter(i => (<VeFavorite>i)?.veId?.toString() === this.entityId);
 						this._favoriteService.removeFavorite(change.id, item[0].id).then(
 							() => this._toastr.success(this._txt.get('favorites.saveSuccessfull', 'Favoriten erfolgreich mutiert.'))
 						);

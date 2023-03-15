@@ -67,17 +67,20 @@
 						<span>{{ 'Datum Einsichtsbewilligung' | translate: 'shoppingCartItemList.dateOfBewilligung'}} *</span>
 					</label>
 					<div class="col-sm-6 col-xs-12 no-bottom-margin">
-						<input type="date"
-							   *ngIf="chosenBewilligungsItem"
+						<input *ngIf="chosenBewilligungsItem"
+							   type="date"
+							   [convertModelValue]="true"
+							   [enableTime]="false"
+							   [allowInput]="true"
 							   [(ngModel)]="chosenBewilligungsItem.bewilligungsDatum"
 							   required
-							   datePicker
+							   autocomplete="off"
+							   mwlFlatpickr dateFormat="d.m.Y"
 							   [minDateToday]="false"
 							   name="bewilligungsDatum"
 							   class="form-control"
 							   id="bewilligungsDatum"
-							   (isValidChanged)="checkDate($event)"
-							   aria-labelledby="Date DD.MM.YYYY">
+							   (flatpickrValueUpdate)="checkDate($event)">
 						<div [ngClass]="{'has-warning': invalidDateError}">
 							<span *ngIf="invalidDateError" class="help-block" role="alert">
 								{{'Bitte wählen Sie ein gültiges Datum aus.' | translate: 'shoppingCartItemList.chooseValidDate'}}

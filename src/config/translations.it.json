@@ -433,6 +433,7 @@
     "entstehungszeitraum": "Periodo di costituzione",
     "hideFilter": "Nascondi filtri",
     "notActive": "Non attivo",
+    "showFilter": "Mostra filtri",
     "stufen": "Livelli",
     "treffer": "Risultati",
     "weitereTreffer": "Altri",
@@ -821,7 +822,11 @@
     "last": "Vai all'ultima pagina",
     "next": "Avanti",
     "previous": "Indietro"
-  },
+	},
+	"onlineViewer": {
+		"buttonText": "Vedi",
+		"infoText" : "Consulta i documenti"
+	},
   "order": {
     "frombar": "(Questa ordinazione è stata generata dall'Archivio federale.)",
     "unknowtext": "[Non visibile]"

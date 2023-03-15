@@ -36,10 +36,10 @@ export class SearchSynonymeComponent {
 	];
 
 	public addSynonymToList(synonymGruppe: SynonymGruppe, synonym: string): void {
-		let synonymForSearch = this._getStringForSearch(synonym);
+		const synonymForSearch = this._getStringForSearch(synonym);
 
 		if (this.synonymSelectedList.has(synonymGruppe)) {
-			let searchSynonymList = this.synonymSelectedList.get(synonymGruppe);
+			const searchSynonymList = this.synonymSelectedList.get(synonymGruppe);
 			this._addOrDeleteValueFromList(searchSynonymList, synonymForSearch);
 		} else {
 			this.synonymSelectedList.set(synonymGruppe, [synonymForSearch]);
@@ -49,7 +49,7 @@ export class SearchSynonymeComponent {
 	public onAddSynonymToSearchClicked(): void {
 		let newSearchValue = this.searchValue;
 		if (this.searchValue && this.searchValue.length) {
-			let mergedSynonymSelectedList = this._getMergedSynonymes();
+			const mergedSynonymSelectedList = this._getMergedSynonymes();
 			newSearchValue = this._createSearchText(mergedSynonymSelectedList);
 		}
 
@@ -64,19 +64,19 @@ export class SearchSynonymeComponent {
 
 	private _createSearchText(mergedSynonymSelectedList: Map<SynonymGruppe, string[]>) {
 		let searchValueWithSynonymes = '';
-		let wordsTemp = this.searchValue.trim()
+		const wordsTemp = this.searchValue.trim()
 			.replace(/\s\s+/g, ' ')
 			.replace(/"([^"\s]*?)(\s)([^"\s]*?)"/gm, '$1~~$3')  // Replace spaces within double quotes with ~~
 			.split(' ');
-		let words = wordsTemp.map(w => w.replace('~~', ' '));   // After split, replace subst with spaces again
+		const words = wordsTemp.map(w => w.replace('~~', ' '));   // After split, replace subst with spaces again
 
-		let synonymKeys = Array.from(mergedSynonymSelectedList.keys());
+		const synonymKeys = Array.from(mergedSynonymSelectedList.keys());
 
 		for (let i = 0; i < words.length; i++) {
-			let synonymGroupCandidates = synonymKeys.filter(k => k.treffer.toLowerCase().indexOf(words[i].toLowerCase()) >= 0);
-			let synonymGroups = [];
+			const synonymGroupCandidates = synonymKeys.filter(k => k.treffer.toLowerCase().indexOf(words[i].toLowerCase()) >= 0);
+			const synonymGroups = [];
 
-			for (let g of synonymGroupCandidates) {
+			for (const g of synonymGroupCandidates) {
 				if (g.treffer.toLowerCase() === words[i].toLowerCase()) {
 					synonymGroups.push({
 						toReplace: words[i],
@@ -100,9 +100,9 @@ export class SearchSynonymeComponent {
 			}
 
 			if (synonymGroups.length > 0) {
-				for (let g of synonymGroups) {
-					let values = mergedSynonymSelectedList.get(g.group);
-					let text = `(${this._getStringForSearch(g.group.treffer)} OR ${values.join(' OR ')})`;
+				for (const g of synonymGroups) {
+					const values = mergedSynonymSelectedList.get(g.group);
+					const text = `(${this._getStringForSearch(g.group.treffer)} OR ${values.join(' OR ')})`;
 					searchValueWithSynonymes = this._concatSynonym(searchValueWithSynonymes, text);
 				}
 			} else {
@@ -141,7 +141,7 @@ export class SearchSynonymeComponent {
 	}
 
 	private _getMergedSynonymes(): Map<SynonymGruppe, string[]> {
-		let mergedSynonymSelectedList: Map<SynonymGruppe, string[]> = new Map<SynonymGruppe, string[]>();
+		const mergedSynonymSelectedList: Map<SynonymGruppe, string[]> = new Map<SynonymGruppe, string[]>();
 		this.synonymSelectedList.forEach((value: string[], key: SynonymGruppe) => {
 			let stringArray: string[] = null;
 			mergedSynonymSelectedList.forEach((mvalue: string[], mkey: SynonymGruppe) => {
@@ -161,7 +161,7 @@ export class SearchSynonymeComponent {
 	}
 
 	private _addOrDeleteValueFromList(list: string[], value: string) {
-		let index = list.indexOf(value);
+		const index = list.indexOf(value);
 		if (index < 0) {
 			// Falls Eintrag nicht existiert ergänzen
 			list.push(value);
@@ -172,12 +172,12 @@ export class SearchSynonymeComponent {
 	}
 
 	private _mergeStringList(list: string[], value: string[]) {
-		for (let item of value) {
+		for (const item of value) {
 			if (!item) {
 				continue;
 			}
 
-			let index = list.indexOf(item);
+			const index = list.indexOf(item);
 			if (index < 0) {
 				// Falls Eintrag nicht existiert ergänzen
 				list.push(item);

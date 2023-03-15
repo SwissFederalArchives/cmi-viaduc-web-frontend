@@ -37,13 +37,13 @@
 			<cmi-viaduc-search-synonym-icon [controlId]="getUniqueTextboxName()" [searchTerm]="selectedField.value"
 											(addSynonymToSearchClicked)='onAddSynonymToSearchClicked($event)'></cmi-viaduc-search-synonym-icon>
 		</div>
-		<span class="pull-right" *ngIf="selectedField.id != '1_1'" style="margin:0 !important; padding:0 !important;">
+		<span class="pull-right m-0 p-0" *ngIf="selectedField.id != '1_1'">
             <button type="button" (click)="deleteField()" class="btn btn-link">
 				<!--Braucht beides um von allen Screenreadern erkannt zu werden-->
 				<span class="screen-reader-only">
 					{{'Suchfeld entfernen' | translate:'advancedSearchField.removeCriteria'}}
 				</span>
-				<span class="glyphicon glyphicon-minus"  tooltip="{{'Suchfeld entfernen' | translate:'advancedSearchField.removeCriteria'}}"></span>
+				<span class="glyphicon glyphicon-minus ms-1"  tooltip="{{'Suchfeld entfernen' | translate:'advancedSearchField.removeCriteria'}}"></span>
             </button>
 	    </span>
 	</div>

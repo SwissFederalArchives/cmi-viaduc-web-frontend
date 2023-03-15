@@ -10,7 +10,7 @@
 	</div>
 </div>
 <div *ngIf="!isLoading" class="download-section">
-	<div *ngIf="downloadPossible && assetInfo">
+	<div *ngIf="canDownload && assetInfo">
 		<div *ngIf="!showExclamation && downloadReady">
 			<cmi-viaduc-usage-section [text]="'Laden Sie die Unterlagen jetzt herunter. In der Datei index.html erhalten Sie einen Überblick über sämtliche Dokumente.' | translate:'downloadSection.downloadNow'" tabindex="0">
 			</cmi-viaduc-usage-section>
@@ -31,7 +31,7 @@
 					</fieldset>
 				</div>
 				<div class="col-md-3 col-sm-6 col-xs-12 no-bottom-margin button-container download-box">
-					<a class="btn" (click)="downloadVeToken()" tabindex="0" (keydown.enter)="downloadVeToken()">
+					<a class="btn w-100" (click)="downloadVeToken()" tabindex="0" (keydown.enter)="downloadVeToken()">
 						<i class="glyphicon glyphicon-download-alt" aria-hidden="true" ></i>&nbsp;
 						<span>{{ 'Download' | translate:'file.download' }}</span>
 						<span class="text-dimmed">{{' (ZIP, ' + (assetInfo.fileSizeInBytes | measure:'FileSize') + ')'}}</span>
@@ -59,7 +59,7 @@
 		</div>
 		<div *ngIf="!showExclamation && !preparationPending && !downloadReady && !downloadDone && !downloadPending">
 			<cmi-viaduc-usage-section [text]="preparationRequiredText + ' ' + humanReadablePreperationDurationTime + '.'">
-				<a class="btn" (click)="prepareFileForUsageNow()" tabindex="0">
+				<a class="btn w-100" (click)="prepareFileForUsageNow()" tabindex="0">
 					<i class="glyphicon glyphicon-flash" aria-hidden="true"></i>&nbsp;
 					<span>{{'Digitalisat aufbereiten' |translate:'downloadSection.prepareNow'}}</span>
 				</a>
@@ -95,11 +95,11 @@
 				</div>
 
 				<div class="download-cancel-box">
-					<a class="btn" (click)="cancelAction()">
+					<a class="btn w-100" (click)="cancelAction()">
 						<i class="glyphicon glyphicon-remove" aria-hidden="true"></i>&nbsp;
 						<span>{{ 'Abbrechen' | translate:'file.cancel' }}</span>
 					</a>
-					<a class="btn" (click)="proceedDownloadToken($event)">
+					<a class="btn w-100" (click)="proceedDownloadToken($event)">
 						<i [ngClass]="wasDownloadClicked() ? 'glyphicon glyphicon-download-alt' : 'glyphicon glyphicon-sort' " aria-hidden="true"></i>&nbsp;
 						<span> {{ wasDownloadClicked() ? ('Jetzt herunterladen' | translate:'file.downloadNow') : (('Jetzt einsehen' | translate:'file.openNow')) }}</span>
 					</a>
@@ -107,15 +107,15 @@
 			</div>
 		</div>
 	</div>
-	<div *ngIf="!downloadPossible && !authenticated">
+	<div *ngIf="showLoginButton">
 		<cmi-viaduc-usage-section [text]="pleaseLoginText">
-			<a class="btn" (click)="login($event)" tabindex="0">
+			<a class="btn w-100" (click)="login($event)" tabindex="0">
 				<i class="glyphicon glyphicon-log-in"></i>&nbsp;
 				<span>{{ 'Anmelden' | translate:'anmelden' }}</span>
 			</a>
 		</cmi-viaduc-usage-section>
 	</div>
-	<div *ngIf="!downloadPossible && authenticated">
+	<div *ngIf="!canDownload && authenticated">
 		<div class="alert alert-warning" role="alert">
 			<span class="sr-only">warning:</span> {{'Sie haben nicht genügend Rechte, um die digitalen Unterlagen dieser Verzeichnungseinheit einzusehen oder zu bestellen.'| translate:'file.notAuthorized'}}
 		</div>

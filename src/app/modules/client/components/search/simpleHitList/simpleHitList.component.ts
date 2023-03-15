@@ -12,11 +12,11 @@ export class SimpleHitListComponent {
 	@Input()
 	public entityResult: Entity[];
 	@Input()
-	public loading: boolean = false;
+	public loading = false;
 	@Input()
-	public enableExplanations: boolean = false;
+	public enableExplanations = false;
 
-	public isBarUser: boolean = false;
+	public isBarUser = false;
 	private _userSettings: UserUiSettings;
 
 	constructor(public _context: ClientContext,

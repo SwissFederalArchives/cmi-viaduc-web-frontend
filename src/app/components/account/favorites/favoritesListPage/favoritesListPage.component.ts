@@ -10,7 +10,7 @@ import { FavoriteService, SeoService, UrlService } from '../../../../modules/cli
 })
 export class AccountFavoritesListPageComponent implements OnInit {
 	public crumbs: any[] = [];
-	public showAddNewModal: boolean = false;
+	public showAddNewModal = false;
 	public newListName: string;
 	public error: any;
 
@@ -29,7 +29,7 @@ export class AccountFavoritesListPageComponent implements OnInit {
 	}
 
 	private _buildCrumbs(): void {
-		let crumbs: any[] = this.crumbs = [];
+		const crumbs: any[] = this.crumbs = [];
 		crumbs.push(
 			{
 				iconClasses: 'glyphicon glyphicon-home',
@@ -67,6 +67,7 @@ export class AccountFavoritesListPageComponent implements OnInit {
 	}
 
 	public refreshList() {
-		this.favoriteList.refresh().then(() => {});
+		this.favoriteList.refresh().then(() => {
+			return});
 	}
 }

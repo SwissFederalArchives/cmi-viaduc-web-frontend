@@ -32,7 +32,7 @@ export class CollectionPageComponent implements OnInit {
 		this.isValid = false;
 		this.loading = true;
 		const collection$ = this._route.paramMap.pipe(switchMap((params: ParamMap) => {
-			let id = Number(params.get('id'));
+			const id = Number(params.get('id'));
 			return this._collectionService.get(id);
 		}));
 
@@ -62,7 +62,7 @@ export class CollectionPageComponent implements OnInit {
 	}
 
 	public getBreadCrumb(): any[] {
-		let breadCrumb = new Array();
+		const breadCrumb = [];
 		breadCrumb.push(			{
 				iconClasses: 'glyphicon glyphicon-home',
 				url: this._url.getHomeUrl(),
@@ -70,7 +70,7 @@ export class CollectionPageComponent implements OnInit {
 			}
 		);
 
-		for (let breadCrumbKey in this.breadCrumb) {
+		for (const breadCrumbKey in this.breadCrumb) {
 			if (this.breadCrumb.hasOwnProperty(breadCrumbKey)) {
 				breadCrumb.push(
 					{

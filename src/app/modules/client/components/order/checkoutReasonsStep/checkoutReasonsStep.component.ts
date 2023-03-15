@@ -15,7 +15,7 @@ export class CheckoutReasonsStepComponent implements OnInit {
 	@Input()
 	public inputItems: OrderItem[] = [];
 
-	public everyItemContainsPersonData: boolean = true;
+	public everyItemContainsPersonData = true;
 	public reasons: Reason[] = [];
 	public form: FormGroup;
 
@@ -23,7 +23,7 @@ export class CheckoutReasonsStepComponent implements OnInit {
 	public onGoBackClicked: EventEmitter<void> = new EventEmitter<void>();
 	@Output()
 	public onNextClicked: EventEmitter<void> = new EventEmitter<void>();
-	public nextClicked: boolean = false;
+	public nextClicked = false;
 
 	constructor(private _scs: ShoppingCartService,
 				private _stm: StammdatenService,
@@ -32,7 +32,7 @@ export class CheckoutReasonsStepComponent implements OnInit {
 	}
 
 	public ngOnInit(): void {
-		let order = this._scs.getActiveOrder();
+		const order = this._scs.getActiveOrder();
 		if (order.begruendungAngegebenFallsNoeting) {
 			this.inputItems = order.items || this.inputItems;
 		}
@@ -55,7 +55,7 @@ export class CheckoutReasonsStepComponent implements OnInit {
 	}
 
 	private _buildFormGroup(item: OrderItem) {
-		let group = new FormGroup({
+		const group = new FormGroup({
 			id: new FormControl(item.id),
 			hasPersonendaten: new FormControl(item.hasPersonendaten),
 			reason: new FormControl({value: item.reason, disabled: !item.hasPersonendaten}),
@@ -79,7 +79,7 @@ export class CheckoutReasonsStepComponent implements OnInit {
 
 	public setFlagForAllItems(val: boolean) {
 		this.everyItemContainsPersonData = val;
-		let items = (this.form.get('items') as FormArray);
+		const items = (this.form.get('items') as FormArray);
 
 		for (let i = 0; i < items.controls.length; i++) {
 			items.at(i).get('hasPersonendaten').setValue(val);
@@ -101,7 +101,7 @@ export class CheckoutReasonsStepComponent implements OnInit {
 	}
 
 	private async saveReasons(): Promise<void> {
-		for (let item of this.formItems) {
+		for (const item of this.formItems) {
 			if (item.hasPersonendaten) {
 				await this._scs.setReason(item, item.reason).toPromise();
 			} else {
@@ -111,7 +111,7 @@ export class CheckoutReasonsStepComponent implements OnInit {
 	}
 
 	private async _saveActiveOrder(saveReasons = true): Promise<void> {
-		let order = this._scs.getActiveOrder();
+		const order = this._scs.getActiveOrder();
 
 		if (saveReasons) {
 			await this.saveReasons();
@@ -150,7 +150,7 @@ export class CheckoutReasonsStepComponent implements OnInit {
 	}
 
 	private doesEveryItemContainPersonData() {
-		let items = (this.form.get('items') as FormArray);
+		const items = (this.form.get('items') as FormArray);
 		let found = false;
 		for (let i = 0; i < items.length; i++) {
 			if (!items.at(i).get('hasPersonendaten').value) {

@@ -19,31 +19,31 @@
 				</div>
 			</div>
 		</fieldset>
-
 		<fieldset *ngIf="isLesesaalOrdering()">
 			<legend class="hidden-legend">{{'Datum Lesesaal' | translate:'checkoutOrderDetailsStep.datumLesesaal'}} *</legend>
-			<div class="form-group" [ngClass]="{'has-warning': (form.hasError('required', ['konsultierungsDatum']) || invalidDateError) && nextClicked}">
+			<div class="form-group" [ngClass]="{'has-warning': (form.hasError('required', ['konsultierungsDatum']) || form.hasError('invalidDateValue', ['konsultierungsDatum'])) && (form.controls.konsultierungsDatum.dirty || nextClicked)}">
 				<label for="konsultierungsDatum" class="col-sm-3 control-label" id="date">
 					{{'Ich möchte die Unterlagen im Lesesaal konsultieren am' |
 					translate:'checkoutOrderDetailsStep.datumLesesaalText'}} *
 				</label>
 				<div class="col-sm-9">
-					<input type="date"
-						   required
-						   datePicker
-						   [openingDays]="openingDays"
-						   (blur)="validateDate($event)"
-						   class="form-control"
-						   id="konsultierungsDatum"
-						   maxlength="10"
+					<input id="konsultierungsDatum" class="form-control"
 						   formControlName="konsultierungsDatum"
-						   aria-labelledby="Date DD.MM.YYYY">
-
-					<div *ngIf="invalidDateError && nextClicked" class="help-block" role="alert">
-						{{'An diesem Tag hat der Lesesaal nicht geöffnet. Bitte wählen Sie ein gültiges Datum aus.' | translate: 'checkoutOrderDetailsStep.invalidDate'}}
-					</div>
-					<div *ngIf="form.hasError('required', ['konsultierungsDatum']) && nextClicked" class="help-block" role="alert">
+						   type="date"
+						   autocomplete="off"
+						   mwlFlatpickr
+						   required
+						   [enable]="openingDays" (flatpickrValueUpdate)="dataPickerValueUpdate($event)"
+						   [minDate]="minimumDate"
+						   [convertModelValue]="true"
+						    [allowInput]="true"
+						   dateFormat="d.m.Y" >
+					<div *ngIf="form.hasError('required', ['konsultierungsDatum']) && (form.controls.konsultierungsDatum.dirty || nextClicked)" class="help-block" role="alert">
 						{{'Bitte wählen Sie ein Datum für Ihren Besuch im Lesesaal.' | translate: 'checkoutOrderDetailsStep.mandatoryDate'}}
+					</div>
+					<div *ngIf="form.hasError('invalidDateValue', ['konsultierungsDatum']) && !form.hasError('required', ['konsultierungsDatum']) &&
+								(form.controls.konsultierungsDatum.dirty || nextClicked)" class="help-block" role="alert">
+						{{'An diesem Tag hat der Lesesaal nicht geöffnet. Bitte wählen Sie ein gültiges Datum aus.' | translate: 'checkoutOrderDetailsStep.invalidDate'}}
 					</div>
 				</div>
 			</div>
@@ -84,7 +84,7 @@
 	<button (click)="goBack()" type="button" class="btn btn-secondary">
 		{{'Zurück' | translate:'orderCheckoutPage.previousPage'}}
 	</button>
-	<button (click)="validateFields()" type="button" class="btn btn-primary">
+	<button (click)="validateFields()" type="button" class="btn btn-primary" [disabled]="!this.form.valid">
 		{{'Bestellung abschliessen' | translate:'orderCheckoutPage.finishOrder'}}
 	</button>
 </form>

@@ -38,12 +38,12 @@ export class OrderSectionComponent {
 	}
 
 	private _setTranslationTexts() {
-		let textA = this._txt.translate('Bitte melden Sie sich an, um die Unterlagen zu bestellen', 'downloadSection.pleaseLogin');
-		let textB = this._txt.translate('Details unter', 'downloadSection.pleaseLoginDetailsAt');
-		let registerPart = this._txt.translate('Registrieren und Identifizieren', 'downloadSection.registerAndIdentify');
-		let url = this._url.getExternalRegisterAndIdentifyUrl();
+		const textA = this._txt.translate('Bitte melden Sie sich an, um die Unterlagen zu bestellen', 'downloadSection.pleaseLogin');
+		const textB = this._txt.translate('Details unter', 'downloadSection.pleaseLoginDetailsAt');
+		const registerPart = this._txt.translate('Registrieren und Identifizieren', 'downloadSection.registerAndIdentify');
+		const url = this._url.getExternalRegisterAndIdentifyUrl();
 
-		let linkPart = '<a href="' + url + '" target="_blank" rel="noopener">' + registerPart + '</a>';
+		const linkPart = '<a href="' + url + '" target="_blank" rel="noopener">' + registerPart + '</a>';
 		this.pleaseLoginText = `${textA} (${textB} ${linkPart})`;
 	}
 

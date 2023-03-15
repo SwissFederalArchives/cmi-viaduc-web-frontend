@@ -9,7 +9,7 @@ import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 	styleUrls: ['./chatbotDialog.component.less']
 })
 export class ChatbotDialogComponent {
-	public isMobile: boolean = false;
+	public isMobile = false;
 
 	@Output()
 	public onHide: EventEmitter<void> = new EventEmitter<void>();
@@ -25,10 +25,10 @@ export class ChatbotDialogComponent {
 	}
 
 	public get dialogHeight(): number {
-		let defaultHeight = 600;
-		let additionalSpace = 230;
+		const defaultHeight = 600;
+		const additionalSpace = 230;
 
-		let windowHeight = window.innerHeight;
+		const windowHeight = window.innerHeight;
 
 		if (this.isMobile) {
 			return Math.max(windowHeight - 155, 200);

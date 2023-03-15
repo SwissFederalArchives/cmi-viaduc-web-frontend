@@ -6,7 +6,11 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../../model';
 import {OnboardingModel} from '../../../model/account/onboardingModel';
 import {DigitalOnboardingAssistantErrorMessages} from './digital-onboarding-assistant.ErrorMessages';
-import * as moment from 'moment/moment';
+import flatpickr from 'flatpickr';
+import {German} from 'flatpickr/dist/l10n/de';
+import {French} from 'flatpickr/dist/l10n/fr';
+import {Italian} from 'flatpickr/dist/l10n/it';
+import moment from 'moment';
 
 @Component({
 	selector: 'cmi-digital-onboarding-assistant',
@@ -16,7 +20,7 @@ import * as moment from 'moment/moment';
 export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewInit {
 	public currentStep: number;
 	public userCanOnboard: boolean;
-	public fidentityCanOnboard: boolean = true;
+	public fidentityCanOnboard = true;
 	public passportCountries: Countries;
 	public idCountries: Countries;
 	public allCountries: Countries;
@@ -27,6 +31,7 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 	public formStep1: FormGroup;
 	public formStep2: FormGroup;
 	private residenceCountries: Country[];
+	public newDate = new Date();
 
 	constructor(
 		private _context: ClientContext,
@@ -36,6 +41,18 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 		private _route: ActivatedRoute,
 		private _formBuilder: FormBuilder,
 		private _txt: TranslationService) {
+		const lang = this._context.language;
+		switch (lang) {
+			case 'de' :
+				flatpickr.localize(German);
+				break;
+			case 'fr' :
+				flatpickr.localize(French);
+				break;
+			case 'it' :
+				flatpickr.localize(Italian);
+				break;
+		}
 	}
 
 	public ngOnInit() {
@@ -175,8 +192,9 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 	}
 
 	private sendData(): OnboardingModel {
-		let userData = new OnboardingModel();
+		const userData = new OnboardingModel();
 		userData.dateOfBirth = this.myForm.controls['dateOfBirth'].value;
+		userData.dateOfBirth = moment(this.myForm.controls['dateOfBirth'].value).utc(true).toISOString();
 		userData.email = this.myForm.controls['email'].value;
 		userData.name = this.myForm.controls['name'].value;
 		userData.firstname = this.myForm.controls['firstName'].value;
@@ -209,7 +227,7 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 
 		let birth = null;
 		if (this.user.birthday) {
-			birth = moment(this.user.birthday).format('DD.MM.YYYY');
+			birth =  new Date(this.user.birthday);
 		}
 
 		this.formStep2 = this._formBuilder.group({
@@ -268,11 +286,11 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 	}
 
 	private dateValidator(control: FormControl): any | null {
-		if (control.value !== null && moment(control.value, 'DD.MM.YYYY', true).isValid()) {
+		if (control.value !==  undefined && control.value !== null && control.value !== '') {
 			return null;
 		}
-
 		// return error object
 		return {'invalidDate': {'value': control.value}};
 	}
+
 }

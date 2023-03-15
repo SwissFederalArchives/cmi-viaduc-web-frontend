@@ -18,7 +18,7 @@ export class DetailContextGuard extends DefaultContextGuard {
 	public canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
 		const can = super.canActivate(route);
 
-		let id: string = route.params['id'];
+		const id: string = route.params['id'];
 		if (!_util.isEmpty(id) && !isNaN(parseFloat(this._url.getDetailIdFromReference(id)))) {
 			this._router.navigate([this._url.getDetailUrl(id)]);
 		}

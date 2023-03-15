@@ -21,7 +21,7 @@ export class UnbluService {
 
 	public async closeChat(): Promise<void> {
 		if (this.isInitiated()) {
-			let state = await this._api.ui.getIndividualUiState();
+			const state = await this._api.ui.getIndividualUiState();
 			if (state !== IndividualUiState.COLLAPSED) {
 				await this._api.ui.toggleIndividualUi();
 			}
@@ -37,7 +37,7 @@ export class UnbluService {
 			return;
 		}
 
-		let node = document.createElement('script');
+		const node = document.createElement('script');
 		node.src = `https://unblu.cloud/unblu/visitor.js?x-unblu-apikey=${UNBLU_APIKEY}`;
 		node.type = 'text/javascript';
 		node.async = false;

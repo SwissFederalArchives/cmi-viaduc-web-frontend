@@ -24,9 +24,9 @@ export class SearchFavoriteMenuComponent implements AfterViewInit {
 
 	public searchTitle: string;
 
-	public loading: boolean = false;
-	public authenticated: boolean = false;
-	public success: boolean = false;
+	public loading = false;
+	public authenticated = false;
+	public success = false;
 
 	public addNewHeaderCss = 'collapsed';
 	public addNewContentCss = 'collapse';
@@ -66,7 +66,7 @@ export class SearchFavoriteMenuComponent implements AfterViewInit {
 			return;
 		}
 
-		let inputField: HTMLElement = <HTMLElement>document.querySelector('#newSearchTitle');
+		const inputField: HTMLElement = <HTMLElement>document.querySelector('#newSearchTitle');
 		if (inputField) {
 			setTimeout(() => {
 				inputField.focus();
@@ -83,13 +83,13 @@ export class SearchFavoriteMenuComponent implements AfterViewInit {
 
 			if (this.lists.length === 0) {
 				// Benutzer hat noch keine Liste, daher automatisch eine erste erstellen
-				let l = await this._favoriteService.createDefaultFavoriteList();
+				const l = await this._favoriteService.createDefaultFavoriteList();
 				this.lists.push(l);
 			} else {
-				let includedOnList = (this.lists.find(l => l.included));
+				const includedOnList = (this.lists.find(l => l.included));
 				if (includedOnList) {
-					let listDetail = await this._favoriteService.getFavoriteList(includedOnList.id);
-					let item = listDetail.items.find((i: SearchFavorite) => i.url === this.deepLinkUrl) as SearchFavorite || <SearchFavorite>{};
+					const listDetail = await this._favoriteService.getFavoriteList(includedOnList.id);
+					const item = listDetail.items.find((i: SearchFavorite) => i.url === this.deepLinkUrl) as SearchFavorite || <SearchFavorite>{};
 					this.searchTitle = item.title;
 					this.isExistingFavorite = true;
 				}
@@ -113,15 +113,15 @@ export class SearchFavoriteMenuComponent implements AfterViewInit {
 	}
 
 	public toggleOn(event: any, list: FavoriteList): void {
-		let value = event;
-		let change = new Change();
+		const value = event;
+		const change = new Change();
 		change.id = list.id;
 		change.value = value.target.checked;
 		this._changes.push(change);
 	}
 
 	public getToggleTooltip(list: FavoriteList): string {
-		let remove = (list && list.included === true);
+		const remove = (list && list.included === true);
 		return remove
 			? this._txt.get('favorites.removeFavoriteFromList', 'Aus der Liste {0} entfernen', list.name)
 			: this._txt.get('favorites.addFavoriteToList', 'Zu Liste {0} hinzufügen', list.name);
@@ -153,7 +153,7 @@ export class SearchFavoriteMenuComponent implements AfterViewInit {
 		}
 
 		try {
-			let l = await this._favoriteService.addFavoriteList(this.form.controls.newListName.value);
+			const l = await this._favoriteService.addFavoriteList(this.form.controls.newListName.value);
 			await this._loadLists();
 			this.lists.find(list => list.id === l.id).included = true;
 			this.toggleOn({ target: { checked: true }}, l);
@@ -180,11 +180,11 @@ export class SearchFavoriteMenuComponent implements AfterViewInit {
 			return;
 		}
 
-		let ids:any[] = [];
-		for (let change of this._changes.reverse()) {
+		const ids:any[] = [];
+		for (const change of this._changes.reverse()) {
 			if (ids.indexOf(change.id) === -1) {
 				if (change.value) {
-					let list = this.lists.filter(l => l.id === change.id)[0];
+					const list = this.lists.filter(l => l.id === change.id)[0];
 					const searchFavorite = new SearchFavorite();
 					searchFavorite.url = this.deepLinkUrl;
 					searchFavorite.kind = FavoriteKind.Search;
@@ -193,10 +193,10 @@ export class SearchFavoriteMenuComponent implements AfterViewInit {
 						this._toastr.success(this._txt.get('favorites.saveSuccessfull', 'Favoriten erfolgreich mutiert.'))
 					);
 				} else {
-					let list = this.lists.filter(l => l.id === change.id)[0];
+					const list = this.lists.filter(l => l.id === change.id)[0];
 					this._favoriteService.getFavoritesContainedOnList(list.id).then(items => {
-						let containedList = items.filter(i => (<SearchFavorite>i).url === this.deepLinkUrl);
-						let item = _util.isEmpty(containedList) ? null : containedList[0];
+						const containedList = items.filter(i => (<SearchFavorite>i).url === this.deepLinkUrl);
+						const item = _util.isEmpty(containedList) ? null : containedList[0];
 						if (item) {
 							this._favoriteService.removeFavorite(change.id, item.id).then(() =>
 								this._toastr.success(this._txt.get('favorites.saveSuccessfull', 'Favoriten erfolgreich mutiert.'))

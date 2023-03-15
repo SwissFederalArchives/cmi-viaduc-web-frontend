@@ -1,4 +1,8 @@
-<button [ngClass]="buttonCss" (click)="toggle()" [attr.aria-expanded]="!collapsed">{{facetteTitle}}</button>
+<button [ngClass]="buttonCss" (click)="toggle()" [attr.aria-expanded]="!collapsed">
+	{{facetteTitle}}
+	<span *ngIf="!collapsed" class="sr-only" >{{'Filter einblenden' | translate:'facette.showFilter' }}"</span>
+	<span *ngIf="collapsed" class="sr-only" >{{'Filter ausblenden' | translate:'facette.hideFilter' }}"</span>
+</button>
 <ul [id]="normalizedId" [ngClass]="ulCss" [@collapsedState]="collapsed ? 'collapsed' : 'expanded'" [attr.aria-hidden]="collapsed" [attr.tabindex]="collapsed ? -1 : 0">
 		<cmi-viaduc-facette-entry *ngFor="let a of facette?.items" [active]="isActive(a.filter)" [agg]="a" [facette]="this" [collapsed]="collapsed">
 		</cmi-viaduc-facette-entry>
