@@ -52,6 +52,8 @@ import {UsageSectionComponent} from './detail/usageSection/usageSection.componen
 import {ChatbotDialogComponent} from './chatbotDialog/chatbotDialog.component';
 import { SearchFacetteShowAllComponent } from './search/searchFacetteShowAll/searchFacetteShowAll.component';
 import {ViewerSectionComponent} from './detail/viewerSection/viewerSection.component';
+import {CituroFloatingButtonComponent} from './cituroFloatingButton/cituro-floating-button.component';
+import {CheckoutWorkplaceReservationStepComponent} from './order/checkoutWorkplaceReservationStep/checkout-workplace-reservation-step.component';
 
 export const ALL_COMPONENTS = [
 	StaticContentComponent,
@@ -95,6 +97,7 @@ export const ALL_COMPONENTS = [
 	CheckoutShippingTypeStepComponent,
 	CheckoutOrderDetailsStepComponent,
 	CheckoutUserSelectStepComponent,
+	CheckoutWorkplaceReservationStepComponent,
 	CheckoutReasonsStepComponent,
 	CheckoutSubmittedStepComponent,
 	EntityMenuComponent,
@@ -107,5 +110,6 @@ export const ALL_COMPONENTS = [
 	EngagementBubblesComponent,
 	UsageSectionComponent,
 	InfoSectionComponent,
-	ViewerSectionComponent
+	ViewerSectionComponent,
+	CituroFloatingButtonComponent
 ];

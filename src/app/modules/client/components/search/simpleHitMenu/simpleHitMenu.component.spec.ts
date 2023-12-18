@@ -36,7 +36,11 @@ describe('SimpleHitMenuComponent', () => {
 			serverUrl: 'www.scsTest.ch',
 			privatePort: '',
 		};
-		let cfg: any = <any> {};
+		let cfg: any = <any> {
+			getSetting: (text, defaultValue) => {
+				return null;
+			}
+		};
 		let txt: any = <any>{
 			translate: (text, key) => {
 				return text;
@@ -45,7 +49,7 @@ describe('SimpleHitMenuComponent', () => {
 		let searchService: any = <any> {};
 
 		scs = new ShoppingCartService(toastr, context, authentication, authService, router, http, url, options, cfg, txt, searchService);
-		simpleHitMenuComponent = new SimpleHitMenuComponent(elemRef, ui, scs, router, url);
+		simpleHitMenuComponent = new SimpleHitMenuComponent(elemRef, ui, scs, router, cfg, url);
 	});
 
 	describe('When a VE has downloadAllowed set to true and has a primaryDataLink', () => {

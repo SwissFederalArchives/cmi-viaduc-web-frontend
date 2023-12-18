@@ -34,6 +34,9 @@ export class CheckoutShippingTypeStepComponent implements OnInit {
 	@Output()
 	public onNextClicked: EventEmitter<void> = new EventEmitter<void>();
 
+	@Output()
+	public onUpadetOrdertype: EventEmitter<ShippingType> = new EventEmitter<ShippingType>();
+
 	constructor(private _scs: ShoppingCartService,
 				private _cfg: ConfigService,
 				private _formBuilder: FormBuilder,
@@ -72,6 +75,7 @@ export class CheckoutShippingTypeStepComponent implements OnInit {
 		this.showDigitizationWarning = this._scs.getShowDigitizationWarningSetting();
 
 		this.form.controls.shippingType.valueChanges.subscribe(async val => {
+			this.onUpadetOrdertype.emit(this.form.controls.shippingType.value);
 			await this._resetActiveOrder();
 		});
 	}

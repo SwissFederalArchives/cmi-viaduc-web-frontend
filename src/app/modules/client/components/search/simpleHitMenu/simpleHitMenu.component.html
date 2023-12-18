@@ -1,8 +1,19 @@
 <div class="contexticon-container">
 	<div [ngClass]="{ 'menu-open': showFavoritesMenu }">
+		<a [href]="viewerLink"
+		   *ngIf="viewerLink !== null"
+		   target="_blank"
+		   tabindex="0"
+		   tooltip="{{ 'Ansicht der Unterlagen im Viewer' | translate:'icon.menu.viewer'}}"
+		   tooltipPlacement="left">
+			<span aria-hidden="true"
+				  class="contexticon glyphicon glyphicon-eye-open">
+			</span>
+			<span class="sr-only">{{ 'Ansicht der Unterlagen im Viewer' | translate:'icon.menu.viewer' }}</span>
+		</a>
 		<a (click)="goToDetailDownload()"
 		   (keydown.enter)="goToDetailDownload()"
-		   *ngIf="hasAccess === true; else noAccess"
+		   *ngIf="viewerLink === null && hasAccess === true; else noAccess"
 		   tabindex="0"
 		   tooltip="{{ 'Zum Download' | translate:'icon.menu.download'}}"
 		   tooltipPlacement="left">
@@ -14,7 +25,7 @@
 		<ng-template #noAccess>
 			<a (click)="callMenuAction('addtocart')"
 			   (keydown.enter)="callMenuAction('addtocart')"
-			   *ngIf="entity?.canBeOrdered === true || entity?.primaryDataLink !== null"
+			   *ngIf="viewerLink === null && (entity?.canBeOrdered === true || entity?.primaryDataLink !== null)"
 			   tooltip="{{ 'In den Bestellkorb legen' | translate:'icon.menu.bestellkorb'}}"
 			   tooltipPlacement="left"
 			   tabindex="0">

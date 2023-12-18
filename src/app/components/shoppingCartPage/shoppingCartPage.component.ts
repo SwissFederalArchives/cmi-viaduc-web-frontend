@@ -1,15 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, SecurityContext, ViewChild} from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
-import {
-	Entity,
-	OrderItem,
-	SearchField, SelfMadeOrderItem, TranslationService, UiService,
-	Utilities as _util
-} from '@cmi/viaduc-web-core';
+import {Entity, OrderItem, SearchField, SelfMadeOrderItem, TranslationService, UiService, Utilities as _util} from '@cmi/viaduc-web-core';
 import {Router} from '@angular/router';
 import {EntityService, SearchService, SeoService, ShoppingCartService, UrlService} from '../../modules/client/services';
 import {tap} from 'rxjs/operators';
-import { DateRangeFieldComponent } from '../../modules/client';
+import {DateRangeFieldComponent} from '../../modules/client';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
 	selector: 'cmi-viaduc-shopping-cart-page',
@@ -45,6 +41,7 @@ export class ShoppingCartPageComponent implements OnInit {
 				private _ent: EntityService,
 				private _searchService: SearchService,
 				private _txt: TranslationService,
+				private _sanitizer: DomSanitizer,
 				private _seoService: SeoService) {
 	}
 
@@ -145,13 +142,13 @@ export class ShoppingCartPageComponent implements OnInit {
 		}
 
 		const selfmadeItem = <SelfMadeOrderItem> {
-			period: this.timeSpanField.value,
-			title: this.dossierTitel,
-			aktenzeichen: this.aktenzeichen,
-			behaeltnisNr: this.behaeltnisNr,
-			archivNr: this.archivNr,
-			ablieferung: this.ablieferung,
-			bestand: this.teilBestand
+			period: this._sanitizer.sanitize(SecurityContext.HTML,this.timeSpanField.value),
+			title: this._sanitizer.sanitize(SecurityContext.HTML, this.dossierTitel),
+			aktenzeichen: this._sanitizer.sanitize(SecurityContext.HTML,this.aktenzeichen),
+			behaeltnisNr: this._sanitizer.sanitize(SecurityContext.HTML,this.behaeltnisNr),
+			archivNr: this._sanitizer.sanitize(SecurityContext.HTML,this.archivNr),
+			ablieferung: this._sanitizer.sanitize(SecurityContext.HTML,this.ablieferung),
+			bestand: this._sanitizer.sanitize(SecurityContext.HTML,this.teilBestand)
 		};
 
 		this._scs.addManuallyToCart(selfmadeItem).then((data) => {

@@ -1,5 +1,5 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, ViewEncapsulation} from '@angular/core';
-import {Entity, UiService, Utilities as _util} from '@cmi/viaduc-web-core';
+import {ConfigService, Entity, UiService, Utilities as _util} from '@cmi/viaduc-web-core';
 import {ShoppingCartService, UrlService} from '../../../services';
 import {Router} from '@angular/router';
 
@@ -25,6 +25,7 @@ export class SimpleHitMenuComponent implements AfterViewInit, OnInit {
 
 	public hasAccess: boolean;
 	public showFavoritesMenu = false;
+	public viewerLink: string;
 
 	private _elem: any;
 
@@ -32,12 +33,19 @@ export class SimpleHitMenuComponent implements AfterViewInit, OnInit {
 				private _ui: UiService,
 				private _scs: ShoppingCartService,
 				private _router: Router,
+				public _config: ConfigService,
 				private _url: UrlService) {
 		this._elem = this._elemRef.nativeElement;
 	}
 
 	public ngOnInit(): void {
 		this.hasAccess = this._scs.canDownload(this.entity);
+		const viewerLinkBase = this._config.getSetting('viewer.url', '');
+		if (this.entity.manifestLink) {
+			this.viewerLink = viewerLinkBase + this.entity.manifestLink;
+		} else {
+			this.viewerLink = null;
+		}
 	}
 
 	public ngAfterViewInit(): void {

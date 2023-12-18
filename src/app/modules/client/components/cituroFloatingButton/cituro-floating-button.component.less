@@ -1,0 +1,52 @@
+
+@media (min-width: 992px) {
+
+	.btn-reservation-floating {
+		position: absolute;
+		top: 4rem;
+		right: 0;
+		background-color: #DC0018;
+		text-align: center;
+		color: #fff!important;
+		writing-mode: vertical-rl;
+		transform: rotate(180deg);
+		border-bottom-left-radius: 0;
+		border-top-left-radius: 0;
+		padding: .9em;
+
+		a:visited{
+			color: #fff!important;
+			text-decoration: none;
+		 }
+	}
+
+	.btn-reservation-floating:hover, .btn-reservation-floating:focus {
+		background-color: #F7001D !important;
+		color: #fff;
+	}
+
+	.glyphicon-calendar{
+		transform: rotate(90deg);
+		margin-bottom: 0.25rem;
+	}
+}
+
+@media (max-width: 992px) {
+	.btn-reservation-floating {
+		background-color: #DC0018 !important;
+		color: #fff!important;
+
+		 a:hover {
+			background-color: #F7001D !important;
+			color: #fff!important;
+		}
+
+		.glyphicon-calendar {
+			margin-right: 0.5rem;
+		}
+	}
+
+	.btn-reservation-floating:hover, .btn-reservation-floating:focus {
+		background-color: #F7001D !important;
+	}
+}

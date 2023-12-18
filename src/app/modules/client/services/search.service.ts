@@ -42,7 +42,7 @@ export class SearchService {
 
 	public searchExport(request: SearchRequest): any   {
 		const apiDataUrl = this._options.serverUrl + this._options.privatePort + '/api/Data';
-		const queryString = `?SearchText=${JSON.stringify(request)}`;
+		const queryString = `?SearchText=${encodeURIComponent(JSON.stringify(request))}`;
 		const url = `${apiDataUrl}/ExportSearchResultToExcel${queryString}`;
 		return this._http.download(url);
 	}

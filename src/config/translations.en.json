@@ -243,7 +243,7 @@
     "cartText": "You still have open orders in your <a href=\"#/{0}\">shopping cart</a>.",
     "checkStatusText": "You can monitor the status of your order in your <a href=\"#/{0}\">user account</a>.",
     "disclaimerText": "The identification process using live verification by means of artificial intelligence will be recorded, but the recording will be deleted once identification is complete. The Federal Archives will store only a copy of the identification document, the photograph and the user information in tabular form. You may request information about your stored data at any time (Art. 8 FADP).",
-    "thxTextDigi": "Thank you for your order. You will receive an e-mail as soon as the documents have been digitised. It will normally take two weeks to process your order.",
+    "thxTextDigi": "Thank you for your order. You will receive an e-mail as soon as the documents have been digitised.",
     "thxTextEischtisgesuch": "We will forward your request to the office responsible. You will normally receive a decision within four to six weeks.",
     "thxTextEischtisgesuchAnmeldenUndIndentifizieren": "If your request is approved, you will need to identify yourself in order to consult the documents (see <a href=\"{0}\">Registration and identification</a>).",
     "thxTextEischtisgesuchIntroduction": "Thank you for your request to consult the following documents:",
@@ -623,6 +623,7 @@
   },
   "hitbar": {
     "export": "Download XLS file",
+    "exportError": "It takes too long to create the XLS file.",
     "copyPermalink": "Copy permalink to this search to the clipboard",
     "groupByArchivplan": "Group by archive plan",
     "orderableUnits": "Units available for order",
@@ -637,7 +638,8 @@
       "bestellkorb": "Place in shopping cart",
       "bestellkorbdownload": "Switch to download page ",
       "download": "To download",
-      "favoriten": "Add to favourites"
+      "favoriten": "Add to favourites",
+      "viewer": "View"
     }
   },
   "languages": {
@@ -835,6 +837,8 @@
     "bestellbestaetigung": "Order confirmation",
     "chooseShippingType": "Select form of delivery",
     "finishOrder": "Complete order",
+    "hasReservation": "I have already booked a workstation or I do not need a reservation.",
+    "informationReveration": "Information regarding the reservation of a workstation in the reading room can be found at <a href=\"#/en/information/ordering-and-consulting\" target='_blank'>Ordering and Consulting</a>.",
     "inMyName": "In my own name",
     "inTheNameOfAnother": "On behalf of another user",
     "iWantThisDossierOrdered": "I would like to order this dossier",
@@ -859,7 +863,8 @@
     "exceedDigitalisierungTitle": "You can only have {0} more dossiers digitised",
     "exceedDigitalisierungIntro": "Please select below the dossiers you wish to have digitised now. As soon as they have been digitised, you can order further dossiers.",
     "exceedDigitalisierungAsBvw": "Alternatively you can order them for consultation in the reading room or delivery to the office at any time.",
-    "exceedDigitalisierungOthers": "Alternatively you can order them for consultation in the reading room at any time."
+    "exceedDigitalisierungOthers": "Alternatively you can order them for consultation in the reading room at any time.",
+    "workplaceReservation": "Workstation reservation"
   },
   "orderCheckoutPageComponent": {
     "pageTitle": "Order"
@@ -942,6 +947,9 @@
     "eIam": "Access to recherche.bar.admin.ch is managed by e-Government Identity and Access Management (eIAM).",
     "registerEiam": "The process of opening an account is conducted outside of recherche.bar.admin.ch. If you encounter any problems registering please contact our <a href=\"\">online advice service</a> or e-mail <a href=\"mailto:benutzer-admin@bar.admin.ch\">benutzer-admin@bar.admin.ch</a>."
   },
+	"reservation": {
+		"text": "Workstation reservation"
+	},
   "row": {
     "captionTranslation": "row.captionDefault",
     "errorTranslation": "row.errorDefault"

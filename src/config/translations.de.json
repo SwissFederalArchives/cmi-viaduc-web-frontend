@@ -240,7 +240,7 @@
     "cartText": "Sie haben noch offene Bestellungen im <a href=\"#/{0}\">Bestellkorb</a>.",
     "checkStatusText": "Den Status Ihrer Bestellung können Sie in Ihrem <a href=\"#/{0}\">Benutzerkonto</a> verfolgen.",
     "disclaimerText": "Der Identifizierungsprozess per Online-Identifikation über eine KI-Engine wird aufgezeichnet, nach Abschluss der Identifikation aber wieder gelöscht. Das Bundesarchiv speichert ausschliesslich die Kopie des Ausweises, die Fotografie und tabellarische Benutzerdaten. Sie haben jederzeit das Recht, Auskunft über Ihre gespeicherten Daten zu verlangen (Art. 8 DSG).",
-    "thxTextDigi": "Vielen Dank für Ihren Auftrag. Sie erhalten eine E-Mail, sobald die Unterlagen digitalisiert worden sind. Die Bearbeitung Ihres Auftrags dauert in der Regel zwei Wochen.",
+    "thxTextDigi": "Vielen Dank für Ihren Auftrag. Sie erhalten eine E-Mail, sobald die Unterlagen digitalisiert worden sind.",
     "thxTextEischtisgesuch": "Wir werden Ihr Gesuch an die zuständige Stelle weiterleiten. Mit einem Entscheid können Sie in der Regel innerhalb von vier bis sechs Wochen rechnen.",
     "thxTextEischtisgesuchAnmeldenUndIndentifizieren": "Falls Ihr Gesuch bewilligt wird, müssen Sie sich identifizieren, um die Unterlagen zu konsultieren (siehe <a href=\"{0}\">Anmelden und Identifizieren</a>).",
     "thxTextEischtisgesuchIntroduction": "Vielen Dank für Ihr Einsichtsgesuch in folgende Unterlagen:",
@@ -432,7 +432,7 @@
     "stufen": "Stufen",
     "treffer": "Treffer",
     "weitereTreffer": "Andere",
-    "zugaenglichkeitGemBGA": "Zugänglichkeit gem. BGA",
+    "zugaenglichkeitGemBGA": "Zugänglichkeit gem. BGA"
 	},
   "favorite": {
     "noExistingListsLabel": "Es sind noch keine Favoritenlisten vorhanden."
@@ -615,6 +615,7 @@
   },
   "hitbar": {
     "export": "XLS-Datei herunterladen",
+    "exportError": "Die Erstellung der XLS-Datei dauert zu lange.",
     "copyPermalink": "Permalink dieser Suche in die Zwischenablage kopieren",
     "groupByArchivplan": "Nach Archivplan gruppieren",
     "orderableUnits": "Bestellbare Einheiten",
@@ -629,7 +630,8 @@
       "bestellkorb": "In den Bestellkorb legen",
       "bestellkorbdownload": "Zur Downloadseite wechseln ",
       "download": "Zum Download",
-      "favoriten": "Zu den Favoriten hinzufügen"
+      "favoriten": "Zu den Favoriten hinzufügen",
+      "viewer": "Anzeigen"
     }
   },
   "languages": {
@@ -826,6 +828,8 @@
     "bestellbestaetigung": "Bestellbestätigung",
     "chooseShippingType": "Lieferart auswählen",
     "finishOrder": "Bestellung abschliessen",
+    "hasReservation": "Ich habe schon einen Arbeitsplatz reserviert bzw. ich brauche keine Reservation.",
+    "informationReveration": "Informationen zur Reservation von Arbeitsplätzen finden Sie unter <a href=\"#/de/informationen/bestellen-und-konsultieren\" target='_blank'>Bestellen und Konsultieren</a>.",
     "inMyName": "In meinem eigenen Namen",
     "inTheNameOfAnother": "Im Namen eines anderen Benutzers",
     "iWantThisDossierOrdered": "Ich möchte dieses Dossier bestellen",
@@ -850,7 +854,8 @@
     "exceedDigitalisierungTitle": "Sie können nur noch {0} Dossiers digitalisieren lassen",
     "exceedDigitalisierungIntro": "Bitte wählen Sie unten jene Dossiers aus, die Sie jetzt digitalisieren lassen möchten. Sobald diese digitalisiert sind, können Sie weitere Dossier in Auftrag geben.",
     "exceedDigitalisierungAsBvw": "Alternativ dazu ist eine Bestellung in den Lesesaal oder ins Amt jederzeit möglich.",
-    "exceedDigitalisierungOthers": "Alternativ dazu ist eine Bestellung in den Lesesaal jederzeit möglich."
+    "exceedDigitalisierungOthers": "Alternativ dazu ist eine Bestellung in den Lesesaal jederzeit möglich.",
+    "workplaceReservation": "Reservation Arbeitsplatz"
   },
   "orderCheckoutPageComponent": {
     "pageTitle": "Bestellung"
@@ -931,6 +936,9 @@
     "registerImEiam": "Registrieren",
     "title": "Kontoeröffnung für den Online-Zugang zum Bundesarchiv"
   },
+	"reservation": {
+		"text": "Reservation Arbeitsplatz"
+	},
   "row": {
     "captionTranslation": "row.captionDefault",
     "errorTranslation": "row.errorDefault"

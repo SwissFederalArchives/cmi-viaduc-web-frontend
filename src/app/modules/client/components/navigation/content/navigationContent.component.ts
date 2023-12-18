@@ -56,6 +56,15 @@ export class NavigationContentComponent implements AfterViewInit {
 		return supportedLanguages.filter(l => l === this._context.language).length > 0;
 	}
 
+	public get chatBotConfigured(): boolean {
+		if (!this._pre.isPreloaded) {
+			return false;
+		}
+
+		const url = this._cfg.getSetting('chatbot.urlForChatBot', '');
+		return url != '';
+	}
+
 	public get lastSearchResult(): string {
 		return this._context.lastSearchLink;
 	}

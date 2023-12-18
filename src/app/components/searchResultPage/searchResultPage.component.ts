@@ -18,6 +18,7 @@ import {
 } from '@cmi/viaduc-web-core';
 import {SearchFacetteListComponent} from '../../modules/client/components';
 import {SearchService, SeoService, UrlService} from '../../modules/client/services';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
 	selector: 'cmi-viaduc-search-result-page',
@@ -59,14 +60,14 @@ export class SearchResultPageComponent implements OnInit {
 				private _txt: TranslationService,
 				private _searchService: SearchService,
 				private _seoService: SeoService,
-				private _fileSaver: FileSaverService) {
+				private _fileSaver: FileSaverService,
+				private _toastr: ToastrService) {
 		this.showLoading = true;
 	}
 
 	public async ngOnInit(): Promise<void> {
 		this._seoService.setTitle(this._txt.translate('Suchergebnisse', 'searchResultPageComponent.pageTitle'));
 		this._setPaginations();
-		this._setupSorting();
 
 		await this._executeSearchFromQueryParams();
 		this.crumbs = this.getBreadCrumb();
@@ -80,11 +81,7 @@ export class SearchResultPageComponent implements OnInit {
 		this.sortingFields = this.getSortingFields();
 		this._userSettings = this._config.getUserSettings();
 
-		if (!this.selectedSortingField &&
-			this._context &&
-			this._context.search &&
-			this._context.search.request &&
-			this._context.search.request.paging) {
+		if (this._context?.search?.request?.paging) {
 			const cf = this._context.search.request.paging;
 			this.selectedSortingField = this.sortingFields.filter(f => f.orderBy === cf.orderBy && f.sortOrder === cf.sortOrder)[0];
 		}
@@ -102,7 +99,7 @@ export class SearchResultPageComponent implements OnInit {
 
 		const paging = this._context.search.request.paging;
 		if (paging) {
-			this._sortingField = paging;
+			this._sortingField =  {"sortOrder" : paging.sortOrder ?? this.selectedSortingField.sortOrder, "orderBy": paging.orderBy ?? this.selectedSortingField.orderBy};
 			this._pagingSize = paging.take;
 		} else {
 			this._sortingField = this._userSettings.selectedSortingField;
@@ -115,9 +112,9 @@ export class SearchResultPageComponent implements OnInit {
 			this._context.search.request = this._url.getSearchRequestFromQueryParams(this._activatedRoute.snapshot.queryParams);
 		}
 		if (this._context.search.request) {
+			this._setupSorting();
 			this._setResultPaging();
 			const request = this._context.search.request;
-
 			if (!this.isAdvancedSearchResult) {
 				this._createLastExecutedSimpleSearchModel(request);
 			} else {
@@ -313,7 +310,9 @@ export class SearchResultPageComponent implements OnInit {
 				this._fileSaver.saveDownloadResponseToFile(event);
 			},
 			(error) => {
-				console.log(error);
+				const message = this._txt.translate('Die Erstellung der XLS-Datei dauert zu lange.', 'hitbar.exportError');
+				const title = 'Timeout';
+				this._toastr.error(message, title, {disableTimeOut: true, closeButton: true});
 				this.loading = false;
 			},
 			() => {

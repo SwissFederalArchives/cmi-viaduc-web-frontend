@@ -17,7 +17,6 @@ export class CheckoutSubmittedStepComponent implements OnInit {
 	public backToCartHtmlText: string;
 	public showError = false;
 	public loading = true;
-
 	public hasItemsInCartLeft = false;
 
 	constructor(private _txt: TranslationService,
@@ -30,6 +29,7 @@ export class CheckoutSubmittedStepComponent implements OnInit {
 	public ngOnInit(): void {
 		this.showError = false;
 		const order = this._scs.getActiveOrder();
+
 		this._scs.getItemsWhereEinsichtsGesuchNoeting().subscribe(items => {
 			this._items = items;
 		});
@@ -43,6 +43,7 @@ export class CheckoutSubmittedStepComponent implements OnInit {
 			});
 		} else {
 			this._scs.order(order).subscribe(() => {
+
 				this._setText(order);
 				this.loading = false;
 			}, (error) => {

@@ -329,7 +329,7 @@
 							</p>
 						</div>
 					</li>
-					<li class="col-sm-3" role="menuitem">
+					<li class="col-sm-3" role="menuitem" *ngIf="chatBotConfigured">
 						<div class="yamm-content container-fluid" [ngClass]="{'disabled': !chatBotEnabled}">
 							<i class="glyphicon glyphicon-robot" role="img" aria-hidden="true"></i>
 							<h4>

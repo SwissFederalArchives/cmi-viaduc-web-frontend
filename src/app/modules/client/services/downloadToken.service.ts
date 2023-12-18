@@ -15,4 +15,9 @@ export class DownloadTokenService {
 		const url = `${this._apiUrl}/GetOneTimeToken?archiveRecordId=${archivRecordId}`;
 		return this._http.get<any>(url);
 	}
+
+	public logViewerClick(archivRecordId: string): Observable<void> {
+		const url = `${this._apiUrl}/logViewerClick?archiveRecordId=${archivRecordId}`;
+		return this._http.post<void>(url, {}, this._http.noCaching);
+	}
 }

@@ -1,0 +1,31 @@
+<form [formGroup]="form" *ngIf="!loading">
+	<br/>
+	<div class="row">
+		<div class="col-md-12">
+			<span [innerHtml]=workplacealReadyReserved ></span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<iframe id="cituroIFrame" class="e2e-iframe-trusted-src" [src]="safeURL" width="100%" height="600px" (load)="loadDone()" >
+			</iframe>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<input id="hasReservation" type="checkbox"
+				   tabindex="0" formControlName="hasReservation"  [value]="false">
+			<span >{{'Ich habe schon einen Arbeitsplatz reserviert bzw. ich brauche keine Reservation.' | translate:'orderCheckoutPage.hasReservation'}}</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<button (click)="goBack()" type="button" class="btn btn-secondary">
+				{{'Zurück' | translate:'orderCheckoutPage.previousPage'}}
+			</button>
+			<button (click)="nextStep()" type="button" class="btn btn-primary" [disabled]="isNextButtonDisabled">
+				{{'Bestellung abschliessen' | translate:'orderCheckoutPage.finishOrder'}}
+			</button>
+		</div>
+	</div>
+</form>

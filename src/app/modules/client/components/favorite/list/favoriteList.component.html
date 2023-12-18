@@ -22,13 +22,19 @@
 				<tbody>
 					<tr *ngFor="let item of veItems">
 						<td *ngIf="hasActions" class="text-center">
-							<a class="btn btn-link" *ngIf="(item.canBeOrdered || item.hasPrimaryLink) && !item.canBeDownloaded" (click)="addToCart(item)" data-toggle="tooltip"  tooltip="{{ 'In den Bestellkorb legen' | translate:'icon.menu.bestellkorb'}}">
+							<a class="btn btn-link" *ngIf="(item.manifestLink)" [href]="viewerLinkBase + item.manifestLink"  target="_blank" data-toggle="tooltip"  tooltip="{{ 'Ansicht der Unterlagen im Viewer' | translate:'icon.menu.viewer'}}">
+								<span class="glyphicon glyphicon-eye-open" role="img" aria-hidden="true"></span>
+								<span class="sr-only">
+									{{ 'Ansicht der Unterlagen im Viewer'  | translate:'icon.menu.viewer'}}
+								</span>
+							</a>
+							<a class="btn btn-link" *ngIf="!item.manifestLink && (item.canBeOrdered || item.hasPrimaryLink) && !item.canBeDownloaded" (click)="addToCart(item)" data-toggle="tooltip"  tooltip="{{ 'In den Bestellkorb legen' | translate:'icon.menu.bestellkorb'}}">
 								<span class="icon icon--cart" role="img" aria-hidden="true"></span>
 								<span class="sr-only">
 									{{ 'In den Bestellkorb legen' | translate:'icon.menu.bestellkorb'}}
 								</span>
 							</a>
-							<a class="btn btn-link" *ngIf="item.canBeDownloaded" [routerLink]="goToVe(item)" data-toggle="tooltip"  tooltip="{{ 'Zur Downloadseite wechseln ' | translate:'icon.menu.bestellkorbdownload'}}">
+							<a class="btn btn-link" *ngIf="!item.manifestLink && item.canBeDownloaded" [routerLink]="goToVe(item)" data-toggle="tooltip"  tooltip="{{ 'Zur Downloadseite wechseln ' | translate:'icon.menu.bestellkorbdownload'}}">
 								<i class="glyphicon glyphicon-cloud-download" role="img" aria-hidden="true"></i>
 								<span class="sr-only">
 									{{ 'Zur Downloadseite wechseln ' | translate:'icon.menu.bestellkorbdownload'}}

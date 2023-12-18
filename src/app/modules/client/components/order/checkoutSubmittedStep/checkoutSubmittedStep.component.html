@@ -11,6 +11,7 @@
 			<p [innerHtml]="stateHtmlText"></p>
 
 			<p [innerHtml]="backToCartHtmlText" *ngIf="hasItemsInCartLeft"></p>
+			<br/>
 		</div>
 		<ng-template #errorText>
 			<div class="alert alert-danger">

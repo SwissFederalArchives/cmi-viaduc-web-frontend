@@ -22,6 +22,7 @@ export class VeFavorite implements Favorite {
 	public canBeOrdered: boolean;
 	public canBeDownloaded: boolean;
 	public hasPrimaryLink: boolean;
+	public manifestLink: boolean;
 	public kind: FavoriteKind = FavoriteKind.Ve;
 	public id: number;
 

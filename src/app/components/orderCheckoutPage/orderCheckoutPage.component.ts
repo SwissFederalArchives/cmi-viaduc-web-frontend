@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {OrderItem, TranslationService} from '@cmi/viaduc-web-core';
+import {OrderItem, ShippingType, TranslationService} from '@cmi/viaduc-web-core';
 import {AuthorizationService, SeoService, ShoppingCartService, UrlService} from '../../modules/client/services';
 import {ToastrService} from 'ngx-toastr';
 
@@ -13,7 +13,9 @@ export class OrderCheckoutPageComponent implements OnInit {
 	public items: OrderItem[] = [];
 	public itemsThatCouldNeedReason: OrderItem[] = [];
 	public skipUserPage = false;
+	public skipReservationPage = false;
 	public skipReasonPage = false;
+
 	public isAsUser = false;
 	public crumbs: any[] = [];
 
@@ -30,6 +32,7 @@ export class OrderCheckoutPageComponent implements OnInit {
 		this.crumbs = this.getBreadCrumb();
 		this._scs.getOrderableItems().subscribe((data) => this.items = data);
 		this.isAsUser = this._author.isAsUser();
+
 		this._canSkipReasonPage().then(value => this.skipReasonPage = value)
 			.then(() => {
 				if (!this.skipReasonPage) {
@@ -41,6 +44,11 @@ export class OrderCheckoutPageComponent implements OnInit {
 			});
 		this._canSkipUserPage().then(value => this.skipUserPage = value);
 	}
+
+	public isLesesaalOrdering(): boolean {
+		return this._scs.isLesesaalOrdering();
+	}
+
 
 	public getBreadCrumb(): any[] {
 		return [
@@ -70,12 +78,13 @@ export class OrderCheckoutPageComponent implements OnInit {
 	}
 
 	public wizzardSetPage(nr: number, isProcessView = false) {
-		if (this.stepNr < 0 || this.stepNr > 5) {
+
+		if (this.stepNr < 0 || this.stepNr > 6) {
 			return;
 		}
 
 		// Bei erfolgter Bestellung kann nicht mehr zurückgewechselt werden
-		if (this.stepNr === 5) {
+		if (this.stepNr === 6) {
 			return;
 		}
 
@@ -87,16 +96,17 @@ export class OrderCheckoutPageComponent implements OnInit {
 
 		// Schritt 2 überspringen
 		if (nr === 2 && this.skipUserPage) {
-			if (this.skipReasonPage) {
-				nr = 4;
-			} else {
 				nr = 3;
-			}
 		}
 
 		// Schritt 3 überspringen
 		if (nr === 3 && this.skipReasonPage) {
 			nr = 4;
+		}
+
+		// Schritt 5 überspringen
+		if (nr === 5 && !this.isLesesaalOrdering()) {
+				nr = 6;
 		}
 
 		this.stepNr = nr;
@@ -113,4 +123,12 @@ export class OrderCheckoutPageComponent implements OnInit {
 	private async _canSkipUserPage(): Promise<boolean> {
 		return !this._author.isBarUser();
 	}
+
+	public onOrdertypeChanged($event: ShippingType) {
+		this.skipReservationPage =  $event && ($event === ShippingType.Verwaltungsausleihe ||  $event === ShippingType.Digitalisierungsauftrag);
+	}
 }
+
+
+
+

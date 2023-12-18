@@ -243,7 +243,7 @@
     "cartText": "Ci sono ancora ordinazioni non finalizzate nel <a href=\"#/{0}\">carrello</a>.",
     "checkStatusText": "Puoi seguire lo stato dell'ordinazione nel tuo <a href=\"#/{0}\">conto utente</a>.",
     "disclaimerText": "La procedura di identificazione tramite verifica in diretta con l’ausilio intelligenza artificiale viene registrata, ma sarà cancellata una volta conclusa l’identificazione. L’Archivio federale conserva soltanto la copia del documento d’identificazione, la fotografia e i dati utente in forma tabellare. Hai il diritto di chiedere in ogni momento informazioni sui dati conservati che ti concernono (art. 8 LPD).",
-    "thxTextDigi": "Abbiamo ricevuto la Sua ordinazione. Riceverà una mail non appena i documenti saranno stati digitalizzati. La digitalizzazione del primo dossier richiede di norma due settimane.",
+    "thxTextDigi": "Abbiamo ricevuto la Sua ordinazione. Riceverà una mail non appena i documenti saranno stati digitalizzati.",
     "thxTextEischtisgesuch": "Trasmetteremo la tua domanda al servizio competente. Dovresti ricevere una risposta tra 4-6 settimane.",
     "thxTextEischtisgesuchAnmeldenUndIndentifizieren": "Se la domanda sarà approvata, dovrai identificarti per poter consultare i documenti (v. <a href=\"{0}\">Registrazione e identificazione</a>).",
     "thxTextEischtisgesuchIntroduction": "Abbiamo ricevuto la tua domanda di consultazione per i seguenti documenti:",
@@ -623,6 +623,7 @@
   },
   "hitbar": {
     "export": "Scarica il file XLS",
+    "exportError": "La creazione del file XLS richiede troppo tempo.",
     "copyPermalink": "Copia il permalink di questa ricerca negli appunti",
     "groupByArchivplan": "Raggruppa secondo il piano d'archivio",
     "orderableUnits": "Unità ordinabili",
@@ -637,7 +638,8 @@
       "bestellkorb": "Aggiungi al carrello",
       "bestellkorbdownload": "Vai alla pagina per il download",
       "download": "Vai al Download",
-      "favoriten": "Aggiungi ai preferiti"
+      "favoriten": "Aggiungi ai preferiti",
+      "viewer": "Vedi"
     }
   },
   "languages": {
@@ -834,7 +836,9 @@
   "orderCheckoutPage": {
     "bestellbestaetigung": "Conferma dell'ordinazione",
     "chooseShippingType": "Seleziona la modalità di consegna",
-    "finishOrder": "Concludi l'ordinazione",
+    "finishOrder": "Completare l'ordine",
+    "hasReservation": "Ho già prenotato una postazione di lavoro / Non ho bisogno di una prenotazione.",
+    "informationReveration": "Le informazioni sulla prenotazione delle postazioni di lavoro nella sala di lettura si trovano alla pagina <a href=\"#/it/informazioni/ordinazione-e-consultazione\" target='_blank'>Ordinazione e consultazione</a>.",
     "inMyName": "Per me",
     "inTheNameOfAnother": "Per conto di un altro utente",
     "iWantThisDossierOrdered": "Desidero ordinare questo dossier",
@@ -859,7 +863,8 @@
     "exceedDigitalisierungTitle": "Contingente quasi esaurito: possono essere digitalizzati ancora soltanto {0} dossier",
     "exceedDigitalisierungIntro": "tra i dossier che figurano nel mandato di digitalizzazione, La invitiamo a selezionare quelli che hanno la priorità. Non appena saranno stati digitalizzati, potrà inviare un nuovo mandato.",
     "exceedDigitalisierungAsBvw": "In alternativa può ordinare i documenti per consultazione nelle sale di lettura o nella Sua unità amministrativa.",
-    "exceedDigitalisierungOthers": "In alternativa può ordinare i documenti per consultazione nelle sale di lettura."
+    "exceedDigitalisierungOthers": "In alternativa può ordinare i documenti per consultazione nelle sale di lettura.",
+    "workplaceReservation": "Prenotazione posto"
   },
   "orderCheckoutPageComponent": {
     "pageTitle": "Ordinazione"
@@ -942,6 +947,9 @@
     "eIam": "L’accesso al portale recherche.bar.admin.ch è gestito tramite E-Government Identity and Access Management (eIAM).",
     "registerEiam": "L’apertura di un conto avviene al di fuori del portale recherche.bar.admin.ch. In caso di problemi nella procedura di registrazione rivolgersi al <a href=\"\">servizio di consulenza on-line</a> oppure inviare una mail a <a href=\"mailto:benutzer-admin@bar.admin.ch\">benutzer-admin@bar.admin.ch</a>."
   },
+	"reservation": {
+		"text": "Prenotazione postazione di lavoro"
+	},
   "row": {
     "captionTranslation": "row.captionDefault",
     "errorTranslation": "row.errorDefault"

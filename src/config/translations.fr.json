@@ -243,7 +243,7 @@
     "cartText": "Votre <a href=\"#/{0}\">panier de commande</a> contient encore des commandes non finalisées.",
     "checkStatusText": "Vous pouvez suivre votre commande dans votre <a href=\"#/{0}\">compte d'utilisateur</a>.",
     "disclaimerText": "Le processus d’identification par vérification en direct via intelligence artificielle est enregistré mais sera effacé une fois l'identification terminée. Les Archives fédérales enregistrent uniquement une copie de la carte d'identité, la photographie et un aperçu des données d'utilisateur. Vous pouvez exiger à tout moment des informations sur les données enregistrées (art. 8 LPD).",
-    "thxTextDigi": "Merci de votre commande. Vous recevrez un e-mail dès que les dossiers commandés auront été numérisés. Compter en principe deux semaines pour le traitement de votre commande.",
+    "thxTextDigi": "Merci de votre commande. Vous recevrez un e-mail dès que les dossiers commandés auront été numérisés.",
     "thxTextEischtisgesuch": "Nous transmettons votre demande au service compétent, qui vous communiquera sa décision dans les quatre à six semaines.",
     "thxTextEischtisgesuchAnmeldenUndIndentifizieren": "Une fois l'autorisation de consultation reçue, vous devez vous identifier pour pouvoir consulter les documents (voir <a href=\"{0}\">Connexion et identification</a>).",
     "thxTextEischtisgesuchIntroduction": "Merci de votre demande de consultation des documents suivants:",
@@ -623,6 +623,7 @@
   },
   "hitbar": {
     "export": "Télécharger le fichier XLS",
+    "exportError": "La création du fichier XLS prend trop de temps.",
     "copyPermalink": "Copier le permalien de cette recherche dans le presse-papier",
     "groupByArchivplan": "Regrouper selon le plan d'archivage",
     "orderableUnits": "Ces unités peuvent être commandées.",
@@ -637,7 +638,8 @@
       "bestellkorb": "Ajouter au panier de commande",
       "bestellkorbdownload": "Basculer vers la page de téléchargement",
       "download": "Téléchargement",
-      "favoriten": "Ajouter aux favoris"
+      "favoriten": "Ajouter aux favoris",
+      "viewer": "Voir"
     }
   },
   "languages": {
@@ -835,6 +837,8 @@
     "bestellbestaetigung": "Confirmation de commande",
     "chooseShippingType": "Choisir le type de livraison",
     "finishOrder": "Terminer la commande",
+    "hasReservation": "J'ai déjà réservé une place de travail ou je n'ai pas besoin de réservation.",
+    "informationReveration": "Vous trouverez des informations sur la réservation de places de travail en salle de lecture sous <a href=\"#/fr/informations/commande-et-consultation\" target='_blank'>Commander et consulter</a>.",
     "inMyName": "En mon nom propre",
     "inTheNameOfAnother": "Au nom d'un autre utilisateur",
     "iWantThisDossierOrdered": "Je souhaite commander ce dossier.",
@@ -859,7 +863,8 @@
     "exceedDigitalisierungTitle": "Limite presque atteinte : vous ne pouvez numériser plus que {0} dossiers",
     "exceedDigitalisierungIntro": "Veuillez sélectionner ci-dessous les dossiers que vous souhaitez numériser. Dès que ces dossiers auront été numérisés, vous pourrez effectuer d’autres commandes.",
     "exceedDigitalisierungAsBvw": "Vous pouvez également faire livrer à tout moment vos documents en salle de lecture ou dans votre service.",
-    "exceedDigitalisierungOthers": "Vous pouvez également faire livrer à tout moment vos documents en salle de lecture."
+    "exceedDigitalisierungOthers": "Vous pouvez également faire livrer à tout moment vos documents en salle de lecture.",
+    "workplaceReservation": "Réservation place de travail"
   },
   "orderCheckoutPageComponent": {
     "pageTitle": "Commande"
@@ -942,6 +947,9 @@
     "eIam": "L’accès au portail recherche.bar.admin.ch est géré par les cyberservices E-Government Identity et Access Management (eIAM).",
     "registerEiam": "La création du compte s’effectue en dehors du portail recherche.bar.admin.ch. Si vous avez des difficultés à vous enregistrer, vous pouvez vous adresser à notre <a href=\"\">service de conseil en ligne</a> ou à l’adresse <a href=\"mailto:benutzer-admin@bar.admin.ch\">benutzer-admin@bar.admin.ch</a>."
   },
+	"reservation": {
+		"text": "Réservation place de travail"
+	},
   "row": {
     "captionTranslation": "row.captionDefault",
     "errorTranslation": "row.errorDefault"
