@@ -24,6 +24,7 @@ export class CheckoutUserSelectStepComponent implements OnInit {
 	public loading = false;
 	public checkingKontingent = false;
 	public willexceedKontingent = false;
+	public isDroppedDown: boolean = false;
 
 	constructor(private _scs: ShoppingCartService,
 				private _userService: UserService,
@@ -50,27 +51,16 @@ export class CheckoutUserSelectStepComponent implements OnInit {
 			orderIsForMe: orderIsForMe,
 			userId: order.userId
 		});
-
-		// possible long operation (all users are fetched)
-		const users = await this._userService.getUsers();
-		this.userList = this._prepareUserList(users);
 		this.loading = false;
 
-		if (!orderIsForMe) {
-			setTimeout(() => {
-				this.autoComplete.selectedIndex = this.userList.findIndex(u => u.id === order.userId);
-			}, 0);
-		} else {
-			setTimeout(() => {
-				this.autoComplete.selectedIndex = -1;
-			}, 0);
-		}
+		setTimeout(() => {
+			this.autoComplete.selectedIndex = -1;
+		}, 0);
 
 	}
 
-	private _prepareUserList(userList: User[]): User[] {
+	private 	_prepareUserList(userList: User[]): User[] {
 		const list: User[] = [];
-		list.push(new User());
 		// Alphabetisch sortieren nach Nachnamen
 		const sortedUserList = userList.sort((a, b) => {
 			if (a && a.familyName && b && b.familyName) {
@@ -100,7 +90,6 @@ export class CheckoutUserSelectStepComponent implements OnInit {
 
 	public onSelectedIndexChanged(): void {
 		this._setUserId();
-
 		const order = this._scs.getActiveOrder();
 		if (!this._orderIsForMe && order.type === ShippingType.Digitalisierungsauftrag) {
 			this.checkingKontingent = true;
@@ -135,7 +124,7 @@ export class CheckoutUserSelectStepComponent implements OnInit {
 	private _setUserId() {
 		let userId = null;
 		if (!this._orderIsForMe) {
-			userId = (this.autoComplete.selectedItem || {}).id;
+			userId = this.autoComplete?.selectedItem?.id;
 		}
 		this.form.controls['userId'].setValue(userId);
 	}
@@ -180,5 +169,41 @@ export class CheckoutUserSelectStepComponent implements OnInit {
 	public goBack() {
 		this._saveActiveOrder();
 		this.onGoBackClicked.emit();
+	}
+
+	// eslint-disable-next-line
+	public async onTextChanged(event) {
+		if (this.autoComplete.text.length > 2) {
+			let alreadySelected = false;
+			// Wenn ein Benutzer ausgewählt ist/wird, dann keine neue suche.
+			this.userList?.forEach((userName) => {
+				if (this.autoComplete.text === userName.displayName) {
+					alreadySelected = true;
+				}
+			});
+			if (!alreadySelected) {
+				const text = this.autoComplete.text;
+				this.loading = true;
+				await this._userService.getUsers(text).then((users) => {
+					this.loading = false;
+					if (users?.length > 0) {
+						this.userList = this._prepareUserList(users);
+						setTimeout(() => {
+							this.autoComplete.selectedIndex = 0;
+							this.isDroppedDown = true;
+						}, 0);
+
+
+					} else {
+							this.userList = undefined;
+						setTimeout(() => {
+							this.autoComplete.selectedIndex = -1;
+						}, 0);
+					}
+				});
+			}
+
+
+		}
 	}
 }

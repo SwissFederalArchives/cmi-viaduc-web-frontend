@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {OrderItem, ShippingType, TranslationService} from '@cmi/viaduc-web-core';
+import {ComponentCanDeactivate, OrderItem, ShippingType, TranslationService} from '@cmi/viaduc-web-core';
 import {AuthorizationService, SeoService, ShoppingCartService, UrlService} from '../../modules/client/services';
 import {ToastrService} from 'ngx-toastr';
 
@@ -8,7 +8,8 @@ import {ToastrService} from 'ngx-toastr';
 	templateUrl: 'orderCheckoutPage.component.html',
 	styleUrls: ['./orderCheckoutPage.component.less']
 })
-export class OrderCheckoutPageComponent implements OnInit {
+export class OrderCheckoutPageComponent extends ComponentCanDeactivate  implements OnInit {
+
 	public stepNr = 1;
 	public items: OrderItem[] = [];
 	public itemsThatCouldNeedReason: OrderItem[] = [];
@@ -25,6 +26,7 @@ export class OrderCheckoutPageComponent implements OnInit {
 				private _txt: TranslationService,
 				private _seoService: SeoService,
 				private _toastr: ToastrService) {
+		super();
 	}
 
 	public ngOnInit(): void {
@@ -78,7 +80,6 @@ export class OrderCheckoutPageComponent implements OnInit {
 	}
 
 	public wizzardSetPage(nr: number, isProcessView = false) {
-
 		if (this.stepNr < 0 || this.stepNr > 6) {
 			return;
 		}
@@ -127,8 +128,14 @@ export class OrderCheckoutPageComponent implements OnInit {
 	public onOrdertypeChanged($event: ShippingType) {
 		this.skipReservationPage =  $event && ($event === ShippingType.Verwaltungsausleihe ||  $event === ShippingType.Digitalisierungsauftrag);
 	}
+
+	public canDeactivate(): boolean {
+		return !(this.isLesesaalOrdering() && this.stepNr === 5);
+	}
+	public promptForMessage(): false | 'question' | 'message' {
+		return 'question';
+	}
+	public message(): string {
+		return this._txt.get('orderCheckoutPage.waringOrderNotFinalisedQuestion', 'Achtung! Ihre Bestellung ist noch nicht abgeschlossen. Wollen Sie die Seite trotzdem verlassen?');
+	}
 }
-
-
-
-

@@ -114,7 +114,7 @@ export class ArchivplanPageComponent implements OnInit {
 					crumbs.push({ label: this._txt.get('breadcrumb.archivplan', 'Archivplan') });
 				}
 				this._crumbsLoaded = true;
-			}).catch(err => {
+			}).catch(() => {
 				crumbs.push({ label: this._txt.get('breadcrumb.archivplan', 'Archivplan') });
 				this._crumbsLoaded = true;
 			});

@@ -35,6 +35,7 @@ export class PaginationComponent implements OnInit, OnChanges {
 		this._refresh();
 	}
 
+	// eslint-disable-next-line
 	public ngOnChanges(changes: any) {
 		this._refresh();
 	}

@@ -49,7 +49,7 @@ export class FavoritesMigrationComponent implements OnInit {
 					this.successMessage = this._txt.get('favorites.migrationSuccess', 'Arbeitsmappen erfolgreich migriert');
 					this.error = '';
 					this.finishMigration();
-				}, (e) => {
+				}, () => {
 					this.error = this._txt.get('favorites.migrationFailure', 'Migration der Arbeitsmappen gescheitert! \nSollte das Problem weiterhin auftreten, wenden Sie sich bitte an das Bundesarchiv.');
 					this.finishMigration();
 				});

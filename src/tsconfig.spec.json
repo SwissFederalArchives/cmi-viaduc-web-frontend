@@ -3,9 +3,8 @@
   "compilerOptions": {
     "experimentalDecorators": true,
 		"outDir": "../out-tsc/spec",
-		"baseUrl": "./",
-		"target": "es2020",
-		"module": "es2020",
+    "baseUrl": "./",
+		"module": "es2022",
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
 		"types": [
@@ -14,8 +13,7 @@
 		],
 	},
 	"files": [
-		"test.ts",
-	  "polyfills.ts"
+		"test.ts"
   ],
 	"include": [
 		"**/*.spec.ts",

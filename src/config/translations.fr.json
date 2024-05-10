@@ -42,13 +42,13 @@
       "fullfillsRequirementsMessage": "Vous remplissez les conditions d'identification par vérification en direct via intelligence artificielle. Pour la procédure d'identification, vous quittez l'infrastructure web de la Confédération. Le processus d’identification par vérification en direct via intelligence artificielle est réalisé par une société externe (Identity verification via document scan and liveness check de fidentity AG).",
       "fullfillsRequirementsMessageBold": "Vous serez informé(e) du changement de votre statut peu après le succès du processus d’identification. Si ce dernier devait échouer, l’un(e) de nos collaborat(rices)eurs vous contactera.",
       "fullfillsRequirementsMessageError": "Vous ne remplissez malheureusement pas les conditions d'identification par vérification en direct via intelligence artificielle. Pour l'identification, veuillez prendre contact avec nous:",
-      "hasIdFromCountry": "Ou de quel pays provient votre carte d'identité valide?",
-      "hasPassportFromCountry": "De quel pays provient votre passeport valide?",
+      "hasIdFromCountry": "Si vous souhaitez utiliser votre carte d'identité valide pour vous identifier, veuillez sélectionner ici votre nationalité :",
+      "hasPassportFromCountry": "Si vous souhaitez utiliser votre passeport valide pour vous identifier, veuillez sélectionner ici votre nationalité :",
       "hasSmartphoneOrComputer": "Avez-vous accès à un smartphone équipé d'une caméra?",
       "nextStep": "Suivant",
       "no": "Non",
-      "noIdOfListedCountry": "Je ne possède pas de carte d'identité d'un des pays mentionnés.",
-      "noPassportOfListedCountry": "Je ne possède pas de passeport d'un des pays mentionnés.",
+      "noIdOfListedCountry": "Pas de carte d'identité valide",
+      "noPassportOfListedCountry": "Pas de passeport valide",
       "passportAndIdNeeded": " Vous avez besoin d'une pièce d'identité valide (passeport ou carte d'identité).",
       "previousStep": "Retour",
       "start": "Démarrer",
@@ -174,7 +174,7 @@
   },
   "behoerdenZugriff": {
     "detail": {
-      "accesstoken": "Au nom de"
+      "accesstoken": "Recherche d'un utilisateur"
     }
   },
   "bestellkorb": {
@@ -437,7 +437,8 @@
     "stufen": "Niveaux",
     "treffer": "Résultats",
     "weitereTreffer": "Autres",
-    "zugaenglichkeitGemBGA": "Accessibilité selon la LAr"
+    "zugaenglichkeitGemBGA": "Accessibilité selon la LAr",
+		"protectionEndDate": "Fin du délai de protection (dossier)"
   },
   "favorite": {
     "noExistingListsLabel": "Il n'existe encore aucune liste des favoris."
@@ -718,6 +719,7 @@
         "zusatzkomponenteZac1": "Composant complémentaire"
       },
       "formerReferenceCode": "Anciennes cotes",
+			"protectionEndDate" : "Fin du délai de protection (dossier)",
       "referenceCode": "Cote",
       "title": "Titre",
       "withinInfo": "Contenu"
@@ -725,32 +727,38 @@
     "sortFields": {
       "creationPeriod": {
         "startDate": {
-          "ascending": "Par date, tri croissant",
-          "descending": "Par date, tri décroissant"
+          "ascending": "Date, tri croissant",
+          "descending": "Date, tri décroissant"
         }
       },
       "referenceCode": {
-        "ascending": "Par cote, tri croissant",
-        "descending": "Par cote, tri décroissant",
+        "ascending": "Cote, tri croissant",
+        "descending": "Cote, tri décroissant",
         "sort": {
-          "ascending": "Par cote, tri croissant",
-          "descending": "Par cote, tri décroissant"
+          "ascending": "Cote, tri croissant",
+          "descending": "Cote, tri décroissant"
+        }
+      },
+      "customFields": {
+        "aktenzeichen": {
+          "ascending": "Référence, tri croissant",
+          "descending": "Référence, tri décroissant"
         }
       },
       "relevanz": "Pertinence",
       "title": {
         "keyword": {
-          "ascending": "Par titre, tri croissant",
-          "descending": "Par titre, tri décroissant"
+          "ascending": "Titre, tri croissant",
+          "descending": "Titre, tri décroissant"
         },
         "sort": {
-          "ascending": "Par titre, tri croissant",
-          "descending": "Par titre, tri décroissant"
+          "ascending": "Titre, tri croissant",
+          "descending": "Titre, tri décroissant"
         }
       },
       "treePath": {
-        "ascending": "Par structure du plan d'archivage, tri croissant",
-        "descending": "Par structure du plan d'archivage, tri décroissant"
+        "ascending": "Structure du plan d'archivage, tri croissant",
+        "descending": "Structure du plan d'archivage, tri décroissant"
       }
     },
     "title": {
@@ -834,6 +842,7 @@
     "unknowtext": "[inconnu]"
   },
   "orderCheckoutPage": {
+    "back": "Retour",
     "bestellbestaetigung": "Confirmation de commande",
     "chooseShippingType": "Choisir le type de livraison",
     "finishOrder": "Terminer la commande",
@@ -853,6 +862,8 @@
     "title": "Commander",
     "userSelect": "Choisir utilisateur",
     "warningInfo": "Mise en garde",
+    "waringOrderNotFinalised": "Attention! Votre commande n’est pas encore finalisée.",
+    "waringOrderNotFinalisedQuestion": "Attention! Votre commande n’est pas encore finalisée. Voulez-vous quand même quitter la page ?",
     "warningTitle": "Délais rallongés pour la livraison des reproductions numériques",
     "warningMessagePart1": "En raison de la forte demande de reproductions numériques, l’infrastructure de numérisation est très sollicitée et il faut compter avec un délai de traitement plus long pour votre mandat. Si vous souhaitez consulter rapidement les documents ou avez un volume important à commander, veuillez passer votre commande en salle de lecture.",
     "warningMessagePart2": "Les collaborateurs de l’administration fédérale peuvent aussi se faire livrer directement les documents que leur service a versés aux AFS.",
@@ -937,7 +948,7 @@
     "cancelRegister": "Interrompre",
     "chLoginAltText": "Logo de CH-Login",
     "chLoginException": "Exception: les collaborateurs de l’administration fédérale doivent s’enregistrer via l’option FED-LOGIN.",
-    "chooseCHLogin": "À la prochaine étape, veuillez sélectionner l’option CH-LOGIN.",
+    "chooseCHLogin": "À la prochaine étape, veuillez sélectionner l’option «CH-LOGIN & AGOV (eGovernment)».",
     "info1": "Vous pouvez utiliser l’accès en ligne comme utilisateur anonyme, enregistré ou identifié. Les fonctionnalités de recherche à votre disposition diffèrent selon le statut choisi.",
     "infoBox": "InfoBox",
     "infoTitle": "Important",
@@ -1300,6 +1311,7 @@
     "failedAddToBasketTitle": "Erreur",
     "failedBecauseOfLevelMessage": "Cette unité de description ne peut pas être commandée. Si vous avez des questions, veuillez vous adresser à notre service de conseil ou à l'adresse bestellung@bar.admin.ch.",
     "failedBecauseOfLevelTitle": "Échec de la commande",
+    "fileReference": "Référence",
     "loginToUseBasketText": "Veuillez vous connecter pour remplir votre panier de commande.",
     "loginToUsebasketTitle": "Connexion",
     "noHitsInfo": {
@@ -1323,7 +1335,7 @@
 		"anonymToolTip":"Anonymisé pour les utilisateurs non autorisés."
   },
   "simpleHitList": {
-    "sortierung": "Trier"
+    "sortierung": "Trier par"
   },
 	"infoSection": {
 		"noPermission":"Ces données ont été rendues anonymes pour des raisons de protection des données (<a href='https://www.admin.ch/ch/f/sr/c152_11.html' target='_blank' rel='noopener noreferrer'>art. 12.3 OLAr</a>).",
@@ -1421,7 +1433,8 @@
     "level": "Niveau",
     "accessibility": "Accessibilité selon la LAr",
     "fileName": "résultat-de-recherche",
-    "favourites": "favoris"
+    "favourites": "favoris",
+    "schutzfristendeDossier": "Fin du délai de protection (dossier)"
   },
 	"canDeactivateGuard": {
 	  "Title": "Mise en garde",

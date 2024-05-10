@@ -10,9 +10,15 @@
 					<span *ngIf="entity.isAnonymized && isBarUser" aria-label="{{'Für nicht berechtigte NutzerInnen anonymisiert.' | translate:'simpleHit.anonymToolTip'}}"
 						  [tooltip]="'Für nicht berechtigte NutzerInnen anonymisiert.' | translate:'simpleHit.anonymToolTip'" class="glyphicon glyphicon-eye-close text-danger"></span>
 				</h4>
-				<label class="signature">
-					<span>{{ 'Signatur' | translate: 'simpleHit.signatur'}}:&nbsp;</span><span>{{entity.referenceCode}}</span>
-				</label>
+				<div class="signature">
+					<label>
+						<span>{{ 'Signatur' | translate: 'simpleHit.signatur'}}:&nbsp;</span><span>{{entity.referenceCode}}</span>
+					</label>
+					<label *ngIf="aktenzeichen">
+						<span>{{ 'Aktenzeichen' | translate: 'simpleHit.fileReference'}}:&nbsp;</span><span>{{aktenzeichen}}</span>
+					</label>
+				</div>
+
 				<div>
 					<img *ngIf="getPictureAsBase64() !== null" [src]="getPictureAsBase64()" [alt]="entity.title">
 					<p *ngIf="htmlForText && htmlForText !== 'null'; else emptyPTag" [innerHtml]="htmlForText|anonymizedHtml"></p>

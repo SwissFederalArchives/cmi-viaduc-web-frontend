@@ -1,4 +1,4 @@
-import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import {Injectable} from '@angular/core';
 import {UserService} from '../services/user.service';
 import {ClientContext, PreloadService} from '@cmi/viaduc-web-core';
@@ -7,15 +7,16 @@ import {Observable} from 'rxjs';
 import {AuthenticationService} from '../services';
 
 @Injectable()
-export class PreloadedResolver implements Resolve<boolean> {
+export class PreloadedResolver  {
 	constructor(private _preloadService: PreloadService) {
 	}
 
+	// eslint-disable-next-line
 	public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
 		if (this._preloadService.isPreloaded) {
 			return true;
 		} else {
-			return this._preloadService.preloaded.pipe(take(1)).pipe(map(res => {
+			return this._preloadService.preloaded.pipe(take(1)).pipe(map(() => {
 				return true;
 			}));
 		}
@@ -23,13 +24,14 @@ export class PreloadedResolver implements Resolve<boolean> {
 }
 
 @Injectable()
-export class UserSettingsResolver implements Resolve<boolean> {
+export class UserSettingsResolver  {
 	constructor(private _usrService: UserService,
 				private _ctx: ClientContext,
 				private _pre: PreloadService,
 				private _authService: AuthenticationService) {
 	}
 
+	// eslint-disable-next-line
 	public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any  {
 		if (this._usrService.hasUserSettingsLoaded || (!this._ctx.authenticated && !this._authService.isSigningIn)) {
 			if (!this._pre.isPreloaded) {
@@ -43,10 +45,11 @@ export class UserSettingsResolver implements Resolve<boolean> {
 }
 
 @Injectable()
-export class TranslationsLoadedResolver implements Resolve<boolean> {
+export class TranslationsLoadedResolver  {
 	constructor(private _context: ClientContext, private _preloadService: PreloadService) {
 	}
 
+	// eslint-disable-next-line
 	public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
 		const language = this._context.loadingLanguage || this._context.language;
 		if (this._preloadService.hasTranslationsFor(language)) {

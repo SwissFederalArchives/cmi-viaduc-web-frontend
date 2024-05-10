@@ -14,10 +14,13 @@
             "outputPath": "dist",
             "deployUrl": "client/",
             "index": "src/index.html",
-            "main": "src/main.ts",
+						"main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
             "preserveSymlinks": true,
-            "polyfills": "src/polyfills.ts",
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
 						"stylePreprocessorOptions": {
 							"includePaths": [
 								"node_modules/@cmi/viaduc-web-core/styles"
@@ -118,10 +121,12 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
             "karmaConfig": "./karma.conf.js",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+						"tsConfig": "src/tsconfig.spec.json",
             "scripts": [
               "src/assets/js/vendors.min.js",
               "src/assets/js/polyfills.min.js",
@@ -179,7 +184,6 @@
       }
     }
   },
-  "defaultProject": "cmi-viaduc-web-frontend",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "cmi",

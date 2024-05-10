@@ -171,6 +171,7 @@ export class EntityRenderService {
 
 	private _renderArray(row: SectionRow, path: string, arr: any[], fn: (row: SectionRow, path: string, val: any) => string): string {
 		let s = '';
+		// eslint-disable-next-line
 		arr.forEach((val, i) => {
 			s = _util.addToString(s, '<br/>', fn(row, path, val));
 		});

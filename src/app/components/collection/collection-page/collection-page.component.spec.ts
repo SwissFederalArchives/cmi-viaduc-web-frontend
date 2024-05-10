@@ -10,6 +10,7 @@ import moment from 'moment';
 import {By, Title} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import {ToastrTestingModule, MockUserSettingsParamMap} from '../mocks';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('auto generate CollectionPageComponent', () => {
 	beforeEach(waitForAsync(async() => {
@@ -29,7 +30,8 @@ describe('auto generate CollectionPageComponent', () => {
 			],
 			declarations: [
 				CollectionPageComponent
-			]
+			],
+			schemas: [NO_ERRORS_SCHEMA]
 		});
 
 		fixture = TestBed.createComponent(CollectionPageComponent);

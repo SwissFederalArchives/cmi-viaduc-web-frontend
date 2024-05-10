@@ -64,8 +64,9 @@ export class UserService {
 		await this._http.post<string>(url, settings, this._http.noCaching).toPromise();
 	}
 
-	public getUsers(): Promise<Array<User>> {
-		const url = this._createUrl('GetUsers');
+	public getUsers(search: string): Promise<Array<User>> {
+		const queryString = `?search=${search}`;
+		const url = this._createUrl('GetUsers'+ queryString) ;
 		return this._http.get<Array<User>>(url, this._http.noCaching).toPromise();
 	}
 

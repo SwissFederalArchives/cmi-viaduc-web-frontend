@@ -159,6 +159,7 @@ export class AdvancedSearchService {
 		};
 	}
 
+	// eslint-disable-next-line
 	private _createDropdownSearchField(def: SearchFieldDefinition, language: string): DropdownSearchField {
 		const field = new DropdownSearchField();
 		if (def.key.indexOf('zugänglichkeitGemässBga') >= 0) {

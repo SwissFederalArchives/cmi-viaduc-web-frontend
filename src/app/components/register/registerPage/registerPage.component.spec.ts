@@ -17,6 +17,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {RegisterPageComponent} from './registerPage.component';
 import {RouterTestingModule} from '@angular/router/testing';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('RegisterPage', () => {
 	let sut: RegisterPageComponent;
@@ -127,7 +128,8 @@ describe('RegisterPage', () => {
 			],
 			declarations: [
 				RegisterPageComponent
-			]
+			],
+			schemas: [NO_ERRORS_SCHEMA]
 		});
 	});
 

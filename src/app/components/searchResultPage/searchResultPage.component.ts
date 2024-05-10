@@ -309,7 +309,7 @@ export class SearchResultPageComponent implements OnInit {
 			event => {
 				this._fileSaver.saveDownloadResponseToFile(event);
 			},
-			(error) => {
+			() => {
 				const message = this._txt.translate('Die Erstellung der XLS-Datei dauert zu lange.', 'hitbar.exportError');
 				const title = 'Timeout';
 				this._toastr.error(message, title, {disableTimeOut: true, closeButton: true});

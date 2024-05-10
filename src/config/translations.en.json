@@ -42,13 +42,13 @@
       "fullfillsRequirementsMessage": "You meet the requirements for identification using live verification by means of artificial intelligence. For the identification process, you will be leaving the Confederation’s infrastructure. The identification process using live verification by means of artificial intelligence is conducted by an external company (Identity verification via document scan and liveness check from fidentity AG).",
       "fullfillsRequirementsMessageBold": "You will be notified of the change in your status shortly after the identification process is successfully completed. If identification fails, you will be contacted by a member of our staff.",
       "fullfillsRequirementsMessageError": "Unfortunately, you do not meet the requirements for identification using live verification by means of artificial intelligence. Please contact us to proceed with identification:",
-      "hasIdFromCountry": "Or from which country do you hold a valid identity card?",
-      "hasPassportFromCountry": "From which country do you hold a valid passport?",
+      "hasIdFromCountry": "If you wish to use your valid identity card for identification, please select your nationality here:",
+      "hasPassportFromCountry": "If you wish to use your valid passport for identification, please select your nationality here:",
       "hasSmartphoneOrComputer": "Do you have access to a smartphone with a camera?",
       "nextStep": "Continue",
       "no": "No",
-      "noIdOfListedCountry": "I do not hold an identity card from one of the countries listed",
-      "noPassportOfListedCountry": "I do not hold a passport from one of the countries listed",
+      "noIdOfListedCountry": "No valid identity card",
+      "noPassportOfListedCountry": "No valid passport",
       "passportAndIdNeeded": "You need a valid means of identification (passport or identity card).",
       "previousStep": "Go back",
       "start": "Start",
@@ -106,7 +106,7 @@
     "rightsPerUserTypeTableCaption": "List of rights for each user type",
     "rightViewApprovedDossiers": "Consult documents requiring authorisation",
     "settings": {
-      "defaultSortBy": "Sorted by",
+      "defaultSortBy": "Sort by",
       "numberOfSearchHits": "Number of search results",
       "saveFailed": "Error saving settings.",
       "saveSuccess": "Settings successfully saved",
@@ -174,7 +174,7 @@
   },
   "behoerdenZugriff": {
     "detail": {
-      "accesstoken": "On behalf of"
+      "accesstoken": "Search for a user"
     }
   },
   "bestellkorb": {
@@ -437,7 +437,8 @@
     "stufen": "Levels",
     "treffer": "Results",
     "weitereTreffer": "Other",
-    "zugaenglichkeitGemBGA": "Accessibility under ArchA"
+    "zugaenglichkeitGemBGA": "Accessibility under ArchA",
+		"protectionEndDate": "End of protection period (dossier)"
   },
   "favorite": {
     "noExistingListsLabel": "No favourites lists available."
@@ -718,6 +719,7 @@
         "zusatzkomponenteZac1": "Additional component"
       },
       "formerReferenceCode": "Previous reference codes",
+			"protectionEndDate" : "End of protection period (dossier)",
       "referenceCode": "Reference code",
       "title": "Title",
       "withinInfo": "Contains"
@@ -737,6 +739,12 @@
           "descending": "Reference code in descending order"
         }
       },
+       "customFields": {
+         "aktenzeichen": {
+          "ascending": "File Reference in ascending order",
+          "descending": "File Reference in descending order"
+        }
+      },
       "relevanz": "Relevance",
       "title": {
         "keyword": {
@@ -748,6 +756,7 @@
           "descending": "Title in descending order"
         }
       },
+
       "treePath": {
         "ascending": "Archive plan context in ascending order",
         "descending": "Archive plan context in descending order"
@@ -834,6 +843,7 @@
     "unknowtext": "[Not visible]"
   },
   "orderCheckoutPage": {
+    "back": "Go back",
     "bestellbestaetigung": "Order confirmation",
     "chooseShippingType": "Select form of delivery",
     "finishOrder": "Complete order",
@@ -853,6 +863,8 @@
     "title": "Order",
     "userSelect": "User selection",
     "warningInfo": "Warning",
+    "waringOrderNotFinalised": "Attention! Your order has not yet been finalised.",
+    "waringOrderNotFinalisedQuestion": "Attention! Your order has not yet been finalised. Do you still want to leave the page?",
     "warningTitle": "Lengthy waiting times for digitised documents!",
     "warningMessagePart1": "Owing to high demand, the digitisation infrastructure is currently under heavy load. You should therefore expect longer processing times for your order. If you wish to view the documents urgently or submit a large order, please order the dossiers for consultation in the reading room.",
     "warningMessagePart2": "Federal Administration staff can order documents submitted by their administrative unit for delivery direct to the office.",
@@ -937,7 +949,7 @@
     "cancelRegister": "Cancel",
     "chLoginAltText": "CH-Login logo",
     "chLoginException": "Exception: Federal Administration staff must register via “FED-LOGIN“.",
-    "chooseCHLogin": "Please select the “CH-LOGIN” option in the next step.",
+    "chooseCHLogin": "Please select the “CH-LOGIN & AGOV (eGovernment)” option in the next step.",
     "info1": "You can use the online access service anonymously or as a registered or identified person. Depending on your user status, the functions available to you will vary.",
     "infoBox": "Info box",
     "infoTitle": "Note",
@@ -1300,6 +1312,7 @@
     "failedAddToBasketTitle": "Error",
     "failedBecauseOfLevelMessage": "This unit of description is not available to order. If you have any questions, please contact our advice service or e-mail us at bestellung@bar.admin.ch.",
     "failedBecauseOfLevelTitle": "Order failed",
+    "fileReference": "File Reference",
     "loginToUseBasketText": "Please log in to use the shopping cart.",
     "loginToUsebasketTitle": "Log in now",
     "noHitsInfo": {
@@ -1323,7 +1336,7 @@
 		"anonymToolTip":"Anonymised for non-authorised users."
   },
   "simpleHitList": {
-    "sortierung": "Sorting"
+    "sortierung": "Sort by"
   },
 	"infoSection": {
     "noPermission":"These data were anonymised for data protection reasons (<a href='https://www.fedlex.admin.ch/eli/cc/1999/371/en' target='_blank' rel='noopener noreferrer' >Art. 12.3 Archiving Ordinance</a>).",
@@ -1421,7 +1434,8 @@
     "level": "Level",
     "accessibility": "Accessibility under ArchA",
     "fileName": "search-result",
-    "favourites": "favourites"
+    "favourites": "favourites",
+    "schutzfristendeDossier": "End of protection period (dossier)"
   },
 	"canDeactivateGuard": {
 	  "Title": "Warning",

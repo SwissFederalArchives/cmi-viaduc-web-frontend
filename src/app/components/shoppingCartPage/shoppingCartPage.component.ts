@@ -32,6 +32,7 @@ export class ShoppingCartPageComponent implements OnInit {
 	public archivNr: string;
 	public aktenzeichen: string;
 	public dossierTitel: string;
+	private regExPattern = '<([^>]+)>';
 
 	constructor(private _url: UrlService,
 				private _scs: ShoppingCartService,
@@ -141,14 +142,16 @@ export class ShoppingCartPageComponent implements OnInit {
 			return;
 		}
 
+		const regexp = new RegExp(this.regExPattern);
+
 		const selfmadeItem = <SelfMadeOrderItem> {
-			period: this._sanitizer.sanitize(SecurityContext.HTML,this.timeSpanField.value),
-			title: this._sanitizer.sanitize(SecurityContext.HTML, this.dossierTitel),
-			aktenzeichen: this._sanitizer.sanitize(SecurityContext.HTML,this.aktenzeichen),
-			behaeltnisNr: this._sanitizer.sanitize(SecurityContext.HTML,this.behaeltnisNr),
-			archivNr: this._sanitizer.sanitize(SecurityContext.HTML,this.archivNr),
-			ablieferung: this._sanitizer.sanitize(SecurityContext.HTML,this.ablieferung),
-			bestand: this._sanitizer.sanitize(SecurityContext.HTML,this.teilBestand)
+			period: regexp.test(this.timeSpanField.value) ? (SecurityContext.HTML,this.timeSpanField.value) : this.timeSpanField.value,
+			title: regexp.test(this.dossierTitel) ? this._sanitizer.sanitize(SecurityContext.HTML, this.dossierTitel) : this.dossierTitel,
+			aktenzeichen: regexp.test(this.aktenzeichen) ? this._sanitizer.sanitize(SecurityContext.HTML,this.aktenzeichen) : this.aktenzeichen,
+			behaeltnisNr: regexp.test(this.behaeltnisNr) ? this._sanitizer.sanitize(SecurityContext.HTML,this.behaeltnisNr) : this.behaeltnisNr,
+			archivNr: regexp.test(this.archivNr) ? this._sanitizer.sanitize(SecurityContext.HTML,this.archivNr) : this.archivNr,
+			ablieferung: regexp.test(this.ablieferung) ? this._sanitizer.sanitize(SecurityContext.HTML,this.ablieferung) : this.ablieferung,
+			bestand: regexp.test(this.teilBestand) ? this._sanitizer.sanitize(SecurityContext.HTML,this.teilBestand) : this.teilBestand
 		};
 
 		this._scs.addManuallyToCart(selfmadeItem).then((data) => {

@@ -1,11 +1,11 @@
 import {of as observableOf, Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate} from '@angular/router';
+import { ActivatedRouteSnapshot } from '@angular/router';
 import {ContextService} from '../services';
 import {ClientContext} from '@cmi/viaduc-web-core';
 
 @Injectable()
-export class DefaultContextGuard implements CanActivate {
+export class DefaultContextGuard  {
 	constructor(protected context: ClientContext, protected contextService: ContextService) {
 	}
 

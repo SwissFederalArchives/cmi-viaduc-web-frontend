@@ -10,6 +10,5 @@ export class OnboardingModel {
 	public email: string;
 	public dateOfBirth: string;
 	public countryOfResidence: string;
-	public idType: string;
 	public idIssuingCountry: string;
 }

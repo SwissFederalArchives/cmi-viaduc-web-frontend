@@ -28,9 +28,11 @@
 					[itemsSource]="userList"
 					[displayMemberPath]="'displayName'"
 					[searchMemberPath]="'id'"
+					[isDroppedDown] = "isDroppedDown"
+					(textChanged)="onTextChanged($event)"
 					[selectedValuePath]="'id'"
 					(selectedIndexChanged)="onSelectedIndexChanged()"
-					placeholder="{{'Im Namen von' | translate: 'behoerdenZugriff.detail.accesstoken'}}">
+					placeholder="{{'Suchen Sie ein Benutzer' | translate: 'behoerdenZugriff.detail.accesstoken'}}">
 				</wj-auto-complete>
 
 				<div *ngIf="form.hasError('required', ['userId']) && nextClicked" class="help-block" role="alert">

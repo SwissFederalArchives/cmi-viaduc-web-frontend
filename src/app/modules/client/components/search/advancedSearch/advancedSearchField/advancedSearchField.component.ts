@@ -74,6 +74,7 @@ export class AdvancedSearchFieldComponent implements OnInit, AfterViewInit {
 		this.selectedField.containsValidationErrors = !valid;
 	}
 
+	// eslint-disable-next-line
 	public onKeydownSearch (event: any) {
 		this.searchSynonymeIconComponent.setSynonymSearchTimer();
 	}

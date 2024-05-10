@@ -61,6 +61,7 @@ export class SeoService {
 		}
 	}
 
+	// eslint-disable-next-line
 	public updatePageInfo(url: string): void {
 		this._siteTitle = this._txt.get('header.title', 'Online-Zugang zum Bundesarchiv');
 		const description = this._txt.get('page.description', 'recherche.admin.ch');

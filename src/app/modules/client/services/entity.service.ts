@@ -64,6 +64,7 @@ export class EntityService {
 export class MockEntityService {
 
 	public get(id: string): Promise<Entity> {
+		// eslint-disable-next-line
 		return new Promise<Entity>((resolve, reject) => {
 			const mockResponse = <Entity>{
 				archiveRecordId: id,

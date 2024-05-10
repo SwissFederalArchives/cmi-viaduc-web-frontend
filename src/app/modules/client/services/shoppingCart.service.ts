@@ -121,7 +121,7 @@ export class ShoppingCartService {
 	public order(order: Ordering): Observable<void> {
 		const url = `${this._apiUrl}/Order`;
 
-		return this._http.post(url, order).pipe(mergeMap((data) => {
+		return this._http.post(url, order).pipe(mergeMap(() => {
 			return this.getTotalItemsInCartFromServer().pipe(map(nr => {
 				this._totalItemsInCart = nr;
 				this.activeOrder = null;
@@ -131,7 +131,7 @@ export class ShoppingCartService {
 
 	public orderEinsichtsgesuch(order: Ordering): Observable<void> {
 		const url = `${this._apiUrl}/OrderEinsichtsgesuch`;
-		return this._http.post(url, order).pipe(mergeMap((data) => {
+		return this._http.post(url, order).pipe(mergeMap(() => {
 			return this.getTotalItemsInCartFromServer().pipe(map(nr => {
 				this._totalItemsInCart = nr;
 				this.activeOrder = null;
@@ -150,7 +150,7 @@ export class ShoppingCartService {
 		await this._http.post<OrderItem>(url, selfMadeItem).toPromise().then((data => {
 			newItem = data;
 			this._totalItemsInCart++;
-			this._showSuccessfullyAddedToast(selfMadeItem.title);
+			this._showSuccessfullyAddedToast(newItem.title);
 		}), (error) => {
 			this._showErrorWhenAddingToBasket(error);
 		});

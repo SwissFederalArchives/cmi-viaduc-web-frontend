@@ -412,7 +412,7 @@ export class UserAccountComponent implements OnInit {
 			this._toastr.success(this._txt.get('userAccount.saveSuccess', 'Ihre Benutzerdaten wurden erfolgreich gespeichert'),
 				this._txt.get('userAccount.saveSuccessTitle', 'Erfolgreich Gespeichert'));
 			this._callLoadOrReload();	// Required to update any server generated data like modified date
-		}, (error) => {
+		}, () => {
 			this._toastr.error(this._txt.get('userAccount.saveError', 'Ihre Benutzerdaten wurden nicht gespeichert'),
 				this._txt.get('userAccount.saveErrorTitle', 'Problem beim Speichern'));
 			this._callLoadOrReload();

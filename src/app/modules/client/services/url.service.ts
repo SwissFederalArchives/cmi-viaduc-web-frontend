@@ -157,6 +157,7 @@ export class UrlService {
 		return this._router.createUrlTree([this.getSearchResultUrl()], { queryParams: params });
 	}
 
+	// eslint-disable-next-line
 	public getDetailUrl(id: string, title?: string): string {
 		const url = this.localizeUrl(this._context.language, '/archiv/einheit/' + id);
 		return url;

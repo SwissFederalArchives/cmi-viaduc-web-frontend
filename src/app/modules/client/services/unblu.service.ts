@@ -42,7 +42,7 @@ export class UnbluService {
 		node.type = 'text/javascript';
 		node.async = false;
 		document.getElementsByTagName('head')[0].appendChild(node);
-
+		// eslint-disable-next-line
 		await new Promise((resolve, reject) => {
 			node.onload = resolve;
 		});

@@ -28,6 +28,7 @@ export class SimpleHitComponent implements AfterViewInit, OnInit {
 	public score: string;
 
 	private _elem: any;
+	public aktenzeichen: string;
 
 	constructor(private _elemRef: ElementRef,
 				private _context: ClientContext,
@@ -44,6 +45,10 @@ export class SimpleHitComponent implements AfterViewInit, OnInit {
 			: '';
 
 		this._replaceHighlightHtml();
+		const aktenzeichen = this.entity.customFields['aktenzeichen'] ;
+		if (aktenzeichen && aktenzeichen.length > 0){
+			this.aktenzeichen = aktenzeichen[0];
+		}
 	}
 
 	public ngAfterViewInit(): void {

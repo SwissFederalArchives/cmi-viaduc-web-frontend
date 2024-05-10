@@ -148,10 +148,10 @@ export class AuthenticationService {
 		this.setCurrentSession(session);
 		if (!_util.isEmpty(identity)) {
 			if (!this._userService.hasUserSettingsLoaded && !this._userService.isLoadingUserSettings) {
-				this.onSignedIn.pipe(skip(1)).subscribe(res => { // skipping first, because its a behaviour-subject
+				this.onSignedIn.pipe(skip(1)).subscribe(() => { // skipping first, because its a behaviour-subject
 					if (!this._preloadService.settings && !this._preloadService.isPreloaded) {
 						this._preloadService.settingsloaded.pipe(take(1)).subscribe(() => {
-							this._userService.initUserSettings().then(r => {return});
+							this._userService.initUserSettings().then(() => {return});
 						});
 					} else {
 						this._userService.initUserSettings().then(() => {return});

@@ -265,6 +265,12 @@
 				"key": "customFields.zugänglichkeitGemässBga",
 				"displayName": "Zugänglichkeit gemäss BGA",
 				"translatorType": "StandardTranslator"
+			},
+			{
+				"type": "Text",
+				"key": "protectionEndDate",
+				"displayName": "Schutzfristende Dossier",
+				"translatorType": "ProtectionEndDateDossierTranslator"
 			}
 		],
 		"simpleSearchSortingFields": [
@@ -302,7 +308,18 @@
 				"displayName": "Signatur absteigend",
 				"orderBy": "referenceCode.sort",
 				"sortOrder": "descending"
+			},
+			{
+				"displayName": "Aktenzeichen aufsteigend",
+				"orderBy": "customFields.aktenzeichen",
+				"sortOrder": "ascending"
+			},
+			{
+				"displayName": "Aktenzeichen absteigend",
+				"orderBy": "customFields.aktenzeichen",
+				"sortOrder": "descending"
 			}
+
 		],
 		"possiblePagingSizes": [
 			10,

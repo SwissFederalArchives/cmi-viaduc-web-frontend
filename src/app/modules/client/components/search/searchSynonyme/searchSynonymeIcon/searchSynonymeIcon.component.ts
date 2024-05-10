@@ -47,7 +47,7 @@ export class SearchSynonymeIconComponent implements OnInit {
 	public setSynonymSearchTimer() {
 		this.stopSynonymSearchTimer();
 
-		this.synonymTimer = observableInterval(500).subscribe(val => {
+		this.synonymTimer = observableInterval(500).subscribe(() => {
 			this.searchSynonyme();
 		});
 	}

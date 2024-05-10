@@ -198,11 +198,9 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 		userData.email = this.myForm.controls['email'].value;
 		userData.name = this.myForm.controls['name'].value;
 		userData.firstname = this.myForm.controls['firstName'].value;
-		if (this.formStep1.controls['pass'].value !== '000') {
-			userData.idType = 'PASSPORT';
+		if (this.formStep1.controls['pass'].value && this.formStep1.controls['pass'].value !== '000') {
 			userData.nationality = this.formStep1.controls['pass'].value;
 		} else {
-			userData.idType = 'ID_CARD';
 			userData.nationality = this.formStep1.controls['idCard'].value;
 		}
 
@@ -221,8 +219,8 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 	private InitForm() {
 		if (this.allCountries) {
 			this.formStep1 = this._formBuilder.group({
-			pass: new FormControl('000', [Validators.required, Validators.maxLength(3)]),
-			idCard: new FormControl('000',  [Validators.required, Validators.maxLength(3)]),
+			pass: new FormControl([Validators.required, Validators.maxLength(3)]),
+			idCard: new FormControl([Validators.required, Validators.maxLength(3)]),
 		});
 
 		let birth = null;
@@ -261,6 +259,7 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 			this.userCanOnboard =  true;
 			this.fidentityCanOnboard = true;
 		},
+			// eslint-disable-next-line
 		err => {
 			this.userCanOnboard =  true;
 			this.fidentityCanOnboard =  false;

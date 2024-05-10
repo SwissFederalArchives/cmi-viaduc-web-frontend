@@ -86,6 +86,7 @@ export class FavoriteListComponent implements OnInit, AfterViewInit {
 		});
 	}
 
+	// eslint-disable-next-line
 	public exportItem(item: Favorite) {
 		this.error = undefined;
 

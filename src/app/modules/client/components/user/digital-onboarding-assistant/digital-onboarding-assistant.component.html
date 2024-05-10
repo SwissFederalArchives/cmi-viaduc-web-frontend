@@ -35,7 +35,7 @@
 					</h4>
 					<form [formGroup]="formStep1" *ngIf="formStep1">
 						<p>
-							{{ 'Von welchem Land besitzen Sie einen gültigen Pass?'| translate:'account.digitalOnboarding.hasPassportFromCountry' }}
+							{{ 'Wenn Sie Ihren gültigen Pass zur Identifizierung verwenden möchten, wählen Sie bitte hier Ihre Staatsbürgerschaft:'| translate:'account.digitalOnboarding.hasPassportFromCountry' }}
 						</p>
 						<p>
 							<select class="passportAndIdCountriesSelect" formControlName="pass" id="passportCountries">
@@ -43,7 +43,7 @@
 							</select>
 						</p>
 						<p>
-							{{ 'Von welchem Land besitzen Sie eine gültige Identitätskarte?' | translate:'account.digitalOnboarding.hasIdFromCountry' }}
+							{{ 'Wenn Sie Ihre gültige Identitätskarte zur Identifizierung verwenden möchten, wählen Sie bitte hier Ihre Staatsbürgerschaft:' | translate:'account.digitalOnboarding.hasIdFromCountry' }}
 						</p>
 						<p class="mb-3">
 							<select class="passportAndIdCountriesSelect" formControlName="idCard" id="idCountries">

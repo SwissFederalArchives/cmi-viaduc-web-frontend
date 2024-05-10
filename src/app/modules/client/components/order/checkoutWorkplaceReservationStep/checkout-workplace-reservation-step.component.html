@@ -20,7 +20,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<button (click)="goBack()" type="button" class="btn btn-secondary">
+			<button (click)="showDialog()" type="button" class="btn btn-secondary">
 				{{'Zurück' | translate:'orderCheckoutPage.previousPage'}}
 			</button>
 			<button (click)="nextStep()" type="button" class="btn btn-primary" [disabled]="isNextButtonDisabled">
@@ -29,3 +29,39 @@
 		</div>
 	</div>
 </form>
+
+<cmi-viaduc-modal class="test" [(opened)]="showModalDialog" modalTitle="{{'Hinweis' | translate: 'registerInfo.infoTitle'}}" >
+	<cmi-viaduc-modal-body>
+					<span> {{'Achtung! Ihre Bestellung ist noch nicht abgeschlossen.' |	translate: 'orderCheckoutPage.waringOrderNotFinalised'}}
+					</span>
+	</cmi-viaduc-modal-body>
+	<cmi-viaduc-modal-footer>
+		<div class="row">
+			<div class="col-xs-12">
+				<button type="button" (click)="nextStep()" class="btn btn-default">
+					{{'Bestellung abschliesen' | translate: 'orderCheckoutPage.finishOrder'}}
+				</button>
+				<button type="button" (click)="goBack()" class="btn btn-primary">
+					{{'Zurück' | translate: 'orderCheckoutPage.back'}}
+				</button>
+			</div>
+		</div>
+	</cmi-viaduc-modal-footer>
+</cmi-viaduc-modal>
+
+<cmi-viaduc-modal [(opened)]="showModalHit" modalTitle="{{'Hinweis' | translate: 'registerInfo.infoTitle'}}" >
+	<cmi-viaduc-modal-body>
+		<span> {{'Achtung! Ihre Bestellung ist noch nicht abgeschlossen.' |	translate: 'orderCheckoutPage.waringOrderNotFinalised'}}
+		</span>
+	</cmi-viaduc-modal-body>
+	<cmi-viaduc-modal-footer>
+		<div class="row">
+			<div class="col-xs-12">
+				<button type="button" (click)="nextStep()" class="btn btn-primary">
+					{{'Bestellung abschliesen' | translate: 'orderCheckoutPage.finishOrder'}}
+				</button>
+
+			</div>
+		</div>
+	</cmi-viaduc-modal-footer>
+</cmi-viaduc-modal>

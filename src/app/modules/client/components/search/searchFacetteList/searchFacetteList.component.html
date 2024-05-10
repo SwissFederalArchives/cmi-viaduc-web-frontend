@@ -54,6 +54,18 @@
 		</li>
 		<li>
 			<cmi-viaduc-facette
+				*ngIf="hasItems(facetts['aggregationFields.protectionEndDateDossier'])"
+				[key]="'aggregationFields.protectionEndDateDossier'"
+				[facette]="facetts['aggregationFields.protectionEndDateDossier']"
+				[collapsed]="true"
+				[activeFilterStrings]="getActiveFilterStringsForFacette('aggregationFields.protectionEndDateDossier')"
+				(onFilter)="onFilterApplied($event)"
+				(onFacetteShowAll)="onShowAllFilterApplied($event)"
+				facetteTitle="{{'Schutzfristende Dossier' | translate:'facette.protectionEndDate' }}">
+			</cmi-viaduc-facette>
+		</li>
+		<li>
+			<cmi-viaduc-facette
 				*ngIf="hasItems(facetts['aggregationFields.bestand'])"
 				[key]="'aggregationFields.bestand'"
 				[facette]="facetts['aggregationFields.bestand']"

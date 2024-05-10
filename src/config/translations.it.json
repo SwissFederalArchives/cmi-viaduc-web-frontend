@@ -42,13 +42,13 @@
       "fullfillsRequirementsMessage": "Soddisfi i requisiti per l’identificazione tramite verifica in diretta con l’ausilio dell’intelligenza artificiale. Per la procedura di identificazione devi uscire dall’infrastruttura della Confederazione. La procedura di identificazione tramite verifica in diretta con l’ausilio dell’intelligenza artificiale è gestita da una ditta esterna («Identity verification via document scan and liveness check» di fidentity AG).",
       "fullfillsRequirementsMessageBold": " Sarai informato del cambiamento di statuto poco dopo che la procedura di identificazione si sarà conclusa con successo. Nel caso l’identificazione non dovesse riuscire, ti contatterà uno dei nostri collaboratori.",
       "fullfillsRequirementsMessageError": "Non soddisfi i requisiti per l'identificazione tramite verifica in diretta con l’ausilio dell’intelligenza artificiale. Mettiti in contatto con noi per l’identificazione:",
-      "hasIdFromCountry": "O di quale paese possiedi una carta d'identità valida?",
-      "hasPassportFromCountry": "Di quale paese possiedi un passaporto valido?",
+      "hasIdFromCountry": "Se desiderate utilizzare la vostra carta d'identità valida per l'identificazione, selezionate qui la vostra nazionalità:",
+      "hasPassportFromCountry": "Se desiderate utilizzare il vostro passaporto valido per l'identificazione, selezionate qui la vostra nazionalità:",
       "hasSmartphoneOrComputer": "Hai accesso a uno smartphone dotato di videocamera?",
       "nextStep": "Continua",
       "no": "No",
-      "noIdOfListedCountry": "Non possiedo una carta d'identità di nessuno dei paesi elencati",
-      "noPassportOfListedCountry": "Non possiedo un passaporto di nessuno dei paesi elencati",
+      "noIdOfListedCountry": "Non c'è una carta d'identità valida",
+      "noPassportOfListedCountry": "Non c'è un passaporto valido",
       "passportAndIdNeeded": "Ti serve un documento di identificazione valido (passaporto o carta d'indentità).",
       "previousStep": "Torna indietro",
       "start": "Avvia",
@@ -174,7 +174,7 @@
   },
   "behoerdenZugriff": {
     "detail": {
-      "accesstoken": "Per conto di"
+      "accesstoken": "Ricerca di un utente"
     }
   },
   "bestellkorb": {
@@ -437,7 +437,8 @@
     "stufen": "Livelli",
     "treffer": "Risultati",
     "weitereTreffer": "Altri",
-    "zugaenglichkeitGemBGA": "Accessibilità secondo la LAr"
+    "zugaenglichkeitGemBGA": "Accessibilità secondo la LAr",
+		"protectionEndDate": "Fine del periodo di protezione (dossier)"
   },
   "favorite": {
     "noExistingListsLabel": "Non è ancora stato creato nessun elenco dei preferiti."
@@ -718,6 +719,7 @@
         "zusatzkomponenteZac1": "Componente aggiuntiva"
       },
       "formerReferenceCode": "Vecchie segnature",
+			"protectionEndDate" : "Fine del periodo di protezione (dossier)",
       "referenceCode": "Segnatura",
       "title": "Titolo",
       "withinInfo": "Contiene"
@@ -735,6 +737,12 @@
         "sort": {
           "ascending": "Segnatura crescente",
           "descending": "Segnatura decrescente"
+        }
+      },
+      "customFields": {
+       "aktenzeichen": {
+         "ascending": "Riferimento crescente",
+         "descending": "Riferimento decrescente"
         }
       },
       "relevanz": "Rilevanza",
@@ -834,6 +842,7 @@
     "unknowtext": "[Non visibile]"
   },
   "orderCheckoutPage": {
+    "back": "Indietro",
     "bestellbestaetigung": "Conferma dell'ordinazione",
     "chooseShippingType": "Seleziona la modalità di consegna",
     "finishOrder": "Completare l'ordine",
@@ -853,6 +862,8 @@
     "title": "Ordinazione",
     "userSelect": "Seleziona utente",
     "warningInfo": "Avvertimento",
+    "waringOrderNotFinalised": "Attenzione! Il suo ordine non è ancora stato finalizzato.",
+    "waringOrderNotFinalisedQuestion": "Attenzione! Il vostro ordine non è ancora stato finalizzato. Vuole comunque lasciare la pagina?",
     "warningTitle": "Tempi d’attesa più lunghi per la digitalizzazione!",
     "warningMessagePart1": "La grande richiesta sta mettendo a dura prova la nostra infrastruttura di digitalizzazione. Non possiamo pertanto escludere tempi di attesa più lunghi per l’evasione del Suo mandato. Se avesse bisogno rapidamente dei documenti o il loro quantitativo fosse importante, Le consigliamo di ordinarli per la consultazione nelle sale di lettura.",
     "warningMessagePart2": "I dipendenti dell’Amministrazione federale possono farsi inviare i documenti prodotti dalla propria unità amministrativa direttamente in ufficio.",
@@ -937,7 +948,7 @@
     "cancelRegister": "Interrompi",
     "chLoginAltText": "Logo di CH-Login",
     "chLoginException": "Eccezione: i dipendenti dell'Amministrazione federale devono registrarsi mediante «FED-LOGIN».",
-    "chooseCHLogin": "Seleziona in seguito l'opzione «CH-LOGIN».",
+    "chooseCHLogin": "Seleziona in seguito l'opzione «CH-LOGIN & AGOV (eGovernment)».",
     "info1": "Puoi utilizzare l'accesso on-line come utente anonimo, registrato o identificato. A seconda dello statuto di utente sono disponibili altre funzioni.",
     "infoBox": "Infobox",
     "infoTitle": "Indicazione",
@@ -1300,6 +1311,7 @@
     "failedAddToBasketTitle": "Errore",
     "failedBecauseOfLevelMessage": "Questa unità di descrizione non può essere ordinata. Per maggiori informazioni rivolgiti al servizio di consulenza o invia una mail a bestellung@bar.admin.ch.",
     "failedBecauseOfLevelTitle": "Ordinazione non riuscita",
+    "fileReference": "Riferimento",
     "loginToUseBasketText": "Effettua l'accesso per poter utilizzare il carrello.",
     "loginToUsebasketTitle": "Accedi adesso",
     "noHitsInfo": {
@@ -1421,7 +1433,8 @@
     "level": "Livello",
     "accessibility": "Accessibilità secondo la LAr",
     "fileName": "risultato-di-una-ricerca",
-    "favourites": "freferiti"
+    "favourites": "freferiti",
+    "schutzfristendeDossier": "Fine del periodo di protezione (dossier)"
   },
 	"canDeactivateGuard": {
 	  "Title": "Avvertimento",

@@ -64,15 +64,16 @@
 							<form role="form" class="sort-form">
 								<fieldset>
 									<div class="form-group">
-										<label class="hidden-xs">{{'Sortierung' | translate:'simpleHitList.sortierung'}}</label>
-										<select name="sortFieldsDropdown" class="form-control"
-												[(ngModel)]="selectedSortingField"
-												(ngModelChange)="onSorted($event)"
-												[compareWith]="compareSortFields">
-											<option *ngFor="let s of sortingFields" [ngValue]="s">
-												{{ s.displayName | translate: getSortTranslationKey(s)}}
-											</option>
-										</select>
+										<label for="sortFieldsDropdown" class="hidden-xs">{{'Sortiert nach' | translate:'simpleHitList.sortierung'}}
+											<select id="sortFieldsDropdown" name="sortFieldsDropdown" class="form-control"
+													[(ngModel)]="selectedSortingField"
+													(ngModelChange)="onSorted($event)"
+													[compareWith]="compareSortFields">
+												<option *ngFor="let s of sortingFields" [ngValue]="s">
+													{{ s.displayName | translate: getSortTranslationKey(s)}}
+												</option>
+											</select>
+										</label>
 									</div>
 								</fieldset>
 							</form>

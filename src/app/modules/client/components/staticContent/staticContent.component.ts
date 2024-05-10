@@ -33,14 +33,13 @@ export class StaticContentComponent implements OnChanges {
 	}
 
 	public ngOnInit(): void {
-		this._loadContent();
 	}
 
 	public ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
 		if (changes['url'] && this.url !== undefined) {
 			const oldRoute = this._static.getStaticRouteInfo(changes['url']['previousValue']);
 			const newRoute = this._static.getStaticRouteInfo(changes['url']['currentValue']);
-			
+
 			if (oldRoute.route !== newRoute.route || oldRoute.query !== newRoute.query) {
 				this._loadContent();
 			} else {
@@ -67,10 +66,25 @@ export class StaticContentComponent implements OnChanges {
 					this._showAnchor(routeInfo.hash);
 				},
 				error => {
-					this.loadedHtml = null;
-					this._error = this._createErrorMessage(error);
-					subscription.unsubscribe();
-					this.loading = false;
+					switch (error.status){
+						case 404:
+						case 500:
+							this.loadedHtml = error.error;
+							this.setTitle();
+							this.editMode = this._static.hasWebAuthoringFeature();
+							subscription.unsubscribe();
+							this.loading = false;
+							this._showAnchor(routeInfo.hash);
+							break;
+						default:
+							this.loadedHtml = null;
+							this._error = this._createErrorMessage(error);
+							subscription.unsubscribe();
+							this.loading = false;
+							break;
+					}
+
+
 				}
 			);
 	}

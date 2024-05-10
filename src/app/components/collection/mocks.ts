@@ -9,6 +9,7 @@ class Mocks extends ToastPackage {
 	}
 }
 
+/* eslint-disable */
 export class MockUserSettingsParamMap implements ParamMap {
 	public readonly keys: string[];
 

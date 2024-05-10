@@ -156,6 +156,7 @@ export const defaultRouteChildren: any = [
 						_localize: {'fr': 'commande', 'it': 'ordinazione', 'en': 'order'},
 						component: OrderCheckoutPageComponent,
 						canActivate: [AuthGuard],
+						canDeactivate: [CanDeactivateGuard],
 						resolve: {preLoaded: PreloadedResolver}
 					},
 					{

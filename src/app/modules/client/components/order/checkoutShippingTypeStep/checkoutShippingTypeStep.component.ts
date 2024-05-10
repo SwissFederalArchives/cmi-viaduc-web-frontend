@@ -73,7 +73,7 @@ export class CheckoutShippingTypeStepComponent implements OnInit {
 		}
 
 		this.showDigitizationWarning = this._scs.getShowDigitizationWarningSetting();
-
+		// eslint-disable-next-line
 		this.form.controls.shippingType.valueChanges.subscribe(async val => {
 			this.onUpadetOrdertype.emit(this.form.controls.shippingType.value);
 			await this._resetActiveOrder();

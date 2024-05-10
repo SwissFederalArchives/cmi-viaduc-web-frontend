@@ -42,13 +42,13 @@
       "fullfillsRequirementsMessage": "Sie erfüllen die Voraussetzung für die Online-Identifikation über eine KI-Engine. Für den Identifizierungsprozess verlassen Sie die Infrastruktur des Bundes. Der Identifizierungsprozess per Online-Identifikation über eine KI-Engine wird mit einer externen Firma durchgeführt (Identitätsprüfung via Ausweisdokument und Liveness-Check der Fidentity AG).",
       "fullfillsRequirementsMessageBold": "Sie werden kurz nach erfolgreichem Abschluss des Identifizierungsprozesses über Ihren neuen Status informiert. Sollte die Identifikation scheitern, wird eine/r unserer Mitarbeitenden Sie kontaktieren.",
       "fullfillsRequirementsMessageError": "Sie erfüllen die Voraussetzungen für eine Online-Identifikation leider nicht. Bitte setzen Sie sich für die Identifikation mit uns in Verbindung:",
-      "hasIdFromCountry": "Oder von welchem Land besitzen Sie eine gültige Identitätskarte?",
-      "hasPassportFromCountry": "Von welchem Land besitzen Sie einen gültigen Pass?",
+      "hasIdFromCountry": "Wenn Sie Ihre gültige Identitätskarte zur Identifizierung verwenden möchten, wählen Sie bitte hier Ihre Staatsbürgerschaft:",
+      "hasPassportFromCountry": "Wenn Sie Ihren gültigen Pass zur Identifizierung verwenden möchten, wählen Sie bitte hier Ihre Staatsbürgerschaft:",
       "hasSmartphoneOrComputer": "Verfügen Sie über ein Smartphone mit Kamera?",
       "nextStep": "Weiter",
       "no": "Nein",
-      "noIdOfListedCountry": "Ich besitze keine Identitätskarte von einem der aufgeführten Länder",
-      "noPassportOfListedCountry": "Ich besitze keinen Pass von einem der aufgeführten Länder",
+      "noIdOfListedCountry": "Keine gültige Identitätskarte",
+      "noPassportOfListedCountry": "Kein gültiger Pass",
       "passportAndIdNeeded": "Sie benötigen ein gültiges Identifizierungsmittel (Pass oder Identitätskarte).",
       "start": "Starten",
       "startInfo": "Mit «Starten» beginnen Sie den Identifizierungsprozess",
@@ -171,7 +171,7 @@
   },
   "behoerdenZugriff": {
     "detail": {
-      "accesstoken": "Im Namen von"
+      "accesstoken": "Suchen Sie ein Benutzer"
     }
   },
   "bestellkorb": {
@@ -432,7 +432,8 @@
     "stufen": "Stufen",
     "treffer": "Treffer",
     "weitereTreffer": "Andere",
-    "zugaenglichkeitGemBGA": "Zugänglichkeit gem. BGA"
+    "zugaenglichkeitGemBGA": "Zugänglichkeit gem. BGA",
+		"protectionEndDate": "Schutzfristende (Dossier)"
 	},
   "favorite": {
     "noExistingListsLabel": "Es sind noch keine Favoritenlisten vorhanden."
@@ -709,6 +710,7 @@
         "zusatzkomponenteZac1": "Zusatzkomponente"
       },
       "formerReferenceCode": "Frühere Signaturen",
+			"protectionEndDate" : "Schutzfristende (Dossier)",
       "referenceCode": "Signatur",
       "title": "Titel",
       "withinInfo": "Darin"
@@ -726,6 +728,12 @@
         "sort": {
           "ascending": "Signatur aufsteigend",
           "descending": "Signatur absteigend"
+        }
+      },
+      "customFields": {
+        "aktenzeichen": {
+          "ascending": "Aktenzeichen aufsteigend",
+          "descending": "Aktenzeichen absteigend"
         }
       },
       "relevanz": "Relevanz",
@@ -825,6 +833,7 @@
     "unknowtext": "[Nicht sichtbar]"
   },
   "orderCheckoutPage": {
+		"back": "Zurück",
     "bestellbestaetigung": "Bestellbestätigung",
     "chooseShippingType": "Lieferart auswählen",
     "finishOrder": "Bestellung abschliessen",
@@ -844,6 +853,8 @@
     "title": "Bestellen",
     "userSelect": "Benutzerauswahl",
     "warningInfo": "Warnung",
+		"waringOrderNotFinalised": "Achtung! Ihre Bestellung ist noch nicht abgeschlossen.",
+		"waringOrderNotFinalisedQuestion": "Achtung! Ihre Bestellung ist noch nicht abgeschlossen. Wollen Sie die Seite trotzdem verlassen?",
     "warningTitle": "Längere Wartezeiten für Digitalisate!",
     "warningMessagePart1": "Aufgrund der grossen Nachfrage ist die Digitalisierungsinfrastruktur derzeit stark ausgelastet. Daher müssen Sie mit längeren Bearbeitungszeiten für Ihren Auftrag rechnen. Falls Sie die Unterlagen kurzfristig einsehen oder eine umfangreiche Bestellung aufgeben möchten, bestellen Sie die Dossiers bitte in den Lesesaal.",
     "warningMessagePart2": "Mitarbeitende der Bundesverwaltung können von Ihrer eigenen Verwaltungseinheit abgelieferte Unterlagen direkt ins Amt bestellen.",
@@ -928,7 +939,7 @@
     "cancelRegister": "Abbrechen",
     "chLoginAltText": "Logo des CH-Logins",
     "chLoginException": "Ausnahme: Mitarbeitende der Bundesverwaltung müssen sich via «FED-LOGIN» registrieren.",
-    "chooseCHLogin": "Wählen Sie bitte im nächsten Schritt die Option «CH-LOGIN».",
+    "chooseCHLogin": "Wählen Sie bitte im nächsten Schritt die Option «CH-LOGIN & AGOV (eGovernment)».",
     "info1": "Sie können den Online-Zugang anonym, als registrierte oder als identifizierte Person nutzen. Je nach Benutzerstatus stehen Ihnen unterschiedliche Funktionen zur Verfügung.",
     "infoBox": "Info-Box",
     "infoTitle": "Hinweis",
@@ -1289,6 +1300,7 @@
     "failedAddToBasketTitle": "Fehler",
     "failedBecauseOfLevelMessage": "Diese Verzeichnungseinheit ist nicht bestellbar. Bei Fragen wenden Sie sich bitte an die Beratung oder an bestellung@bar.admin.ch.",
     "failedBecauseOfLevelTitle": "Bestellen fehlgeschlagen",
+    "fileReference": "Aktenzeichen",
     "loginToUseBasketText": "Bitte melden Sie sich an, um den Bestellkorb nutzen zu können.",
     "loginToUsebasketTitle": "Jetzt anmelden",
     "noHitsInfo": {
@@ -1314,7 +1326,7 @@
 			"barUser":"Für NutzerInnen ohne entsprechende Berechtigung werden diese Daten in anonymisierter Form angezeigt."
 	},
   "simpleHitList": {
-    "sortierung": "Sortierung"
+    "sortierung": "Sortiert nach"
   },
   "simpleSearchPageComponent": {
     "pageTitle": "Einfache Suche"
@@ -1408,7 +1420,8 @@
     "level": "Stufe",
     "accessibility": "Zugänglichkeit gem. BGA",
     "fileName": "suchresultat",
-    "favourites": "favoriten"
+    "favourites": "favoriten",
+    "schutzfristendeDossier": "Schutzfristende (Dossier)"
   },
 	"canDeactivateGuard": {
 	  "Title": "Warnung",

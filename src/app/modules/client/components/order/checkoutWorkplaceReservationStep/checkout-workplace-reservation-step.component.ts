@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output, Renderer2} from '@angular/core';
+import {Component, EventEmitter, HostListener, OnInit, Output, Renderer2} from '@angular/core';
 import {ConfigService, TranslationService} from '@cmi/viaduc-web-core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -8,7 +8,7 @@ import {DomSanitizer} from '@angular/platform-browser';
   templateUrl: './checkout-workplace-reservation-step.component.html',
   styleUrls: ['./checkout-workplace-reservation-step.component.less']
 })
-export class CheckoutWorkplaceReservationStepComponent implements OnInit  {
+export class CheckoutWorkplaceReservationStepComponent implements OnInit {
 
 	@Output()
 	public onGoBackClicked: EventEmitter<void> = new EventEmitter<void>();
@@ -19,6 +19,8 @@ export class CheckoutWorkplaceReservationStepComponent implements OnInit  {
 	public form: FormGroup;
 	public safeURL: any;
 	public workplacealReadyReserved:  string;
+	public showModalDialog: boolean = false;
+	public showModalHit: boolean= false;
 
 	constructor(private _cfg: ConfigService,
 				private _sanitizer: DomSanitizer,
@@ -63,5 +65,19 @@ export class CheckoutWorkplaceReservationStepComponent implements OnInit  {
 
 	public loadDone() {
 		this.renderer.listen(window, 'message', (e) => this.callbackIframe(e));
+	}
+
+	public showDialog() {
+		if (this.isNextButtonDisabled){
+			this.goBack();
+		} else {
+			this.showModalDialog = true;
+		}
+	}
+
+	@HostListener('window:beforeunload', ['$event'])
+	// eslint-disable-next-line
+	public unloadNotification($event: any) {
+		this.showModalHit = true;
 	}
 }

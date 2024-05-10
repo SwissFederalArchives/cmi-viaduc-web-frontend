@@ -8,9 +8,9 @@
     "declaration": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true,
-    "target": "es2018",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2022",
     "types": [
       "file-saver"
     ],
@@ -19,14 +19,15 @@
       "node_modules"
     ],
     "lib": [
-      "es2018",
+      "es2020",
       "dom"
     ],
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "strictNullChecks": false,
     "baseUrl": "./",
-    "module": "es2020"
+    "module": "es2020",
+    "useDefineForClassFields": false
   },
 	"angularCompilerOptions": {
 		"preserveWhitespaces": true

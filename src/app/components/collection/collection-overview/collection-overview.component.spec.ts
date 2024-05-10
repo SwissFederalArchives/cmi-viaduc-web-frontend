@@ -9,6 +9,7 @@ import {ToastrTestingModule} from '../mocks';
 import {CollectionOverviewComponent} from './collection-overview.component';
 import moment from 'moment';
 import {By} from '@angular/platform-browser';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('auto generate CollectionOverviewComponent', () => {
 	beforeEach(waitForAsync(async() => {
@@ -28,7 +29,8 @@ describe('auto generate CollectionOverviewComponent', () => {
 			declarations: [
 				LocalizeLinkPipe,
 				CollectionOverviewComponent
-			]
+			],
+			schemas: [NO_ERRORS_SCHEMA]
 		});
 
 		fixture = TestBed.createComponent(CollectionOverviewComponent);
