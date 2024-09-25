@@ -1,6 +1,6 @@
 <div *ngIf="(entityResult && entityResult.length > 0)">
 	<div *ngFor="let entity of entityResult" class="simplehitlist-items">
-		<cmi-viaduc-simple-hit [entity]="entity"  [isBarUser]="isBarUser" [enableExplanations]="enableExplanations"></cmi-viaduc-simple-hit>
+		<cmi-viaduc-simple-hit [entity]="entity" [searchTerm]="searchTerm"  [isBarUser]="isBarUser" [enableExplanations]="enableExplanations"></cmi-viaduc-simple-hit>
 	</div>
 </div>
 

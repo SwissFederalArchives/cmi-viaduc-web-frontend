@@ -180,11 +180,13 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 				.then(async res => {
 					this.passportCountries = res.filter(country => country.canOnboardWithPassport && country.newLaenderCode !== null);
 					this.idCountries = res.filter(country => country.canOnboardWithIdentityCard && country.newLaenderCode !== null);
+					this.passportCountries.splice(0, 0, new Country('01', '', false, false, '001'))
 					this.passportCountries.push(new Country('00', this._txt.get('account.digitalOnboarding.noPassportOfListedCountry'
-						, 'Ich besitze keinen Pass von einem der aufgeführten Länder'), false, false, '000'));
+						, 'Kein gültiger Pass'), false, false, '000'));
 					this.residenceCountries = res.filter(country => country.newLaenderCode !== null);
+					this.idCountries.splice(0, 0, new Country('01', '', false, false, '001'))
 					this.idCountries.push(new Country('00', this._txt.get('account.digitalOnboarding.noIdOfListedCountry'
-						, 'Ich besitze keine Identitätskarte von einem der aufgeführten Länder'), false, false, '000'));
+						, 'Keine gültige Identitätskarte'), false, false, '000'));
 					this.allCountries = res;
 					this.InitForm();
 			});
@@ -198,7 +200,7 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 		userData.email = this.myForm.controls['email'].value;
 		userData.name = this.myForm.controls['name'].value;
 		userData.firstname = this.myForm.controls['firstName'].value;
-		if (this.formStep1.controls['pass'].value && this.formStep1.controls['pass'].value !== '000') {
+		if (this.formStep1.controls['pass'].value && this.formStep1.controls['pass'].value !== '000' && this.formStep1.controls['pass'].value !== '001') {
 			userData.nationality = this.formStep1.controls['pass'].value;
 		} else {
 			userData.nationality = this.formStep1.controls['idCard'].value;
@@ -209,8 +211,8 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 
 	private isCountryValid(): boolean {
 		if (this.formStep1) {
-			return this.formStep1.controls['pass'].value && this.formStep1.controls['pass'].value.length === 3  && this.formStep1.controls['pass'].value !== '000' ||
-				(this.formStep1.controls['idCard'] && this.formStep1.controls['idCard'].value.length === 3)  && this.formStep1.controls['idCard'].value !== '000';
+			return this.formStep1.controls['pass'].value && this.formStep1.controls['pass'].value.length === 3  && this.formStep1.controls['pass'].value !== '000' && this.formStep1.controls['pass'].value !== '001'  ||
+				(this.formStep1.controls['idCard'] && this.formStep1.controls['idCard'].value.length === 3)  && this.formStep1.controls['idCard'].value !== '000' && this.formStep1.controls['idCard'].value !== '001';
 		}
 
 		return true;
@@ -219,8 +221,8 @@ export class DigitalOnboardingAssistantComponent implements OnInit, AfterViewIni
 	private InitForm() {
 		if (this.allCountries) {
 			this.formStep1 = this._formBuilder.group({
-			pass: new FormControl([Validators.required, Validators.maxLength(3)]),
-			idCard: new FormControl([Validators.required, Validators.maxLength(3)]),
+			pass: new FormControl('001', [Validators.required, Validators.maxLength(3)]),
+			idCard: new FormControl('001', [Validators.required, Validators.maxLength(3)]),
 		});
 
 		let birth = null;

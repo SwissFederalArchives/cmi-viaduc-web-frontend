@@ -127,4 +127,22 @@ export class SearchService {
 		}
 		return s;
 	}
+
+	public createSearchTermViewer(searchModel: SearchModel): string {
+		let searchTerm = '';
+		for (const group of searchModel.searchGroups) {
+
+			for (const field of group.searchFields) {
+				if (field.key && field.value && !_util.isEmpty(field.value)) {
+					if (searchTerm !== '') {
+						searchTerm += ' ';
+					}
+					if (field.key === 'allData' || field.key === 'title' || field.key === 'allPrimaryData') {
+						searchTerm += field.value;
+					}
+				}
+			}
+		}
+		return searchTerm;
+	}
 }

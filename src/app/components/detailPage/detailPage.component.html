@@ -16,7 +16,7 @@
 
 				<div class="section">
 					<div class="section-content">
-						<cmi-viaduc-viewer-section *ngIf="showViewerSection" [archiveRecordId]="entity.archiveRecordId" [manifestLink]="entity.manifestLink" [viewerLink]="_config.getSetting('viewer.url', '')"></cmi-viaduc-viewer-section>
+						<cmi-viaduc-viewer-section *ngIf="showViewerSection" [archiveRecordId]="entity.archiveRecordId" [searchTerm]="this.searchTerm"  [manifestLink]="entity.manifestLink" [viewerLink]="_config.getSetting('viewer.url', '')"></cmi-viaduc-viewer-section>
 					</div>
 					<div class="section-content">
 						<cmi-viaduc-info-section *ngIf="!hasPermission && entity.isAnonymized" [text]="'Diese Daten wurden aus Datenschutzgründen anonymisiert.'|translate:'infoSection.noPermission'"></cmi-viaduc-info-section>

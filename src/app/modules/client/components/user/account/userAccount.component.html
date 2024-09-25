@@ -46,8 +46,8 @@
 									   [allowInput]="true"
 									   dateFormat="d.m.Y"
 									   name="Birthday"
-									   (flatpickrValueUpdate)="dataPickerValueUpdate($event)"
-									   [(ngModel)]="birthday">
+									   [(ngModel)]="row.value">
+
                                 <span *ngIf="row.isInvalid && saveClicked" class="help-block" role="alert">
                                     {{row.errorMessage }}
                                 </span>

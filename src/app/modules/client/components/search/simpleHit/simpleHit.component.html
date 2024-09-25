@@ -6,7 +6,7 @@
 			</div>
 			<div class="col-md-9 single-bottom-margin col-xs-7">
 				<h4 class="no-margin-bottom">
-					<a href="#{{ '/de/archiv/einheit/' + entity.archiveRecordId | localizeLink }}" [innerHtml]="htmlForTitle|anonymizedHtml"></a>
+					<a href="#{{ '/de/archiv/einheit/' + entity.archiveRecordId + hrefLinkExtension| localizeLink }}" [innerHtml]="htmlForTitle|anonymizedHtml"></a>
 					<span *ngIf="entity.isAnonymized && isBarUser" aria-label="{{'Für nicht berechtigte NutzerInnen anonymisiert.' | translate:'simpleHit.anonymToolTip'}}"
 						  [tooltip]="'Für nicht berechtigte NutzerInnen anonymisiert.' | translate:'simpleHit.anonymToolTip'" class="glyphicon glyphicon-eye-close text-danger"></span>
 				</h4>
@@ -52,7 +52,7 @@
 						{{entity.customFields["zugänglichkeitGemässBga"]}}
 					</p>
 
-					<cmi-viaduc-simple-hit-menu (menuClicked)="onMenuClicked($event)" [entity]="entity"></cmi-viaduc-simple-hit-menu>
+					<cmi-viaduc-simple-hit-menu (menuClicked)="onMenuClicked($event)" [searchTerm]="searchTerm" [entity]="entity"></cmi-viaduc-simple-hit-menu>
 				</div>
 			</div>
 		</div>

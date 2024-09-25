@@ -29,7 +29,7 @@ export class DetailPageComponent implements OnInit, AfterViewInit {
 	public isBarUser = false;
 	public hasPermission = false;
 	public fields: Map<string, any> = new Map<string, any>();
-
+	public searchTerm = '';
 	private _error: any;
 	private readonly _elem: any;
 
@@ -105,6 +105,12 @@ export class DetailPageComponent implements OnInit, AfterViewInit {
 
 		try {
 			const id = this._url.getDetailIdFromReference(idOrReference);
+			await this._route.queryParams.subscribe(params =>	this.searchTerm = '&q=' +  params['q']);
+
+			if (this.searchTerm === '&q=undefined' || this.searchTerm === '&q='){
+				this.searchTerm = '';
+			}
+
 			this.entity = await this._entityService.get(id);
 			this.hasPermission = this.entity.fieldAccessTokens ? this._authorization.hasAnyAccessToken(this.entity.fieldAccessTokens) : true;
 			this.isBarUser = this._authorization.isBarUser();

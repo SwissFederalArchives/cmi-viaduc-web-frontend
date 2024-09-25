@@ -51,6 +51,7 @@ export class SearchResultPageComponent implements OnInit {
 	private _pagingSize;
 	private _userSettings: UserUiSettings;
 	public crumbs: any[];
+	public searchTerm= '';
 
 	constructor(private _context: ClientContext,
 				private _config: ConfigService,
@@ -68,7 +69,6 @@ export class SearchResultPageComponent implements OnInit {
 	public async ngOnInit(): Promise<void> {
 		this._seoService.setTitle(this._txt.translate('Suchergebnisse', 'searchResultPageComponent.pageTitle'));
 		this._setPaginations();
-
 		await this._executeSearchFromQueryParams();
 		this.crumbs = this.getBreadCrumb();
 	}
@@ -119,6 +119,7 @@ export class SearchResultPageComponent implements OnInit {
 				this._createLastExecutedSimpleSearchModel(request);
 			} else {
 				this.lastExecutedQueryTerm = this._searchService.toHumanReadableQueryString(request.query);
+				this.searchTerm = this._searchService.createSearchTermViewer(request.query);
 			}
 
 			await this._search(this._context.search.request);
@@ -136,6 +137,7 @@ export class SearchResultPageComponent implements OnInit {
 	private _createLastExecutedSimpleSearchModel(request) {
 		const query = request.query || <any>{};
 		const searchGroups = query.searchGroups || <any>[];
+
 		if (_util.isEmpty(searchGroups)) {
 			return;
 		}
@@ -153,6 +155,7 @@ export class SearchResultPageComponent implements OnInit {
 		const termField = searchFields[0];
 		if (termField && _util.isObject(termField)) {
 			this.lastExecutedSimpleSearchModel.term = termField.value;
+			this.searchTerm = termField.value;
 		}
 
 		const dateField = searchFields.length > 1 ? searchFields[1] : null;
@@ -372,6 +375,7 @@ export class SearchResultPageComponent implements OnInit {
 
 	public async onSearch(request: SearchRequest): Promise<void> {
 		await this._search(request);
+		this.searchTerm = this._searchService.createSearchTermViewer(request.query);
 		if (this.facettenList) {
 			this.facettenList.resetFilters(false);
 		}

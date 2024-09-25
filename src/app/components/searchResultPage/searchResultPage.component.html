@@ -118,6 +118,7 @@
 						</cmi-viaduc-pagination>
 					</div>
 					<cmi-viaduc-simple-hitlist *ngIf="!hasAnyErrors" [loading]="showLoading"
+											   [searchTerm]="searchTerm"
 											   [entityResult]="searchResponse?.entities?.items"
 											   [enableExplanations]="searchResponse?.enableExplanations">
 					</cmi-viaduc-simple-hitlist>

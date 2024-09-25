@@ -21,7 +21,6 @@ import {OrderEinsichtCheckoutPageComponent} from './components/orderEinsichtChec
 import {RegisterPageInfoComponent} from './components/register/registerPageInfo/registerPageInfo.component';
 import {RegisterPageComponent} from './components/register/registerPage/registerPage.component';
 import {ErrorPageComponent} from './components/errorPage/errorPage.component';
-import {ErrorSmartcardPageComponent} from './components/errorPage/errorSmartcardPage.component';
 import {CollectionPageComponent} from './components/collection/collection-page/collection-page.component';
 
 // region Template for localizable routes.
@@ -286,8 +285,18 @@ export const defaultRouteChildren: any = [
 	},
 	{
 		path:'error-smartcard',
-		_localize: {'fr': 'erreur-smartcard', 'it': 'errore-smartcard', 'en': 'error-smartcard'},
-		component: ErrorSmartcardPageComponent
+		_localize: {'fr': 'error-smartcard', 'it': 'error-smartcard', 'en': 'error-smartcard'},
+		component: StaticPageComponent
+	},
+	{
+		path:'error-qoa',
+		_localize: {'fr': 'error-qoa', 'it': 'error-qoa', 'en': 'error-qoa'},
+		component: StaticPageComponent
+	},
+	{
+		path: 'error-mtan',
+		_localize: {'fr': 'error-mtan', 'it': 'error-mtan', 'en': 'error-mtan'},
+		component: StaticPageComponent
 	},
 ];
 

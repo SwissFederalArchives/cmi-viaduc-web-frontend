@@ -37,15 +37,21 @@ export class AuthenticationService {
 				private _urlService: UrlService) {
 	}
 
-	public login(): void {
+	public login(idp: string = null): void {
 		const callbackUrl = `${window.location.pathname}Auth/ExternalSignIn`; // relative url
 		const returnUrl = window.location.href;
-		const loginUrl = _util.addToString(this._options.serverUrl + this._options.publicPort, '/', 'AuthServices/SignIn?ReturnUrl=' + encodeURIComponent(callbackUrl));
+
+		let idpQueryParam = '';
+		if (idp)
+		{
+			idpQueryParam = `&idp=${idp}`
+		}
+
+		const loginUrl = _util.addToString(this._options.serverUrl + this._options.publicPort, '/', 'AuthServices/SignIn?ReturnUrl=' + encodeURIComponent(callbackUrl) + idpQueryParam);
 
 		this._setUrl(authReturnUrlKey, returnUrl);
 		window.location.assign(loginUrl);
 	}
-
 	public logout(): void {
 		const callbackUrl = `${window.location.pathname}Auth/ExternalSignOut`; // relative url
 		this.clearCurrentSession();
@@ -203,43 +209,40 @@ export class AuthenticationService {
 	}
 
 	private handleIdentityResponse(response: any): boolean {
-		this._initSession(response);
 
 		switch (response.authStatus) {
 			case AuthStatus.ok:
+				this._initSession(response);
 				return true;
 			case AuthStatus.keineRolleDefiniert:
 				this._setUrl(dontUseReturnUrl, 'true');
 				this._router.navigate([this._urlService.getErrorUrl()]);
 				return true;
 			case AuthStatus.neuerBenutzer:
+				this._initSession(response);
 				this._setUrl(dontUseReturnUrl, 'true');
 				this._router.navigate([this._urlService.getRegister()]);
 				return true;
 			case AuthStatus.keineMTanAuthentication:
 				this._setUrl(dontUseReturnUrl, 'true');
-				if (_util.isEmpty(response.redirectUrl)) {
-					this._router.navigate([this._urlService.getErrorUrl()]);
-					return false;
-				}
-
-				// we have to clear the cache, because the old token would be used
-				// when the user returns after he entered his mobile number
-				// which would create a loop (claims are old)
-				this.clearCurrentSession();
-
-				if (!response.redirectUrl.startsWith('http')) {
-					response.redirectUrl = `https://${response.redirectUrl}`;
-				}
-				document.location.href = response.redirectUrl;
+				this._router.navigate([this._urlService.getErrorKeinMTanUrl()]);
 				return true;
-			case AuthStatus.keineKerberosAuthentication:
+			case AuthStatus.KeineSmartcardAuthentication:
 				this._setUrl(dontUseReturnUrl, 'true');
 				this._router.navigate([this._urlService.getErrorSmartcardUrl()]);
 				return true;
-				break;
+			case AuthStatus.ZuTieferQoAWert:
+				this._setUrl(dontUseReturnUrl, 'true');
+				this._router.navigate([this._urlService.getZuTieferQoAWertUrl()]);
+				return true;
+			case AuthStatus.requiresElevatedCheck:
+				this._setUrl(dontUseReturnUrl, 'true');
+				this.login('level-60');
+				return true;
+
 			default:
 				console.warn('Keine definierter AuthStatus!');
+				break;
 		}
 
 		return false;

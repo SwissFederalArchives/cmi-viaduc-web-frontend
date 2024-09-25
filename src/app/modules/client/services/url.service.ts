@@ -97,6 +97,14 @@ export class UrlService {
 		return this.localizeUrl(this._context.language, '/error-smartcard');
 	}
 
+	public getZuTieferQoAWertUrl(): string {
+		return this.localizeUrl(this._context.language, '/error-qoa');
+	}
+
+	public getErrorKeinMTanUrl(): string {
+		return this.localizeUrl(this._context.language, '/error-mtan/' );
+	}
+
 	public getSearchResultUrl(search?: string): string {
 		let url: string = this.localizeUrl(this._context.language, '/suche/resultat');
 		if (!_util.isEmpty(search)) {

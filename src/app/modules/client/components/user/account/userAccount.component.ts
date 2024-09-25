@@ -12,7 +12,6 @@ import { User, UserSetting, UserSettingType } from '../../../model';
 import { AuthorizationService, UrlService, UserService } from '../../../services';
 import moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
-import {FlatPickrOutputOptions} from 'angularx-flatpickr/lib/flatpickr.directive';
 import flatpickr from 'flatpickr';
 import {German} from 'flatpickr/dist/l10n/de';
 import {French} from 'flatpickr/dist/l10n/fr';
@@ -29,7 +28,6 @@ export class UserAccountComponent implements OnInit {
 	public loading = false;
 	public isExternalUser: boolean;
 	public saveClicked = false;
-	public birthday: string;
 
 	public get allowEditingUserSettings(): boolean {
 		return this._allowEditingUserSettings;
@@ -152,7 +150,6 @@ export class UserAccountComponent implements OnInit {
 	}
 
 	public onChangeSettingsClicked() {
-		this.birthday = this._formatDateToDayMonthYearFormat(this.user.birthday);
 		this._allowEditingUserSettings = !this._allowEditingUserSettings;
 	}
 
@@ -273,7 +270,6 @@ export class UserAccountComponent implements OnInit {
 
 		await this._loadUser();
 		this._loadCountries(this._context.language);
-
 		this._userSettings = [];
 		this._userSettings.push(new UserSetting(UserSettingType.FamilyName, this._captionFamilyName, this.user.familyName,
 			this._authorization.hasMoreThenOe2Rights(), true, null, this._errorMandatoryField, null));
@@ -379,8 +375,8 @@ export class UserAccountComponent implements OnInit {
 					}
 					break;
 				case UserSettingType.Birthday:
-					console.log(this.user.birthday, userSetting.value);
 					if (this.user.birthday !== userSetting.value) {
+						this.user.birthday =  moment(userSetting.value, 'DD.MM.YYYY', true).utcOffset(0, true).toISOString();
 						// was set manually
 						hasChanged = true;
 					}
@@ -406,7 +402,6 @@ export class UserAccountComponent implements OnInit {
 			return;
 		}
 
-		console.log(this.user)
 		this._userService.updateUser(this.user).subscribe(() => {
 			this._allowEditingUserSettings = !this._allowEditingUserSettings;
 			this._toastr.success(this._txt.get('userAccount.saveSuccess', 'Ihre Benutzerdaten wurden erfolgreich gespeichert'),
@@ -444,13 +439,5 @@ export class UserAccountComponent implements OnInit {
 		}
 
 		return a.toLowerCase() === b.toLowerCase();
-	}
-
-	public dataPickerValueUpdate($event: FlatPickrOutputOptions) {
-		if ($event.dateString === ''){
-			this.user.birthday = '';
-		} else {
-			this.user.birthday = $event.selectedDates[0].toDateString();
-		}
 	}
 }

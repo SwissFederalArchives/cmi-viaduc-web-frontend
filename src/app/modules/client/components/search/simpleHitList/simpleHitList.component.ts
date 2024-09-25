@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthorizationService, UserService} from '../../../services';
 import {UserUiSettings} from '../../../model';
 import {ClientContext, ConfigService, Entity, TranslationService} from '@cmi/viaduc-web-core';
@@ -8,9 +8,12 @@ import {ClientContext, ConfigService, Entity, TranslationService} from '@cmi/via
 	templateUrl: 'simpleHitList.component.html',
 	styleUrls: ['./simpleHitList.component.less']
 })
-export class SimpleHitListComponent {
+export class SimpleHitListComponent implements OnInit {
 	@Input()
 	public entityResult: Entity[];
+	@Input()
+	public searchTerm: string;
+
 	@Input()
 	public loading = false;
 	@Input()

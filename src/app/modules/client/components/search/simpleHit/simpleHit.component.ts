@@ -15,8 +15,18 @@ import {ShoppingCartService} from '../../../services/shoppingCart.service';
 export class SimpleHitComponent implements AfterViewInit, OnInit {
 	@Input()
 	public entity: Entity;
+	@Input('entity') set _entity(value: Entity)	{
+		this.entity = value;
+		this.setLink();
+	}
 	@Input()
 	public enableExplanations = false;
+	@Input()
+	public searchTerm: string;
+	@Input('searchTerm') set _searchTerm(value: string)	{
+		this.searchTerm = value;
+		this.setLink();
+	}
 	@Input()
 	public isBarUser = false;
 
@@ -29,6 +39,7 @@ export class SimpleHitComponent implements AfterViewInit, OnInit {
 
 	private _elem: any;
 	public aktenzeichen: string;
+	public hrefLinkExtension = '';
 
 	constructor(private _elemRef: ElementRef,
 				private _context: ClientContext,
@@ -49,6 +60,7 @@ export class SimpleHitComponent implements AfterViewInit, OnInit {
 		if (aktenzeichen && aktenzeichen.length > 0){
 			this.aktenzeichen = aktenzeichen[0];
 		}
+		this.setLink();
 	}
 
 	public ngAfterViewInit(): void {
@@ -76,6 +88,12 @@ export class SimpleHitComponent implements AfterViewInit, OnInit {
 				break;
 			default:
 				alert('not implemented yet');
+		}
+	}
+
+	private setLink() {
+		if (this.entity?.manifestLink?.length > 0 && this.searchTerm?.length > 0) {
+			this.hrefLinkExtension = '?q=' + this.searchTerm;
 		}
 	}
 

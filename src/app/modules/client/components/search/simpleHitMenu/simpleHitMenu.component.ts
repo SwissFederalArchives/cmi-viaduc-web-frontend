@@ -17,6 +17,9 @@ export class SimpleHitMenuComponent implements AfterViewInit, OnInit {
 	@Input()
 	public entity: Entity;
 
+	@Input()
+	public searchTerm: string;
+
 	@Output()
 	public menuClicked: EventEmitter<string> = new EventEmitter<string>();
 
@@ -43,6 +46,9 @@ export class SimpleHitMenuComponent implements AfterViewInit, OnInit {
 		const viewerLinkBase = this._config.getSetting('viewer.url', '');
 		if (this.entity.manifestLink) {
 			this.viewerLink = viewerLinkBase + this.entity.manifestLink;
+			if (this.searchTerm != null && this.searchTerm  && this.searchTerm.length > 0) {
+				this.viewerLink = this.viewerLink + '&q=' + this.searchTerm;
+			}
 		} else {
 			this.viewerLink = null;
 		}

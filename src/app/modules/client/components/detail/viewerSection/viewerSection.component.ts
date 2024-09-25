@@ -15,7 +15,25 @@ export class ViewerSectionComponent implements OnInit {
 	public viewerLink: string
 
 	@Input()
+	public searchTerm: string
+
+	@Input()
 	public archiveRecordId: string
+
+	@Input('manifestLink') set _manifestLink(value: string)	{
+		this.manifestLink = value;
+		this.setLink();
+	}
+
+	@Input('viewerLink') set _viewerLink(value: string)	{
+		this.viewerLink = value;
+		this.setLink();
+	}
+
+	@Input('searchTerm') set _searchTerm(value: string)	{
+		this.searchTerm = value;
+		this.setLink();
+	}
 
 	public viewerText: string;
 	public link: string;
@@ -26,7 +44,15 @@ export class ViewerSectionComponent implements OnInit {
 
 	public ngOnInit(): void {
 		this.viewerText = this._txt.translate('Konsultieren Sie die Unterlagen', 'onlineViewer.infoText');
-		this.link = this.viewerLink + this.manifestLink;
+		this.setLink();
+	}
+
+	private setLink() {
+		if (this.searchTerm?.length > 3) {
+			this.link = this.viewerLink + this.manifestLink + this.searchTerm;
+		} else {
+			this.link = this.viewerLink + this.manifestLink;
+		}
 	}
 
 	public logViewerClick() {
