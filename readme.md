@@ -1,3 +1,6 @@
+# Deprecated
+This repository is archived, because the code has moved to the main repo under https://github.com/SwissFederalArchives/cmi-viaduc
+
 # cmi-viaduc-web-frontend
 
 - [cmi-viaduc](https://github.com/SwissFederalArchives/cmi-viaduc)
